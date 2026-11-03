@@ -1,0 +1,33 @@
+test_429_stops_persistently_without_retry (tests.test_live_app.ControlledLiveTests.test_429_stops_persistently_without_retry) ... ok
+test_budget_reservations_survive_restart_and_concurrency (tests.test_live_app.ControlledLiveTests.test_budget_reservations_survive_restart_and_concurrency) ... ok
+test_config_public_has_model_and_limits_without_key (tests.test_live_app.ControlledLiveTests.test_config_public_has_model_and_limits_without_key) ... ok
+test_confirmation_expiry (tests.test_live_app.ControlledLiveTests.test_confirmation_expiry) ... ok
+test_confirmation_is_one_use_and_bound_to_metadata (tests.test_live_app.ControlledLiveTests.test_confirmation_is_one_use_and_bound_to_metadata) ... ok
+test_default_app_ignores_environment_credentials_and_rejects_live (tests.test_live_app.ControlledLiveTests.test_default_app_ignores_environment_credentials_and_rejects_live) ... ok
+test_host_and_csrf_guard_confirmation (tests.test_live_app.ControlledLiveTests.test_host_and_csrf_guard_confirmation) ... ok
+test_input_limit_reserves_nothing (tests.test_live_app.ControlledLiveTests.test_input_limit_reserves_nothing) ... ok
+test_invalid_free_model_allowlist_spending_and_limits (tests.test_live_app.ControlledLiveTests.test_invalid_free_model_allowlist_spending_and_limits) ... ok
+test_mocked_pipeline_preserves_evidence_and_withholds_proposal (tests.test_live_app.ControlledLiveTests.test_mocked_pipeline_preserves_evidence_and_withholds_proposal) ... FAIL
+test_model_mismatch_and_nonzero_cost_stop_and_abstain (tests.test_live_app.ControlledLiveTests.test_model_mismatch_and_nonzero_cost_stop_and_abstain) ... ok
+test_no_confirmation_no_transmission (tests.test_live_app.ControlledLiveTests.test_no_confirmation_no_transmission) ... ok
+test_pacing_and_append_only_budget (tests.test_live_app.ControlledLiveTests.test_pacing_and_append_only_budget) ... ok
+test_preparation_and_cancel_do_not_transmit_or_reserve (tests.test_live_app.ControlledLiveTests.test_preparation_and_cancel_do_not_transmit_or_reserve) ... ok
+test_rerun_never_inherits_live_transmission (tests.test_live_app.ControlledLiveTests.test_rerun_never_inherits_live_transmission) ... ok
+test_unknown_interpretation_remains_review_only (tests.test_live_app.ControlledLiveTests.test_unknown_interpretation_remains_review_only) ... ok
+test_http_envelope_free_only_redacts_and_never_falls_back (tests.test_live_app.ProviderBoundaryTests.test_http_envelope_free_only_redacts_and_never_falls_back) ... ok
+test_worker_success_is_explicitly_mocked (tests.test_live_app.ProviderBoundaryTests.test_worker_success_is_explicitly_mocked) ... ok
+test_worker_total_deadline_and_reaping_without_network (tests.test_live_app.ProviderBoundaryTests.test_worker_total_deadline_and_reaping_without_network) ... ok
+
+======================================================================
+FAIL: test_mocked_pipeline_preserves_evidence_and_withholds_proposal (tests.test_live_app.ControlledLiveTests.test_mocked_pipeline_preserves_evidence_and_withholds_proposal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/tests/test_live_app.py", line 116, in test_mocked_pipeline_preserves_evidence_and_withholds_proposal
+    self.assertTrue(all(c['spans_verified'] for c in view['evidence']))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 19 tests in 3.870s
+
+FAILED (failures=1)

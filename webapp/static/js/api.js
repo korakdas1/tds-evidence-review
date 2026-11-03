@@ -20,6 +20,8 @@ async function request(method, path, body, headers = {}) {
 }
 
 export const api = {
+  liveConfig: () => request("GET", "/api/live/config"),
+  prepareLive: (body) => request("POST", "/api/live/prepare", body),
   health: () => request("GET", "/api/health"),
   cases: () => request("GET", "/api/cases"),
   case: (id, run) => request("GET", `/api/cases/${encodeURIComponent(id)}${run ? `?run=${encodeURIComponent(run)}` : ""}`),

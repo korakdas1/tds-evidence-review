@@ -1,6 +1,6 @@
 import { api } from "../api.js";
 import { h, icon, clear, formatBytes } from "../dom.js";
-import { handoff, runOverlay, toast } from "../ui.js";
+import { handoff, runOverlay, toast, confirmLive } from "../ui.js";
 
 const EXTRACTION_TEMPLATE = {
   personnel_supplied: "yes",
@@ -52,6 +52,8 @@ export function readMetadata(form) {
 
 export async function renderNewReview(main) {
   const files = { contract: null, invoice: null };
+  const live = await api.liveConfig().catch(() => ({ enabled: false }));
+  let running = false;
   const form = h("form", { class: "stack", novalidate: true });
   const errorHost = h("div", { role: "alert" });
   const extraction = h("textarea", { class: "textarea code", id: "f-extraction", spellcheck: "false", "aria-describedby": "extraction-hint" });
@@ -80,11 +82,14 @@ export async function renderNewReview(main) {
         h("div", { class: "field" }, h("label", { for: "f-title" }, "Review title ", h("span", { class: "optional" }, "(optional)")), title),
         metadataFields())),
     h("section", { class: "panel form-section" },
-      sectionHead(3, "How to analyse", "Both options run entirely on this computer."),
+      sectionHead(3, "How to analyse", live.enabled ? `Offline is the default. Optional external model: ${live.model}. ${live.execution_kind}.` : "Both options run entirely on this computer."),
       h("div", { class: "choice-cards", role: "radiogroup", "aria-label": "Analysis method" },
         methodChoice("baseline", "Offline rule checks (recommended)", "The existing conservative checks read the contract text. No AI is involved, so no AI suggestions are produced.", true),
         methodChoice("supplied_extraction", "Replay a supplied extraction (advanced)", "Paste an extraction in the model's output format to see how the validators treat it. This is a simulation: no model is called, and the run is labelled as such.", false)),
-      extractionBox),
+      extractionBox,
+      live.enabled ? h("div", { class: "stack" },
+        methodChoice("live_hybrid", "External AI extraction (explicit opt-in)", live.notice, false),
+        h("p", { class: "hint" }, `${live.remaining_requests} of ${live.max_requests} request reservations remain. Spending limit: $0. No paid fallback. ${live.stopped ? "Requests stopped after a provider failure." : ""}`)) : null),
     errorHost,
     h("div", { class: "row" },
       h("a", { class: "btn btn-quiet", href: "#/" }, "Cancel"),
@@ -117,6 +122,7 @@ export async function renderNewReview(main) {
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    if (running) return;
     clear(errorHost);
     const metadata = readMetadata(form);
     const problems = [];
@@ -138,17 +144,26 @@ export async function renderNewReview(main) {
       return;
     }
     const steps = ["Uploading the contract", files.invoice ? "Uploading the invoice" : "No invoice to upload", "Reading PDF text and checking evidence"];
-    const overlay = runOverlay(steps);
+    running = true;
+    let overlay = runOverlay(steps);
     try {
       overlay.step(0);
       const contract = await api.upload(files.contract);
       overlay.step(1);
       const invoice = files.invoice ? await api.upload(files.invoice) : null;
       overlay.step(2);
-      const view = await api.createCase({
+      const body = {
         title: title.value.trim(), metadata, contract_sha256: contract.sha256,
         invoice_sha256: invoice ? invoice.sha256 : null, method, supplied_extraction: supplied,
-      });
+      };
+      if (method === "live_hybrid") {
+        const prepared = await api.prepareLive(body);
+        overlay.close();
+        if (!await confirmLive(prepared)) return;
+        body.live_confirmation = prepared.token;
+        overlay = runOverlay(["Reading the contract", "Sending the confirmed external request", "Validating evidence"], true);
+      }
+      const view = await api.createCase(body);
       overlay.step(3);
       toast("Evidence review created");
       location.hash = `#/cases/${encodeURIComponent(view.case.id)}`;
@@ -156,6 +171,7 @@ export async function renderNewReview(main) {
       errorHost.append(h("div", { class: "notice ink-contradiction" }, icon("alert"), h("div", {}, h("b", {}, "The review could not run. "), error.message)));
     } finally {
       overlay.close();
+      running = false;
     }
   });
   return null;

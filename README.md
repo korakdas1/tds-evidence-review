@@ -8,7 +8,7 @@ A local application and Python toolkit for checking what a vendor contract says 
 
 Nothing in this repository determines tax treatment, calculates tax, authorises withholding or files returns. Every result requires review by a qualified person. All included documents and evaluation cases are synthetic and not practitioner-validated.
 
-**Branches:** the submitted version is [`e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0`](https://github.com/korakdas1/tds-evidence-review/commit/e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0) on `main`. Post-submission development (Phases 3–6) is on `feature/full-product`.
+**Branches:** the submitted version is [`e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0`](https://github.com/korakdas1/tds-evidence-review/commit/e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0) on `main`. Post-submission development (Phases 3–7A) is on `feature/full-product`.
 
 **Phase 6C:** document reviews now use resource-isolated Linux parser workers with wall/CPU/memory limits. The previously blocking 43 KB stress case is contained; see [PHASE_6C_REPORT.md](PHASE_6C_REPORT.md) and the unchanged [independent audit](PHASE_6_CODEX_AUDIT.md). Resource isolation is not a complete security sandbox or production-readiness claim. The sequential development plan is [docs/MULTI_PHASE_GOAL.md](docs/MULTI_PHASE_GOAL.md). No live model calls are authorized in this development session.
 
@@ -17,7 +17,7 @@ Nothing in this repository determines tax treatment, calculates tax, authorises 
 
 ## Quick start
 
-You need Python 3.9 or later for the review app and PDF support (the JSON command-line baseline alone runs on 3.8). Document review and its worker currently require Linux (including OS resource limits); hardened web storage also requires POSIX no-follow operations. The JSON-only command-line path remains unchanged. Use the provided CLI entry points or a guarded `if __name__ == "__main__"` entry point when invoking document reviews from scripts. After installation nothing needs internet access, an API key or a paid service.
+You need Python 3.9 or later for the review app and PDF support (the JSON command-line baseline alone runs on 3.8). Document review and its worker currently require Linux (including OS resource limits); hardened web storage also requires POSIX no-follow operations. The JSON-only command-line path remains unchanged. Use the provided CLI entry points or a guarded `if __name__ == "__main__"` entry point when invoking document reviews from scripts. After installation the default workflow needs no internet access, API key or paid service. Optional live mode is separately enabled and requires per-run transmission confirmation.
 
 ```bash
 git clone https://github.com/korakdas1/tds-evidence-review.git
@@ -25,7 +25,7 @@ cd tds-evidence-review
 git checkout feature/full-product
 python -m venv .venv
 source .venv/bin/activate              # POSIX local review app
-python -m pip install -r requirements-pdf.txt   # pypdf 6.21.4, the only dependency
+python -m pip install -r requirements-pdf.txt   # pypdf 6.21.4, the only runtime dependency
 ```
 
 | To... | Run | Expect |
@@ -33,7 +33,7 @@ python -m pip install -r requirements-pdf.txt   # pypdf 6.21.4, the only depende
 | Launch the review app | `python review_app.py --open` | Opens http://127.0.0.1:8765/ in your browser (this computer only) |
 | Run the offline demo | `python demo.py` | Three JSON examples, including a replayed historical model mistake |
 | Run the offline PDF demo | `python pdf_demo.py` | A synthetic PDF with page and character offsets; proposal withheld |
-| Run all automated tests | `python -m unittest discover -v` | 196 tests, all passing; local HTTP tests use loopback sockets |
+| Run all automated tests | `python -m unittest discover -v` | 219 tests, all passing; local HTTP tests use loopback sockets |
 
 App options:
 - `--port 8765`
@@ -55,7 +55,7 @@ The app refuses to listen on anything except a loopback address.
 
 - **Normal workflow: offline rule checks.** The contract text is read by the existing conservative, deterministic checks. No AI model is involved, so normal runs produce no AI suggestions.
 - **AI-suggestion demonstration: simulated extraction.** The *Event crew* sample, and the advanced option *Replay a supplied extraction*, pass a hand-written extraction in a model's output format through the same validators. No model is called; the run records 0 model network calls and is labelled simulated.
-- **Live model experiments** exist only as separate, opt-in research scripts (see *Optional OpenRouter experiments* below). They are not connected to the app and need explicit credentials and authorisation.
+- **Optional live extraction:** start with `--enable-live` and explicit free-only configuration, then confirm each external request in the new-review dialog. See [live-mode controls, limits and mocked verification](docs/LIVE_MODE.md). Offline stays the default. This integration has only mocked development measurements; earlier live research remains separately labelled.
 
 ## Evidence states
 

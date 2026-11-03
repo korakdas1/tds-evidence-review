@@ -23,7 +23,7 @@ FIXTURE_MANIFEST = ROOT / "tests" / "fixtures" / "pdf_v1" / "manifest.json"
 
 METADATA_FIELDS = ("id", "invoice_description", "payer_type", "payee_residency",
                    "payee_legal_form", "credit_date", "payment_date")
-METHODS = ("baseline", "supplied_extraction")
+METHODS = ("baseline", "supplied_extraction", "live_hybrid")
 SUPPORTED = "SUPPORTED_FACTUAL_EVIDENCE"
 SUGGESTED = "AI_SUGGESTED_REQUIRING_REVIEW"
 REJECTED = "REJECTED_BY_SAFETY_GUARD"
@@ -105,7 +105,7 @@ def clean_metadata(value):
 def clean_method(method, supplied):
     if method not in METHODS:
         raise ServiceError(400, "Unknown analysis method")
-    if method == "baseline":
+    if method in ("baseline", "live_hybrid"):
         return None
     if isinstance(supplied, str):
         try:
@@ -122,14 +122,15 @@ UNTRUSTED = "Integrity check failed. Stored analysis content is withheld; only d
 
 
 class ReviewService:
-    def __init__(self, store, analysis_slots=1, analysis_wait_seconds=20):
+    def __init__(self, store, analysis_slots=1, analysis_wait_seconds=20, live=None):
         self.store = store
+        self.live = live
         # PDF parsing is CPU and memory heavy; bound how many run at once.
         self.analysis_slots = threading.BoundedSemaphore(analysis_slots)
         self.analysis_wait_seconds = analysis_wait_seconds
 
     # Analysis --------------------------------------------------------------------
-    def _analyse(self, contract_sha, invoice_sha, metadata, method, supplied):
+    def _analyse(self, contract_sha, invoice_sha, metadata, method, supplied, live_client=None):
         paths = {}
         for role, sha in (("contract", contract_sha), ("invoice", invoice_sha)):
             if sha is None:
@@ -138,7 +139,7 @@ class ReviewService:
             if state != "VERIFIED":
                 raise ServiceError(409, "Stored {} file is {}; upload it again".format(role, state.lower()))
             paths[role] = path
-        client = ReplayClient(supplied) if method == "supplied_extraction" else None
+        client = live_client or (ReplayClient(supplied) if method == "supplied_extraction" else None)
         if not self.analysis_slots.acquire(timeout=self.analysis_wait_seconds):
             raise ServiceError(503, "Another analysis is still running. Try again in a moment.")
         try:
@@ -149,14 +150,20 @@ class ReviewService:
         for role, sha in (("contract", contract_sha), ("invoice", invoice_sha)):
             if sha is not None and report["documents"][role]["file_sha256"] != sha:
                 raise ServiceError(409, "Stored document changed during analysis; upload it again")
-        return report, (client.calls if client else 0)
+        if live_client is not None:
+            report['execution'] = dict(live_client.audit)
+            report['execution']['pipeline_outcome'] = report['review']['run_status']
+            report['execution']['pipeline_error'] = report['text_analysis']['not_run_or_error_reason']
+        return report, (client.calls if method == 'supplied_extraction' else 0)
 
-    def _run(self, case, contract_sha, invoice_sha, metadata, method, supplied, actor, reason, changed=None, new_case=False):
-        report, simulated = self._analyse(contract_sha, invoice_sha, metadata, method, supplied)
+    def _run(self, case, contract_sha, invoice_sha, metadata, method, supplied, actor, reason, changed=None, new_case=False, live_client=None):
+        report, simulated = self._analyse(contract_sha, invoice_sha, metadata, method, supplied, live_client)
         payload = dict(method=method, reason=reason, report_status=report["status"],
                        factual_evidence_status=report["review"]["factual_evidence_status"],
-                       statutory_proposal="WITHHELD", model_network_calls=0,
+                       statutory_proposal="WITHHELD", model_network_calls=report.get("execution", {}).get("model_network_calls", 0),
                        simulated_client_invocations=simulated)
+        if "execution" in report:
+            payload["execution"] = report["execution"]
         if changed:
             payload["changed_fields"] = changed
         return self.store.add_run(case["id"], contract_sha, invoice_sha, metadata, method, supplied, report,
@@ -198,7 +205,13 @@ class ReviewService:
         supplied = clean_method(method, body.get("supplied_extraction"))
         # Origin is set by server code only; API callers cannot label an upload as a sample.
         case = self.store.prepare_case(metadata["id"] or "UNREFERENCED", title, origin)
-        self._run(case, contract, invoice, metadata, method, supplied, "system", "Initial analysis", new_case=True)
+        live_client = None
+        if method == 'live_hybrid':
+            if self.live is None:
+                raise ServiceError(403, 'Live inference is disabled; start explicitly with --enable-live')
+            live_client = self.live.consume(body)
+        self._run(case, contract, invoice, metadata, method, supplied, "system", "Initial analysis", new_case=True,
+                  live_client=live_client)
         return self.case_view(case["id"])
 
     def rerun(self, case_id, body):
@@ -212,7 +225,9 @@ class ReviewService:
             raise ServiceError(409, "Untrusted or incomplete analysis; create a new case with verified documents and manual details")
         latest = existing[-1]
         metadata = clean_metadata(body.get("metadata"))
-        method = body.get("method", latest["method"])
+        method = body.get("method", 'baseline' if latest['method'] == 'live_hybrid' else latest['method'])
+        if method == 'live_hybrid':
+            raise ServiceError(400, 'Start a new live review with fresh per-run confirmation; corrections rerun offline')
         supplied = clean_method(method, body.get("supplied_extraction", latest["supplied_extraction"]))
         changed = {name: dict(before=latest["metadata"].get(name), after=metadata[name])
                    for name in METADATA_FIELDS if latest["metadata"].get(name) != metadata[name]}
@@ -621,7 +636,8 @@ def build_view(store, run):
         run=dict(id=run["id"], sequence=run["sequence"], created_at=run["created_at"], method=method,
                  metadata=run["metadata"], supplied_extraction=run["supplied_extraction"],
                  report_sha256=run["report_sha256"], report_integrity=run["report_integrity"],
-                 model_network_calls=0,
+                 model_network_calls=report.get('execution', {}).get('model_network_calls', 0),
+                 execution=report.get('execution', {'execution_kind': 'SIMULATED' if method == 'supplied_extraction' else 'OFFLINE'}),
                  simulated_client_invocations=report["api_calls"] if method == "supplied_extraction" else 0),
         report_status=report["status"],
         finding=dict(

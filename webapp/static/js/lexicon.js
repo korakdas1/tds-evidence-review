@@ -194,6 +194,7 @@ export const FIELDS = {
 };
 
 export const METHODS = {
+  live_hybrid: "External AI extraction with deterministic validation (see execution record)",
   baseline: "Offline rule checks",
   supplied_extraction: "Supplied extraction replay (simulated, no model)",
 };

@@ -86,12 +86,12 @@ export async function askReviewer(force = false) {
   return result;
 }
 
-export function runOverlay(steps) {
+export function runOverlay(steps, live = false) {
   const items = steps.map((label) => h("li", {}, h("span", { class: "step-icon", "aria-hidden": "true" }), label));
   const overlay = h("div", { class: "overlay", role: "alertdialog", "aria-live": "polite", "aria-label": "Running evidence review" },
     h("div", { class: "panel run-card" },
       h("div", {}, h("h3", {}, "Running the evidence review"),
-        h("p", { class: "muted small" }, "Everything runs on this computer. No model or network is used.")),
+        h("p", { class: "muted small" }, live ? "The confirmed contract text is being sent to the configured external provider. Tax treatment still requires human review." : "Everything runs on this computer. No model or network is used.")),
       h("ol", { class: "run-steps" }, items)));
   document.body.append(overlay);
   return {
@@ -100,4 +100,18 @@ export function runOverlay(steps) {
     },
     close() { overlay.remove(); },
   };
+}
+
+export async function confirmLive(prepared) {
+  return await modal({
+    title: "Send this contract to an external AI provider?",
+    intro: prepared.notice,
+    body: h("div", { class: "stack" },
+      h("p", {}, `Configured model: ${prepared.model}. Mode: ${prepared.execution_kind}.`),
+      h("p", {}, "One request only, zero-dollar price limit, no paid fallback. Confirmation expires after five minutes and applies only to these documents and transaction details.")),
+    actions: (close) => [
+      h("button", { class: "btn btn-quiet", type: "button", onclick: () => close(false) }, "Cancel, keep data local"),
+      h("button", { class: "btn btn-primary", type: "button", onclick: () => close(true) }, "Confirm this one external request"),
+    ],
+  });
 }

@@ -1,3 +1,4 @@
+import { api } from "./api.js";
 import { clear, h } from "./dom.js";
 import { askReviewer, renderReviewerChip } from "./ui.js";
 import { renderDashboard } from "./views/dashboard.js";
@@ -55,3 +56,10 @@ renderReviewerChip();
 document.getElementById("reviewer-chip").addEventListener("click", () => askReviewer(true));
 window.addEventListener("hashchange", route);
 route();
+
+api.liveConfig().then((config) => {
+  if (!config.enabled) return;
+  const flag = document.querySelector(".offline-flag");
+  flag.textContent = `Offline by default; ${config.execution_kind === "SIMULATED" ? "simulated" : "external AI"} opt-in available`;
+  flag.title = `Configured model: ${config.model}. Every external request needs explicit confirmation.`;
+}).catch(() => {});

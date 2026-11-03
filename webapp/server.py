@@ -1,4 +1,4 @@
-"""Local HTTP adapter (standard library). Loopback only; no outbound requests.
+"""Local HTTP adapter (standard library). Loopback only; offline by default, separately confirmed live extraction optional.
 
 `App.handle()` is a pure request -> response function so tests can exercise every route
 without sockets. `serve()` wraps it in a ThreadingHTTPServer bound to a loopback address.
@@ -51,9 +51,13 @@ def error(status, message):
 
 
 class App:
-    def __init__(self, data_dir, port=8765, max_storage_bytes=DEFAULT_MAX_STORAGE_BYTES, analysis_slots=1):
+    def __init__(self, data_dir, port=8765, max_storage_bytes=DEFAULT_MAX_STORAGE_BYTES, analysis_slots=1, live_config=None, _live_transport=None, _live_interval=15):
         self.store = Store(data_dir, max_storage_bytes=max_storage_bytes)
-        self.service = ReviewService(self.store, analysis_slots=analysis_slots)
+        live = None
+        if live_config is not None:
+            from .live import LiveController
+            live = LiveController(self.store, live_config, _transport=_live_transport, _minimum_interval=_live_interval)
+        self.service = ReviewService(self.store, analysis_slots=analysis_slots, live=live)
         self.port = port
 
     def allowed_host(self, host):
@@ -87,8 +91,14 @@ class App:
     def api(self, method, parts, query, headers, body):
         service = self.service
         if parts == ["health"] and method == "GET":
-            return json_response(200, dict(status="ok", pdf_parser=pdf_parser(), model_calls="DISABLED",
+            return json_response(200, dict(status="ok", pdf_parser=pdf_parser(), model_calls="EXPLICIT_OPT_IN" if service.live else "DISABLED",
                                            bound_to="loopback", data_store="local SQLite (append-only)"))
+        if parts == ['live', 'config'] and method == 'GET':
+            return json_response(200, service.live.public() if service.live else dict(enabled=False))
+        if parts == ['live', 'prepare'] and method == 'POST':
+            if service.live is None:
+                return error(403, 'Live inference is disabled')
+            return json_response(200, service.live.prepare(self.json_body(body)))
         if parts == ["samples"] and method == "GET":
             return json_response(200, service.public_samples())
         if len(parts) == 3 and parts[0] == "samples" and parts[2] == "cases" and method == "POST":
@@ -235,16 +245,17 @@ def loopback(host):
 
 
 def serve(host="127.0.0.1", port=8765, data_dir="local_data", open_browser=False,
-          max_storage_bytes=DEFAULT_MAX_STORAGE_BYTES):
+          max_storage_bytes=DEFAULT_MAX_STORAGE_BYTES, live_config=None):
     if not loopback(host):
         raise SystemExit("Refusing to bind to a non-loopback address. This prototype serves this computer only.")
-    app = App(data_dir, port, max_storage_bytes=max_storage_bytes)
+    app = App(data_dir, port, max_storage_bytes=max_storage_bytes, live_config=live_config)
     server = ThreadingHTTPServer((host, port), make_handler(app))
     url = "http://127.0.0.1:{}/".format(server.server_address[1])
     # flush=True so the banner also appears when output is redirected to a log file.
     print("TDS Evidence Review is running at " + url, flush=True)
     print("Data folder: " + str(app.store.data_dir) + "  (kept out of Git)", flush=True)
-    print("Offline: no model or network calls. Press Ctrl+C to stop.", flush=True)
+    print("Live mode available by explicit per-run confirmation: " + live_config['model'] if live_config
+          else "Offline: no model or network calls. Press Ctrl+C to stop.", flush=True)
     if open_browser:
         webbrowser.open(url)
     try:
@@ -257,6 +268,7 @@ def serve(host="127.0.0.1", port=8765, data_dir="local_data", open_browser=False
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Local TDS evidence review workspace (offline).")
+    parser.add_argument("--enable-live", action="store_true", help="Enable explicit per-run free-model requests; requires TDS_LIVE_* configuration")
     parser.add_argument("--host", default="127.0.0.1", help="Loopback address only (default 127.0.0.1)")
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--data-dir", default="local_data", help="Local folder for uploads and the review database")
@@ -266,7 +278,14 @@ def main(argv=None):
     args = parser.parse_args(argv)
     if args.max_storage_mb <= 0:
         parser.error("--max-storage-mb must be positive")
-    serve(args.host, args.port, args.data_dir, args.open, args.max_storage_mb * 1048576)
+    live_config = None
+    if args.enable_live:
+        from .live import config_from_environment
+        try:
+            live_config = config_from_environment()
+        except (ValueError, TypeError):
+            parser.error('Invalid live configuration. See docs/LIVE_MODE.md; no provider request was made.')
+    serve(args.host, args.port, args.data_dir, args.open, args.max_storage_mb * 1048576, live_config)
 
 
 if __name__ == "__main__":

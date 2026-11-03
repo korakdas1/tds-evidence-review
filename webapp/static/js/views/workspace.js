@@ -574,6 +574,8 @@ function transactionTab(ctx) {
   out.push(h("div", { class: "section-title" }, h("h3", {}, "How this run was analysed")));
   out.push(h("div", { class: "kv" },
     h("div", { class: "k" }, "Method"), h("div", {}, METHODS[view.run.method] || view.run.method),
+    h("div", { class: "k" }, "Execution"), h("div", {}, view.run.execution?.execution_kind || "OFFLINE",
+      view.run.execution?.configured_model ? `; configured ${view.run.execution.configured_model}; returned ${view.run.execution.returned_model || "no successful response"}; ${view.run.execution.pipeline_error || view.run.execution.pipeline_outcome || ""}` : ""),
     h("div", { class: "k" }, "Run"), h("div", {}, `${view.run.sequence} of ${view.runs.length}, ${formatTime(view.run.created_at)}`),
     h("div", { class: "k" }, "Model or network calls"), h("div", {}, "0"),
     h("div", { class: "k" }, "Simulated extraction replays"), h("div", {}, String(view.run.simulated_client_invocations)),

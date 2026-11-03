@@ -65,6 +65,8 @@ def review_pdf_contract(metadata, contract_path, invoice_path=None, mode="baseli
     documents = {"contract": contract}
     if invoice_path is not None:
         documents["invoice"] = read_pdf(invoice_path)
+    if client is not None and hasattr(client, 'validate_document'):
+        client.validate_document(contract)
     record = {name: metadata.get(name) for name in INPUT_FIELDS if name != "contract_excerpt"}
     record["contract_excerpt"] = contract["text"]
     # No implicit environment credentials. The CLI exposes only offline baseline mode.
