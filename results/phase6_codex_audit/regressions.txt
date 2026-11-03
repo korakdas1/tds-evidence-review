@@ -1,0 +1,25 @@
+test_ambiguous_and_short_requests_never_mutate (tests.test_phase6_audit.AuditHttpTests.test_ambiguous_and_short_requests_never_mutate) ...   POST /api/samples/warehouse/cases
+  POST /api/samples/warehouse/cases
+  POST /api/samples/warehouse/cases
+ok
+test_document_substitution_and_method_are_bound (tests.test_phase6_audit.AuditIntegrityTests.test_document_substitution_and_method_are_bound) ... ok
+test_forged_case_title_not_presented_by_api_or_list (tests.test_phase6_audit.AuditIntegrityTests.test_forged_case_title_not_presented_by_api_or_list) ... ok
+test_history_write_failure_rolls_back_case_run_and_events (tests.test_phase6_audit.AuditIntegrityTests.test_history_write_failure_rolls_back_case_run_and_events) ... ok
+test_initial_analysis_failure_leaves_no_case (tests.test_phase6_audit.AuditIntegrityTests.test_initial_analysis_failure_leaves_no_case) ... ok
+test_legacy_unanchored_context_is_not_retroactively_certified (tests.test_phase6_audit.AuditIntegrityTests.test_legacy_unanchored_context_is_not_retroactively_certified) ... ok
+test_malformed_event_is_quarantined (tests.test_phase6_audit.AuditIntegrityTests.test_malformed_event_is_quarantined) ... ok
+test_malformed_stored_json_does_not_break_case_list (tests.test_phase6_audit.AuditIntegrityTests.test_malformed_stored_json_does_not_break_case_list) ... ok
+test_manual_metadata_is_bound_to_report_anchor (tests.test_phase6_audit.AuditIntegrityTests.test_manual_metadata_is_bound_to_report_anchor) ... ok
+test_nonstring_action_returns_validation_error (tests.test_phase6_audit.AuditIntegrityTests.test_nonstring_action_returns_validation_error) ... ok
+test_rerun_failure_preserves_previous_run (tests.test_phase6_audit.AuditIntegrityTests.test_rerun_failure_preserves_previous_run) ... ok
+test_damaged_large_file_is_not_read_unbounded (tests.test_phase6_audit.AuditStorageTests.test_damaged_large_file_is_not_read_unbounded) ... ok
+test_existing_storage_symlinks_are_rejected (tests.test_phase6_audit.AuditStorageTests.test_existing_storage_symlinks_are_rejected) ... ok
+test_file_write_failure_cleans_temporary_and_database (tests.test_phase6_audit.AuditStorageTests.test_file_write_failure_cleans_temporary_and_database) ... ok
+test_quota_across_independent_stores_and_duplicate_uploads (tests.test_phase6_audit.AuditStorageTests.test_quota_across_independent_stores_and_duplicate_uploads) ... ok
+test_restore_symlink_cannot_overwrite_unrelated_file (tests.test_phase6_audit.AuditStorageTests.test_restore_symlink_cannot_overwrite_unrelated_file) ... ok
+test_upload_directory_symlink_is_rejected (tests.test_phase6_audit.AuditStorageTests.test_upload_directory_symlink_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 2.714s
+
+OK

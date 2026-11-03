@@ -1,0 +1,20 @@
+======================================================================
+FAIL: test_forged_report_with_recomputed_row_hash_is_detected_and_locks_review (tests.test_webapp.ReviewAppTests.test_forged_report_with_recomputed_row_hash_is_detected_and_locks_review)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/tests/test_webapp.py", line 240, in test_forged_report_with_recomputed_row_hash_is_detected_and_locks_review
+    self.assertEqual(view["integrity"]["failed_checks"], ["history_anchor"])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['history_anchor', 'run_context'] != ['history_anchor']
+
+First list contains 1 additional elements.
+First extra element 1:
+'run_context'
+
+- ['history_anchor', 'run_context']
++ ['history_anchor']
+
+----------------------------------------------------------------------
+Ran 30 tests in 4.200s
+
+FAILED (failures=1)

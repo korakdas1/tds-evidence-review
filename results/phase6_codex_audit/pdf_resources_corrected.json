@@ -1,0 +1,110 @@
+[
+  {
+    "probe": "compressed_20_page",
+    "file_bytes": 1444797,
+    "exit_code": 0,
+    "wall_seconds": 0.441,
+    "result": {
+      "status": "NEEDS_DOCUMENT_REVIEW",
+      "issues": [],
+      "page_issues": [
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ]
+      ],
+      "elapsed_seconds": 0.336,
+      "peak_rss_kib": 53220,
+      "rss_source": "Linux /proc/self/status VmHWM after exec (avoids inherited fork high-water)",
+      "external_audit_limits": "256 MiB address space; 5/6 seconds CPU; not application limits"
+    },
+    "stderr_present": false
+  },
+  {
+    "probe": "dense_operators_2_page",
+    "file_bytes": 3841102,
+    "exit_code": 0,
+    "wall_seconds": 3.517,
+    "result": {
+      "status": "NEEDS_DOCUMENT_REVIEW",
+      "issues": [],
+      "page_issues": [
+        [
+          "NO_SELECTABLE_TEXT_OCR_OR_MANUAL_REVIEW"
+        ],
+        [
+          "NO_SELECTABLE_TEXT_OCR_OR_MANUAL_REVIEW"
+        ]
+      ],
+      "elapsed_seconds": 3.436,
+      "peak_rss_kib": 171712,
+      "rss_source": "Linux /proc/self/status VmHWM after exec (avoids inherited fork high-water)",
+      "external_audit_limits": "256 MiB address space; 5/6 seconds CPU; not application limits"
+    },
+    "stderr_present": false
+  },
+  {
+    "probe": "dense_operators_compressed_20_page",
+    "file_bytes": 43115,
+    "exit_code": -9,
+    "wall_seconds": 6.021,
+    "result": null,
+    "stderr_present": false
+  }
+]

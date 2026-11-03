@@ -1,0 +1,13 @@
+case_id,method,run_status,applicable_act,factual_evidence_status,human_review_required,validation_failure_count,runtime_seconds
+P3_01,baseline,OK,"Income-tax Act, 2025",EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER,True,0,0.000767
+P3_02,baseline,OK,"Income-tax Act, 2025",INSUFFICIENT_TO_ESTABLISH_CONTROL,True,0,0.000187
+P3_03,baseline,OK,"Income-tax Act, 2025",INSUFFICIENT_TO_ESTABLISH_CONTROL,True,0,0.000215
+P3_04,baseline,OK,"Income-tax Act, 2025",INSUFFICIENT_TO_ESTABLISH_CONTROL,True,0,0.000137
+P3_05,baseline,OK,"Income-tax Act, 2025",INSUFFICIENT_TO_ESTABLISH_CONTROL,True,0,0.000112
+P3_06,baseline,OK,"Income-tax Act, 2025",EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE,True,0,0.000204
+P3_07,baseline,OK,"Income-tax Act, 2025",INSUFFICIENT_TO_ESTABLISH_CONTROL,True,0,0.000248
+P3_08,baseline,OK,"Income-tax Act, 2025",INSUFFICIENT_TO_ESTABLISH_CONTROL,True,0,0.00012
+P3_09,baseline,OK,"Income-tax Act, 2025",INSUFFICIENT_TO_ESTABLISH_CONTROL,True,0,0.000127
+P3_10,baseline,OK,"Income-tax Act, 2025",INSUFFICIENT_TO_ESTABLISH_CONTROL,True,1,9.4e-05
+P3_11,baseline,OK,"Income-tax Act, 2025",INSUFFICIENT_TO_ESTABLISH_CONTROL,True,0,0.000134
+P3_12,baseline,OK,"Income-tax Act, 2025",CONFLICTING_EVIDENCE,True,0,0.000524

@@ -177,6 +177,9 @@ function documentsAvailable(view) {
 const CHECK_LABELS = {
   report_row_hash: "Stored analysis matches its own fingerprint",
   history_anchor: "Stored analysis matches the fingerprint recorded in the review history",
+  run_context: "Transaction fields, document identities and run details match the history",
+  stored_json: "Stored analysis data is readable",
+  history_payloads: "Recorded history data is readable",
   history_chain: "Review history entries are linked without gaps or edits",
   case_record: "Case title and reference match the history",
 };
@@ -184,7 +187,7 @@ const CHECK_LABELS = {
 function renderUntrusted(ctx) {
   const { view } = ctx.state;
   const checks = Object.entries(view.integrity.checks);
-  const passed = (key, value) => ({ report_row_hash: "VERIFIED", history_anchor: "MATCHES", history_chain: "INTACT", case_record: "MATCHES" })[key] === value;
+  const passed = (key, value) => ({ report_row_hash: "VERIFIED", history_anchor: "MATCHES", history_chain: "INTACT", case_record: "MATCHES", run_context: "MATCHES", stored_json: "VALID", history_payloads: "VALID" })[key] === value;
   const head = h("header", { class: "ws-head" },
     h("div", { class: "crumbs" }, h("a", { href: "#/" }, "Reviews"), h("span", { "aria-hidden": "true" }, "/"), h("span", {}, view.case.reference)),
     h("div", { class: "row" }, h("h1", {}, view.case.title), h("span", { class: "pill ink-contradiction" }, "Integrity check failed"),

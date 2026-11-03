@@ -15,7 +15,7 @@ from src.evidence import extraction_errors
 from src.pdf_ingestion import MAX_BYTES, verify_location
 from src.schema import parse_json
 
-from .store import StaleRunError, StorageLimitError, canonical
+from .store import StaleRunError, StorageLimitError, UnsafeStorageError, canonical
 
 ROOT = Path(__file__).resolve().parent.parent
 SAMPLES_FILE = Path(__file__).resolve().parent / "samples" / "samples.json"
@@ -146,20 +146,21 @@ class ReviewService:
                                          mode="hybrid" if client else "baseline", client=client)
         finally:
             self.analysis_slots.release()
+        for role, sha in (("contract", contract_sha), ("invoice", invoice_sha)):
+            if sha is not None and report["documents"][role]["file_sha256"] != sha:
+                raise ServiceError(409, "Stored document changed during analysis; upload it again")
         return report, (client.calls if client else 0)
 
-    def _run(self, case, contract_sha, invoice_sha, metadata, method, supplied, actor, reason, changed=None):
+    def _run(self, case, contract_sha, invoice_sha, metadata, method, supplied, actor, reason, changed=None, new_case=False):
         report, simulated = self._analyse(contract_sha, invoice_sha, metadata, method, supplied)
-        run = self.store.add_run(case["id"], contract_sha, invoice_sha, metadata, method, supplied, report)
-        payload = dict(run_sequence=run["sequence"], method=method, reason=reason,
-                       report_status=report["status"],
+        payload = dict(method=method, reason=reason, report_status=report["status"],
                        factual_evidence_status=report["review"]["factual_evidence_status"],
                        statutory_proposal="WITHHELD", model_network_calls=0,
-                       simulated_client_invocations=simulated, report_sha256=run["report_sha256"])
+                       simulated_client_invocations=simulated)
         if changed:
             payload["changed_fields"] = changed
-        self.store.append_event(case["id"], run["id"], actor, "ANALYSIS_RUN", None, payload)
-        return run
+        return self.store.add_run(case["id"], contract_sha, invoice_sha, metadata, method, supplied, report,
+                                  event=(actor, payload), new_case=case if new_case else None)
 
     def _document(self, sha, role, required):
         if sha is None and not required:
@@ -182,6 +183,8 @@ class ReviewService:
             record = self.store.save_document(name, data)
         except StorageLimitError as exc:
             raise ServiceError(507, str(exc)) from None
+        except UnsafeStorageError:
+            raise ServiceError(409, "Document storage path is unsafe or unavailable; check the data folder") from None
         return dict(sha256=record["sha256"], name=record["name"], size=record["size"])
 
     def create_case(self, body, origin="UPLOAD"):
@@ -194,10 +197,8 @@ class ReviewService:
         method = body.get("method", "baseline")
         supplied = clean_method(method, body.get("supplied_extraction"))
         # Origin is set by server code only; API callers cannot label an upload as a sample.
-        case = self.store.create_case(metadata["id"] or "UNREFERENCED", title, origin)
-        self.store.append_event(case["id"], None, "system", "CASE_CREATED", None,
-                                dict(title=title, reference=case["reference"], origin=case["origin"]))
-        self._run(case, contract, invoice, metadata, method, supplied, "system", "Initial analysis")
+        case = self.store.prepare_case(metadata["id"] or "UNREFERENCED", title, origin)
+        self._run(case, contract, invoice, metadata, method, supplied, "system", "Initial analysis", new_case=True)
         return self.case_view(case["id"])
 
     def rerun(self, case_id, body):
@@ -206,7 +207,10 @@ class ReviewService:
             raise ServiceError(400, "Expected a JSON object")
         actor = clean_text(body.get("reviewer"), "Reviewer name", 80, required=True)
         reason = clean_text(body.get("reason"), "Reason", MAX_NOTE, required=True)
-        latest = self.store.runs(case_id)[-1]
+        existing = self.store.runs(case_id)
+        if not existing or self.assess(case, self.store.run(existing[-1]["id"]), self.store.events(case_id))["status"] == "FAILED":
+            raise ServiceError(409, "Untrusted or incomplete analysis; create a new case with verified documents and manual details")
+        latest = existing[-1]
         metadata = clean_metadata(body.get("metadata"))
         method = body.get("method", latest["method"])
         supplied = clean_method(method, body.get("supplied_extraction", latest["supplied_extraction"]))
@@ -271,14 +275,17 @@ class ReviewService:
         if not isinstance(body, dict):
             raise ServiceError(400, "Expected a JSON object")
         kind = body.get("kind")
-        if kind not in DECISIONS:
+        if not isinstance(kind, str) or kind not in DECISIONS:
             raise ServiceError(400, "Unknown review action")
         actor = clean_text(body.get("reviewer"), "Reviewer name", 80, required=True)
         note = clean_text(body.get("note"), "Note", MAX_NOTE, required=kind == "NOTE")
         decision = body.get("decision")
         if decision not in DECISIONS[kind]:
             raise ServiceError(400, "Choose a valid decision")
-        run = self.store.run(self.store.runs(case_id)[-1]["id"])
+        runs = self.store.runs(case_id)
+        if not runs:
+            raise ServiceError(409, "Case has no completed analysis; create a new case")
+        run = self.store.run(runs[-1]["id"])
         if body.get("run_id") not in (None, run["id"]):
             raise ServiceError(409, "This analysis has been superseded; reload the latest run")
         integrity = self.assess(self.store.case(case_id), run, self.store.events(case_id))
@@ -339,7 +346,12 @@ class ReviewService:
         anchored = [e["payload"].get("report_sha256") for e in events
                     if e["kind"] == "ANALYSIS_RUN" and e["run_id"] == run["id"]]
         created = next((e["payload"] for e in events if e["kind"] == "CASE_CREATED"), None)
+        contexts = [e["payload"].get("context_sha256") for e in events
+                    if e["kind"] == "ANALYSIS_RUN" and e["run_id"] == run["id"]]
         checks = dict(
+            run_context="MATCHES" if contexts == [run.get("context_sha256")] else "MISSING_OR_MISMATCH",
+            stored_json=run.get("stored_json_check", "INVALID"),
+            history_payloads="VALID" if all(e.get("payload_valid", True) for e in events) else "INVALID",
             report_row_hash=run.get("row_hash_check", "NOT_CHECKED"),
             history_anchor="MISSING" if not anchored else ("MATCHES" if anchored == [run["report_sha256"]] else "MISMATCH"),
             history_chain=chain["status"],
@@ -350,8 +362,10 @@ class ReviewService:
         for role, sha in (("contract", run["contract_sha256"]), ("invoice", run["invoice_sha256"])):
             if sha is not None:
                 documents[role] = self.store.verify_document(sha)[0]
-        expected = dict(report_row_hash="VERIFIED", history_anchor="MATCHES", history_chain="INTACT", case_record="MATCHES")
-        failed = sorted(k for k, v in checks.items() if v != expected[k])
+        expected = dict(run_context="MATCHES", stored_json="VALID", history_payloads="VALID", report_row_hash="VERIFIED", history_anchor="MATCHES", history_chain="INTACT", case_record="MATCHES")
+        # A failed report anchor already covers its context hash; report it once.
+        failed = sorted(k for k, v in checks.items() if v != expected[k]
+                        and not (k == "run_context" and checks["history_anchor"] != "MATCHES"))
         if failed:
             status = "FAILED"
         elif any(v != "VERIFIED" for v in documents.values()):
@@ -365,6 +379,8 @@ class ReviewService:
     def case_view(self, case_id, run_id=None):
         case = self._case(case_id)
         runs = self.store.runs(case_id)
+        if not runs:
+            raise ServiceError(409, "Case has no completed analysis; create a new case")
         selected = runs[-1]["id"] if run_id is None else run_id
         if selected not in [r["id"] for r in runs]:
             raise ServiceError(404, "Run not found")
@@ -405,6 +421,9 @@ class ReviewService:
                 integrity_status=integrity["status"], failed_checks=integrity["failed_checks"])
             if integrity["status"] == "FAILED":
                 # Fail closed: no finding, evidence or document details from an untrusted run.
+                if integrity["checks"]["case_record"] != "MATCHES":
+                    item.update(title="Untrusted case record", reference=case["id"], origin="UNTRUSTED")
+                item["status"] = "INTEGRITY_FAILED"
                 item.update(report_status=None, factual_status=None, documents=[], evidence_counts={},
                             missing_count=0, progress=dict(done=0, total=0))
                 items.append(item)
@@ -445,6 +464,9 @@ class ReviewService:
             export["forensic_untrusted"] = dict(
                 warning="UNTRUSTED: these stored runs failed integrity checks. Do not rely on any finding below.",
                 runs=quarantined)
+        if any(r["integrity"]["checks"]["case_record"] != "MATCHES" for r in quarantined):
+            export["forensic_untrusted"]["case_record"] = case
+            export["case"] = dict(case, title="Untrusted case record", reference=case["id"], origin="UNTRUSTED")
         export["content_sha256"] = hashlib.sha256(canonical(export).encode("utf-8")).hexdigest()
         return export
 
@@ -457,6 +479,8 @@ def untrusted_view(store, case, run, events, integrity, run_list, is_latest):
         record = store.document(sha) or {}
         documents.append(dict(role=role, name=record.get("name"), sha256=sha, integrity=state,
                               file_url=None, pages=[], issues=[], status=None))
+    if integrity["checks"]["case_record"] != "MATCHES":
+        case = dict(case, title="Untrusted case record", reference=case["id"], origin="UNTRUSTED")
     return dict(case=case, untrusted=True, notice=UNTRUSTED, integrity=integrity,
                 forensic=dict(run_id=run["id"], run_sequence=run["sequence"],
                               stored_report_sha256=run["report_sha256"],
@@ -468,7 +492,7 @@ def untrusted_view(store, case, run, events, integrity, run_list, is_latest):
                          report_sha256=run["report_sha256"]),
                 finding=None, evidence=[], missing_information=[], documents=documents,
                 report_status=None, manual_field_sources={}, limitations=[],
-                case_status=case_status(events), events=events, events_verified=integrity["chain"]["status"] == "INTACT",
+                case_status="INTEGRITY_FAILED", events=events, events_verified=integrity["chain"]["status"] == "INTACT",
                 chain=integrity["chain"], is_latest=is_latest, runs=run_list, progress=dict(done=0, total=0))
 
 
@@ -496,7 +520,7 @@ def case_status(events):
     status = "AWAITING_REVIEW"
     for event in events:
         if event["kind"] == "CASE_STATUS":
-            status = event["payload"]["decision"]
+            status = event["payload"].get("decision", "INTEGRITY_FAILED")
         elif event["actor"] != "system" and status == "AWAITING_REVIEW":
             status = "IN_REVIEW"
     return "IN_REVIEW" if status == "REOPENED" else status

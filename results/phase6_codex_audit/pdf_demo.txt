@@ -1,0 +1,10 @@
+PDF evidence review - offline; no OCR or model calls
+Transaction fields are manual; source mapping is not legal validation.
+Contract: "supported.pdf" | EXTRACTED | 1 pages
+  Document ID: sha256:2aaa849e831ff4e0bd221d992ac045fd1be5f2a6bbcfc0882f2c40134eb96677
+Factual finding: EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER
+  personnel_supplied=yes | SUPPORTED_FACTUAL_EVIDENCE | MAPPED_TO_EXTRACTED_TEXT
+    Page 1 [0:24]: "Vendor supplies workers."
+  worker_supervisor=customer | SUPPORTED_FACTUAL_EVIDENCE | MAPPED_TO_EXTRACTED_TEXT
+    Page 1 [25:57]: "Customer supervises each worker."
+Human review: REQUIRED; statutory proposal: WITHHELD pending PDF visual review.

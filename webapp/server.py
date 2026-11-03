@@ -132,11 +132,10 @@ class App:
     def document_file(self, digest):
         if len(digest) != 64 or any(c not in "0123456789abcdef" for c in digest):
             return error(404, "Not found")
-        state, path = self.store.verify_document(digest)
+        state, data, path = self.store.read_document(digest)
         if state != "VERIFIED":
             # Never display a file whose bytes differ from the analysed hash.
             return error(409, "Stored file failed its integrity check ({})".format(state))
-        data = path.read_bytes()
         if not data.startswith(b"%PDF-"):
             return error(415, "Not a PDF")
         record = self.store.document(digest)
@@ -166,17 +165,30 @@ def make_handler(app, request_timeout=20):
         timeout = request_timeout  # A client that stalls mid-request cannot hold a thread forever.
 
         def _dispatch(self, method):
-            length = self.headers.get("Content-Length")
+            if app.port == 0:
+                app.port = self.server.server_address[1]  # Actual ephemeral loopback port.
             body = b""
+            if len(self.headers.get_all("Host", [])) != 1 or not app.allowed_host(self.headers.get("Host")):
+                return self._send(error(421, "Unrecognized host"))
             if method == "POST":
+                if self.headers.get(CSRF_HEADER) != "1":
+                    return self._send(error(403, "Missing request header"))
+                lengths = self.headers.get_all("Content-Length", [])
+                if len(lengths) > 1 or self.headers.get("Transfer-Encoding") is not None:
+                    return self._send(error(400, "Ambiguous request framing"))
                 try:
-                    size = int(length)
-                except (TypeError, ValueError):
+                    size = int(lengths[0])
+                except (IndexError, TypeError, ValueError):
                     return self._send(error(411, "Content-Length required"))
                 limit = MAX_UPLOAD + 1 if self.path.startswith("/api/documents") else MAX_JSON
                 if size < 0 or size > limit:
                     return self._send(error(413, "Request is too large (PDF limit 5 MiB)"))
-                body = self.rfile.read(size)
+                try:
+                    body = self.rfile.read(size)
+                except (TimeoutError, OSError):
+                    return self._send(error(408, "Request body timed out"))
+                if len(body) != size:
+                    return self._send(error(400, "Incomplete request body"))
             try:
                 response = app.handle(method, self.path, dict(self.headers.items()), body)
             except Exception as exc:  # Never leak tracebacks or document strings to the client.
@@ -192,7 +204,10 @@ def make_handler(app, request_timeout=20):
             self.send_header("Content-Length", str(len(response.body)))
             self.end_headers()
             if self.command != "HEAD":
-                self.wfile.write(response.body)
+                try:
+                    self.wfile.write(response.body)
+                except (BrokenPipeError, ConnectionResetError, TimeoutError):
+                    pass
 
         def do_GET(self):
             self._dispatch("GET")

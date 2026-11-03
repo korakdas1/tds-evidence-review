@@ -1,0 +1,31 @@
+{
+  "status": "PASS_SECRET_AND_FILE_REVIEW",
+  "audit_verdict": "BLOCKED_FOR_ARBITRARY_UNTRUSTED_PDF_INGESTION",
+  "candidate_files_scanned": 375,
+  "reachable_history_blobs_scanned": 356,
+  "exact_configured_credential_compared": true,
+  "findings": [],
+  "existing_files_unchanged": 317,
+  "allowed_existing_changes": [
+    ".gitignore",
+    "ARCHITECTURE.md",
+    "README.md",
+    "webapp/server.py",
+    "webapp/service.py",
+    "webapp/static/js/views/workspace.js",
+    "webapp/store.py"
+  ],
+  "new_files": 51,
+  "new_pdfs": 0,
+  "env_ignored": true,
+  "env_tracked": false,
+  "env_permissions": "0o600",
+  "local_data_ignored": true,
+  "aws_file_excluded": true,
+  "main_sha": "e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0",
+  "manual_review": "New files are audit code, tests, documentation and synthetic results; no private documents or conversations. No CSS/layout changes. Only audit-only resource probe launches bounded child processes; runtime app adds no subprocess or outbound API.",
+  "remaining_risks": [
+    "In-process PDF CPU/memory exposure remains a release blocker for arbitrary untrusted files.",
+    "Unsigned local history is not tamper-proof; scans do not guarantee absence of all secrets."
+  ]
+}

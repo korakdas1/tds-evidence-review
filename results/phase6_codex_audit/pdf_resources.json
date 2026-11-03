@@ -1,0 +1,100 @@
+[
+  {
+    "probe": "compressed_20_page",
+    "file_bytes": 1444797,
+    "exit_code": 0,
+    "wall_seconds": 0.407,
+    "result": {
+      "status": "NEEDS_DOCUMENT_REVIEW",
+      "issues": [],
+      "page_issues": [
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ],
+        [
+          "DECOMPRESSION_LIMIT"
+        ]
+      ],
+      "elapsed_seconds": 0.328,
+      "peak_rss_kib": 173764,
+      "external_audit_limits": "256 MiB address space; 5/6 seconds CPU; not application limits"
+    },
+    "stderr_present": false
+  },
+  {
+    "probe": "dense_operators_2_page",
+    "file_bytes": 3841102,
+    "exit_code": 0,
+    "wall_seconds": 3.499,
+    "result": {
+      "status": "NEEDS_DOCUMENT_REVIEW",
+      "issues": [],
+      "page_issues": [
+        [
+          "NO_SELECTABLE_TEXT_OCR_OR_MANUAL_REVIEW"
+        ],
+        [
+          "NO_SELECTABLE_TEXT_OCR_OR_MANUAL_REVIEW"
+        ]
+      ],
+      "elapsed_seconds": 3.398,
+      "peak_rss_kib": 173764,
+      "external_audit_limits": "256 MiB address space; 5/6 seconds CPU; not application limits"
+    },
+    "stderr_present": false
+  }
+]

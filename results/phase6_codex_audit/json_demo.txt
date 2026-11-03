@@ -1,0 +1,30 @@
+TDS evidence review - offline demo
+Synthetic examples; factual evidence only, not legally validated tax treatment.
+No API calls. All cases require human review.
+
+1. Supported customer-directed manpower | S01_CUSTOMER_CONTROL
+   Source: current deterministic baseline
+   Supervisor: customer
+   Exact quote: "The customer team leader allocates daily tickets, determines working shifts, and directly supervises the assigned engineers while they work."
+   Factual status: EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER
+   Review: Needs Review
+
+2. Missing supervision evidence | S01_CONTROL_REMOVED
+   Source: current deterministic baseline
+   Supervisor: unknown
+   Factual status: INSUFFICIENT_TO_ESTABLISH_CONTROL
+   Missing: Who supervises, controls or directs individual workers?; Reliable evidence of individual-worker supervision/control.
+   Review: Needs Review (abstains)
+
+3. REPLAYED HISTORICAL LLM EVIDENCE | S01_VENDOR_CONTROL
+   Source: results/phase1b/run-20261103-01/hybrid.json (not a new model run)
+   Recorded model: xingchen-agi/xing4.0-29b-a4b:free
+   Rejected assertion: worker_supervisor=customer
+   Verbatim quote: "Customer may communicate desired service results but shall not direct the individual engineers."
+   Recorded checks: verbatim=True; factual support=False
+   Rejection: Quote does not pass conservative factual support check; Unsupported asserted fact: worker_supervisor
+   Validated supervisor: unknown
+   Factual status: INSUFFICIENT_TO_ESTABLISH_CONTROL
+   Review: Needs Review
+
+Exact quotation proves provenance, not correct interpretation or actual working practices.

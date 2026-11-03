@@ -147,10 +147,19 @@ Spans are displayed only when the stored file still matches the analysed SHA-256
 
 ## Phase 6: integrity fail-closed, rule versioning and resource limits
 
-- **Fail-closed integrity.** `ReviewService.assess()` checks four things for every read: the run row hash, the hash recorded by its chained `ANALYSIS_RUN` event, the chain links, and the case row against `CASE_CREATED`. Stored PDFs are checked separately.
+- **Fail-closed integrity.** `ReviewService.assess()` checks the run row hash, the hash recorded by its chained `ANALYSIS_RUN` event, the full run context (transaction metadata, document identities, method and run identity), stored JSON validity, history payload validity, chain links, and the case row against `CASE_CREATED`. Stored PDFs are checked separately.
   - **Any check fails:** case view, case list and export withhold findings, evidence and page text, and return diagnostics. Exports place such runs under `forensic_untrusted`.
   - **Only a stored PDF fails:** the trusted analysis remains visible, but PDF-dependent decisions are refused.
 
   The history is unsigned local SQLite: tamper-evident, not tamper-proof.
 - **Versioned Act selection.** `src/act_selection_v1.json` replaces the hard-coded boundary. `load_act_selection()` validates it at import and requires agreement with the cited `act_transition` rule. Results carry `rule_version`, and the file is part of implementation hashes. Legal behaviour is unchanged: historical baselines are identical apart from the added field.
 - **Resource limits.** PDF parsing runs under temporary, context-local pypdf decompression limits (8 MiB per stream). Analyses are limited to one at a time, uploads are subject to a storage quota, and request bodies use strict JSON (no duplicate keys or NaN). A decision is re-checked against the latest run inside its write transaction.
+
+
+### Independent Phase 6 audit hardening
+
+New case/run/history writes commit in a single SQLite transaction after analysis. Upload quota and duplicate checks also run under `BEGIN IMMEDIATE`. Internal document paths use POSIX no-follow directory descriptors and unpredictable exclusive temporary files. Downloads serve the same bounded bytes that were hash-verified. These web-storage operations currently require POSIX support; the JSON/PDF CLI paths are unchanged.
+
+Older local runs lack the context anchor and are preserved as untrusted forensic records; no automatic backfill certifies potentially modified metadata. Recreate a case from original documents and checked manual fields. Full recomputation of an unsigned chain and tail truncation still require external anchoring to detect.
+
+The independent stress probe exceeded its **external audit CPU limit** with a 43 KB PDF despite the application's stream caps. The app has no process-level CPU/memory deadline. Arbitrary untrusted PDF ingestion is BLOCKED pending isolated parsing; known synthetic local demonstrations remain usable. The audit harness is not a runtime sandbox. See [PHASE_6_CODEX_AUDIT.md](PHASE_6_CODEX_AUDIT.md) for actual results, failure evidence and scope.

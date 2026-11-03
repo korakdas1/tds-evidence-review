@@ -1,0 +1,23 @@
+{
+  "case_id": "182885ae23eb418a895b3d6a15659a7c",
+  "browser": "Chrome extension-controlled UI",
+  "workflow": [
+    "Create warehouse synthetic sample",
+    "Navigate quote at page 1 characters 371:426",
+    "Original PDF visibly rendered",
+    "Record quotation check as Synthetic Codex Auditor",
+    "Correct credit date to 2026-03-31",
+    "Verify Act 1961, run 2, proposal withheld",
+    "History retains quotation check on run 1",
+    "Click Export record"
+  ],
+  "trusted_runs": 2,
+  "events": 4,
+  "export_checksum_valid": true,
+  "all_proposals_withheld": true,
+  "tampered_metadata_browser_check": {
+    "observed": "Integrity check failed; finding, evidence and page text withheld; run_context MISSING_OR_MISMATCH",
+    "history_retained": true,
+    "design_changes": "No CSS or layout changes; diagnostic labels/status colors recognize additional checks"
+  }
+}

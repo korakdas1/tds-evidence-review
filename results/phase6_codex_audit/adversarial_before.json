@@ -1,0 +1,14 @@
+{
+  "unanchored_metadata": {
+    "integrity": "VERIFIED",
+    "credit_date": "2025-01-01",
+    "act": "Income-tax Act, 2025"
+  },
+  "malformed_report": "JSONDecodeError",
+  "restore_symlink_overwrite": true,
+  "partial_case_write": {
+    "case_rows": 1,
+    "listed_cases": 0
+  },
+  "upload_directory_symlink_escape": true
+}

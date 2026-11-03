@@ -10,16 +10,18 @@ Nothing in this repository determines tax treatment, calculates tax, authorises 
 
 **Branches:** the submitted version is [`e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0`](https://github.com/korakdas1/tds-evidence-review/commit/e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0) on `main`. Post-submission development (Phases 3–6) is on `feature/full-product`.
 
+**Independent Phase 6 audit:** fixes and evidence are in [PHASE_6_CODEX_AUDIT.md](PHASE_6_CODEX_AUDIT.md). Arbitrary untrusted-PDF ingestion remains **BLOCKED** pending parser isolation with CPU/memory deadlines. The local synthetic demonstration remains available. No live model calls were made.
+
 ## Quick start
 
-You need Python 3.9 or later for the review app and PDF support (the JSON command-line baseline alone runs on 3.8). After installation nothing needs internet access, an API key or a paid service.
+You need Python 3.9 or later for the review app and PDF support (the JSON command-line baseline alone runs on 3.8). Hardened web storage currently requires POSIX no-follow directory operations, tested on Linux; native Windows web storage is not supported. The JSON and PDF command-line paths are unchanged. After installation nothing needs internet access, an API key or a paid service.
 
 ```bash
 git clone https://github.com/korakdas1/tds-evidence-review.git
 cd tds-evidence-review
 git checkout feature/full-product
 python -m venv .venv
-source .venv/bin/activate              # Windows: .venv\Scripts\activate
+source .venv/bin/activate              # POSIX local review app
 python -m pip install -r requirements-pdf.txt   # pypdf 6.21.4, the only dependency
 ```
 
@@ -28,7 +30,7 @@ python -m pip install -r requirements-pdf.txt   # pypdf 6.21.4, the only depende
 | Launch the review app | `python review_app.py --open` | Opens http://127.0.0.1:8765/ in your browser (this computer only) |
 | Run the offline demo | `python demo.py` | Three JSON examples, including a replayed historical model mistake |
 | Run the offline PDF demo | `python pdf_demo.py` | A synthetic PDF with page and character offsets; proposal withheld |
-| Run all automated tests | `python -m unittest discover -v` | 155 tests, all passing, no network use |
+| Run all automated tests | `python -m unittest discover -v` | 175 tests, all passing; local HTTP tests use loopback sockets |
 
 App options:
 - `--port 8765`
@@ -81,12 +83,14 @@ The app refuses to listen on anything except a loopback address.
 
 - **Where data lives.** Uploads and the database are stored only in `--data-dir`, with folders 0700 and files 0600. Uploads are capped by `--max-storage-mb`, and identical uploads are stored once.
 - **Integrity checks.** Every analysis run is stored with its SHA-256 and anchored in a hash-chained review history. Each time a case is opened, the server re-checks:
-  - the run's hash;
+  - the run's hash and its transaction/document/method context;
   - the history anchor;
   - the chain links;
   - the case record;
   - the stored PDFs.
 - **Fail-closed behaviour.** If an analysis check fails, the API withholds the finding, evidence and page text and returns diagnostics only. Exports put such runs in a clearly marked `forensic_untrusted` section.
+- **Existing local databases.** Runs created before the independent audit lack a complete context anchor. They are preserved and available as forensic exports, but are now marked untrusted; create a fresh case from verified source documents and manually checked metadata. Old records are never rewritten or silently certified. New case/run/history writes commit atomically.
+- **Storage limits.** Upload quotas serialize across app instances. Reads are bounded and file/directory symlinks are rejected. The quota covers registered uploads, not the growing SQLite history or crash-created orphan files; do not share the private data directory with an untrusted OS user.
 - **Unavailable PDFs.** If only a stored PDF is damaged, the analysis stays visible but PDF-based checks are disabled. Re-uploading the identical file restores it.
 - **Limits of tamper evidence.** Someone with file access who recomputes every hash can still forge a consistent database, and deleting the newest history entries cannot be detected without an external copy. Treat this as tamper-evident, not tamper-proof.
 
@@ -331,13 +335,13 @@ Source text was checked on 3 November 2026 and recorded in `src/rules_v1.json`:
 
 Official-source verification is not practitioner validation of the factual-to-legal mapping. Any table proposal is explicitly provisional. The static rules require deliberate maintenance for later changes. The prototype does not assess exemptions, thresholds, payer eligibility beyond its narrow declared-company gate, treaty issues, professional-services qualification, contract precedence, or real working practices.
 
-No frontend, production infrastructure, autonomous tax action or public deployment is included. The repository contains synthetic fixtures and prototype code; keep real contracts and private reports in ignored locations. Raw outputs on real inputs may themselves contain private text. The GitHub submission target is [korakdas1/tds-evidence-review](https://github.com/korakdas1/tds-evidence-review). The repository remains private; making it public is a separate owner decision.
+A local browser review interface is included on the development branch; production infrastructure, autonomous tax action and public application hosting are not included. The repository contains synthetic fixtures and prototype code; keep real contracts and private reports in ignored locations. Raw outputs on real inputs may themselves contain private text. The GitHub submission target is [korakdas1/tds-evidence-review](https://github.com/korakdas1/tds-evidence-review). The GitHub repository is public (verified during the independent Phase 6 audit); repository visibility was not changed by the audit. This does not mean the local application is publicly deployed.
 
 
 ## Initial GitHub submission checks
 
 The release checks reran the unchanged offline suite: **51/51 tests passed**. The benchmark, manifest, source, tests and historical evaluation artifacts were preserved byte-for-byte. No live API experiment was run during release preparation. The release [test log](results/release/test_run.txt), [security audit](results/release/security_audit.json) and [file inventory](results/release/files.txt) accompany this snapshot.
 
-The audit excludes `.env`, credential files, local caches and ignored local reports from the commit. Synthetic model outputs remain included as evaluation evidence; they are not private conversation logs. Historical `prior_*.md` files and older result files describe their original stages; use this README and RUN_REPORT.md for the current interpretation.
+The audit excludes `.env`, credential files, local caches and ignored local reports from the commit. Synthetic model outputs remain included as evaluation evidence; they are not private conversation logs. Historical `prior_*.md` files and older result files describe their original stages; use this README and PHASE_6_CODEX_AUDIT.md for current behavior; RUN_REPORT.md records earlier development stages.
 
 The submission is ready for review as a limited prototype with **incomplete live evaluation**. It does not demonstrate legally validated TDS accuracy or a completed live AI benchmark. No open-source license has been selected. Do not include the local `.env` file in any manually created submission archive.

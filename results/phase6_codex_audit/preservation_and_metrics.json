@@ -1,0 +1,487 @@
+{
+  "historical_files_verified_against_start": 275,
+  "historical_changes": [],
+  "pdf_case_outcomes_identical_to_phase6": true,
+  "pdf_metrics": {
+    "expected_outcomes": {
+      "numerator": 19,
+      "denominator": 19
+    },
+    "mapped_evidence_items": {
+      "numerator": 25,
+      "denominator": 25
+    },
+    "source_fragments_verified": {
+      "numerator": 26,
+      "denominator": 26
+    },
+    "invalid_location_probes_rejected": {
+      "numerator": 10,
+      "denominator": 10
+    }
+  },
+  "baseline": {
+    "original": {
+      "interpretation": "Agreement with synthetic provisional factual annotations, not validated tax-classification accuracy",
+      "metrics": {
+        "status_agreement": {
+          "numerator": 16,
+          "denominator": 16,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 16
+        },
+        "false_confident_removed": {
+          "numerator": 0,
+          "denominator": 4,
+          "unit": "cases",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 4
+        },
+        "removed_correct_abstention": {
+          "numerator": 4,
+          "denominator": 4,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 4
+        },
+        "contradictions": {
+          "numerator": 1,
+          "denominator": 1,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 1
+        },
+        "date_act_agreement": {
+          "numerator": 16,
+          "denominator": 16,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 16
+        },
+        "old_act_crossover": {
+          "numerator": 1,
+          "denominator": 1,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 1
+        },
+        "out_of_scope": {
+          "numerator": 1,
+          "denominator": 1,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 1
+        },
+        "injection_abstention": {
+          "numerator": 1,
+          "denominator": 1,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 1
+        },
+        "human_review_required": {
+          "numerator": 16,
+          "denominator": 16,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 16
+        },
+        "abstention": {
+          "numerator": 7,
+          "denominator": 16,
+          "unit": "cases",
+          "value": 0.4375,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 16
+        },
+        "execution_errors": {
+          "numerator": 0,
+          "denominator": 16,
+          "unit": "cases",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 16
+        },
+        "api_errors": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "API calls",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "personnel_supply_correctness": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Frozen dataset has no independent personnel_supplied labels; not scored",
+          "eligible": 16
+        },
+        "supported_supervisor_agreement": {
+          "numerator": 15,
+          "denominator": 15,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": "Supervisor labels derived from provisional factual statuses; no independent semantic annotation",
+          "eligible": 15
+        },
+        "quote_provenance": {
+          "numerator": 29,
+          "denominator": 29,
+          "unit": "submitted quotes",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": "All submitted supporting/contradictory quotes counted, including duplicates and rejected quotes; provenance only",
+          "eligible": 29
+        },
+        "full_anchor_retrieval": {
+          "numerator": 8,
+          "denominator": 12,
+          "unit": "frozen anchors",
+          "value": 0.6666666666666666,
+          "status": "MEASURED",
+          "reason": "Entire frozen anchor must occur inside one accepted quote; multi-sentence anchors may be missed",
+          "eligible": 12
+        }
+      },
+      "safety_target": {
+        "target": "Zero false-confident decisions on four CONTROL_REMOVED cases",
+        "status": "PASS",
+        "limitation": "Small visible development set; not proof of production reliability"
+      }
+    },
+    "v2": {
+      "interpretation": "Agreement with synthetic provisional factual annotations, not validated tax-classification accuracy",
+      "metrics": {
+        "status_agreement": {
+          "numerator": 12,
+          "denominator": 12,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 12
+        },
+        "false_confident_removed": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "removed_correct_abstention": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "contradictions": {
+          "numerator": 1,
+          "denominator": 1,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 1
+        },
+        "date_act_agreement": {
+          "numerator": 12,
+          "denominator": 12,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 12
+        },
+        "old_act_crossover": {
+          "numerator": 1,
+          "denominator": 1,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 1
+        },
+        "out_of_scope": {
+          "numerator": 1,
+          "denominator": 1,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 1
+        },
+        "injection_abstention": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "human_review_required": {
+          "numerator": 12,
+          "denominator": 12,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 12
+        },
+        "abstention": {
+          "numerator": 5,
+          "denominator": 12,
+          "unit": "cases",
+          "value": 0.4166666666666667,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 12
+        },
+        "execution_errors": {
+          "numerator": 0,
+          "denominator": 12,
+          "unit": "cases",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 12
+        },
+        "api_errors": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "API calls",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "personnel_supply_correctness": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Frozen dataset has no independent personnel_supplied labels; not scored",
+          "eligible": 12
+        },
+        "supported_supervisor_agreement": {
+          "numerator": 11,
+          "denominator": 11,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": "Supervisor labels derived from provisional factual statuses; no independent semantic annotation",
+          "eligible": 11
+        },
+        "quote_provenance": {
+          "numerator": 25,
+          "denominator": 25,
+          "unit": "submitted quotes",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": "All submitted supporting/contradictory quotes counted, including duplicates and rejected quotes; provenance only",
+          "eligible": 25
+        },
+        "full_anchor_retrieval": {
+          "numerator": 10,
+          "denominator": 10,
+          "unit": "frozen anchors",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": "Entire frozen anchor must occur inside one accepted quote; multi-sentence anchors may be missed",
+          "eligible": 10
+        }
+      },
+      "safety_target": {
+        "target": "Zero false-confident decisions on four CONTROL_REMOVED cases",
+        "status": "NOT_EVALUATED",
+        "limitation": "Small visible development set; not proof of production reliability"
+      }
+    },
+    "v3": {
+      "interpretation": "Agreement with synthetic provisional factual annotations, not validated tax-classification accuracy",
+      "metrics": {
+        "status_agreement": {
+          "numerator": 9,
+          "denominator": 12,
+          "unit": "cases",
+          "value": 0.75,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 12
+        },
+        "false_confident_removed": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "removed_correct_abstention": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "contradictions": {
+          "numerator": 1,
+          "denominator": 2,
+          "unit": "cases",
+          "value": 0.5,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 2
+        },
+        "date_act_agreement": {
+          "numerator": 12,
+          "denominator": 12,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 12
+        },
+        "old_act_crossover": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "out_of_scope": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "injection_abstention": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "human_review_required": {
+          "numerator": 12,
+          "denominator": 12,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 12
+        },
+        "abstention": {
+          "numerator": 10,
+          "denominator": 12,
+          "unit": "cases",
+          "value": 0.8333333333333334,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 12
+        },
+        "execution_errors": {
+          "numerator": 0,
+          "denominator": 12,
+          "unit": "cases",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 12
+        },
+        "api_errors": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "API calls",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "personnel_supply_correctness": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Frozen dataset has no independent personnel_supplied labels; not scored",
+          "eligible": 12
+        },
+        "supported_supervisor_agreement": {
+          "numerator": 9,
+          "denominator": 12,
+          "unit": "cases",
+          "value": 0.75,
+          "status": "MEASURED",
+          "reason": "Supervisor labels derived from provisional factual statuses; no independent semantic annotation",
+          "eligible": 12
+        },
+        "quote_provenance": {
+          "numerator": 19,
+          "denominator": 19,
+          "unit": "submitted quotes",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": "All submitted supporting/contradictory quotes counted, including duplicates and rejected quotes; provenance only",
+          "eligible": 19
+        },
+        "full_anchor_retrieval": {
+          "numerator": 4,
+          "denominator": 8,
+          "unit": "frozen anchors",
+          "value": 0.5,
+          "status": "MEASURED",
+          "reason": "Entire frozen anchor must occur inside one accepted quote; multi-sentence anchors may be missed",
+          "eligible": 8
+        }
+      },
+      "safety_target": {
+        "target": "Zero false-confident decisions on four CONTROL_REMOVED cases",
+        "status": "NOT_EVALUATED",
+        "limitation": "Small visible development set; not proof of production reliability"
+      }
+    }
+  }
+}

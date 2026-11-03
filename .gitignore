@@ -29,3 +29,6 @@ results/*raw*
 
 # Phase 5 local review data: uploaded documents and the review database stay local
 local_data/
+
+# Credential locations can be files as well as directories.
+.aws
