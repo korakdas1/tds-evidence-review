@@ -1,5 +1,7 @@
 # Run report — Phase 1B and initial submission, 3 November 2026
 
+**Phase 2A update:** offline reliability work is documented separately in [PHASE_2A_REPORT.md](PHASE_2A_REPORT.md). The new, source-informed 12-case challenge moved from 8/12 unchanged-baseline agreement to 12/12 post-fix **development-set** agreement. The original benchmark remains 16/16; 69/69 tests pass, including all original 51. No live API calls, tax-rule changes or edits to historical evaluation artifacts were made. The Phase 1B live evaluation described below remains incomplete; Phase 2A does not replace it with a new model measurement.
+
 **The live evaluation is incomplete.** The 32-request protocol stopped after **5 requests**: **4 usable responses, 1 provider/client response failure, 27 unexecuted requests, and 0 retries**. The stop reason was `INVALID_PROVIDER_RESPONSE`, not HTTP 429. Partial results were preserved. Phase 1B made no further request, GitHub push or visibility change. Subsequent private GitHub submission checks are recorded below.
 
 The unchanged automated suite subsequently passed **51/51 tests**. These findings are suitable for an explicitly partial-evaluation submission. They do not establish a completed three-method comparison, the live four-case safety target, or legally validated TDS-classification accuracy.

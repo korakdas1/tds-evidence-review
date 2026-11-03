@@ -1,0 +1,37 @@
+{
+  "filename": "tresata_challenge_v2.json",
+  "sha256": "082a4e57276cd1eb61c3543f02fc53cf747a64e35932429509a4273b5b0ecf4a",
+  "case_count": 12,
+  "anchor_count": 10,
+  "status": "VALID",
+  "frozen_before_evaluation_at_utc": "2026-11-03T02:00:13.241538+00:00",
+  "fallback_commit": "fbe81240d6cd26107dc544690fe9b8c73e825220",
+  "schema": "Same flat transaction fields as v1, with separate challenge metadata",
+  "labels": "Synthetic provisional factual annotations; no legal accuracy validation",
+  "selection_limitation": "Challenge the frozen 16-case development baseline; crafted after source-code review, so not an unbiased independent holdout",
+  "variants": {
+    "PASSIVE_VOICE": 2,
+    "INSUFFICIENT_EVIDENCE": 2,
+    "UNRELATED_NEGATION": 1,
+    "NEGATION_AND_VENDOR": 1,
+    "CONDITIONAL_NOT_EFFECTIVE": 1,
+    "CROSSOVER": 1,
+    "CONFLICTING_EVIDENCE": 1,
+    "VENDOR_CONTROL": 1,
+    "DOCUMENT_PRECEDENCE": 1,
+    "OUT_OF_SCOPE": 1
+  },
+  "validation_errors": [],
+  "adjustments": "None; challenge cases and labels preserved as supplied",
+  "pre_fix_implementation_sha256": {
+    "main.py": "1c0d850e1c11cdd897ebf57a082ddefa8564138b7650fc6dd4ba1780aad17dac",
+    "src/pipeline.py": "f8d20dde5569fccb843ddc698bf0a9e385c5787250c066495af05caa7737f276",
+    "src/rules.py": "470cdf7dafbbfca3b48de7d199eb3ded263a86d977660971155e6c0817b13339",
+    "src/schema.py": "446e32d2892385bbdc30a1739e1f2a97abab77b8325bf1ca08cc96bf29f7ab3b",
+    "src/extraction.py": "2d550c3b1ba09e882557aa8f0cd2b84ff76261fdaa9b9d3e4c753e5038c623b9",
+    "src/__init__.py": "7859dfa501cb78d0c316613c26ba6ab43372fa6b32b543f41b6cce6556dcb688",
+    "src/evidence.py": "a29d21111c86fa197ea33e3e9f6b6b052b8139a15837ce2af9c6eb65f04e5238",
+    "src/evaluation.py": "39815f67ff699742e7bdd4fbbb1e88506ff7367133e228cb753772abb223400e",
+    "src/rules_v1.json": "250aa028ef08e94ee9d017f97634829604c7af1cf23d463a9aca77dab82f9764"
+  }
+}

@@ -1,0 +1,294 @@
+{
+  "dataset_sha256": "082a4e57276cd1eb61c3543f02fc53cf747a64e35932429509a4273b5b0ecf4a",
+  "implementation_sha256": {
+    "main.py": "1c0d850e1c11cdd897ebf57a082ddefa8564138b7650fc6dd4ba1780aad17dac",
+    "src/__init__.py": "7859dfa501cb78d0c316613c26ba6ab43372fa6b32b543f41b6cce6556dcb688",
+    "src/evaluation.py": "39815f67ff699742e7bdd4fbbb1e88506ff7367133e228cb753772abb223400e",
+    "src/evidence.py": "a29d21111c86fa197ea33e3e9f6b6b052b8139a15837ce2af9c6eb65f04e5238",
+    "src/extraction.py": "2d550c3b1ba09e882557aa8f0cd2b84ff76261fdaa9b9d3e4c753e5038c623b9",
+    "src/pipeline.py": "f8d20dde5569fccb843ddc698bf0a9e385c5787250c066495af05caa7737f276",
+    "src/rules.py": "470cdf7dafbbfca3b48de7d199eb3ded263a86d977660971155e6c0817b13339",
+    "src/rules_v1.json": "250aa028ef08e94ee9d017f97634829604c7af1cf23d463a9aca77dab82f9764",
+    "src/schema.py": "446e32d2892385bbdc30a1739e1f2a97abab77b8325bf1ca08cc96bf29f7ab3b"
+  },
+  "case_results": [
+    {
+      "case_id": "CH01_CUSTOMER_PASSIVE",
+      "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "matches": false,
+      "incorrect_confident": false,
+      "abstained": true,
+      "expected_act": "Income-tax Act, 2025",
+      "observed_act": "Income-tax Act, 2025",
+      "missing_information": [
+        "Who supervises, controls or directs individual workers?",
+        "Whether personnel are supplied to the recipient.",
+        "Reliable evidence of individual-worker supervision/control.",
+        "Reliable evidence of personnel supply."
+      ],
+      "contradictory_evidence": [],
+      "quote_provenance": {
+        "valid": 0,
+        "total": 0
+      },
+      "validation_failures": []
+    },
+    {
+      "case_id": "CH02_VENDOR_PASSIVE",
+      "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+      "observed": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+      "matches": true,
+      "incorrect_confident": false,
+      "abstained": false,
+      "expected_act": "Income-tax Act, 2025",
+      "observed_act": "Income-tax Act, 2025",
+      "missing_information": [
+        "Whether personnel are supplied to the recipient.",
+        "Reliable evidence of personnel supply."
+      ],
+      "contradictory_evidence": [],
+      "quote_provenance": {
+        "valid": 1,
+        "total": 1
+      },
+      "validation_failures": []
+    },
+    {
+      "case_id": "CH03_OUTCOME_ONLY",
+      "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "matches": true,
+      "incorrect_confident": false,
+      "abstained": true,
+      "expected_act": "Income-tax Act, 2025",
+      "observed_act": "Income-tax Act, 2025",
+      "missing_information": [
+        "Who supervises, controls or directs individual workers?",
+        "Reliable evidence of individual-worker supervision/control."
+      ],
+      "contradictory_evidence": [],
+      "quote_provenance": {
+        "valid": 1,
+        "total": 1
+      },
+      "validation_failures": []
+    },
+    {
+      "case_id": "CH04_UNRELATED_NEGATION",
+      "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "matches": true,
+      "incorrect_confident": false,
+      "abstained": false,
+      "expected_act": "Income-tax Act, 2025",
+      "observed_act": "Income-tax Act, 2025",
+      "missing_information": [],
+      "contradictory_evidence": [],
+      "quote_provenance": {
+        "valid": 2,
+        "total": 2
+      },
+      "validation_failures": []
+    },
+    {
+      "case_id": "CH05_VENDOR_EXCLUSIVE",
+      "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+      "observed": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+      "matches": true,
+      "incorrect_confident": false,
+      "abstained": false,
+      "expected_act": "Income-tax Act, 2025",
+      "observed_act": "Income-tax Act, 2025",
+      "missing_information": [],
+      "contradictory_evidence": [],
+      "quote_provenance": {
+        "valid": 2,
+        "total": 2
+      },
+      "validation_failures": []
+    },
+    {
+      "case_id": "CH06_FUTURE_CONDITION",
+      "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "matches": true,
+      "incorrect_confident": false,
+      "abstained": true,
+      "expected_act": "Income-tax Act, 2025",
+      "observed_act": "Income-tax Act, 2025",
+      "missing_information": [
+        "Who supervises, controls or directs individual workers?",
+        "Whether personnel are supplied to the recipient.",
+        "Reliable evidence of individual-worker supervision/control.",
+        "Reliable evidence of personnel supply."
+      ],
+      "contradictory_evidence": [],
+      "quote_provenance": {
+        "valid": 0,
+        "total": 0
+      },
+      "validation_failures": []
+    },
+    {
+      "case_id": "CH07_CROSSOVER",
+      "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "matches": false,
+      "incorrect_confident": false,
+      "abstained": true,
+      "expected_act": "Income-tax Act, 1961",
+      "observed_act": "Income-tax Act, 1961",
+      "missing_information": [
+        "Who supervises, controls or directs individual workers?",
+        "Reliable evidence of individual-worker supervision/control."
+      ],
+      "contradictory_evidence": [],
+      "quote_provenance": {
+        "valid": 1,
+        "total": 1
+      },
+      "validation_failures": []
+    },
+    {
+      "case_id": "CH08_CONFLICTING_CURRENT",
+      "expected": "CONFLICTING_EVIDENCE",
+      "observed": "CONFLICTING_EVIDENCE",
+      "matches": true,
+      "incorrect_confident": false,
+      "abstained": true,
+      "expected_act": "Income-tax Act, 2025",
+      "observed_act": "Income-tax Act, 2025",
+      "missing_information": [
+        "Whether personnel are supplied to the recipient.",
+        "Reliable evidence of personnel supply."
+      ],
+      "contradictory_evidence": [
+        "Clause 4: Customer lead supervises the individual stewards and allocates their work.",
+        "Clause 5: Agency lead alone supervises the individual stewards and allocates their work."
+      ],
+      "quote_provenance": {
+        "valid": 4,
+        "total": 4
+      },
+      "validation_failures": []
+    },
+    {
+      "case_id": "CH09_VENDOR_SERVICE_OUTCOME",
+      "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+      "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "matches": false,
+      "incorrect_confident": false,
+      "abstained": true,
+      "expected_act": "Income-tax Act, 2025",
+      "observed_act": "Income-tax Act, 2025",
+      "missing_information": [
+        "Who supervises, controls or directs individual workers?",
+        "Whether personnel are supplied to the recipient.",
+        "Reliable evidence of individual-worker supervision/control.",
+        "Reliable evidence of personnel supply."
+      ],
+      "contradictory_evidence": [],
+      "quote_provenance": {
+        "valid": 0,
+        "total": 0
+      },
+      "validation_failures": []
+    },
+    {
+      "case_id": "CH10_MISSING_SUPERVISOR",
+      "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "matches": true,
+      "incorrect_confident": false,
+      "abstained": true,
+      "expected_act": "Income-tax Act, 2025",
+      "observed_act": "Income-tax Act, 2025",
+      "missing_information": [
+        "Who supervises, controls or directs individual workers?",
+        "Reliable evidence of individual-worker supervision/control."
+      ],
+      "contradictory_evidence": [],
+      "quote_provenance": {
+        "valid": 1,
+        "total": 1
+      },
+      "validation_failures": []
+    },
+    {
+      "case_id": "CH11_STALE_CLAUSE",
+      "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "observed": "CONFLICTING_EVIDENCE",
+      "matches": false,
+      "incorrect_confident": false,
+      "abstained": true,
+      "expected_act": "Income-tax Act, 2025",
+      "observed_act": "Income-tax Act, 2025",
+      "missing_information": [],
+      "contradictory_evidence": [
+        "Agency provides customer-support operators.",
+        "An obsolete draft says: Supplier supervises each operator.",
+        "The operative clause states: Customer team leader supervises each operator and allocates the individual tasks."
+      ],
+      "quote_provenance": {
+        "valid": 6,
+        "total": 6
+      },
+      "validation_failures": []
+    },
+    {
+      "case_id": "CH12_NONRESIDENT",
+      "expected": "OUT_OF_SCOPE",
+      "observed": "OUT_OF_SCOPE",
+      "matches": true,
+      "incorrect_confident": false,
+      "abstained": true,
+      "expected_act": "Income-tax Act, 2025",
+      "observed_act": "Income-tax Act, 2025",
+      "missing_information": [
+        "Who supervises, controls or directs individual workers?",
+        "Whether personnel are supplied to the recipient.",
+        "Reliable evidence of individual-worker supervision/control.",
+        "Reliable evidence of personnel supply."
+      ],
+      "contradictory_evidence": [],
+      "quote_provenance": {
+        "valid": 0,
+        "total": 0
+      },
+      "validation_failures": []
+    }
+  ],
+  "metrics": {
+    "status_agreement": {
+      "numerator": 8,
+      "denominator": 12
+    },
+    "incorrect_confident": {
+      "numerator": 0,
+      "denominator": 12
+    },
+    "abstentions": {
+      "numerator": 9,
+      "denominator": 12
+    },
+    "justified_insufficient_abstentions": {
+      "numerator": 3,
+      "denominator": 3
+    },
+    "false_confident_on_expected_insufficient": {
+      "numerator": 0,
+      "denominator": 3
+    },
+    "date_act_agreement": {
+      "numerator": 12,
+      "denominator": 12
+    },
+    "quote_provenance": {
+      "numerator": 18,
+      "denominator": 18
+    }
+  },
+  "api_calls": 0,
+  "interpretation": "Unchanged baseline on targeted synthetic challenge; labels unvalidated; no independent holdout or legal accuracy claim"
+}

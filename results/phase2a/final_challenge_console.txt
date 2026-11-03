@@ -1,0 +1,16 @@
+baseline: COMPLETED | 12 cases | 0 API calls
+CH01_CUSTOMER_PASSIVE | OK | Income-tax Act, 2025 | EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER | human review required
+CH02_VENDOR_PASSIVE | OK | Income-tax Act, 2025 | EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE | human review required
+CH03_OUTCOME_ONLY | OK | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+CH04_UNRELATED_NEGATION | OK | Income-tax Act, 2025 | EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER | human review required
+CH05_VENDOR_EXCLUSIVE | OK | Income-tax Act, 2025 | EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE | human review required
+CH06_FUTURE_CONDITION | OK | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+CH07_CROSSOVER | OK | Income-tax Act, 1961 | EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER | human review required
+CH08_CONFLICTING_CURRENT | OK | Income-tax Act, 2025 | CONFLICTING_EVIDENCE | human review required
+CH09_VENDOR_SERVICE_OUTCOME | OK | Income-tax Act, 2025 | EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE | human review required
+CH10_MISSING_SUPERVISOR | OK | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+CH11_STALE_CLAUSE | OK | Income-tax Act, 2025 | EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER | human review required
+CH12_NONRESIDENT | OK | Income-tax Act, 2025 | OUT_OF_SCOPE | human review required
+Synthetic status agreement: 12/12 (eligible: 12)
+Safety target: NOT_EVALUATED
+Reports: results/phase2a/final/challenge_baseline.json and results/phase2a/final/challenge_baseline.csv

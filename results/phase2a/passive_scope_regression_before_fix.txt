@@ -1,0 +1,32 @@
+test_passive_subject_must_be_workers_not_an_attribute (tests.test_reliability.ReliabilityTests.test_passive_subject_must_be_workers_not_an_attribute) ... 
+  test_passive_subject_must_be_workers_not_an_attribute (tests.test_reliability.ReliabilityTests.test_passive_subject_must_be_workers_not_an_attribute) (clause='Safety of workers is supervised by Customer.') ... FAIL
+  test_passive_subject_must_be_workers_not_an_attribute (tests.test_reliability.ReliabilityTests.test_passive_subject_must_be_workers_not_an_attribute) (clause="Workers' attendance is supervised by Customer.") ... FAIL
+
+======================================================================
+FAIL: test_passive_subject_must_be_workers_not_an_attribute (tests.test_reliability.ReliabilityTests.test_passive_subject_must_be_workers_not_an_attribute) (clause='Safety of workers is supervised by Customer.')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/tests/test_reliability.py", line 37, in test_passive_subject_must_be_workers_not_an_attribute
+    self.assertEqual(result["factual_evidence_status"], INSUFFICIENT)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER' != 'INSUFFICIENT_TO_ESTABLISH_CONTROL'
+- EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER
++ INSUFFICIENT_TO_ESTABLISH_CONTROL
+
+
+======================================================================
+FAIL: test_passive_subject_must_be_workers_not_an_attribute (tests.test_reliability.ReliabilityTests.test_passive_subject_must_be_workers_not_an_attribute) (clause="Workers' attendance is supervised by Customer.")
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/tests/test_reliability.py", line 37, in test_passive_subject_must_be_workers_not_an_attribute
+    self.assertEqual(result["factual_evidence_status"], INSUFFICIENT)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER' != 'INSUFFICIENT_TO_ESTABLISH_CONTROL'
+- EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER
++ INSUFFICIENT_TO_ESTABLISH_CONTROL
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.003s
+
+FAILED (failures=2)

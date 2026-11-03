@@ -1,0 +1,17 @@
+{
+  "supported": {
+    "command_python": "from src.schema import BENCHMARK, load_input\nfrom src.pipeline import run_batch\n_, cases, digest = load_input(BENCHMARK)\ncase = next(c for c in cases if c[\"id\"] == \"S01_CUSTOMER_CONTROL\")\nr = run_batch([case], \"baseline\", digest)[\"results\"][0]\nq = next(q for q in r[\"supporting_quotes\"] if q[\"fact\"] == \"worker_supervisor\")\nprint(\"case:\", r[\"case_id\"])\nprint(\"personnel_supplied:\", r[\"validated_facts\"][\"personnel_supplied\"])\nprint(\"worker_supervisor:\", r[\"validated_facts\"][\"worker_supervisor\"])\nprint(\"status:\", r[\"factual_evidence_status\"])\nprint(\"quote:\", q[\"quote\"])\nprint(\"position:\", q[\"positions\"][0])\nprint(\"human_review_required:\", r[\"human_review_required\"])\n",
+    "actual_stdout": "case: S01_CUSTOMER_CONTROL\npersonnel_supplied: yes\nworker_supervisor: customer\nstatus: EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER\nquote: The customer team leader allocates daily tickets, determines working shifts, and directly supervises the assigned engineers while they work.\nposition: {'start': 276, 'end': 416}\nhuman_review_required: True\n",
+    "exit_code": 0
+  },
+  "abstention": {
+    "command_python": "from src.schema import BENCHMARK, load_input\nfrom src.pipeline import run_batch\n_, cases, digest = load_input(BENCHMARK)\ncase = next(c for c in cases if c[\"id\"] == \"S01_CONTROL_REMOVED\")\nr = run_batch([case], \"baseline\", digest)[\"results\"][0]\nprint(\"case:\", r[\"case_id\"])\nprint(\"worker_supervisor:\", r[\"validated_facts\"][\"worker_supervisor\"])\nprint(\"status:\", r[\"factual_evidence_status\"])\nprint(\"proposed_table_item:\", r[\"proposed_table_item\"])\nprint(\"human_review_required:\", r[\"human_review_required\"])\n",
+    "actual_stdout": "case: S01_CONTROL_REMOVED\nworker_supervisor: unknown\nstatus: INSUFFICIENT_TO_ESTABLISH_CONTROL\nproposed_table_item: None\nhuman_review_required: True\n",
+    "exit_code": 0
+  },
+  "recorded_live_error": {
+    "command_python": "import json\nfrom pathlib import Path\nreport = json.loads(Path(\"results/phase1b/run-20261103-01/hybrid.json\").read_text())\nr = next(r for r in report[\"results\"] if r[\"case_id\"] == \"S01_VENDOR_CONTROL\")\nq = next(q for q in r[\"supporting_quotes\"] if q[\"fact\"] == \"worker_supervisor\")\nprint(\"recorded_model:\", r[\"returned_model\"])\nprint(\"asserted_worker_supervisor:\", r[\"extracted_facts\"][\"worker_supervisor\"])\nprint(\"quote:\", q[\"quote\"])\nprint(\"verbatim:\", q[\"verbatim\"])\nprint(\"semantic_guard_passed:\", q[\"semantic_guard_passed\"])\nprint(\"validated_worker_supervisor:\", r[\"validated_facts\"][\"worker_supervisor\"])\nprint(\"status:\", r[\"factual_evidence_status\"])\nprint(\"validation_failures:\", r[\"validation_failures\"])\n",
+    "actual_stdout": "recorded_model: xingchen-agi/xing4.0-29b-a4b:free\nasserted_worker_supervisor: customer\nquote: Customer may communicate desired service results but shall not direct the individual engineers.\nverbatim: True\nsemantic_guard_passed: False\nvalidated_worker_supervisor: unknown\nstatus: INSUFFICIENT_TO_ESTABLISH_CONTROL\nvalidation_failures: ['Quote does not pass conservative factual support check', 'Unsupported asserted fact: worker_supervisor']\n",
+    "exit_code": 0
+  }
+}

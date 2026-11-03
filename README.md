@@ -110,6 +110,26 @@ Metrics include exact numerators, denominators, units and reasons for unavailabl
 
 ## Actual results
 
+### Phase 2A: offline reliability work
+
+The separate `tresata_challenge_v2.json` has **12 synthetic cases and 10 exact anchors**. It was crafted after source review, so it is not an unbiased holdout. Its hash and validation record are in `challenge_v2_manifest.json`. The unchanged submission baseline scored **8/12**, with **0/12 incorrect confident directional classifications**. First-pass predictions and expected-versus-observed comparisons are permanently retained under `results/phase2a/first_pass/`.
+
+Focused extraction fixes cover direct passive-worker subjects, additional worker vocabulary, an explicitly bound recipient alias, and clearly obsolete draft labels. Future conditions and ambiguous grammar retain conservative abstention. The final challenge score is **12/12 development-set agreement**, with **0/3 false-confident decisions on expected-insufficient cases** and **3/3 appropriate insufficient-evidence abstentions**. The original benchmark remains **16/16**, including **0/4 false-confident evidence-removed decisions**. These are synthetic factual-label metrics, not legally validated tax accuracy.
+
+The current suite passes **69/69 tests**: the unchanged original 51 plus 18 regressions. No live model call, prompt change, tax-rule change or scope expansion occurred. The original submission commit `fbe81240d6cd26107dc544690fe9b8c73e825220` remains the fallback. See [PHASE_2A_REPORT.md](PHASE_2A_REPORT.md) for every first-pass mismatch and limitation, and [DEMO_WALKTHROUGH.md](DEMO_WALKTHROUGH.md) for three executed offline demonstrations.
+
+To reproduce without overwriting saved evaluation artifacts:
+
+```bash
+python -m unittest discover -v
+python main.py --input tresata_adversarial_cases.json --mode baseline --output /tmp/tds-original-recheck.json
+python main.py --input tresata_challenge_v2.json --mode baseline --output /tmp/tds-challenge-recheck.json
+```
+
+Those commands use the current implementation. The saved 8/12 first pass used the unchanged fallback commit before any Phase 2A implementation edits.
+
+### Preserved Phase 1 / 1B results
+
 The offline baseline remains **16/16** provisional-status agreement, **0/4** false-confident evidence-removed decisions, **29/29** verbatim quote entries, and **8/12** entire frozen anchors. The first development baseline scored **13/16** with **1/4** false-confident removed-case decisions. Those original reports remain under `results/development/`; code was corrected during development, without changing labels.
 
 The two earlier full-benchmark attempts each stopped after **one HTTP 429**, with no usable model result. Their reports remain unchanged at `results/direct-llm.json` and `results/hybrid.json`. A later one-case smoke test succeeded using `openrouter/free`, routed to `cohere/north-mini-code:free`, and matched the provisional label.

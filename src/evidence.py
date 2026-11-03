@@ -1,11 +1,22 @@
 """Exact provenance plus conservative lexical checks; not a semantic proof system."""
 import re
 
-PERSON = re.compile(r"\b(engineers?|operators?|personnel|assistants?|workers?|staff|manpower|engineering resources)\b", re.I)
-ACTOR = re.compile(r"\b(customer|client|recipient|conference organiser|organiser|supplier|vendor|agency|provider)\b", re.I)
+PERSON = re.compile(r"\b(engineers?|operators?|personnel|assistants?|workers?|technicians?|cleaners?|agents?|stewards?|staff|manpower|engineering resources)\b", re.I)
+ACTOR_WORDS = r"customer|client|recipient|purchaser|conference organiser|organiser|supplier|vendor|agency|provider|company"
+ACTOR = re.compile(r"\b(" + ACTOR_WORDS + r")\b", re.I)
 CONTROL = re.compile(r"\b(supervis(?:e|es|ing)|direct(?:s|ing)?|instruct(?:s|ing)?|allocates?|assigns?|issues?|monitors?)\b", re.I)
-SUPPLY = re.compile(r"\b(assigns?|places?|provides?|suppl(?:y|ies)|makes? available|deploys?)\b", re.I)
+SUPPLY = re.compile(r"\b(assigns?|places?|provides?|suppl(?:y|ies)|makes?\b[^.!?;]{0,100}?\bavailable|deploys?)\b", re.I)
 NEGATION = re.compile(r"\b(no|not|never|neither|without|cannot|can't|doesn't|isn't|aren't|won't)\b", re.I)
+INOPERATIVE = re.compile(
+    r"\b(?:obsolete|superseded|deleted|withdrawn|void|removed)\s+(?:draft|clause|provision|schedule|agreement|contract)\b|"
+    r"\b(?:draft|clause|provision|schedule|agreement|contract)\b[^.!?]{0,45}\b(?:deleted|superseded|withdrawn|has no effect)\b|"
+    r"\bdraft\s+(?:clause|provision|agreement|says|states)\b", re.I)
+CONDITIONAL = re.compile(r"\b(?:if|unless|might|could|would|future|only after|subject to|upon signing)\b", re.I)
+PASSIVE = re.compile(
+    r"\b(?:is|are)\s+(?:(?:directly|individually|personally)\s+)?"
+    r"(?:(?:supervised|instructed|directed)\s+(?:and\s+)?)+by\s+(?:the\s+)?"
+    r"(?P<actor>" + ACTOR_WORDS + r")\b", re.I)
+SERVICE_OBJECT = re.compile(r"\b(?:quality|outputs?|outcomes?|results?|deliverables?|reports?|records?|timesheets?|service levels?)\b", re.I)
 INJECTION = re.compile(
     r"ignore.{0,60}instructions|notice to ai|system\s*(?:prompt|message|:)|"
     r"(?:output|return|mark|classify).{0,50}(?:json|compliant|tds|customer_control|evidence_supports)|"
@@ -41,16 +52,36 @@ def quote_positions(contract, quote):
     return positions
 
 
-def sentence_predicates(sentence):
+def actor_role(name, recipient_aliases):
+    name = name.lower()
+    if name in ("supplier", "vendor", "agency", "provider"):
+        return "vendor"
+    if name != "company" or name in recipient_aliases:
+        return "customer"
+    return None
+
+
+def recipient_aliases(contract):
+    """Bind generic Company only when an explicit personnel-supply clause names it as recipient."""
+    for sentence, _, _ in sentences(contract):
+        target = re.search(r"\bto\s+(?:the\s+)?Company(?=[.,;]|$)", sentence, re.I)
+        person = PERSON.search(sentence)
+        if (target and person and person.end() < target.start()
+                and ("personnel_supplied", "yes") in sentence_predicates(sentence)):
+            return frozenset(("company",))
+    return frozenset()
+
+
+def sentence_predicates(sentence, recipient_names=frozenset()):
     """A small transparent heuristic. Unknown wording is deliberately left unrecognized."""
-    if INJECTION.search(sentence):
+    if INJECTION.search(sentence) or INOPERATIVE.search(sentence):
         return set()
     # Labels before a colon may contain amendment metadata, not operative negation.
     clause = sentence.rsplit(":", 1)[-1]
     facts = set()
     if re.search(r"\bno (?:individual )?(?:personnel|workers|staff|manpower) (?:are |is )?(?:supplied|provided|assigned)", clause, re.I):
         facts.add(("personnel_supplied", "no"))
-    if NEGATION.search(clause):
+    if NEGATION.search(clause) or CONDITIONAL.search(clause):
         return facts
     actor = ACTOR.search(clause)
     person = PERSON.search(clause)
@@ -58,8 +89,21 @@ def sentence_predicates(sentence):
         supply = SUPPLY.search(clause, actor.end())
         if (actor.group().lower() in ("supplier", "vendor", "agency", "provider")
                 and supply and supply.start() < person.start()
-                and not re.search(r"\b(tasks?|duties|bins|tickets?|shifts?|rosters?)\b", clause[supply.end():person.start()], re.I)):
+                and not re.search(r"\b(tasks?|duties|bins|tickets?|shifts?|rosters?)\b", clause[supply.end():person.start()], re.I)
+                and not (supply.group().lower().startswith("make") and SERVICE_OBJECT.search(supply.group()))):
             facts.add(("personnel_supplied", "yes"))
+    # Passive grammar must describe people as the subject, not delivered service output.
+    for passive in PASSIVE.finditer(clause):
+        subject = clause[:passive.start()]
+        role = actor_role(passive.group("actor"), recipient_names)
+        people = list(PERSON.finditer(subject))
+        # Recognize only a direct people subject. Attributes of workers and
+        # service output mentioning workers must not become worker supervision.
+        people_subject = bool(people) and not subject[people[-1].end():].strip()
+        attribute_of_people = people and re.search(
+            r"\b(?:of|by)\s+(?:(?:the|individual|supplied)\s+)*$", subject[:people[-1].start()], re.I)
+        if role and people_subject and not attribute_of_people and not SERVICE_OBJECT.search(subject):
+            facts.add(("worker_supervisor", role))
     if actor:
         action = CONTROL.search(clause, actor.end())
         # Require a people object following the action, or an explicit possessive work reference.
@@ -73,19 +117,22 @@ def sentence_predicates(sentence):
                 people_object = False
             if re.match(r"\s+(?:the\s+)?(?:quality|outputs?|outcomes?|results?|deliverables?|service levels?)\b", tail, re.I):
                 quality_only = True
-        conditional = re.search(r"\b(?:if|unless|might|could|would)\b", clause, re.I)
-        if action and people_object and not quality_only and not conditional:
-            supervisor = "customer" if actor.group().lower() in (
-                "customer", "client", "recipient", "conference organiser", "organiser") else "vendor"
+        supervisor = actor_role(actor.group(), recipient_names)
+        # Do not bind a later party's verb to an earlier actor in complex grammar.
+        intervening_actor = action and any(
+            not (other.group().lower() == "company" and not clause[actor.end():other.start()].strip())
+            for other in ACTOR.finditer(clause, actor.end(), action.start()))
+        if action and people_object and supervisor and not quality_only and not intervening_actor:
             facts.add(("worker_supervisor", supervisor))
     return facts
 
 
 def lexical_extract(contract):
     facts = unknown_facts()
+    aliases = recipient_aliases(contract)
     values = {"personnel_supplied": set(), "worker_supervisor": set()}
     for sentence, _, _ in sentences(contract):
-        for field, value in sorted(sentence_predicates(sentence)):
+        for field, value in sorted(sentence_predicates(sentence, aliases)):
             values[field].add(value)
             facts["supporting_quotes"].append({"fact": field, "value": value, "quote": sentence})
     supplied = values["personnel_supplied"]
@@ -135,6 +182,7 @@ def validate_evidence(contract, extraction):
                 "provenance_valid": 0, "provenance_total": 0}
     facts = {**extraction, "supporting_quotes": [], "missing_facts": list(extraction["missing_facts"])}
     checked, supported = [], set()
+    aliases = recipient_aliases(contract)
     all_quotes = list(extraction["supporting_quotes"])
     all_quotes += [{"fact": "contradiction", "value": "conflicting", "quote": q}
                    for q in extraction["contradictory_evidence"]]
@@ -147,7 +195,7 @@ def validate_evidence(contract, extraction):
                 if start < position["end"] and end > position["start"]:
                     # Also require the quote itself to contain the predicate. A lone word
                     # from a true sentence is insufficient evidence for the full fact.
-                    predicates |= sentence_predicates(sentence) & sentence_predicates(quote["quote"])
+                    predicates |= sentence_predicates(sentence, aliases) & sentence_predicates(quote["quote"], aliases)
         semantic_ok = ((quote["fact"], quote["value"]) in predicates if quote["fact"] != "contradiction" else bool(predicates))
         item = {**quote, "positions": positions, "verbatim": bool(positions),
                 "semantic_guard_passed": semantic_ok}

@@ -1,0 +1,27 @@
+{
+  "mismatches": {
+    "CH01_CUSTOMER_PASSIVE": {
+      "classification": "false_negative",
+      "finding": "Technician/Purchaser vocabulary, makes-personnel-available supply syntax and explicit passive supervision are not recognized."
+    },
+    "CH07_CROSSOVER": {
+      "classification": "false_negative",
+      "finding": "Company is the recipient named in the personnel-supply clause but is not recognized as the supervisor alias. Earlier-event selection correctly uses the 1961 Act."
+    },
+    "CH09_VENDOR_SERVICE_OUTCOME": {
+      "classification": "false_negative",
+      "finding": "Agents and their daily work are not recognized by the restricted people/object patterns; the explicit vendor direction is missed."
+    },
+    "CH11_STALE_CLAUSE": {
+      "classification": "implementation_error",
+      "finding": "The obsolete draft is counted as current evidence because its label is discarded at the colon, producing a spurious conflict."
+    }
+  },
+  "correct_justified_abstentions": [
+    "CH03_OUTCOME_ONLY",
+    "CH06_FUTURE_CONDITION",
+    "CH10_MISSING_SUPERVISOR"
+  ],
+  "annotation_ambiguities_identified": [],
+  "annotation_caveat": "Labels remain provisional, not practitioner validated; no labels changed."
+}

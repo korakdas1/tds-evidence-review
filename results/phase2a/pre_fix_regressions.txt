@@ -1,0 +1,130 @@
+test_agent_worker_noun (tests.test_reliability.ReliabilityTests.test_agent_worker_noun) ... FAIL
+test_ambiguous_same_sentence_negation_still_abstains (tests.test_reliability.ReliabilityTests.test_ambiguous_same_sentence_negation_still_abstains) ... ok
+test_clipped_quote_cannot_revive_deleted_clause (tests.test_reliability.ReliabilityTests.test_clipped_quote_cannot_revive_deleted_clause) ... FAIL
+test_company_bound_to_explicit_recipient (tests.test_reliability.ReliabilityTests.test_company_bound_to_explicit_recipient) ... FAIL
+test_company_without_recipient_binding_abstains (tests.test_reliability.ReliabilityTests.test_company_without_recipient_binding_abstains) ... ok
+test_explicitly_obsolete_clause_does_not_create_conflict (tests.test_reliability.ReliabilityTests.test_explicitly_obsolete_clause_does_not_create_conflict) ... FAIL
+test_future_condition_does_not_establish_current_control (tests.test_reliability.ReliabilityTests.test_future_condition_does_not_establish_current_control) ... FAIL
+test_multiple_actor_grammar_does_not_guess (tests.test_reliability.ReliabilityTests.test_multiple_actor_grammar_does_not_guess) ... FAIL
+test_passive_compound_supervision (tests.test_reliability.ReliabilityTests.test_passive_compound_supervision) ... FAIL
+test_passive_negation_is_not_positive (tests.test_reliability.ReliabilityTests.test_passive_negation_is_not_positive) ... ok
+test_passive_service_output_is_not_worker_control (tests.test_reliability.ReliabilityTests.test_passive_service_output_is_not_worker_control) ... ok
+test_passive_vendor_supervision (tests.test_reliability.ReliabilityTests.test_passive_vendor_supervision) ... FAIL
+test_passive_workers_and_separated_availability (tests.test_reliability.ReliabilityTests.test_passive_workers_and_separated_availability) ... FAIL
+test_separate_unrelated_negation_keeps_control_evidence (tests.test_reliability.ReliabilityTests.test_separate_unrelated_negation_keeps_control_evidence) ... ok
+test_supplier_company_is_not_recipient (tests.test_reliability.ReliabilityTests.test_supplier_company_is_not_recipient) ... ok
+test_unknown_amendment_precedence_remains_conflicting (tests.test_reliability.ReliabilityTests.test_unknown_amendment_precedence_remains_conflicting) ... ok
+test_worker_records_available_does_not_prove_supply (tests.test_reliability.ReliabilityTests.test_worker_records_available_does_not_prove_supply) ... ok
+
+======================================================================
+FAIL: test_agent_worker_noun (tests.test_reliability.ReliabilityTests.test_agent_worker_noun)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/tests/test_reliability.py", line 55, in test_agent_worker_noun
+    self.assertEqual(result["factual_evidence_status"], VENDOR)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'INSUFFICIENT_TO_ESTABLISH_CONTROL' != 'EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE'
+- INSUFFICIENT_TO_ESTABLISH_CONTROL
++ EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE
+
+
+======================================================================
+FAIL: test_clipped_quote_cannot_revive_deleted_clause (tests.test_reliability.ReliabilityTests.test_clipped_quote_cannot_revive_deleted_clause)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/tests/test_reliability.py", line 65, in test_clipped_quote_cannot_revive_deleted_clause
+    self.assertEqual(factual_status(result["facts"]), INSUFFICIENT)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER' != 'INSUFFICIENT_TO_ESTABLISH_CONTROL'
+- EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER
++ INSUFFICIENT_TO_ESTABLISH_CONTROL
+
+
+======================================================================
+FAIL: test_company_bound_to_explicit_recipient (tests.test_reliability.ReliabilityTests.test_company_bound_to_explicit_recipient)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/tests/test_reliability.py", line 39, in test_company_bound_to_explicit_recipient
+    self.assertEqual(result["factual_evidence_status"], CUSTOMER)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'INSUFFICIENT_TO_ESTABLISH_CONTROL' != 'EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER'
+- INSUFFICIENT_TO_ESTABLISH_CONTROL
++ EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER
+
+
+======================================================================
+FAIL: test_explicitly_obsolete_clause_does_not_create_conflict (tests.test_reliability.ReliabilityTests.test_explicitly_obsolete_clause_does_not_create_conflict)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/tests/test_reliability.py", line 59, in test_explicitly_obsolete_clause_does_not_create_conflict
+    self.assertEqual(result["factual_evidence_status"], VENDOR)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'CONFLICTING_EVIDENCE' != 'EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE'
+- CONFLICTING_EVIDENCE
++ EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE
+
+
+======================================================================
+FAIL: test_future_condition_does_not_establish_current_control (tests.test_reliability.ReliabilityTests.test_future_condition_does_not_establish_current_control)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/tests/test_reliability.py", line 74, in test_future_condition_does_not_establish_current_control
+    self.assertEqual(result["factual_evidence_status"], INSUFFICIENT)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER' != 'INSUFFICIENT_TO_ESTABLISH_CONTROL'
+- EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER
++ INSUFFICIENT_TO_ESTABLISH_CONTROL
+
+
+======================================================================
+FAIL: test_multiple_actor_grammar_does_not_guess (tests.test_reliability.ReliabilityTests.test_multiple_actor_grammar_does_not_guess)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/tests/test_reliability.py", line 51, in test_multiple_actor_grammar_does_not_guess
+    self.assertEqual(result["factual_evidence_status"], INSUFFICIENT)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE' != 'INSUFFICIENT_TO_ESTABLISH_CONTROL'
+- EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE
++ INSUFFICIENT_TO_ESTABLISH_CONTROL
+
+
+======================================================================
+FAIL: test_passive_compound_supervision (tests.test_reliability.ReliabilityTests.test_passive_compound_supervision)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/tests/test_reliability.py", line 18, in test_passive_compound_supervision
+    self.assertEqual(result["factual_evidence_status"], CUSTOMER)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'INSUFFICIENT_TO_ESTABLISH_CONTROL' != 'EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER'
+- INSUFFICIENT_TO_ESTABLISH_CONTROL
++ EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER
+
+
+======================================================================
+FAIL: test_passive_vendor_supervision (tests.test_reliability.ReliabilityTests.test_passive_vendor_supervision)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/tests/test_reliability.py", line 22, in test_passive_vendor_supervision
+    self.assertEqual(result["factual_evidence_status"], VENDOR)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'INSUFFICIENT_TO_ESTABLISH_CONTROL' != 'EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE'
+- INSUFFICIENT_TO_ESTABLISH_CONTROL
++ EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE
+
+
+======================================================================
+FAIL: test_passive_workers_and_separated_availability (tests.test_reliability.ReliabilityTests.test_passive_workers_and_separated_availability)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/tests/test_reliability.py", line 13, in test_passive_workers_and_separated_availability
+    self.assertEqual(result["factual_evidence_status"], CUSTOMER)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'INSUFFICIENT_TO_ESTABLISH_CONTROL' != 'EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER'
+- INSUFFICIENT_TO_ESTABLISH_CONTROL
++ EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER
+
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.012s
+
+FAILED (failures=9)

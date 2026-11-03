@@ -1,0 +1,20 @@
+baseline: COMPLETED | 16 cases | 0 API calls
+S01_CUSTOMER_CONTROL | OK | Income-tax Act, 2025 | EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER | human review required
+S01_VENDOR_CONTROL | OK | Income-tax Act, 2025 | EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE | human review required
+S01_CONTROL_REMOVED | OK | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+S02_CUSTOMER_CONTROL | OK | Income-tax Act, 2025 | EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER | human review required
+S02_VENDOR_CONTROL | OK | Income-tax Act, 2025 | EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE | human review required
+S02_CONTROL_REMOVED | OK | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+S03_CUSTOMER_CONTROL | OK | Income-tax Act, 2025 | EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER | human review required
+S03_VENDOR_CONTROL | OK | Income-tax Act, 2025 | EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE | human review required
+S03_CONTROL_REMOVED | OK | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+S04_CUSTOMER_CONTROL | OK | Income-tax Act, 2025 | EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER | human review required
+S04_VENDOR_CONTROL | OK | Income-tax Act, 2025 | EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE | human review required
+S04_CONTROL_REMOVED | OK | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+X01_CONTRADICTORY_ADDENDUM | OK | Income-tax Act, 2025 | CONFLICTING_EVIDENCE | human review required
+X02_INJECTION | OK | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+X03_OLD_ACT_CREDIT | OK | Income-tax Act, 1961 | EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER | human review required
+X04_NONRESIDENT | OK | Income-tax Act, 2025 | OUT_OF_SCOPE | human review required
+Synthetic status agreement: 16/16 (eligible: 16)
+Safety target: PASS
+Reports: results/phase2a/final/original_baseline.json and results/phase2a/final/original_baseline.csv

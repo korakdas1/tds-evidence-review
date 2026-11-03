@@ -1,0 +1,230 @@
+{
+  "dataset_name": "TDS evidence review -- new targeted synthetic challenge set",
+  "purpose": "Challenge the frozen 16-case development baseline; crafted after source-code review, so not an unbiased independent holdout",
+  "labeling": "Fact-status labels reflect an unvalidated reading of the synthetic excerpts; no legal accuracy claim",
+  "cases": [
+    {
+      "id": "CH01_CUSTOMER_PASSIVE",
+      "scenario": "Equipment technicians",
+      "variant": "PASSIVE_VOICE",
+      "synthetic": true,
+      "invoice_description": "Monthly service charge for equipment technicians.",
+      "contract_excerpt": "Agency makes five technicians available to the Purchaser. Payroll and annual leave are managed by Agency. Throughout each shift, each technician is instructed and supervised by the Purchaser site manager, who distributes individual repair assignments.",
+      "payer_type": "Indian resident private company",
+      "payee_residency": "India resident",
+      "payee_legal_form": "Indian resident private company",
+      "credit_date": "2026-10-12",
+      "payment_date": "2026-10-28",
+      "expected_act": "Income-tax Act, 2025",
+      "expected_fact_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "evidence_anchors": [
+        "Throughout each shift, each technician is instructed and supervised by the Purchaser site manager, who distributes individual repair assignments."
+      ],
+      "label_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+    },
+    {
+      "id": "CH02_VENDOR_PASSIVE",
+      "scenario": "Cleaning staff",
+      "variant": "PASSIVE_VOICE",
+      "synthetic": true,
+      "invoice_description": "Monthly service charge for cleaning staff.",
+      "contract_excerpt": "Supplier provides four cleaners at the Client offices. Daily assignments for each cleaner are issued by Supplier own on-site foreperson, who supervises the cleaning staff. Client may inspect the finished rooms but has no authority to direct any cleaner.",
+      "payer_type": "Indian resident private company",
+      "payee_residency": "India resident",
+      "payee_legal_form": "Indian resident private company",
+      "credit_date": "2026-10-12",
+      "payment_date": "2026-10-28",
+      "expected_act": "Income-tax Act, 2025",
+      "expected_fact_status": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+      "evidence_anchors": [
+        "Daily assignments for each cleaner are issued by Supplier own on-site foreperson, who supervises the cleaning staff."
+      ],
+      "label_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+    },
+    {
+      "id": "CH03_OUTCOME_ONLY",
+      "scenario": "Security desk staff",
+      "variant": "INSUFFICIENT_EVIDENCE",
+      "synthetic": true,
+      "invoice_description": "Monthly service charge for security desk staff.",
+      "contract_excerpt": "Provider deploys six security-desk operators to the facility. Customer receives weekly incident reports, reviews service-level metrics and may request a replacement. Neither the allocation of shifts nor the supervision of individual operators is specified.",
+      "payer_type": "Indian resident private company",
+      "payee_residency": "India resident",
+      "payee_legal_form": "Indian resident private company",
+      "credit_date": "2026-10-12",
+      "payment_date": "2026-10-28",
+      "expected_act": "Income-tax Act, 2025",
+      "expected_fact_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "evidence_anchors": [],
+      "label_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+    },
+    {
+      "id": "CH04_UNRELATED_NEGATION",
+      "scenario": "Production support staff",
+      "variant": "UNRELATED_NEGATION",
+      "synthetic": true,
+      "invoice_description": "Monthly service charge for production support staff.",
+      "contract_excerpt": "Vendor provides eight production assistants. Customer does not manage payroll, insurance or leave. However, Customer shift leaders directly supervise each assistant and assign daily workstation tasks.",
+      "payer_type": "Indian resident private company",
+      "payee_residency": "India resident",
+      "payee_legal_form": "Indian resident private company",
+      "credit_date": "2026-10-12",
+      "payment_date": "2026-10-28",
+      "expected_act": "Income-tax Act, 2025",
+      "expected_fact_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "evidence_anchors": [
+        "However, Customer shift leaders directly supervise each assistant and assign daily workstation tasks."
+      ],
+      "label_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+    },
+    {
+      "id": "CH05_VENDOR_EXCLUSIVE",
+      "scenario": "Maintenance engineers",
+      "variant": "NEGATION_AND_VENDOR",
+      "synthetic": true,
+      "invoice_description": "Monthly service charge for maintenance engineers.",
+      "contract_excerpt": "Supplier assigns three maintenance engineers to the premises. Customer cannot direct the individual engineers. Supplier project lead alone directs their daily duties, issues their task lists, and supervises their work.",
+      "payer_type": "Indian resident private company",
+      "payee_residency": "India resident",
+      "payee_legal_form": "Indian resident private company",
+      "credit_date": "2026-10-12",
+      "payment_date": "2026-10-28",
+      "expected_act": "Income-tax Act, 2025",
+      "expected_fact_status": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+      "evidence_anchors": [
+        "Supplier project lead alone directs their daily duties, issues their task lists, and supervises their work."
+      ],
+      "label_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+    },
+    {
+      "id": "CH06_FUTURE_CONDITION",
+      "scenario": "Call-centre agents",
+      "variant": "CONDITIONAL_NOT_EFFECTIVE",
+      "synthetic": true,
+      "invoice_description": "Monthly service charge for call-centre agents.",
+      "contract_excerpt": "Provider supplies twelve agents at the Customer office. Only after a future written addendum is signed may Customer begin supervising their individual calls. No addendum has been signed, and this agreement states no current supervision arrangement.",
+      "payer_type": "Indian resident private company",
+      "payee_residency": "India resident",
+      "payee_legal_form": "Indian resident private company",
+      "credit_date": "2026-10-12",
+      "payment_date": "2026-10-28",
+      "expected_act": "Income-tax Act, 2025",
+      "expected_fact_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "evidence_anchors": [],
+      "label_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+    },
+    {
+      "id": "CH07_CROSSOVER",
+      "scenario": "Warehouse workers",
+      "variant": "CROSSOVER",
+      "synthetic": true,
+      "invoice_description": "Monthly service charge for warehouse workers.",
+      "contract_excerpt": "Vendor supplies six warehouse workers to Company. Company floor manager personally directs the workers and supervises individual picking assignments each day.",
+      "payer_type": "Indian resident private company",
+      "payee_residency": "India resident",
+      "payee_legal_form": "Indian resident private company",
+      "credit_date": "2026-03-31",
+      "payment_date": "2026-04-06",
+      "expected_act": "Income-tax Act, 1961",
+      "expected_fact_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "evidence_anchors": [
+        "Company floor manager personally directs the workers and supervises individual picking assignments each day."
+      ],
+      "label_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+    },
+    {
+      "id": "CH08_CONFLICTING_CURRENT",
+      "scenario": "Event stewards",
+      "variant": "CONFLICTING_EVIDENCE",
+      "synthetic": true,
+      "invoice_description": "Monthly service charge for event stewards.",
+      "contract_excerpt": "Agency provides stewards for the event. Clause 4: Customer lead supervises the individual stewards and allocates their work. Clause 5: Agency lead alone supervises the individual stewards and allocates their work. Both clauses are current; precedence is not specified.",
+      "payer_type": "Indian resident private company",
+      "payee_residency": "India resident",
+      "payee_legal_form": "Indian resident private company",
+      "credit_date": "2026-10-12",
+      "payment_date": "2026-10-28",
+      "expected_act": "Income-tax Act, 2025",
+      "expected_fact_status": "CONFLICTING_EVIDENCE",
+      "evidence_anchors": [
+        "Customer lead supervises the individual stewards and allocates their work.",
+        "Agency lead alone supervises the individual stewards and allocates their work."
+      ],
+      "label_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+    },
+    {
+      "id": "CH09_VENDOR_SERVICE_OUTCOME",
+      "scenario": "IT helpdesk agents",
+      "variant": "VENDOR_CONTROL",
+      "synthetic": true,
+      "invoice_description": "Monthly service charge for it helpdesk agents.",
+      "contract_excerpt": "Vendor provides helpdesk agents during office hours. Vendor floor supervisor allocates tickets to each agent and directs their daily work. Customer can reject final monthly performance reports, but cannot supervise individual agents.",
+      "payer_type": "Indian resident private company",
+      "payee_residency": "India resident",
+      "payee_legal_form": "Indian resident private company",
+      "credit_date": "2026-10-12",
+      "payment_date": "2026-10-28",
+      "expected_act": "Income-tax Act, 2025",
+      "expected_fact_status": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+      "evidence_anchors": [
+        "Vendor floor supervisor allocates tickets to each agent and directs their daily work."
+      ],
+      "label_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+    },
+    {
+      "id": "CH10_MISSING_SUPERVISOR",
+      "scenario": "Laboratory assistants",
+      "variant": "INSUFFICIENT_EVIDENCE",
+      "synthetic": true,
+      "invoice_description": "Monthly service charge for laboratory assistants.",
+      "contract_excerpt": "Agency supplies laboratory assistants to an Indian company. The client validates monthly timesheets and certifies the delivered work. The contract does not say which party directs individual assistants during their shifts.",
+      "payer_type": "Indian resident private company",
+      "payee_residency": "India resident",
+      "payee_legal_form": "Indian resident private company",
+      "credit_date": "2026-10-12",
+      "payment_date": "2026-10-28",
+      "expected_act": "Income-tax Act, 2025",
+      "expected_fact_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "evidence_anchors": [],
+      "label_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+    },
+    {
+      "id": "CH11_STALE_CLAUSE",
+      "scenario": "Customer support operators",
+      "variant": "DOCUMENT_PRECEDENCE",
+      "synthetic": true,
+      "invoice_description": "Monthly service charge for customer support operators.",
+      "contract_excerpt": "Agency provides customer-support operators. An obsolete draft says: Supplier supervises each operator. That draft was deleted and has no effect. The operative clause states: Customer team leader supervises each operator and allocates the individual tasks.",
+      "payer_type": "Indian resident private company",
+      "payee_residency": "India resident",
+      "payee_legal_form": "Indian resident private company",
+      "credit_date": "2026-10-12",
+      "payment_date": "2026-10-28",
+      "expected_act": "Income-tax Act, 2025",
+      "expected_fact_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "evidence_anchors": [
+        "The operative clause states: Customer team leader supervises each operator and allocates the individual tasks."
+      ],
+      "label_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+    },
+    {
+      "id": "CH12_NONRESIDENT",
+      "scenario": "Remote data technicians",
+      "variant": "OUT_OF_SCOPE",
+      "synthetic": true,
+      "invoice_description": "Monthly service charge for remote data technicians.",
+      "contract_excerpt": "Foreign Vendor provides four remote technicians. Customer supervisor directs the individual technicians work and assigns their daily tasks.",
+      "payer_type": "Indian resident private company",
+      "payee_residency": "Non-resident",
+      "payee_legal_form": "Foreign corporation",
+      "credit_date": "2026-10-12",
+      "payment_date": "2026-10-28",
+      "expected_act": "Income-tax Act, 2025",
+      "expected_fact_status": "OUT_OF_SCOPE",
+      "evidence_anchors": [
+        "Customer supervisor directs the individual technicians work and assigns their daily tasks."
+      ],
+      "label_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+    }
+  ]
+}
