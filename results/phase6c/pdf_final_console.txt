@@ -1,0 +1,37 @@
+{
+  "suite": "pdf-fixtures-v1",
+  "fixtures_sha256": "9b43dca7273fc9240fbc281b3aac3bb7d6b8a28e3521b84e961ad583ae784342",
+  "implementation_sha256": {
+    "src/pdf_ingestion.py": "d22371b47c50676db636b88b49b05b697cdb3c8211f849a48b07000b0790d040",
+    "src/pdf_worker.py": "815077b58dbafd3bd88de228739c4f4b18a48086ede8acf59a12c84439ab7b79",
+    "src/document_review.py": "a87ddca328f379bcc3c447b9f2b5e4df9ca6c2a6b3b7b82d316b6ad146d84a1b",
+    "evaluate_pdfs.py": "efc6fea304e894e935e43a9ef580145a3fdc72198db61a1a3e6e66995ce067a0"
+  },
+  "interpretation": "Source-informed synthetic extraction/provenance tests, not independent model or legally validated accuracy.",
+  "extraction_status_counts": {
+    "EXTRACTED": 9,
+    "NEEDS_DOCUMENT_REVIEW": 7,
+    "REJECTED": 3
+  },
+  "expected_outcomes": {
+    "numerator": 19,
+    "denominator": 19
+  },
+  "source_fragments_verified": {
+    "numerator": 26,
+    "denominator": 26
+  },
+  "invalid_location_probes_rejected": {
+    "numerator": 10,
+    "denominator": 10
+  },
+  "mapped_evidence_items": {
+    "numerator": 25,
+    "denominator": 25
+  },
+  "statutory_proposals_released": {
+    "numerator": 0,
+    "denominator": 19
+  },
+  "api_calls": 0
+}

@@ -181,6 +181,8 @@ def read_pdf(path, max_bytes=MAX_BYTES, max_pages=MAX_PAGES):
                 item["text_sha256"] = sha256(item["text"].encode("utf-8"))
                 item["status"] = "NEEDS_DOCUMENT_REVIEW" if item["issues"] else "EXTRACTED"
                 doc["pages"].append(item)
+    except MemoryError:
+        raise
     except Exception:
         return reject("MALFORMED_OR_UNSUPPORTED_PDF")
     doc["text"], doc["segments"] = compile_text(doc["pages"])

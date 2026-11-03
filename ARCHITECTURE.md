@@ -163,3 +163,14 @@ New case/run/history writes commit in a single SQLite transaction after analysis
 Older local runs lack the context anchor and are preserved as untrusted forensic records; no automatic backfill certifies potentially modified metadata. Recreate a case from original documents and checked manual fields. Full recomputation of an unsigned chain and tail truncation still require external anchoring to detect.
 
 The independent stress probe exceeded its **external audit CPU limit** with a 43 KB PDF despite the application's stream caps. The app has no process-level CPU/memory deadline. Arbitrary untrusted PDF ingestion is BLOCKED pending isolated parsing; known synthetic local demonstrations remain usable. The audit harness is not a runtime sandbox. See [PHASE_6_CODEX_AUDIT.md](PHASE_6_CODEX_AUDIT.md) for actual results, failure evidence and scope.
+
+
+## Phase 6C: resource-isolated document review
+
+`src/pdf_worker.py` wraps the existing `src/pdf_ingestion.py` parser. The document-review adapter now calls `read_pdf_isolated()`, so the web app, PDF demo and PDF evaluator use workers. The low-level `read_pdf()` remains available for trusted parser diagnostics and unit tests; it is not a safe untrusted-input entry point. There is no automatic in-process fallback on unsupported platforms or startup failure.
+
+The parent reads at most 5 MiB from a regular file and snapshots the bytes into a private temporary directory. A fresh spawned Python process installs Linux `RLIMIT_AS` (256 MiB), `RLIMIT_CPU` (4/5 s), `RLIMIT_FSIZE` (16 MiB), disables core dumps, clears inherited environment variables and redirects parser diagnostics before parsing. The parent enforces an 8-second wall deadline, kills the worker/session if necessary and reaps it. Output is bounded JSON read only after exit zero; partial output or any failed child is discarded. The parent validates file identity, document/page schema, text hashes and the normalization map. These checks prove internal consistency, not an independently attested parser interpretation.
+
+Failures distinguish wall timeout, CPU/memory/output exhaustion, parser exception, crash, invalid result and unsupported platform. Every such document has empty pages/text/spans and mandatory review. The adapter's original factual and legal gates remain unchanged. Normal frozen fixture outcomes and exact source positions are preserved.
+
+The prior audit's resource blocker is now reproduced through this runtime path and contained. This is **not** a complete security sandbox: the worker retains its OS account's filesystem/network permissions. No provider/model calls, OCR or document script execution are added. See `PHASE_6C_REPORT.md` for measured evidence and `docs/MULTI_PHASE_GOAL.md` for remaining authorized phases.

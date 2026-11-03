@@ -1,0 +1,25 @@
+{
+  "kind": "SYNTHETIC_RESOURCE_TEST_NOT_MODEL_EVALUATION",
+  "input_bytes": 43115,
+  "input_sha256": "7cd1eb895b25a11395d9f343603eff3cc531699d67e4b6a820c6c57ceb7e80e7",
+  "status": "REJECTED",
+  "issues": [
+    "PDF_WORKER_CPU_LIMIT"
+  ],
+  "worker": {
+    "isolation": "LINUX_SPAWN_RESOURCE_LIMITS_NOT_SECURITY_SANDBOX",
+    "limits": {
+      "wall_seconds": 8.0,
+      "cpu_seconds": 4,
+      "memory_bytes": 268435456,
+      "output_bytes": 16777216
+    },
+    "pid": 6,
+    "exit_code": 71,
+    "reaped": true,
+    "elapsed_seconds": 4.01797,
+    "status": "PDF_WORKER_CPU_LIMIT"
+  },
+  "source_text_characters": 0,
+  "source_pages_retained": 0
+}

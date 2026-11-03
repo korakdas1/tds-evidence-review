@@ -3,7 +3,8 @@ import copy
 
 from .evidence import unknown_facts
 from .extraction import OpenRouterClient
-from .pdf_ingestion import locate_quote, read_pdf
+from .pdf_ingestion import locate_quote
+from .pdf_worker import read_pdf_isolated as read_pdf
 from .pipeline import run_batch
 from .schema import INPUT_FIELDS, INSUFFICIENT, OUT
 

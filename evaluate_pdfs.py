@@ -53,7 +53,7 @@ def main(argv=None):
     def count(n, d):return dict(numerator=n, denominator=d)
     summary = dict(suite="pdf-fixtures-v1", fixtures_sha256=hashlib.sha256((FIXTURES/"manifest.json").read_bytes()).hexdigest(),
                    implementation_sha256={name:hashlib.sha256((FIXTURES.parents[2]/name).read_bytes()).hexdigest()
-                                          for name in ("src/pdf_ingestion.py", "src/document_review.py", "evaluate_pdfs.py")},
+                                          for name in ("src/pdf_ingestion.py", "src/pdf_worker.py", "src/document_review.py", "evaluate_pdfs.py")},
                    interpretation="Source-informed synthetic extraction/provenance tests, not independent model or legally validated accuracy.",
                    cases=cases, extraction_status_counts=dict(Counter(c["observed_extraction_status"] for c in cases)),
                    expected_outcomes=count(sum(c["status_matches"] for c in cases),len(cases)),

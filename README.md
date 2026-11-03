@@ -10,11 +10,11 @@ Nothing in this repository determines tax treatment, calculates tax, authorises 
 
 **Branches:** the submitted version is [`e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0`](https://github.com/korakdas1/tds-evidence-review/commit/e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0) on `main`. Post-submission development (Phases 3–6) is on `feature/full-product`.
 
-**Independent Phase 6 audit:** fixes and evidence are in [PHASE_6_CODEX_AUDIT.md](PHASE_6_CODEX_AUDIT.md). Arbitrary untrusted-PDF ingestion remains **BLOCKED** pending parser isolation with CPU/memory deadlines. The local synthetic demonstration remains available. No live model calls were made.
+**Phase 6C:** document reviews now use resource-isolated Linux parser workers with wall/CPU/memory limits. The previously blocking 43 KB stress case is contained; see [PHASE_6C_REPORT.md](PHASE_6C_REPORT.md) and the unchanged [independent audit](PHASE_6_CODEX_AUDIT.md). Resource isolation is not a complete security sandbox or production-readiness claim. The sequential development plan is [docs/MULTI_PHASE_GOAL.md](docs/MULTI_PHASE_GOAL.md). No live model calls are authorized in this development session.
 
 ## Quick start
 
-You need Python 3.9 or later for the review app and PDF support (the JSON command-line baseline alone runs on 3.8). Hardened web storage currently requires POSIX no-follow directory operations, tested on Linux; native Windows web storage is not supported. The JSON and PDF command-line paths are unchanged. After installation nothing needs internet access, an API key or a paid service.
+You need Python 3.9 or later for the review app and PDF support (the JSON command-line baseline alone runs on 3.8). Document review and its worker currently require Linux (including OS resource limits); hardened web storage also requires POSIX no-follow operations. The JSON-only command-line path remains unchanged. Use the provided CLI entry points or a guarded `if __name__ == "__main__"` entry point when invoking document reviews from scripts. After installation nothing needs internet access, an API key or a paid service.
 
 ```bash
 git clone https://github.com/korakdas1/tds-evidence-review.git
@@ -30,7 +30,7 @@ python -m pip install -r requirements-pdf.txt   # pypdf 6.21.4, the only depende
 | Launch the review app | `python review_app.py --open` | Opens http://127.0.0.1:8765/ in your browser (this computer only) |
 | Run the offline demo | `python demo.py` | Three JSON examples, including a replayed historical model mistake |
 | Run the offline PDF demo | `python pdf_demo.py` | A synthetic PDF with page and character offsets; proposal withheld |
-| Run all automated tests | `python -m unittest discover -v` | 175 tests, all passing; local HTTP tests use loopback sockets |
+| Run all automated tests | `python -m unittest discover -v` | 187 tests, all passing; local HTTP tests use loopback sockets |
 
 App options:
 - `--port 8765`
@@ -90,6 +90,7 @@ The app refuses to listen on anything except a loopback address.
   - the stored PDFs.
 - **Fail-closed behaviour.** If an analysis check fails, the API withholds the finding, evidence and page text and returns diagnostics only. Exports put such runs in a clearly marked `forensic_untrusted` section.
 - **Existing local databases.** Runs created before the independent audit lack a complete context anchor. They are preserved and available as forensic exports, but are now marked untrusted; create a fresh case from verified source documents and manually checked metadata. Old records are never rewritten or silently certified. New case/run/history writes commit atomically.
+- **PDF worker limits (Linux).** Each document has an 8-second wall deadline, 4-second soft CPU budget (5-second hard limit), 256 MiB address-space cap, 5 MiB input cap and 16 MiB result cap. Failed workers are killed/reaped; their text and spans are discarded. A private temporary directory is removed afterward. The worker runs with the same OS account: this is resource containment, not filesystem/network sandboxing.
 - **Storage limits.** Upload quotas serialize across app instances. Reads are bounded and file/directory symlinks are rejected. The quota covers registered uploads, not the growing SQLite history or crash-created orphan files; do not share the private data directory with an untrusted OS user.
 - **Unavailable PDFs.** If only a stored PDF is damaged, the analysis stays visible but PDF-based checks are disabled. Re-uploading the identical file restores it.
 - **Limits of tamper evidence.** Someone with file access who recomputes every hash can still forge a consistent database, and deleting the newest history entries cannot be detected without an external copy. Treat this as tamper-evident, not tamper-proof.
@@ -129,7 +130,7 @@ python -m pip install -r requirements-pdf.txt
 python pdf_demo.py
 ```
 
-After installation, the demo works offline without credentials, API calls, OCR or external commands. It prints the synthetic document name/hash, page and exact extracted quote offsets, factual finding, and mandatory human review. All PDF-derived statutory proposals are withheld pending visual review; exact source mapping does not establish interpretation or legal validity.
+After installation, the demo works offline without credentials, provider calls or OCR. It starts a bounded Python parser worker, never document-directed commands. It prints the synthetic document name/hash, page and exact extracted quote offsets, factual finding, and mandatory human review. All PDF-derived statutory proposals are withheld pending visual review; exact source mapping does not establish interpretation or legal validity.
 
 For your own public or synthetic document, supply manual transaction metadata using the input fields below, omitting `contract_excerpt`. The optional invoice is extracted separately; dates, residency, payer and invoice description are never inferred from it:
 
