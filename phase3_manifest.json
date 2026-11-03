@@ -1,0 +1,14 @@
+{
+  "version": "phase3-v1",
+  "frozen_at_utc": "2026-11-03T04:30:41.908439+00:00",
+  "parent_commit": "e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0",
+  "case_count": 12,
+  "exact_anchor_count": 8,
+  "files": {
+    "tresata_challenge_v3.json": "c33232531c3632f40e85833361368a291e2a1558f39c1ee59c68e913897d60d0",
+    "phase3_extraction_fixtures.json": "7deda6d06b7d2a89f860da6bb521b1b12fe0796a854abd024474de65cebcddb3"
+  },
+  "validation": "All input schemas, IDs, labels and gold anchors valid. Fixture P3_09 has one deliberately invalid extracted quote. No labels to be changed after evaluation.",
+  "hypothesis": "Retain provenance-backed unfamiliar AI suggestions for human review without promoting them to validated facts or statutory candidates. No claim of improved automated classification.",
+  "live_protocol": "One explicitly pinned free model, direct then hybrid per case, same prompts, 15-second pacing; stop all requests on first failure or returned-model mismatch; no retries/fallback. Offline fixture replay is scored separately."
+}

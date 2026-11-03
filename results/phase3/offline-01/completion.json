@@ -1,0 +1,9 @@
+{
+  "api_calls": 0,
+  "stop_reason": "LIVE_NOT_REQUESTED",
+  "frozen_inputs_unchanged": true,
+  "successful_by_method": {
+    "direct-llm": 0,
+    "hybrid": 0
+  }
+}

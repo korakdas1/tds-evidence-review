@@ -1,0 +1,9 @@
+{
+  "api_calls": 12,
+  "stop_reason": "INVALID_PROVIDER_RESPONSE",
+  "frozen_inputs_unchanged": true,
+  "successful_by_method": {
+    "direct-llm": 6,
+    "hybrid": 5
+  }
+}

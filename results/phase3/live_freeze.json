@@ -1,0 +1,9 @@
+{
+  "results/phase3/live-01/hybrid_fixtures.json": "d7b403f92c3228ed3ee8b4c76358473f4ad4e9d7f62b70cfaef34cf937292086",
+  "results/phase3/live-01/direct-llm.json": "2661580d32228fb7047c290118a86b780d0d645aed9254865a843809ac85da24",
+  "results/phase3/live-01/protocol.json": "3128a950d66bdc63ea891883682dc4beaa20dc54eb80f0478d5e9628d09aaa21",
+  "results/phase3/live-01/completion.json": "8415eeda5c80f212d6706b2f71763fb0bf7a69f46bc141a4298f67ac09f80438",
+  "results/phase3/live-01/hybrid.json": "97a0119a5ab7a973c9d1353cadd44bbddeda04b71da130c007af02b2b82f61f0",
+  "results/phase3/live-01/requests.jsonl": "655bcf5fc5c7e38fefdd2e44c9a678ff9e84268ea0d86f1e5a4357bec5caa107",
+  "results/phase3/live-01/baseline.json": "267ae40f1fae24b2f846f01572320b8b840a1c0d8c7eb070f382216937ec373b"
+}

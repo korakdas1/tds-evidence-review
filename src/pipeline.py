@@ -6,6 +6,7 @@ from collections import Counter
 from datetime import datetime, timezone
 
 from .evidence import extraction_errors, unknown_facts, validate_evidence
+from .review_evidence import review_evidence
 from .evaluation import evaluate
 from .extraction import ModelError, OpenRouterClient, baseline_extract
 from .rules import factual_status, report_rules, select_act
@@ -33,6 +34,7 @@ def run_batch(cases, mode, digest, client=None):
         status, run_status, reason = INSUFFICIENT, "OK", None
         raw, returned_model, usage, raw_status = None, None, None, None
         response_metadata = None
+        evidence_review = None
         valid_count, total_count, api_calls, api_error = 0, 0, 0, False
         if errors:
             run_status, validation = "INVALID_INPUT", list(errors)
@@ -61,7 +63,9 @@ def run_batch(cases, mode, digest, client=None):
                             raise ModelError("INVALID_DIRECT_SCHEMA")
                         raw_status = status = parsed["factual_status"]
                 if extraction is not None:
-                    validated = validate_evidence(record["contract_excerpt"], extraction)
+                    validator = review_evidence if mode == "hybrid" else validate_evidence
+                    validated = validator(record["contract_excerpt"], extraction)
+                    evidence_review = validated.get("evidence_review")
                     facts, quotes, validation = validated["facts"], validated["quotes"], validated["validation_failures"]
                     context_findings = validated.get("context_findings", [])
                     valid_count, total_count = validated["provenance_valid"], validated["provenance_total"]
@@ -89,6 +93,7 @@ def run_batch(cases, mode, digest, client=None):
                         "run_status": run_status, "not_run_or_error_reason": reason,
                         "date_selection": dates, "extracted_facts": extraction,
                         "validated_facts": facts, "supporting_quotes": quotes,
+                        "evidence_review": evidence_review,
                         "deterministic_context_findings": context_findings,
                         "quote_provenance": {"valid": valid_count, "total": total_count},
                         "missing_information": missing,

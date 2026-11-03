@@ -4,6 +4,8 @@ A small Python prototype that reviews contractual evidence about who directs sup
 
 It never determines a final tax treatment, calculates tax, authorizes withholding, or files returns. All included evaluation cases are synthetic, AI-authored, and not practitioner validated.
 
+**Post-submission development:** `feature/full-product` adds Phase 3 evidence review states; the submitted version remains at [`e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0`](https://github.com/korakdas1/tds-evidence-review/commit/e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0) on `main`. See [ARCHITECTURE.md](ARCHITECTURE.md) for provenance versus interpretation, the strict boundary around provisional proposals, and reproducible evaluation commands; [PHASE_3_REPORT.md](PHASE_3_REPORT.md) records actual findings.
+
 ## Quick Demo
 
 From the repository folder, with Python 3.8+:
@@ -72,6 +74,7 @@ JSON -> input validation -> chosen method -> evidence checks -> date/scope rules
 | Input / benchmark integrity | `src/schema.py`, `benchmark_manifest.json` |
 | Extraction / optional HTTP | `src/extraction.py` |
 | Exact quotes / lexical guard | `src/evidence.py` |
+| Hybrid review-only AI suggestions / safety vetoes | `src/review_evidence.py` |
 | Date selection / provisional mapping | `src/rules.py`, `src/rules_v1.json` |
 | Batch isolation / reporting | `src/pipeline.py`, `main.py` |
 | Metrics | `src/evaluation.py` |
@@ -80,6 +83,8 @@ JSON -> input validation -> chosen method -> evidence checks -> date/scope rules
 1. **`baseline`**: Python patterns recognize personnel supply and individual-worker supervision, handle conservative negation and conflict checks, and abstain when no decisive clause is found. No LLM call.
 2. **`direct-llm`**: One call proposes a factual category directly. Raw output is retained. It receives the same transaction fields but does not extract predicates or quotes, so it cannot propose a legal table item. The deterministic residency/date wrapper remains active; raw-category agreement is separately reported so scope overrides cannot hide model errors.
 3. **`hybrid`**: One call extracts `personnel_supplied`, `worker_supervisor`, `supporting_quotes`, `missing_facts` and `contradictory_evidence`. Python validates the schema, exact provenance and conservative factual support, then applies the deterministic rules. There are no repair calls, retries, agent chains or runtime legal retrieval.
+
+On the development branch, hybrid JSON also includes `evidence_review`: supported, AI-suggested requiring review, contradictory, or insufficient. Exact-source unfamiliar assertions remain visible with full sentence context, while known unsafe assertions are quarantined. Suggestions never enter validated facts or justify a table proposal. This improves review routing; it does not expand automatic factual acceptance beyond the original lexical gate.
 
 Every asserted predicate needs a supporting quote with `fact`, `value`, and `quote`. Exact matches use zero-based Python character offsets, with an exclusive end; repeated passages have all locations recorded. The validator checks complete surrounding sentences to reject clipped negation and distinguishes known quality-monitoring patterns from worker control. It flags recognized omitted contradictions and includes their locations as separate deterministic findings. Unsupported assertions block confident output. Embedded instruction patterns trigger review; strict output schemas reject extra legal/rate fields.
 
@@ -121,6 +126,14 @@ All outputs require qualified human review. Old-Act transactions receive an Act 
 Metrics include exact numerators, denominators, units and reasons for unavailable scores. Supervisor agreement is derived from provisional factual labels; there are no independent personnel-supply labels, so that metric is not scored. Quote validity counts all submitted quotes, including rejected or duplicate entries. Full-anchor retrieval requires the entire supplied anchor inside one accepted quote. A zero denominator is `NOT_SCORED`, not a perfect score. Model execution failures count against labelled-case agreement; unavailable runs are excluded and clearly marked. The safety target can pass only if all four evidence-removed cases executed successfully.
 
 ## Actual results
+
+### Phase 3: post-submission evidence architecture
+
+The separately frozen 12-case v3 challenge scores **9/12** with the unchanged baseline. On identical hand-authored extraction fixtures, old and improved hybrid both score **8/12**; the new layer explicitly routes **3/12** cases as review-only AI suggestions without adding confident classifications. Fixtures are not model results, and the source-informed cases are not an independent holdout.
+
+The fixed-model live attempt used `cohere/north-mini-code:free` and stopped on request 12 with `INVALID_PROVIDER_RESPONSE`: **11 usable responses, one failed attempt, 12 unexecuted requests, zero retries**. All 11 usable responses returned that same model ID. Direct LLM agreed on **4/6** usable cases; hybrid agreed on **3/5** (or 3/6 when the failed attempt is included). On the common five completed cases, all three methods agreed on **3/5**, with **2/5** incorrect confident decisions for direct LLM and **0/5** for baseline and hybrid. The improved hybrid exposes two unfamiliar clauses for review while still abstaining. This is an incomplete comparison, not validated tax accuracy or a demonstrated automatic-recall improvement.
+
+The full suite passes **87/87 tests**, preserving the original 72. Original baseline benchmarks remain **16/16** and **12/12**. All earlier results remain unchanged. See [PHASE_3_REPORT.md](PHASE_3_REPORT.md) for denominators, failure cases, same-response before/after analysis and limitations.
 
 ### Phase 2A: offline reliability work
 

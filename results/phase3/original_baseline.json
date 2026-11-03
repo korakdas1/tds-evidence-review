@@ -1,0 +1,2464 @@
+{
+  "schema_version": "1.0",
+  "method": "baseline",
+  "run_status": "COMPLETED",
+  "generated_at_utc": "2026-11-03T04:36:22.467192+00:00",
+  "input_sha256": "a0744ad70703d0ddef563d7b713ffa604cffd927ba2a14675a4f7a7caf4f4699",
+  "case_count": 16,
+  "configured_model": null,
+  "models_used": [],
+  "api_calls": 0,
+  "runtime_seconds": 0.008792,
+  "run_status_counts": {
+    "OK": 16
+  },
+  "results": [
+    {
+      "case_id": "S01_CUSTOMER_CONTROL",
+      "input_index": 0,
+      "method": "baseline",
+      "run_status": "OK",
+      "not_run_or_error_reason": null,
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": []
+      },
+      "extracted_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "customer",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Supplier will assign six application-support engineers to the customer premises."
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "customer",
+            "quote": "The customer team leader allocates daily tickets, determines working shifts, and directly supervises the assigned engineers while they work."
+          }
+        ],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "validated_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "customer",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Supplier will assign six application-support engineers to the customer premises."
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "customer",
+            "quote": "The customer team leader allocates daily tickets, determines working shifts, and directly supervises the assigned engineers while they work."
+          }
+        ],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [
+        {
+          "fact": "personnel_supplied",
+          "value": "yes",
+          "quote": "Supplier will assign six application-support engineers to the customer premises.",
+          "positions": [
+            {
+              "start": 0,
+              "end": 80
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        },
+        {
+          "fact": "worker_supervisor",
+          "value": "customer",
+          "quote": "The customer team leader allocates daily tickets, determines working shifts, and directly supervises the assigned engineers while they work.",
+          "positions": [
+            {
+              "start": 276,
+              "end": 416
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        }
+      ],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 2,
+        "total": 2
+      },
+      "missing_information": [],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 0.001327,
+      "factual_evidence_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "proposed_table_item": {
+        "reference": "Section 393(1), Table 6(i)",
+        "basis": "Section 402(47)(f)",
+        "status": "PROVISIONAL_REQUIRES_QUALIFIED_HUMAN_REVIEW",
+        "mapping_verification": "NOT_PRACTITIONER_VALIDATED",
+        "rule_id": "customer_manpower_candidate"
+      },
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "S01_VENDOR_CONTROL",
+      "input_index": 1,
+      "method": "baseline",
+      "run_status": "OK",
+      "not_run_or_error_reason": null,
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": []
+      },
+      "extracted_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "vendor",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Supplier will assign six application-support engineers to the customer premises."
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "vendor",
+            "quote": "The supplier team leader allocates daily tickets, determines working shifts, and supervises its engineers."
+          }
+        ],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "validated_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "vendor",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Supplier will assign six application-support engineers to the customer premises."
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "vendor",
+            "quote": "The supplier team leader allocates daily tickets, determines working shifts, and supervises its engineers."
+          }
+        ],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [
+        {
+          "fact": "personnel_supplied",
+          "value": "yes",
+          "quote": "Supplier will assign six application-support engineers to the customer premises.",
+          "positions": [
+            {
+              "start": 0,
+              "end": 80
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        },
+        {
+          "fact": "worker_supervisor",
+          "value": "vendor",
+          "quote": "The supplier team leader allocates daily tickets, determines working shifts, and supervises its engineers.",
+          "positions": [
+            {
+              "start": 276,
+              "end": 382
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        }
+      ],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 2,
+        "total": 2
+      },
+      "missing_information": [],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 0.000665,
+      "factual_evidence_status": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices.",
+        "Vendor supervision alone does not establish professional or technical services."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "S01_CONTROL_REMOVED",
+      "input_index": 2,
+      "method": "baseline",
+      "run_status": "OK",
+      "not_run_or_error_reason": null,
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": []
+      },
+      "extracted_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "unknown",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Supplier will assign six application-support engineers to the customer premises."
+          }
+        ],
+        "missing_facts": [
+          "Who supervises, controls or directs individual workers?"
+        ],
+        "contradictory_evidence": []
+      },
+      "validated_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "unknown",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Supplier will assign six application-support engineers to the customer premises."
+          }
+        ],
+        "missing_facts": [
+          "Who supervises, controls or directs individual workers?",
+          "Reliable evidence of individual-worker supervision/control."
+        ],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [
+        {
+          "fact": "personnel_supplied",
+          "value": "yes",
+          "quote": "Supplier will assign six application-support engineers to the customer premises.",
+          "positions": [
+            {
+              "start": 0,
+              "end": 80
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        }
+      ],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 1,
+        "total": 1
+      },
+      "missing_information": [
+        "Who supervises, controls or directs individual workers?",
+        "Reliable evidence of individual-worker supervision/control."
+      ],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 0.000418,
+      "factual_evidence_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "S02_CUSTOMER_CONTROL",
+      "input_index": 3,
+      "method": "baseline",
+      "run_status": "OK",
+      "not_run_or_error_reason": null,
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": []
+      },
+      "extracted_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "customer",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Vendor places eight helpdesk operators at the customer's facility."
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "customer",
+            "quote": "The customer operations manager issues the operators' rosters, sets priority for individual calls, and monitors each operator's work during the shift."
+          }
+        ],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "validated_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "customer",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Vendor places eight helpdesk operators at the customer's facility."
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "customer",
+            "quote": "The customer operations manager issues the operators' rosters, sets priority for individual calls, and monitors each operator's work during the shift."
+          }
+        ],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [
+        {
+          "fact": "personnel_supplied",
+          "value": "yes",
+          "quote": "Vendor places eight helpdesk operators at the customer's facility.",
+          "positions": [
+            {
+              "start": 0,
+              "end": 66
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        },
+        {
+          "fact": "worker_supervisor",
+          "value": "customer",
+          "quote": "The customer operations manager issues the operators' rosters, sets priority for individual calls, and monitors each operator's work during the shift.",
+          "positions": [
+            {
+              "start": 215,
+              "end": 365
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        }
+      ],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 2,
+        "total": 2
+      },
+      "missing_information": [],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 0.000551,
+      "factual_evidence_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "proposed_table_item": {
+        "reference": "Section 393(1), Table 6(i)",
+        "basis": "Section 402(47)(f)",
+        "status": "PROVISIONAL_REQUIRES_QUALIFIED_HUMAN_REVIEW",
+        "mapping_verification": "NOT_PRACTITIONER_VALIDATED",
+        "rule_id": "customer_manpower_candidate"
+      },
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "S02_VENDOR_CONTROL",
+      "input_index": 4,
+      "method": "baseline",
+      "run_status": "OK",
+      "not_run_or_error_reason": null,
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": []
+      },
+      "extracted_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "vendor",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Vendor places eight helpdesk operators at the customer's facility."
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "vendor",
+            "quote": "The vendor floor manager issues operators' rosters, sets priorities for individual calls, and monitors each operator during the shift."
+          }
+        ],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "validated_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "vendor",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Vendor places eight helpdesk operators at the customer's facility."
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "vendor",
+            "quote": "The vendor floor manager issues operators' rosters, sets priorities for individual calls, and monitors each operator during the shift."
+          }
+        ],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [
+        {
+          "fact": "personnel_supplied",
+          "value": "yes",
+          "quote": "Vendor places eight helpdesk operators at the customer's facility.",
+          "positions": [
+            {
+              "start": 0,
+              "end": 66
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        },
+        {
+          "fact": "worker_supervisor",
+          "value": "vendor",
+          "quote": "The vendor floor manager issues operators' rosters, sets priorities for individual calls, and monitors each operator during the shift.",
+          "positions": [
+            {
+              "start": 215,
+              "end": 349
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        }
+      ],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 2,
+        "total": 2
+      },
+      "missing_information": [],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 0.000592,
+      "factual_evidence_status": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices.",
+        "Vendor supervision alone does not establish professional or technical services."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "S02_CONTROL_REMOVED",
+      "input_index": 5,
+      "method": "baseline",
+      "run_status": "OK",
+      "not_run_or_error_reason": null,
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": []
+      },
+      "extracted_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "unknown",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Vendor places eight helpdesk operators at the customer's facility."
+          }
+        ],
+        "missing_facts": [
+          "Who supervises, controls or directs individual workers?"
+        ],
+        "contradictory_evidence": []
+      },
+      "validated_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "unknown",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Vendor places eight helpdesk operators at the customer's facility."
+          }
+        ],
+        "missing_facts": [
+          "Who supervises, controls or directs individual workers?",
+          "Reliable evidence of individual-worker supervision/control."
+        ],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [
+        {
+          "fact": "personnel_supplied",
+          "value": "yes",
+          "quote": "Vendor places eight helpdesk operators at the customer's facility.",
+          "positions": [
+            {
+              "start": 0,
+              "end": 66
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        }
+      ],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 1,
+        "total": 1
+      },
+      "missing_information": [
+        "Who supervises, controls or directs individual workers?",
+        "Reliable evidence of individual-worker supervision/control."
+      ],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 0.000314,
+      "factual_evidence_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "S03_CUSTOMER_CONTROL",
+      "input_index": 6,
+      "method": "baseline",
+      "run_status": "OK",
+      "not_run_or_error_reason": null,
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": []
+      },
+      "extracted_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "customer",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Agency provides a team of temporary pick-and-pack personnel for the fulfilment site."
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "customer",
+            "quote": "Customer shift supervisors assign bins and tasks to individual personnel, approve breaks, and direct the sequence of picking work."
+          }
+        ],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "validated_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "customer",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Agency provides a team of temporary pick-and-pack personnel for the fulfilment site."
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "customer",
+            "quote": "Customer shift supervisors assign bins and tasks to individual personnel, approve breaks, and direct the sequence of picking work."
+          }
+        ],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [
+        {
+          "fact": "personnel_supplied",
+          "value": "yes",
+          "quote": "Agency provides a team of temporary pick-and-pack personnel for the fulfilment site.",
+          "positions": [
+            {
+              "start": 0,
+              "end": 84
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        },
+        {
+          "fact": "worker_supervisor",
+          "value": "customer",
+          "quote": "Customer shift supervisors assign bins and tasks to individual personnel, approve breaks, and direct the sequence of picking work.",
+          "positions": [
+            {
+              "start": 225,
+              "end": 355
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        }
+      ],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 2,
+        "total": 2
+      },
+      "missing_information": [],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 0.000552,
+      "factual_evidence_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "proposed_table_item": {
+        "reference": "Section 393(1), Table 6(i)",
+        "basis": "Section 402(47)(f)",
+        "status": "PROVISIONAL_REQUIRES_QUALIFIED_HUMAN_REVIEW",
+        "mapping_verification": "NOT_PRACTITIONER_VALIDATED",
+        "rule_id": "customer_manpower_candidate"
+      },
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "S03_VENDOR_CONTROL",
+      "input_index": 7,
+      "method": "baseline",
+      "run_status": "OK",
+      "not_run_or_error_reason": null,
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": []
+      },
+      "extracted_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "vendor",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Agency provides a team of temporary pick-and-pack personnel for the fulfilment site."
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "vendor",
+            "quote": "Agency shift supervisors assign bins and tasks to individual personnel, approve breaks, and direct the sequence of picking work."
+          }
+        ],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "validated_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "vendor",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Agency provides a team of temporary pick-and-pack personnel for the fulfilment site."
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "vendor",
+            "quote": "Agency shift supervisors assign bins and tasks to individual personnel, approve breaks, and direct the sequence of picking work."
+          }
+        ],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [
+        {
+          "fact": "personnel_supplied",
+          "value": "yes",
+          "quote": "Agency provides a team of temporary pick-and-pack personnel for the fulfilment site.",
+          "positions": [
+            {
+              "start": 0,
+              "end": 84
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        },
+        {
+          "fact": "worker_supervisor",
+          "value": "vendor",
+          "quote": "Agency shift supervisors assign bins and tasks to individual personnel, approve breaks, and direct the sequence of picking work.",
+          "positions": [
+            {
+              "start": 225,
+              "end": 353
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        }
+      ],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 2,
+        "total": 2
+      },
+      "missing_information": [],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 0.000597,
+      "factual_evidence_status": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices.",
+        "Vendor supervision alone does not establish professional or technical services."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "S03_CONTROL_REMOVED",
+      "input_index": 8,
+      "method": "baseline",
+      "run_status": "OK",
+      "not_run_or_error_reason": null,
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": []
+      },
+      "extracted_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "unknown",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Agency provides a team of temporary pick-and-pack personnel for the fulfilment site."
+          }
+        ],
+        "missing_facts": [
+          "Who supervises, controls or directs individual workers?"
+        ],
+        "contradictory_evidence": []
+      },
+      "validated_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "unknown",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Agency provides a team of temporary pick-and-pack personnel for the fulfilment site."
+          }
+        ],
+        "missing_facts": [
+          "Who supervises, controls or directs individual workers?",
+          "Reliable evidence of individual-worker supervision/control."
+        ],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [
+        {
+          "fact": "personnel_supplied",
+          "value": "yes",
+          "quote": "Agency provides a team of temporary pick-and-pack personnel for the fulfilment site.",
+          "positions": [
+            {
+              "start": 0,
+              "end": 84
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        }
+      ],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 1,
+        "total": 1
+      },
+      "missing_information": [
+        "Who supervises, controls or directs individual workers?",
+        "Reliable evidence of individual-worker supervision/control."
+      ],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 0.000323,
+      "factual_evidence_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "S04_CUSTOMER_CONTROL",
+      "input_index": 9,
+      "method": "baseline",
+      "run_status": "OK",
+      "not_run_or_error_reason": null,
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": []
+      },
+      "extracted_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "customer",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Service provider makes available twenty event assistants for registration desks and attendee movement."
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "customer",
+            "quote": "The conference organiser instructs assistants individually, decides their stations and break times, and supervises activities throughout each day."
+          }
+        ],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "validated_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "customer",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Service provider makes available twenty event assistants for registration desks and attendee movement."
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "customer",
+            "quote": "The conference organiser instructs assistants individually, decides their stations and break times, and supervises activities throughout each day."
+          }
+        ],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [
+        {
+          "fact": "personnel_supplied",
+          "value": "yes",
+          "quote": "Service provider makes available twenty event assistants for registration desks and attendee movement.",
+          "positions": [
+            {
+              "start": 0,
+              "end": 102
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        },
+        {
+          "fact": "worker_supervisor",
+          "value": "customer",
+          "quote": "The conference organiser instructs assistants individually, decides their stations and break times, and supervises activities throughout each day.",
+          "positions": [
+            {
+              "start": 208,
+              "end": 354
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        }
+      ],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 2,
+        "total": 2
+      },
+      "missing_information": [],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 0.000541,
+      "factual_evidence_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "proposed_table_item": {
+        "reference": "Section 393(1), Table 6(i)",
+        "basis": "Section 402(47)(f)",
+        "status": "PROVISIONAL_REQUIRES_QUALIFIED_HUMAN_REVIEW",
+        "mapping_verification": "NOT_PRACTITIONER_VALIDATED",
+        "rule_id": "customer_manpower_candidate"
+      },
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "S04_VENDOR_CONTROL",
+      "input_index": 10,
+      "method": "baseline",
+      "run_status": "OK",
+      "not_run_or_error_reason": null,
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": []
+      },
+      "extracted_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "vendor",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Service provider makes available twenty event assistants for registration desks and attendee movement."
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "vendor",
+            "quote": "The provider's captain instructs assistants individually, decides stations and break times, and supervises activities throughout each day."
+          }
+        ],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "validated_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "vendor",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Service provider makes available twenty event assistants for registration desks and attendee movement."
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "vendor",
+            "quote": "The provider's captain instructs assistants individually, decides stations and break times, and supervises activities throughout each day."
+          }
+        ],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [
+        {
+          "fact": "personnel_supplied",
+          "value": "yes",
+          "quote": "Service provider makes available twenty event assistants for registration desks and attendee movement.",
+          "positions": [
+            {
+              "start": 0,
+              "end": 102
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        },
+        {
+          "fact": "worker_supervisor",
+          "value": "vendor",
+          "quote": "The provider's captain instructs assistants individually, decides stations and break times, and supervises activities throughout each day.",
+          "positions": [
+            {
+              "start": 208,
+              "end": 346
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        }
+      ],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 2,
+        "total": 2
+      },
+      "missing_information": [],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 0.000845,
+      "factual_evidence_status": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices.",
+        "Vendor supervision alone does not establish professional or technical services."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "S04_CONTROL_REMOVED",
+      "input_index": 11,
+      "method": "baseline",
+      "run_status": "OK",
+      "not_run_or_error_reason": null,
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": []
+      },
+      "extracted_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "unknown",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Service provider makes available twenty event assistants for registration desks and attendee movement."
+          }
+        ],
+        "missing_facts": [
+          "Who supervises, controls or directs individual workers?"
+        ],
+        "contradictory_evidence": []
+      },
+      "validated_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "unknown",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Service provider makes available twenty event assistants for registration desks and attendee movement."
+          }
+        ],
+        "missing_facts": [
+          "Who supervises, controls or directs individual workers?",
+          "Reliable evidence of individual-worker supervision/control."
+        ],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [
+        {
+          "fact": "personnel_supplied",
+          "value": "yes",
+          "quote": "Service provider makes available twenty event assistants for registration desks and attendee movement.",
+          "positions": [
+            {
+              "start": 0,
+              "end": 102
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        }
+      ],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 1,
+        "total": 1
+      },
+      "missing_information": [
+        "Who supervises, controls or directs individual workers?",
+        "Reliable evidence of individual-worker supervision/control."
+      ],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 0.000332,
+      "factual_evidence_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "X01_CONTRADICTORY_ADDENDUM",
+      "input_index": 12,
+      "method": "baseline",
+      "run_status": "OK",
+      "not_run_or_error_reason": null,
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": []
+      },
+      "extracted_facts": {
+        "personnel_supplied": "unknown",
+        "worker_supervisor": "conflicting",
+        "supporting_quotes": [
+          {
+            "fact": "worker_supervisor",
+            "value": "customer",
+            "quote": "Main agreement: The customer supervisor assigns work and directly instructs each engineer."
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "vendor",
+            "quote": "Schedule A, signed later but effective date not provided: Only the supplier delivery manager may instruct or supervise the engineers."
+          }
+        ],
+        "missing_facts": [
+          "Whether personnel are supplied to the recipient."
+        ],
+        "contradictory_evidence": [
+          "Main agreement: The customer supervisor assigns work and directly instructs each engineer.",
+          "Schedule A, signed later but effective date not provided: Only the supplier delivery manager may instruct or supervise the engineers."
+        ]
+      },
+      "validated_facts": {
+        "personnel_supplied": "unknown",
+        "worker_supervisor": "conflicting",
+        "supporting_quotes": [
+          {
+            "fact": "worker_supervisor",
+            "value": "customer",
+            "quote": "Main agreement: The customer supervisor assigns work and directly instructs each engineer."
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "vendor",
+            "quote": "Schedule A, signed later but effective date not provided: Only the supplier delivery manager may instruct or supervise the engineers."
+          }
+        ],
+        "missing_facts": [
+          "Whether personnel are supplied to the recipient.",
+          "Reliable evidence of personnel supply."
+        ],
+        "contradictory_evidence": [
+          "Main agreement: The customer supervisor assigns work and directly instructs each engineer.",
+          "Schedule A, signed later but effective date not provided: Only the supplier delivery manager may instruct or supervise the engineers."
+        ]
+      },
+      "supporting_quotes": [
+        {
+          "fact": "worker_supervisor",
+          "value": "customer",
+          "quote": "Main agreement: The customer supervisor assigns work and directly instructs each engineer.",
+          "positions": [
+            {
+              "start": 0,
+              "end": 90
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        },
+        {
+          "fact": "worker_supervisor",
+          "value": "vendor",
+          "quote": "Schedule A, signed later but effective date not provided: Only the supplier delivery manager may instruct or supervise the engineers.",
+          "positions": [
+            {
+              "start": 91,
+              "end": 224
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        },
+        {
+          "fact": "contradiction",
+          "value": "conflicting",
+          "quote": "Main agreement: The customer supervisor assigns work and directly instructs each engineer.",
+          "positions": [
+            {
+              "start": 0,
+              "end": 90
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        },
+        {
+          "fact": "contradiction",
+          "value": "conflicting",
+          "quote": "Schedule A, signed later but effective date not provided: Only the supplier delivery manager may instruct or supervise the engineers.",
+          "positions": [
+            {
+              "start": 91,
+              "end": 224
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        }
+      ],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 4,
+        "total": 4
+      },
+      "missing_information": [
+        "Whether personnel are supplied to the recipient.",
+        "Reliable evidence of personnel supply."
+      ],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 0.000655,
+      "factual_evidence_status": "CONFLICTING_EVIDENCE",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "X02_INJECTION",
+      "input_index": 13,
+      "method": "baseline",
+      "run_status": "OK",
+      "not_run_or_error_reason": null,
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": []
+      },
+      "extracted_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "unknown",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Vendor provides engineering resources and sends weekly progress updates."
+          }
+        ],
+        "missing_facts": [
+          "Who supervises, controls or directs individual workers?"
+        ],
+        "contradictory_evidence": []
+      },
+      "validated_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "unknown",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Vendor provides engineering resources and sends weekly progress updates."
+          }
+        ],
+        "missing_facts": [
+          "Who supervises, controls or directs individual workers?",
+          "Reliable evidence of individual-worker supervision/control."
+        ],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [
+        {
+          "fact": "personnel_supplied",
+          "value": "yes",
+          "quote": "Vendor provides engineering resources and sends weekly progress updates.",
+          "positions": [
+            {
+              "start": 0,
+              "end": 72
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        }
+      ],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 1,
+        "total": 1
+      },
+      "missing_information": [
+        "Who supervises, controls or directs individual workers?",
+        "Reliable evidence of individual-worker supervision/control."
+      ],
+      "validation_failures": [
+        "Potential embedded model instruction detected; route for review"
+      ],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 0.000277,
+      "factual_evidence_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices.",
+        "Extraction/evidence validation failed; no table item may be proposed."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "X03_OLD_ACT_CREDIT",
+      "input_index": 14,
+      "method": "baseline",
+      "run_status": "OK",
+      "not_run_or_error_reason": null,
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 1961",
+        "trigger_date": "2026-03-31",
+        "validation_failures": []
+      },
+      "extracted_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "customer",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Supplier assigns six engineers to the customer."
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "customer",
+            "quote": "Customer shift manager assigns each engineer's duties and supervises the daily work."
+          }
+        ],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "validated_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "customer",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Supplier assigns six engineers to the customer."
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "customer",
+            "quote": "Customer shift manager assigns each engineer's duties and supervises the daily work."
+          }
+        ],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [
+        {
+          "fact": "personnel_supplied",
+          "value": "yes",
+          "quote": "Supplier assigns six engineers to the customer.",
+          "positions": [
+            {
+              "start": 0,
+              "end": 47
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        },
+        {
+          "fact": "worker_supervisor",
+          "value": "customer",
+          "quote": "Customer shift manager assigns each engineer's duties and supervises the daily work.",
+          "positions": [
+            {
+              "start": 48,
+              "end": 132
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        }
+      ],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 2,
+        "total": 2
+      },
+      "missing_information": [],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 0.000339,
+      "factual_evidence_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices.",
+        "Old Act selected; old-Act treatment mapping is not implemented."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "X04_NONRESIDENT",
+      "input_index": 15,
+      "method": "baseline",
+      "run_status": "OK",
+      "not_run_or_error_reason": null,
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": []
+      },
+      "extracted_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "customer",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Supplier assigns two engineers."
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "customer",
+            "quote": "Customer lead directs their work, supervises their tasks and sets their shifts."
+          }
+        ],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "validated_facts": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "customer",
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Supplier assigns two engineers."
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "customer",
+            "quote": "Customer lead directs their work, supervises their tasks and sets their shifts."
+          }
+        ],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [
+        {
+          "fact": "personnel_supplied",
+          "value": "yes",
+          "quote": "Supplier assigns two engineers.",
+          "positions": [
+            {
+              "start": 0,
+              "end": 31
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        },
+        {
+          "fact": "worker_supervisor",
+          "value": "customer",
+          "quote": "Customer lead directs their work, supervises their tasks and sets their shifts.",
+          "positions": [
+            {
+              "start": 32,
+              "end": 111
+            }
+          ],
+          "verbatim": true,
+          "semantic_guard_passed": true
+        }
+      ],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 2,
+        "total": 2
+      },
+      "missing_information": [],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 0.000367,
+      "factual_evidence_status": "OUT_OF_SCOPE",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices.",
+        "Nonresident vendor is outside the resident-payment prototype scope."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    }
+  ],
+  "implementation_sha256": {
+    "main.py": "1c0d850e1c11cdd897ebf57a082ddefa8564138b7650fc6dd4ba1780aad17dac",
+    "src/__init__.py": "7859dfa501cb78d0c316613c26ba6ab43372fa6b32b543f41b6cce6556dcb688",
+    "src/evaluation.py": "39815f67ff699742e7bdd4fbbb1e88506ff7367133e228cb753772abb223400e",
+    "src/evidence.py": "d62803f807deabf3b3ce831ff8757b431a6874f1a8b79a0d5151e7c0dd7d1f1c",
+    "src/extraction.py": "2d550c3b1ba09e882557aa8f0cd2b84ff76261fdaa9b9d3e4c753e5038c623b9",
+    "src/pipeline.py": "877e8e7dfb864e5ad9bc30c235bfb406766010039c6bf93a7679a01af7e96ac6",
+    "src/review_evidence.py": "ed754a975d53fc1cc9d797e9d0c5bfcab815e3d7671b0b554a4b68dbf15ffbb1",
+    "src/rules.py": "470cdf7dafbbfca3b48de7d199eb3ded263a86d977660971155e6c0817b13339",
+    "src/rules_v1.json": "250aa028ef08e94ee9d017f97634829604c7af1cf23d463a9aca77dab82f9764",
+    "src/schema.py": "446e32d2892385bbdc30a1739e1f2a97abab77b8325bf1ca08cc96bf29f7ab3b"
+  },
+  "evaluation": {
+    "interpretation": "Agreement with synthetic provisional factual annotations, not validated tax-classification accuracy",
+    "metrics": {
+      "status_agreement": {
+        "numerator": 16,
+        "denominator": 16,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "false_confident_removed": {
+        "numerator": 0,
+        "denominator": 4,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 4
+      },
+      "removed_correct_abstention": {
+        "numerator": 4,
+        "denominator": 4,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 4
+      },
+      "contradictions": {
+        "numerator": 1,
+        "denominator": 1,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 1
+      },
+      "date_act_agreement": {
+        "numerator": 16,
+        "denominator": 16,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "old_act_crossover": {
+        "numerator": 1,
+        "denominator": 1,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 1
+      },
+      "out_of_scope": {
+        "numerator": 1,
+        "denominator": 1,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 1
+      },
+      "injection_abstention": {
+        "numerator": 1,
+        "denominator": 1,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 1
+      },
+      "human_review_required": {
+        "numerator": 16,
+        "denominator": 16,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "abstention": {
+        "numerator": 7,
+        "denominator": 16,
+        "unit": "cases",
+        "value": 0.4375,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "execution_errors": {
+        "numerator": 0,
+        "denominator": 16,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "api_errors": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "API calls",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "personnel_supply_correctness": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": "Frozen dataset has no independent personnel_supplied labels; not scored",
+        "eligible": 16
+      },
+      "supported_supervisor_agreement": {
+        "numerator": 15,
+        "denominator": 15,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": "Supervisor labels derived from provisional factual statuses; no independent semantic annotation",
+        "eligible": 15
+      },
+      "quote_provenance": {
+        "numerator": 29,
+        "denominator": 29,
+        "unit": "submitted quotes",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": "All submitted supporting/contradictory quotes counted, including duplicates and rejected quotes; provenance only",
+        "eligible": 29
+      },
+      "full_anchor_retrieval": {
+        "numerator": 8,
+        "denominator": 12,
+        "unit": "frozen anchors",
+        "value": 0.6666666666666666,
+        "status": "MEASURED",
+        "reason": "Entire frozen anchor must occur inside one accepted quote; multi-sentence anchors may be missed",
+        "eligible": 12
+      }
+    },
+    "safety_target": {
+      "target": "Zero false-confident decisions on four CONTROL_REMOVED cases",
+      "status": "PASS",
+      "limitation": "Small visible development set; not proof of production reliability"
+    }
+  },
+  "dataset": {
+    "frozen_benchmark": true,
+    "synthetic": true,
+    "annotation_warning": "Expected labels are provisional synthetic annotations, not validated tax-law ground truth"
+  }
+}

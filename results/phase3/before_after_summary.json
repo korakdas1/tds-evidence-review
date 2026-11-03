@@ -1,0 +1,1168 @@
+{
+  "before_baseline": {
+    "status_agreement": {
+      "numerator": 9,
+      "denominator": 12,
+      "unit": "cases",
+      "value": 0.75,
+      "status": "MEASURED",
+      "reason": null,
+      "eligible": 12
+    },
+    "metrics": {
+      "successful": {
+        "numerator": 12,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "execution_failures": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "not_run": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "api_errors": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "API attempts",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "attempted_but_not_usable": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "API attempts",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "refusals": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "API attempts",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "false_positive_directional": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "false_negative_directional": {
+        "numerator": 2,
+        "denominator": 4,
+        "unit": "cases",
+        "value": 0.5,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 4
+      },
+      "abstentions": {
+        "numerator": 10,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.8333333333333334,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "appropriate_insufficient_abstentions": {
+        "numerator": 6,
+        "denominator": 6,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 6
+      },
+      "missing_control_evidence": {
+        "numerator": 9,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.75,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "quote_errors": {
+        "numerator": 0,
+        "denominator": 19,
+        "unit": "submitted quotes",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 19
+      },
+      "exact_but_unverified_interpretations": {
+        "numerator": 0,
+        "denominator": 19,
+        "unit": "verbatim quotes",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 19
+      },
+      "review_only_cases": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "false_positive_case_ids": [],
+      "false_negative_case_ids": [
+        "P3_02",
+        "P3_03"
+      ],
+      "case_results": [
+        {
+          "case_id": "P3_01",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": {
+            "reference": "Section 393(1), Table 6(i)",
+            "basis": "Section 402(47)(f)",
+            "status": "PROVISIONAL_REQUIRES_QUALIFIED_HUMAN_REVIEW",
+            "mapping_verification": "NOT_PRACTITIONER_VALIDATED",
+            "rule_id": "customer_manpower_candidate"
+          },
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_02",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_03",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_04",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_05",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_06",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_07",
+          "expected": "CONFLICTING_EVIDENCE",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_08",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_09",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_10",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": [
+            "Potential embedded model instruction detected; route for review"
+          ]
+        },
+        {
+          "case_id": "P3_11",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_12",
+          "expected": "CONFLICTING_EVIDENCE",
+          "observed": "CONFLICTING_EVIDENCE",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        }
+      ],
+      "interpretation": "Directional false negatives may be justified safety abstentions. Unexecuted cases never count as predictions. Direct mode has no fact/quote extraction; those metrics are not applicable."
+    }
+  },
+  "before_hybrid_fixtures": {
+    "status_agreement": {
+      "numerator": 8,
+      "denominator": 12,
+      "unit": "cases",
+      "value": 0.6666666666666666,
+      "status": "MEASURED",
+      "reason": null,
+      "eligible": 12
+    },
+    "metrics": {
+      "successful": {
+        "numerator": 12,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "execution_failures": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "not_run": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "api_errors": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "API attempts",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "attempted_but_not_usable": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "API attempts",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "refusals": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "API attempts",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "false_positive_directional": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "false_negative_directional": {
+        "numerator": 3,
+        "denominator": 4,
+        "unit": "cases",
+        "value": 0.75,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 4
+      },
+      "abstentions": {
+        "numerator": 11,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.9166666666666666,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "appropriate_insufficient_abstentions": {
+        "numerator": 6,
+        "denominator": 6,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 6
+      },
+      "missing_control_evidence": {
+        "numerator": 10,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.8333333333333334,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "quote_errors": {
+        "numerator": 1,
+        "denominator": 29,
+        "unit": "submitted quotes",
+        "value": 0.034482758620689655,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 29
+      },
+      "exact_but_unverified_interpretations": {
+        "numerator": 11,
+        "denominator": 28,
+        "unit": "verbatim quotes",
+        "value": 0.39285714285714285,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 28
+      },
+      "review_only_cases": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "false_positive_case_ids": [],
+      "false_negative_case_ids": [
+        "P3_02",
+        "P3_03",
+        "P3_06"
+      ],
+      "case_results": [
+        {
+          "case_id": "P3_01",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": {
+            "reference": "Section 393(1), Table 6(i)",
+            "basis": "Section 402(47)(f)",
+            "status": "PROVISIONAL_REQUIRES_QUALIFIED_HUMAN_REVIEW",
+            "mapping_verification": "NOT_PRACTITIONER_VALIDATED",
+            "rule_id": "customer_manpower_candidate"
+          },
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_02",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor"
+          ]
+        },
+        {
+          "case_id": "P3_03",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor"
+          ]
+        },
+        {
+          "case_id": "P3_04",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor"
+          ]
+        },
+        {
+          "case_id": "P3_05",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor"
+          ]
+        },
+        {
+          "case_id": "P3_06",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor"
+          ]
+        },
+        {
+          "case_id": "P3_07",
+          "expected": "CONFLICTING_EVIDENCE",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Claimed contradiction lacks opposing supported predicates"
+          ]
+        },
+        {
+          "case_id": "P3_08",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor"
+          ]
+        },
+        {
+          "case_id": "P3_09",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": [
+            "Quote not found verbatim in contract",
+            "Unsupported asserted fact: worker_supervisor"
+          ]
+        },
+        {
+          "case_id": "P3_10",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor",
+            "Potential embedded model instruction detected; route for review"
+          ]
+        },
+        {
+          "case_id": "P3_11",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_12",
+          "expected": "CONFLICTING_EVIDENCE",
+          "observed": "CONFLICTING_EVIDENCE",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        }
+      ],
+      "interpretation": "Directional false negatives may be justified safety abstentions. Unexecuted cases never count as predictions. Direct mode has no fact/quote extraction; those metrics are not applicable."
+    }
+  },
+  "offline-01/baseline": {
+    "status_agreement": {
+      "numerator": 9,
+      "denominator": 12,
+      "unit": "cases",
+      "value": 0.75,
+      "status": "MEASURED",
+      "reason": null,
+      "eligible": 12
+    },
+    "metrics": {
+      "successful": {
+        "numerator": 12,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "execution_failures": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "not_run": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "api_errors": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "API attempts",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "attempted_but_not_usable": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "API attempts",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "refusals": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "API attempts",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "false_positive_directional": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "false_negative_directional": {
+        "numerator": 2,
+        "denominator": 4,
+        "unit": "cases",
+        "value": 0.5,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 4
+      },
+      "abstentions": {
+        "numerator": 10,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.8333333333333334,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "appropriate_insufficient_abstentions": {
+        "numerator": 6,
+        "denominator": 6,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 6
+      },
+      "missing_control_evidence": {
+        "numerator": 9,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.75,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "quote_errors": {
+        "numerator": 0,
+        "denominator": 19,
+        "unit": "submitted quotes",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 19
+      },
+      "exact_but_unverified_interpretations": {
+        "numerator": 0,
+        "denominator": 19,
+        "unit": "verbatim quotes",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 19
+      },
+      "review_only_cases": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "false_positive_case_ids": [],
+      "false_negative_case_ids": [
+        "P3_02",
+        "P3_03"
+      ],
+      "case_results": [
+        {
+          "case_id": "P3_01",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": {
+            "reference": "Section 393(1), Table 6(i)",
+            "basis": "Section 402(47)(f)",
+            "status": "PROVISIONAL_REQUIRES_QUALIFIED_HUMAN_REVIEW",
+            "mapping_verification": "NOT_PRACTITIONER_VALIDATED",
+            "rule_id": "customer_manpower_candidate"
+          },
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_02",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_03",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_04",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_05",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_06",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_07",
+          "expected": "CONFLICTING_EVIDENCE",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_08",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_09",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_10",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": [
+            "Potential embedded model instruction detected; route for review"
+          ]
+        },
+        {
+          "case_id": "P3_11",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_12",
+          "expected": "CONFLICTING_EVIDENCE",
+          "observed": "CONFLICTING_EVIDENCE",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        }
+      ],
+      "interpretation": "Directional false negatives may be justified safety abstentions. Unexecuted cases never count as predictions. Direct mode has no fact/quote extraction; those metrics are not applicable."
+    }
+  },
+  "offline-01/hybrid_fixtures": {
+    "status_agreement": {
+      "numerator": 8,
+      "denominator": 12,
+      "unit": "cases",
+      "value": 0.6666666666666666,
+      "status": "MEASURED",
+      "reason": null,
+      "eligible": 12
+    },
+    "metrics": {
+      "successful": {
+        "numerator": 12,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "execution_failures": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "not_run": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "api_errors": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "API attempts",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "attempted_but_not_usable": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "API attempts",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "refusals": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "API attempts",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "false_positive_directional": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "false_negative_directional": {
+        "numerator": 3,
+        "denominator": 4,
+        "unit": "cases",
+        "value": 0.75,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 4
+      },
+      "abstentions": {
+        "numerator": 11,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.9166666666666666,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "appropriate_insufficient_abstentions": {
+        "numerator": 6,
+        "denominator": 6,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 6
+      },
+      "missing_control_evidence": {
+        "numerator": 10,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.8333333333333334,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "quote_errors": {
+        "numerator": 1,
+        "denominator": 29,
+        "unit": "submitted quotes",
+        "value": 0.034482758620689655,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 29
+      },
+      "exact_but_unverified_interpretations": {
+        "numerator": 11,
+        "denominator": 28,
+        "unit": "verbatim quotes",
+        "value": 0.39285714285714285,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 28
+      },
+      "review_only_cases": {
+        "numerator": 3,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.25,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "false_positive_case_ids": [],
+      "false_negative_case_ids": [
+        "P3_02",
+        "P3_03",
+        "P3_06"
+      ],
+      "case_results": [
+        {
+          "case_id": "P3_01",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": "SUPPORTED_FACTUAL_EVIDENCE",
+          "proposal": {
+            "reference": "Section 393(1), Table 6(i)",
+            "basis": "Section 402(47)(f)",
+            "status": "PROVISIONAL_REQUIRES_QUALIFIED_HUMAN_REVIEW",
+            "mapping_verification": "NOT_PRACTITIONER_VALIDATED",
+            "rule_id": "customer_manpower_candidate"
+          },
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_02",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "evidence_state": "AI_SUGGESTED_REQUIRING_REVIEW",
+          "proposal": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor"
+          ]
+        },
+        {
+          "case_id": "P3_03",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "evidence_state": "AI_SUGGESTED_REQUIRING_REVIEW",
+          "proposal": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor"
+          ]
+        },
+        {
+          "case_id": "P3_04",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": "INSUFFICIENT_EVIDENCE",
+          "proposal": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor",
+            "Review-layer safety veto; no statutory candidate"
+          ]
+        },
+        {
+          "case_id": "P3_05",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": "INSUFFICIENT_EVIDENCE",
+          "proposal": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor",
+            "Review-layer safety veto; no statutory candidate"
+          ]
+        },
+        {
+          "case_id": "P3_06",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "evidence_state": "INSUFFICIENT_EVIDENCE",
+          "proposal": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor",
+            "Review-layer safety veto; no statutory candidate"
+          ]
+        },
+        {
+          "case_id": "P3_07",
+          "expected": "CONFLICTING_EVIDENCE",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "evidence_state": "AI_SUGGESTED_REQUIRING_REVIEW",
+          "proposal": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Claimed contradiction lacks opposing supported predicates"
+          ]
+        },
+        {
+          "case_id": "P3_08",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": "INSUFFICIENT_EVIDENCE",
+          "proposal": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor",
+            "Review-layer safety veto; no statutory candidate"
+          ]
+        },
+        {
+          "case_id": "P3_09",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": "INSUFFICIENT_EVIDENCE",
+          "proposal": null,
+          "validation_failures": [
+            "Quote not found verbatim in contract",
+            "Unsupported asserted fact: worker_supervisor",
+            "Review-layer safety veto; no statutory candidate"
+          ]
+        },
+        {
+          "case_id": "P3_10",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": "INSUFFICIENT_EVIDENCE",
+          "proposal": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor",
+            "Potential embedded model instruction detected; route for review",
+            "Review-layer safety veto; no statutory candidate"
+          ]
+        },
+        {
+          "case_id": "P3_11",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": "INSUFFICIENT_EVIDENCE",
+          "proposal": null,
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_12",
+          "expected": "CONFLICTING_EVIDENCE",
+          "observed": "CONFLICTING_EVIDENCE",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": "CONTRADICTORY_EVIDENCE",
+          "proposal": null,
+          "validation_failures": []
+        }
+      ],
+      "interpretation": "Directional false negatives may be justified safety abstentions. Unexecuted cases never count as predictions. Direct mode has no fact/quote extraction; those metrics are not applicable."
+    }
+  },
+  "fixture_state_agreement": {
+    "numerator": 12,
+    "denominator": 12,
+    "interpretation": "Hand-authored review-routing fixtures, not model accuracy"
+  },
+  "note": "The three newly explicit review-only cases already had raw quotes in the old report. This is not new quote retrieval or increased automatic factual acceptance."
+}

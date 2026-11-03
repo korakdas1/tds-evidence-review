@@ -1,0 +1,2274 @@
+{
+  "kind": "POST_RUN_ANALYSIS_NO_NEW_API_CALLS",
+  "common_success_case_ids": [
+    "P3_01",
+    "P3_02",
+    "P3_03",
+    "P3_04",
+    "P3_05"
+  ],
+  "matched_methods": {
+    "baseline": {
+      "evaluation": {
+        "interpretation": "Agreement with synthetic provisional factual annotations, not validated tax-classification accuracy",
+        "metrics": {
+          "status_agreement": {
+            "numerator": 3,
+            "denominator": 5,
+            "unit": "cases",
+            "value": 0.6,
+            "status": "MEASURED",
+            "reason": null,
+            "eligible": 5
+          },
+          "false_confident_removed": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "cases",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": null,
+            "eligible": 0
+          },
+          "removed_correct_abstention": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "cases",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": null,
+            "eligible": 0
+          },
+          "contradictions": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "cases",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": null,
+            "eligible": 0
+          },
+          "date_act_agreement": {
+            "numerator": 5,
+            "denominator": 5,
+            "unit": "cases",
+            "value": 1.0,
+            "status": "MEASURED",
+            "reason": null,
+            "eligible": 5
+          },
+          "old_act_crossover": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "cases",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": null,
+            "eligible": 0
+          },
+          "out_of_scope": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "cases",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": null,
+            "eligible": 0
+          },
+          "injection_abstention": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "cases",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": null,
+            "eligible": 0
+          },
+          "human_review_required": {
+            "numerator": 5,
+            "denominator": 5,
+            "unit": "cases",
+            "value": 1.0,
+            "status": "MEASURED",
+            "reason": null,
+            "eligible": 5
+          },
+          "abstention": {
+            "numerator": 4,
+            "denominator": 5,
+            "unit": "cases",
+            "value": 0.8,
+            "status": "MEASURED",
+            "reason": null,
+            "eligible": 5
+          },
+          "execution_errors": {
+            "numerator": 0,
+            "denominator": 5,
+            "unit": "cases",
+            "value": 0.0,
+            "status": "MEASURED",
+            "reason": null,
+            "eligible": 5
+          },
+          "api_errors": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "API calls",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": null,
+            "eligible": 0
+          },
+          "personnel_supply_correctness": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "cases",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": "Frozen dataset has no independent personnel_supplied labels; not scored",
+            "eligible": 5
+          },
+          "supported_supervisor_agreement": {
+            "numerator": 3,
+            "denominator": 5,
+            "unit": "cases",
+            "value": 0.6,
+            "status": "MEASURED",
+            "reason": "Supervisor labels derived from provisional factual statuses; no independent semantic annotation",
+            "eligible": 5
+          },
+          "quote_provenance": {
+            "numerator": 6,
+            "denominator": 6,
+            "unit": "submitted quotes",
+            "value": 1.0,
+            "status": "MEASURED",
+            "reason": "All submitted supporting/contradictory quotes counted, including duplicates and rejected quotes; provenance only",
+            "eligible": 6
+          },
+          "full_anchor_retrieval": {
+            "numerator": 1,
+            "denominator": 3,
+            "unit": "frozen anchors",
+            "value": 0.3333333333333333,
+            "status": "MEASURED",
+            "reason": "Entire frozen anchor must occur inside one accepted quote; multi-sentence anchors may be missed",
+            "eligible": 3
+          }
+        },
+        "safety_target": {
+          "target": "Zero false-confident decisions on four CONTROL_REMOVED cases",
+          "status": "NOT_EVALUATED",
+          "limitation": "Small visible development set; not proof of production reliability"
+        }
+      },
+      "comparison": {
+        "successful": {
+          "numerator": 5,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "execution_failures": {
+          "numerator": 0,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "not_run": {
+          "numerator": 0,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "api_errors": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "API attempts",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "attempted_but_not_usable": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "API attempts",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "refusals": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "API attempts",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "false_positive_directional": {
+          "numerator": 0,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "false_negative_directional": {
+          "numerator": 2,
+          "denominator": 3,
+          "unit": "cases",
+          "value": 0.6666666666666666,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 3
+        },
+        "abstentions": {
+          "numerator": 4,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 0.8,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "appropriate_insufficient_abstentions": {
+          "numerator": 2,
+          "denominator": 2,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 2
+        },
+        "missing_control_evidence": {
+          "numerator": 4,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 0.8,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "quote_errors": {
+          "numerator": 0,
+          "denominator": 6,
+          "unit": "submitted quotes",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 6
+        },
+        "exact_but_unverified_interpretations": {
+          "numerator": 0,
+          "denominator": 6,
+          "unit": "verbatim quotes",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 6
+        },
+        "review_only_cases": {
+          "numerator": 0,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "false_positive_case_ids": [],
+        "false_negative_case_ids": [
+          "P3_02",
+          "P3_03"
+        ],
+        "case_results": [
+          {
+            "case_id": "P3_01",
+            "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+            "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+            "run_status": "OK",
+            "matches": true,
+            "evidence_state": null,
+            "proposal": {
+              "reference": "Section 393(1), Table 6(i)",
+              "basis": "Section 402(47)(f)",
+              "status": "PROVISIONAL_REQUIRES_QUALIFIED_HUMAN_REVIEW",
+              "mapping_verification": "NOT_PRACTITIONER_VALIDATED",
+              "rule_id": "customer_manpower_candidate"
+            },
+            "validation_failures": []
+          },
+          {
+            "case_id": "P3_02",
+            "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+            "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+            "run_status": "OK",
+            "matches": false,
+            "evidence_state": null,
+            "proposal": null,
+            "validation_failures": []
+          },
+          {
+            "case_id": "P3_03",
+            "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+            "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+            "run_status": "OK",
+            "matches": false,
+            "evidence_state": null,
+            "proposal": null,
+            "validation_failures": []
+          },
+          {
+            "case_id": "P3_04",
+            "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+            "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+            "run_status": "OK",
+            "matches": true,
+            "evidence_state": null,
+            "proposal": null,
+            "validation_failures": []
+          },
+          {
+            "case_id": "P3_05",
+            "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+            "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+            "run_status": "OK",
+            "matches": true,
+            "evidence_state": null,
+            "proposal": null,
+            "validation_failures": []
+          }
+        ],
+        "interpretation": "Directional false negatives may be justified safety abstentions. Unexecuted cases never count as predictions. Direct mode has no fact/quote extraction; those metrics are not applicable."
+      }
+    },
+    "direct-llm": {
+      "evaluation": {
+        "interpretation": "Agreement with synthetic provisional factual annotations, not validated tax-classification accuracy",
+        "metrics": {
+          "status_agreement": {
+            "numerator": 3,
+            "denominator": 5,
+            "unit": "cases",
+            "value": 0.6,
+            "status": "MEASURED",
+            "reason": null,
+            "eligible": 5
+          },
+          "false_confident_removed": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "cases",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": null,
+            "eligible": 0
+          },
+          "removed_correct_abstention": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "cases",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": null,
+            "eligible": 0
+          },
+          "contradictions": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "cases",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": null,
+            "eligible": 0
+          },
+          "date_act_agreement": {
+            "numerator": 5,
+            "denominator": 5,
+            "unit": "cases",
+            "value": 1.0,
+            "status": "MEASURED",
+            "reason": null,
+            "eligible": 5
+          },
+          "old_act_crossover": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "cases",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": null,
+            "eligible": 0
+          },
+          "out_of_scope": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "cases",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": null,
+            "eligible": 0
+          },
+          "injection_abstention": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "cases",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": null,
+            "eligible": 0
+          },
+          "human_review_required": {
+            "numerator": 5,
+            "denominator": 5,
+            "unit": "cases",
+            "value": 1.0,
+            "status": "MEASURED",
+            "reason": null,
+            "eligible": 5
+          },
+          "abstention": {
+            "numerator": 0,
+            "denominator": 5,
+            "unit": "cases",
+            "value": 0.0,
+            "status": "MEASURED",
+            "reason": null,
+            "eligible": 5
+          },
+          "execution_errors": {
+            "numerator": 0,
+            "denominator": 5,
+            "unit": "cases",
+            "value": 0.0,
+            "status": "MEASURED",
+            "reason": null,
+            "eligible": 5
+          },
+          "api_errors": {
+            "numerator": 0,
+            "denominator": 5,
+            "unit": "API calls",
+            "value": 0.0,
+            "status": "MEASURED",
+            "reason": null,
+            "eligible": 5
+          },
+          "personnel_supply_correctness": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "cases",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": "Frozen dataset has no independent personnel_supplied labels; not scored",
+            "eligible": 5
+          },
+          "supported_supervisor_agreement": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "cases",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": "Direct baseline returns a category, not predicate extraction",
+            "eligible": 5
+          },
+          "quote_provenance": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "submitted quotes",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": "Direct baseline does not request quotes",
+            "eligible": 0
+          },
+          "raw_model_status_agreement": {
+            "numerator": 3,
+            "denominator": 5,
+            "unit": "cases",
+            "value": 0.6,
+            "status": "MEASURED",
+            "reason": null,
+            "eligible": 5
+          }
+        },
+        "safety_target": {
+          "target": "Zero false-confident decisions on four CONTROL_REMOVED cases",
+          "status": "NOT_EVALUATED",
+          "limitation": "Small visible development set; not proof of production reliability"
+        }
+      },
+      "comparison": {
+        "successful": {
+          "numerator": 5,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "execution_failures": {
+          "numerator": 0,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "not_run": {
+          "numerator": 0,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "api_errors": {
+          "numerator": 0,
+          "denominator": 5,
+          "unit": "API attempts",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "attempted_but_not_usable": {
+          "numerator": 0,
+          "denominator": 5,
+          "unit": "API attempts",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "refusals": {
+          "numerator": 0,
+          "denominator": 5,
+          "unit": "API attempts",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "false_positive_directional": {
+          "numerator": 2,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 0.4,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "false_negative_directional": {
+          "numerator": 0,
+          "denominator": 3,
+          "unit": "cases",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 3
+        },
+        "abstentions": {
+          "numerator": 0,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "appropriate_insufficient_abstentions": {
+          "numerator": 0,
+          "denominator": 2,
+          "unit": "cases",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 2
+        },
+        "missing_control_evidence": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Direct mode has no predicate extraction",
+          "eligible": 0
+        },
+        "quote_errors": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "submitted quotes",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "exact_but_unverified_interpretations": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "verbatim quotes",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "review_only_cases": {
+          "numerator": 0,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "false_positive_case_ids": [
+          "P3_04",
+          "P3_05"
+        ],
+        "false_negative_case_ids": [],
+        "case_results": [
+          {
+            "case_id": "P3_01",
+            "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+            "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+            "run_status": "OK",
+            "matches": true,
+            "evidence_state": null,
+            "proposal": null,
+            "validation_failures": []
+          },
+          {
+            "case_id": "P3_02",
+            "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+            "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+            "run_status": "OK",
+            "matches": true,
+            "evidence_state": null,
+            "proposal": null,
+            "validation_failures": []
+          },
+          {
+            "case_id": "P3_03",
+            "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+            "observed": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+            "run_status": "OK",
+            "matches": true,
+            "evidence_state": null,
+            "proposal": null,
+            "validation_failures": []
+          },
+          {
+            "case_id": "P3_04",
+            "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+            "observed": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+            "run_status": "OK",
+            "matches": false,
+            "evidence_state": null,
+            "proposal": null,
+            "validation_failures": []
+          },
+          {
+            "case_id": "P3_05",
+            "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+            "observed": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+            "run_status": "OK",
+            "matches": false,
+            "evidence_state": null,
+            "proposal": null,
+            "validation_failures": []
+          }
+        ],
+        "interpretation": "Directional false negatives may be justified safety abstentions. Unexecuted cases never count as predictions. Direct mode has no fact/quote extraction; those metrics are not applicable."
+      }
+    },
+    "hybrid": {
+      "evaluation": {
+        "interpretation": "Agreement with synthetic provisional factual annotations, not validated tax-classification accuracy",
+        "metrics": {
+          "status_agreement": {
+            "numerator": 3,
+            "denominator": 5,
+            "unit": "cases",
+            "value": 0.6,
+            "status": "MEASURED",
+            "reason": null,
+            "eligible": 5
+          },
+          "false_confident_removed": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "cases",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": null,
+            "eligible": 0
+          },
+          "removed_correct_abstention": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "cases",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": null,
+            "eligible": 0
+          },
+          "contradictions": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "cases",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": null,
+            "eligible": 0
+          },
+          "date_act_agreement": {
+            "numerator": 5,
+            "denominator": 5,
+            "unit": "cases",
+            "value": 1.0,
+            "status": "MEASURED",
+            "reason": null,
+            "eligible": 5
+          },
+          "old_act_crossover": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "cases",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": null,
+            "eligible": 0
+          },
+          "out_of_scope": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "cases",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": null,
+            "eligible": 0
+          },
+          "injection_abstention": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "cases",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": null,
+            "eligible": 0
+          },
+          "human_review_required": {
+            "numerator": 5,
+            "denominator": 5,
+            "unit": "cases",
+            "value": 1.0,
+            "status": "MEASURED",
+            "reason": null,
+            "eligible": 5
+          },
+          "abstention": {
+            "numerator": 4,
+            "denominator": 5,
+            "unit": "cases",
+            "value": 0.8,
+            "status": "MEASURED",
+            "reason": null,
+            "eligible": 5
+          },
+          "execution_errors": {
+            "numerator": 0,
+            "denominator": 5,
+            "unit": "cases",
+            "value": 0.0,
+            "status": "MEASURED",
+            "reason": null,
+            "eligible": 5
+          },
+          "api_errors": {
+            "numerator": 0,
+            "denominator": 5,
+            "unit": "API calls",
+            "value": 0.0,
+            "status": "MEASURED",
+            "reason": null,
+            "eligible": 5
+          },
+          "personnel_supply_correctness": {
+            "numerator": 0,
+            "denominator": 0,
+            "unit": "cases",
+            "value": null,
+            "status": "NOT_SCORED",
+            "reason": "Frozen dataset has no independent personnel_supplied labels; not scored",
+            "eligible": 5
+          },
+          "supported_supervisor_agreement": {
+            "numerator": 3,
+            "denominator": 5,
+            "unit": "cases",
+            "value": 0.6,
+            "status": "MEASURED",
+            "reason": "Supervisor labels derived from provisional factual statuses; no independent semantic annotation",
+            "eligible": 5
+          },
+          "quote_provenance": {
+            "numerator": 9,
+            "denominator": 9,
+            "unit": "submitted quotes",
+            "value": 1.0,
+            "status": "MEASURED",
+            "reason": "All submitted supporting/contradictory quotes counted, including duplicates and rejected quotes; provenance only",
+            "eligible": 9
+          },
+          "full_anchor_retrieval": {
+            "numerator": 1,
+            "denominator": 3,
+            "unit": "frozen anchors",
+            "value": 0.3333333333333333,
+            "status": "MEASURED",
+            "reason": "Entire frozen anchor must occur inside one accepted quote; multi-sentence anchors may be missed",
+            "eligible": 3
+          }
+        },
+        "safety_target": {
+          "target": "Zero false-confident decisions on four CONTROL_REMOVED cases",
+          "status": "NOT_EVALUATED",
+          "limitation": "Small visible development set; not proof of production reliability"
+        }
+      },
+      "comparison": {
+        "successful": {
+          "numerator": 5,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "execution_failures": {
+          "numerator": 0,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "not_run": {
+          "numerator": 0,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "api_errors": {
+          "numerator": 0,
+          "denominator": 5,
+          "unit": "API attempts",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "attempted_but_not_usable": {
+          "numerator": 0,
+          "denominator": 5,
+          "unit": "API attempts",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "refusals": {
+          "numerator": 0,
+          "denominator": 5,
+          "unit": "API attempts",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "false_positive_directional": {
+          "numerator": 0,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "false_negative_directional": {
+          "numerator": 2,
+          "denominator": 3,
+          "unit": "cases",
+          "value": 0.6666666666666666,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 3
+        },
+        "abstentions": {
+          "numerator": 4,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 0.8,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "appropriate_insufficient_abstentions": {
+          "numerator": 2,
+          "denominator": 2,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 2
+        },
+        "missing_control_evidence": {
+          "numerator": 4,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 0.8,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "quote_errors": {
+          "numerator": 0,
+          "denominator": 9,
+          "unit": "submitted quotes",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 9
+        },
+        "exact_but_unverified_interpretations": {
+          "numerator": 3,
+          "denominator": 9,
+          "unit": "verbatim quotes",
+          "value": 0.3333333333333333,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 9
+        },
+        "review_only_cases": {
+          "numerator": 2,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 0.4,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "false_positive_case_ids": [],
+        "false_negative_case_ids": [
+          "P3_02",
+          "P3_03"
+        ],
+        "case_results": [
+          {
+            "case_id": "P3_01",
+            "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+            "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+            "run_status": "OK",
+            "matches": true,
+            "evidence_state": "SUPPORTED_FACTUAL_EVIDENCE",
+            "proposal": {
+              "reference": "Section 393(1), Table 6(i)",
+              "basis": "Section 402(47)(f)",
+              "status": "PROVISIONAL_REQUIRES_QUALIFIED_HUMAN_REVIEW",
+              "mapping_verification": "NOT_PRACTITIONER_VALIDATED",
+              "rule_id": "customer_manpower_candidate"
+            },
+            "validation_failures": []
+          },
+          {
+            "case_id": "P3_02",
+            "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+            "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+            "run_status": "OK",
+            "matches": false,
+            "evidence_state": "AI_SUGGESTED_REQUIRING_REVIEW",
+            "proposal": null,
+            "validation_failures": [
+              "Quote does not pass conservative factual support check",
+              "Unsupported asserted fact: worker_supervisor"
+            ]
+          },
+          {
+            "case_id": "P3_03",
+            "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+            "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+            "run_status": "OK",
+            "matches": false,
+            "evidence_state": "AI_SUGGESTED_REQUIRING_REVIEW",
+            "proposal": null,
+            "validation_failures": [
+              "Quote does not pass conservative factual support check",
+              "Unsupported asserted fact: worker_supervisor"
+            ]
+          },
+          {
+            "case_id": "P3_04",
+            "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+            "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+            "run_status": "OK",
+            "matches": true,
+            "evidence_state": "INSUFFICIENT_EVIDENCE",
+            "proposal": null,
+            "validation_failures": []
+          },
+          {
+            "case_id": "P3_05",
+            "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+            "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+            "run_status": "OK",
+            "matches": true,
+            "evidence_state": "INSUFFICIENT_EVIDENCE",
+            "proposal": null,
+            "validation_failures": [
+              "Quote does not pass conservative factual support check",
+              "Unsupported asserted fact: worker_supervisor",
+              "Review-layer safety veto; no statutory candidate"
+            ]
+          }
+        ],
+        "interpretation": "Directional false negatives may be justified safety abstentions. Unexecuted cases never count as predictions. Direct mode has no fact/quote extraction; those metrics are not applicable."
+      }
+    }
+  },
+  "same_live_extractions_old_validator": {
+    "api_calls": 0,
+    "results": [
+      {
+        "case_id": "P3_01",
+        "input_index": 0,
+        "method": "hybrid",
+        "run_status": "OK",
+        "not_run_or_error_reason": null,
+        "date_selection": {
+          "status": "RESOLVED",
+          "applicable_act": "Income-tax Act, 2025",
+          "trigger_date": "2026-10-10",
+          "validation_failures": []
+        },
+        "extracted_facts": {
+          "personnel_supplied": "yes",
+          "worker_supervisor": "customer",
+          "supporting_quotes": [
+            {
+              "fact": "personnel_supplied",
+              "value": "yes",
+              "quote": "Vendor supplies workers."
+            },
+            {
+              "fact": "worker_supervisor",
+              "value": "customer",
+              "quote": "Customer supervises each worker."
+            }
+          ],
+          "missing_facts": [],
+          "contradictory_evidence": []
+        },
+        "validated_facts": {
+          "personnel_supplied": "yes",
+          "worker_supervisor": "customer",
+          "supporting_quotes": [
+            {
+              "fact": "personnel_supplied",
+              "value": "yes",
+              "quote": "Vendor supplies workers."
+            },
+            {
+              "fact": "worker_supervisor",
+              "value": "customer",
+              "quote": "Customer supervises each worker."
+            }
+          ],
+          "missing_facts": [],
+          "contradictory_evidence": []
+        },
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Vendor supplies workers.",
+            "positions": [
+              {
+                "start": 0,
+                "end": 24
+              }
+            ],
+            "verbatim": true,
+            "semantic_guard_passed": true
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "customer",
+            "quote": "Customer supervises each worker.",
+            "positions": [
+              {
+                "start": 25,
+                "end": 57
+              }
+            ],
+            "verbatim": true,
+            "semantic_guard_passed": true
+          }
+        ],
+        "evidence_review": null,
+        "deterministic_context_findings": [],
+        "quote_provenance": {
+          "valid": 2,
+          "total": 2
+        },
+        "missing_information": [],
+        "validation_failures": [],
+        "raw_output": "{\n  \"personnel_supplied\": \"yes\",\n  \"worker_supervisor\": \"customer\",\n  \"supporting_quotes\": [\n    {\n      \"fact\": \"personnel_supplied\",\n      \"value\": \"yes\",\n      \"quote\": \"Vendor supplies workers.\"\n    },\n    {\n      \"fact\": \"worker_supervisor\",\n      \"value\": \"customer\",\n      \"quote\": \"Customer supervises each worker.\"\n    }\n  ],\n  \"missing_facts\": [],\n  \"contradictory_evidence\": []\n}",
+        "raw_model_status": null,
+        "returned_model": "cohere/north-mini-code:free",
+        "usage": {
+          "prompt_tokens": 329,
+          "completion_tokens": 917,
+          "total_tokens": 1246
+        },
+        "response_metadata": {
+          "finish_reason": "stop",
+          "native_finish_reason": "complete",
+          "refusal": null,
+          "provider": "Cohere",
+          "response_id": "gen-1793680563-hWwEF2cNaLdn6BFqIadQ"
+        },
+        "api_calls": 0,
+        "api_error": false,
+        "runtime_seconds": 0.002755,
+        "factual_evidence_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+        "proposed_table_item": {
+          "reference": "Section 393(1), Table 6(i)",
+          "basis": "Section 402(47)(f)",
+          "status": "PROVISIONAL_REQUIRES_QUALIFIED_HUMAN_REVIEW",
+          "mapping_verification": "NOT_PRACTITIONER_VALIDATED",
+          "rule_id": "customer_manpower_candidate"
+        },
+        "human_review_required": true,
+        "review_status": "NEEDS_REVIEW",
+        "human_review_reasons": [
+          "Qualified human review is required for any legal mapping or tax treatment.",
+          "Contract wording may differ from actual working practices."
+        ],
+        "legal_sources": [
+          {
+            "id": "act_transition",
+            "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+            "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+            "effective_from": "2026-04-01",
+            "effective_to": null,
+            "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+            "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+          },
+          {
+            "id": "manpower_definition",
+            "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+            "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+            "effective_from": "2026-04-01",
+            "effective_to": null,
+            "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+            "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+          },
+          {
+            "id": "customer_manpower_candidate",
+            "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+            "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "source_location": "PDF pages 471 and 509 (one-based)",
+            "effective_from": "2026-04-01",
+            "effective_to": null,
+            "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+            "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+          },
+          {
+            "id": "professional_technical_reference",
+            "statutory_reference": "Section 393(1), Table 6(iii)",
+            "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "source_location": "PDF page 472 (one-based)",
+            "effective_from": "2026-04-01",
+            "effective_to": null,
+            "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+            "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+          }
+        ],
+        "rules_version": "1.0.0",
+        "limitations": [
+          "Exact quotations establish provenance, not semantic correctness.",
+          "No final legal determination, withholding authorization, or return filing."
+        ]
+      },
+      {
+        "case_id": "P3_02",
+        "input_index": 1,
+        "method": "hybrid",
+        "run_status": "OK",
+        "not_run_or_error_reason": null,
+        "date_selection": {
+          "status": "RESOLVED",
+          "applicable_act": "Income-tax Act, 2025",
+          "trigger_date": "2026-10-10",
+          "validation_failures": []
+        },
+        "extracted_facts": {
+          "personnel_supplied": "yes",
+          "worker_supervisor": "customer",
+          "supporting_quotes": [
+            {
+              "fact": "personnel_supplied",
+              "value": "yes",
+              "quote": "Vendor supplies workers."
+            },
+            {
+              "fact": "worker_supervisor",
+              "value": "customer",
+              "quote": "The buyer-side coordinator chooses what each worker does next and checks progress throughout the shift."
+            }
+          ],
+          "missing_facts": [],
+          "contradictory_evidence": []
+        },
+        "validated_facts": {
+          "personnel_supplied": "yes",
+          "worker_supervisor": "unknown",
+          "supporting_quotes": [
+            {
+              "fact": "personnel_supplied",
+              "value": "yes",
+              "quote": "Vendor supplies workers."
+            }
+          ],
+          "missing_facts": [
+            "Reliable evidence of individual-worker supervision/control."
+          ],
+          "contradictory_evidence": []
+        },
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Vendor supplies workers.",
+            "positions": [
+              {
+                "start": 0,
+                "end": 24
+              }
+            ],
+            "verbatim": true,
+            "semantic_guard_passed": true
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "customer",
+            "quote": "The buyer-side coordinator chooses what each worker does next and checks progress throughout the shift.",
+            "positions": [
+              {
+                "start": 25,
+                "end": 128
+              }
+            ],
+            "verbatim": true,
+            "semantic_guard_passed": false
+          }
+        ],
+        "evidence_review": null,
+        "deterministic_context_findings": [],
+        "quote_provenance": {
+          "valid": 2,
+          "total": 2
+        },
+        "missing_information": [
+          "Reliable evidence of individual-worker supervision/control."
+        ],
+        "validation_failures": [
+          "Quote does not pass conservative factual support check",
+          "Unsupported asserted fact: worker_supervisor"
+        ],
+        "raw_output": "{\n  \"personnel_supplied\": \"yes\",\n  \"worker_supervisor\": \"customer\",\n  \"supporting_quotes\": [\n    {\n      \"fact\": \"personnel_supplied\",\n      \"value\": \"yes\",\n      \"quote\": \"Vendor supplies workers.\"\n    },\n    {\n      \"fact\": \"worker_supervisor\",\n      \"value\": \"customer\",\n      \"quote\": \"The buyer-side coordinator chooses what each worker does next and checks progress throughout the shift.\"\n    }\n  ],\n  \"missing_facts\": [],\n  \"contradictory_evidence\": []\n}",
+        "raw_model_status": null,
+        "returned_model": "cohere/north-mini-code:free",
+        "usage": {
+          "prompt_tokens": 340,
+          "completion_tokens": 915,
+          "total_tokens": 1255
+        },
+        "response_metadata": {
+          "finish_reason": "stop",
+          "native_finish_reason": "complete",
+          "refusal": null,
+          "provider": "Cohere",
+          "response_id": "gen-1793680602-gmSWxVvw2EokXB32unyO"
+        },
+        "api_calls": 0,
+        "api_error": false,
+        "runtime_seconds": 0.000289,
+        "factual_evidence_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+        "proposed_table_item": null,
+        "human_review_required": true,
+        "review_status": "NEEDS_REVIEW",
+        "human_review_reasons": [
+          "Qualified human review is required for any legal mapping or tax treatment.",
+          "Contract wording may differ from actual working practices.",
+          "Extraction/evidence validation failed; no table item may be proposed."
+        ],
+        "legal_sources": [
+          {
+            "id": "act_transition",
+            "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+            "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+            "effective_from": "2026-04-01",
+            "effective_to": null,
+            "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+            "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+          },
+          {
+            "id": "manpower_definition",
+            "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+            "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+            "effective_from": "2026-04-01",
+            "effective_to": null,
+            "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+            "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+          },
+          {
+            "id": "customer_manpower_candidate",
+            "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+            "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "source_location": "PDF pages 471 and 509 (one-based)",
+            "effective_from": "2026-04-01",
+            "effective_to": null,
+            "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+            "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+          },
+          {
+            "id": "professional_technical_reference",
+            "statutory_reference": "Section 393(1), Table 6(iii)",
+            "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "source_location": "PDF page 472 (one-based)",
+            "effective_from": "2026-04-01",
+            "effective_to": null,
+            "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+            "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+          }
+        ],
+        "rules_version": "1.0.0",
+        "limitations": [
+          "Exact quotations establish provenance, not semantic correctness.",
+          "No final legal determination, withholding authorization, or return filing."
+        ]
+      },
+      {
+        "case_id": "P3_03",
+        "input_index": 2,
+        "method": "hybrid",
+        "run_status": "OK",
+        "not_run_or_error_reason": null,
+        "date_selection": {
+          "status": "RESOLVED",
+          "applicable_act": "Income-tax Act, 2025",
+          "trigger_date": "2026-10-10",
+          "validation_failures": []
+        },
+        "extracted_facts": {
+          "personnel_supplied": "yes",
+          "worker_supervisor": "vendor",
+          "supporting_quotes": [
+            {
+              "fact": "personnel_supplied",
+              "value": "yes",
+              "quote": "Vendor supplies workers."
+            },
+            {
+              "fact": "worker_supervisor",
+              "value": "vendor",
+              "quote": "Daily working methods and the sequence of jobs for each worker are decided solely by the supplier foreman."
+            }
+          ],
+          "missing_facts": [],
+          "contradictory_evidence": []
+        },
+        "validated_facts": {
+          "personnel_supplied": "yes",
+          "worker_supervisor": "unknown",
+          "supporting_quotes": [
+            {
+              "fact": "personnel_supplied",
+              "value": "yes",
+              "quote": "Vendor supplies workers."
+            }
+          ],
+          "missing_facts": [
+            "Reliable evidence of individual-worker supervision/control."
+          ],
+          "contradictory_evidence": []
+        },
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Vendor supplies workers.",
+            "positions": [
+              {
+                "start": 0,
+                "end": 24
+              }
+            ],
+            "verbatim": true,
+            "semantic_guard_passed": true
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "vendor",
+            "quote": "Daily working methods and the sequence of jobs for each worker are decided solely by the supplier foreman.",
+            "positions": [
+              {
+                "start": 25,
+                "end": 131
+              }
+            ],
+            "verbatim": true,
+            "semantic_guard_passed": false
+          }
+        ],
+        "evidence_review": null,
+        "deterministic_context_findings": [],
+        "quote_provenance": {
+          "valid": 2,
+          "total": 2
+        },
+        "missing_information": [
+          "Reliable evidence of individual-worker supervision/control."
+        ],
+        "validation_failures": [
+          "Quote does not pass conservative factual support check",
+          "Unsupported asserted fact: worker_supervisor"
+        ],
+        "raw_output": "{\n  \"personnel_supplied\": \"yes\",\n  \"worker_supervisor\": \"vendor\",\n  \"supporting_quotes\": [\n    {\n      \"fact\": \"personnel_supplied\",\n      \"value\": \"yes\",\n      \"quote\": \"Vendor supplies workers.\"\n    },\n    {\n      \"fact\": \"worker_supervisor\",\n      \"value\": \"vendor\",\n      \"quote\": \"Daily working methods and the sequence of jobs for each worker are decided solely by the supplier foreman.\"\n    }\n  ],\n  \"missing_facts\": [],\n  \"contradictory_evidence\": []\n}",
+        "raw_model_status": null,
+        "returned_model": "cohere/north-mini-code:free",
+        "usage": {
+          "prompt_tokens": 342,
+          "completion_tokens": 1040,
+          "total_tokens": 1382
+        },
+        "response_metadata": {
+          "finish_reason": "stop",
+          "native_finish_reason": "complete",
+          "refusal": null,
+          "provider": "Cohere",
+          "response_id": "gen-1793680645-EauhfAPvCB9TFa87Fee8"
+        },
+        "api_calls": 0,
+        "api_error": false,
+        "runtime_seconds": 0.000291,
+        "factual_evidence_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+        "proposed_table_item": null,
+        "human_review_required": true,
+        "review_status": "NEEDS_REVIEW",
+        "human_review_reasons": [
+          "Qualified human review is required for any legal mapping or tax treatment.",
+          "Contract wording may differ from actual working practices.",
+          "Extraction/evidence validation failed; no table item may be proposed."
+        ],
+        "legal_sources": [
+          {
+            "id": "act_transition",
+            "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+            "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+            "effective_from": "2026-04-01",
+            "effective_to": null,
+            "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+            "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+          },
+          {
+            "id": "manpower_definition",
+            "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+            "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+            "effective_from": "2026-04-01",
+            "effective_to": null,
+            "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+            "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+          },
+          {
+            "id": "customer_manpower_candidate",
+            "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+            "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "source_location": "PDF pages 471 and 509 (one-based)",
+            "effective_from": "2026-04-01",
+            "effective_to": null,
+            "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+            "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+          },
+          {
+            "id": "professional_technical_reference",
+            "statutory_reference": "Section 393(1), Table 6(iii)",
+            "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "source_location": "PDF page 472 (one-based)",
+            "effective_from": "2026-04-01",
+            "effective_to": null,
+            "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+            "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+          }
+        ],
+        "rules_version": "1.0.0",
+        "limitations": [
+          "Exact quotations establish provenance, not semantic correctness.",
+          "No final legal determination, withholding authorization, or return filing."
+        ]
+      },
+      {
+        "case_id": "P3_04",
+        "input_index": 3,
+        "method": "hybrid",
+        "run_status": "OK",
+        "not_run_or_error_reason": null,
+        "date_selection": {
+          "status": "RESOLVED",
+          "applicable_act": "Income-tax Act, 2025",
+          "trigger_date": "2026-10-10",
+          "validation_failures": []
+        },
+        "extracted_facts": {
+          "personnel_supplied": "yes",
+          "worker_supervisor": "unknown",
+          "supporting_quotes": [
+            {
+              "fact": "personnel_supplied",
+              "value": "yes",
+              "quote": "Vendor supplies workers."
+            }
+          ],
+          "missing_facts": [
+            "Supervision relationship (who supervises the workers?)"
+          ],
+          "contradictory_evidence": []
+        },
+        "validated_facts": {
+          "personnel_supplied": "yes",
+          "worker_supervisor": "unknown",
+          "supporting_quotes": [
+            {
+              "fact": "personnel_supplied",
+              "value": "yes",
+              "quote": "Vendor supplies workers."
+            }
+          ],
+          "missing_facts": [
+            "Supervision relationship (who supervises the workers?)",
+            "Reliable evidence of individual-worker supervision/control."
+          ],
+          "contradictory_evidence": []
+        },
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Vendor supplies workers.",
+            "positions": [
+              {
+                "start": 0,
+                "end": 24
+              }
+            ],
+            "verbatim": true,
+            "semantic_guard_passed": true
+          }
+        ],
+        "evidence_review": null,
+        "deterministic_context_findings": [],
+        "quote_provenance": {
+          "valid": 1,
+          "total": 1
+        },
+        "missing_information": [
+          "Supervision relationship (who supervises the workers?)",
+          "Reliable evidence of individual-worker supervision/control."
+        ],
+        "validation_failures": [],
+        "raw_output": "{\n  \"personnel_supplied\": \"yes\",\n  \"worker_supervisor\": \"unknown\",\n  \"supporting_quotes\": [\n    {\n      \"fact\": \"personnel_supplied\",\n      \"value\": \"yes\",\n      \"quote\": \"Vendor supplies workers.\"\n    }\n  ],\n  \"missing_facts\": [\n    \"Supervision relationship (who supervises the workers?)\"\n  ],\n  \"contradictory_evidence\": []\n}",
+        "raw_model_status": null,
+        "returned_model": "cohere/north-mini-code:free",
+        "usage": {
+          "prompt_tokens": 331,
+          "completion_tokens": 1093,
+          "total_tokens": 1424
+        },
+        "response_metadata": {
+          "finish_reason": "stop",
+          "native_finish_reason": "complete",
+          "refusal": null,
+          "provider": "Cohere",
+          "response_id": "gen-1793680684-iHjB12b0mLI4q7h5lWKt"
+        },
+        "api_calls": 0,
+        "api_error": false,
+        "runtime_seconds": 0.000156,
+        "factual_evidence_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+        "proposed_table_item": null,
+        "human_review_required": true,
+        "review_status": "NEEDS_REVIEW",
+        "human_review_reasons": [
+          "Qualified human review is required for any legal mapping or tax treatment.",
+          "Contract wording may differ from actual working practices."
+        ],
+        "legal_sources": [
+          {
+            "id": "act_transition",
+            "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+            "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+            "effective_from": "2026-04-01",
+            "effective_to": null,
+            "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+            "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+          },
+          {
+            "id": "manpower_definition",
+            "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+            "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+            "effective_from": "2026-04-01",
+            "effective_to": null,
+            "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+            "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+          },
+          {
+            "id": "customer_manpower_candidate",
+            "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+            "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "source_location": "PDF pages 471 and 509 (one-based)",
+            "effective_from": "2026-04-01",
+            "effective_to": null,
+            "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+            "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+          },
+          {
+            "id": "professional_technical_reference",
+            "statutory_reference": "Section 393(1), Table 6(iii)",
+            "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "source_location": "PDF page 472 (one-based)",
+            "effective_from": "2026-04-01",
+            "effective_to": null,
+            "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+            "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+          }
+        ],
+        "rules_version": "1.0.0",
+        "limitations": [
+          "Exact quotations establish provenance, not semantic correctness.",
+          "No final legal determination, withholding authorization, or return filing."
+        ]
+      },
+      {
+        "case_id": "P3_05",
+        "input_index": 4,
+        "method": "hybrid",
+        "run_status": "OK",
+        "not_run_or_error_reason": null,
+        "date_selection": {
+          "status": "RESOLVED",
+          "applicable_act": "Income-tax Act, 2025",
+          "trigger_date": "2026-10-10",
+          "validation_failures": []
+        },
+        "extracted_facts": {
+          "personnel_supplied": "yes",
+          "worker_supervisor": "vendor",
+          "supporting_quotes": [
+            {
+              "fact": "personnel_supplied",
+              "value": "yes",
+              "quote": "Vendor supplies workers."
+            },
+            {
+              "fact": "worker_supervisor",
+              "value": "vendor",
+              "quote": "Customer must not supervise workers."
+            }
+          ],
+          "missing_facts": [],
+          "contradictory_evidence": []
+        },
+        "validated_facts": {
+          "personnel_supplied": "yes",
+          "worker_supervisor": "unknown",
+          "supporting_quotes": [
+            {
+              "fact": "personnel_supplied",
+              "value": "yes",
+              "quote": "Vendor supplies workers."
+            }
+          ],
+          "missing_facts": [
+            "Reliable evidence of individual-worker supervision/control."
+          ],
+          "contradictory_evidence": []
+        },
+        "supporting_quotes": [
+          {
+            "fact": "personnel_supplied",
+            "value": "yes",
+            "quote": "Vendor supplies workers.",
+            "positions": [
+              {
+                "start": 0,
+                "end": 24
+              }
+            ],
+            "verbatim": true,
+            "semantic_guard_passed": true
+          },
+          {
+            "fact": "worker_supervisor",
+            "value": "vendor",
+            "quote": "Customer must not supervise workers.",
+            "positions": [
+              {
+                "start": 25,
+                "end": 61
+              }
+            ],
+            "verbatim": true,
+            "semantic_guard_passed": false
+          }
+        ],
+        "evidence_review": null,
+        "deterministic_context_findings": [],
+        "quote_provenance": {
+          "valid": 2,
+          "total": 2
+        },
+        "missing_information": [
+          "Reliable evidence of individual-worker supervision/control.",
+          "Resolve rejected evidence before relying on the asserted control."
+        ],
+        "validation_failures": [
+          "Quote does not pass conservative factual support check",
+          "Unsupported asserted fact: worker_supervisor"
+        ],
+        "raw_output": "{\n  \"personnel_supplied\": \"yes\",\n  \"worker_supervisor\": \"vendor\",\n  \"supporting_quotes\": [\n    {\n      \"fact\": \"personnel_supplied\",\n      \"value\": \"yes\",\n      \"quote\": \"Vendor supplies workers.\"\n    },\n    {\n      \"fact\": \"worker_supervisor\",\n      \"value\": \"vendor\",\n      \"quote\": \"Customer must not supervise workers.\"\n    }\n  ],\n  \"missing_facts\": [],\n  \"contradictory_evidence\": []\n}",
+        "raw_model_status": null,
+        "returned_model": "cohere/north-mini-code:free",
+        "usage": {
+          "prompt_tokens": 329,
+          "completion_tokens": 863,
+          "total_tokens": 1192
+        },
+        "response_metadata": {
+          "finish_reason": "stop",
+          "native_finish_reason": "complete",
+          "refusal": null,
+          "provider": "Cohere",
+          "response_id": "gen-1793680732-xdu0DdLSHEgrXs1aA5Tt"
+        },
+        "api_calls": 0,
+        "api_error": false,
+        "runtime_seconds": 0.000199,
+        "factual_evidence_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+        "proposed_table_item": null,
+        "human_review_required": true,
+        "review_status": "NEEDS_REVIEW",
+        "human_review_reasons": [
+          "Qualified human review is required for any legal mapping or tax treatment.",
+          "Contract wording may differ from actual working practices.",
+          "Extraction/evidence validation failed; no table item may be proposed."
+        ],
+        "legal_sources": [
+          {
+            "id": "act_transition",
+            "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+            "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+            "effective_from": "2026-04-01",
+            "effective_to": null,
+            "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+            "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+          },
+          {
+            "id": "manpower_definition",
+            "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+            "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+            "effective_from": "2026-04-01",
+            "effective_to": null,
+            "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+            "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+          },
+          {
+            "id": "customer_manpower_candidate",
+            "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+            "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "source_location": "PDF pages 471 and 509 (one-based)",
+            "effective_from": "2026-04-01",
+            "effective_to": null,
+            "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+            "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+          },
+          {
+            "id": "professional_technical_reference",
+            "statutory_reference": "Section 393(1), Table 6(iii)",
+            "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+            "source_location": "PDF page 472 (one-based)",
+            "effective_from": "2026-04-01",
+            "effective_to": null,
+            "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+            "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+          }
+        ],
+        "rules_version": "1.0.0",
+        "limitations": [
+          "Exact quotations establish provenance, not semantic correctness.",
+          "No final legal determination, withholding authorization, or return filing."
+        ]
+      }
+    ],
+    "evaluation": {
+      "interpretation": "Agreement with synthetic provisional factual annotations, not validated tax-classification accuracy",
+      "metrics": {
+        "status_agreement": {
+          "numerator": 3,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 0.6,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "false_confident_removed": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "removed_correct_abstention": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "contradictions": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "date_act_agreement": {
+          "numerator": 5,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "old_act_crossover": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "out_of_scope": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "injection_abstention": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "human_review_required": {
+          "numerator": 5,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "abstention": {
+          "numerator": 4,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 0.8,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "execution_errors": {
+          "numerator": 0,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 0.0,
+          "status": "MEASURED",
+          "reason": null,
+          "eligible": 5
+        },
+        "api_errors": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "API calls",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": null,
+          "eligible": 0
+        },
+        "personnel_supply_correctness": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Frozen dataset has no independent personnel_supplied labels; not scored",
+          "eligible": 5
+        },
+        "supported_supervisor_agreement": {
+          "numerator": 3,
+          "denominator": 5,
+          "unit": "cases",
+          "value": 0.6,
+          "status": "MEASURED",
+          "reason": "Supervisor labels derived from provisional factual statuses; no independent semantic annotation",
+          "eligible": 5
+        },
+        "quote_provenance": {
+          "numerator": 9,
+          "denominator": 9,
+          "unit": "submitted quotes",
+          "value": 1.0,
+          "status": "MEASURED",
+          "reason": "All submitted supporting/contradictory quotes counted, including duplicates and rejected quotes; provenance only",
+          "eligible": 9
+        },
+        "full_anchor_retrieval": {
+          "numerator": 1,
+          "denominator": 3,
+          "unit": "frozen anchors",
+          "value": 0.3333333333333333,
+          "status": "MEASURED",
+          "reason": "Entire frozen anchor must occur inside one accepted quote; multi-sentence anchors may be missed",
+          "eligible": 3
+        }
+      },
+      "safety_target": {
+        "target": "Zero false-confident decisions on four CONTROL_REMOVED cases",
+        "status": "NOT_EVALUATED",
+        "limitation": "Small visible development set; not proof of production reliability"
+      }
+    },
+    "comparison": {
+      "successful": {
+        "numerator": 5,
+        "denominator": 5,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 5
+      },
+      "execution_failures": {
+        "numerator": 0,
+        "denominator": 5,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 5
+      },
+      "not_run": {
+        "numerator": 0,
+        "denominator": 5,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 5
+      },
+      "api_errors": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "API attempts",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "attempted_but_not_usable": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "API attempts",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "refusals": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "API attempts",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "false_positive_directional": {
+        "numerator": 0,
+        "denominator": 5,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 5
+      },
+      "false_negative_directional": {
+        "numerator": 2,
+        "denominator": 3,
+        "unit": "cases",
+        "value": 0.6666666666666666,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 3
+      },
+      "abstentions": {
+        "numerator": 4,
+        "denominator": 5,
+        "unit": "cases",
+        "value": 0.8,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 5
+      },
+      "appropriate_insufficient_abstentions": {
+        "numerator": 2,
+        "denominator": 2,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 2
+      },
+      "missing_control_evidence": {
+        "numerator": 4,
+        "denominator": 5,
+        "unit": "cases",
+        "value": 0.8,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 5
+      },
+      "quote_errors": {
+        "numerator": 0,
+        "denominator": 9,
+        "unit": "submitted quotes",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 9
+      },
+      "exact_but_unverified_interpretations": {
+        "numerator": 3,
+        "denominator": 9,
+        "unit": "verbatim quotes",
+        "value": 0.3333333333333333,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 9
+      },
+      "review_only_cases": {
+        "numerator": 0,
+        "denominator": 5,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 5
+      },
+      "false_positive_case_ids": [],
+      "false_negative_case_ids": [
+        "P3_02",
+        "P3_03"
+      ],
+      "case_results": [
+        {
+          "case_id": "P3_01",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": {
+            "reference": "Section 393(1), Table 6(i)",
+            "basis": "Section 402(47)(f)",
+            "status": "PROVISIONAL_REQUIRES_QUALIFIED_HUMAN_REVIEW",
+            "mapping_verification": "NOT_PRACTITIONER_VALIDATED",
+            "rule_id": "customer_manpower_candidate"
+          },
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_02",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor"
+          ]
+        },
+        {
+          "case_id": "P3_03",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor"
+          ]
+        },
+        {
+          "case_id": "P3_04",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": []
+        },
+        {
+          "case_id": "P3_05",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "evidence_state": null,
+          "proposal": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor"
+          ]
+        }
+      ],
+      "interpretation": "Directional false negatives may be justified safety abstentions. Unexecuted cases never count as predictions. Direct mode has no fact/quote extraction; those metrics are not applicable."
+    }
+  },
+  "before_after_live_cases": [
+    {
+      "case_id": "P3_01",
+      "old_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "new_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "old_proposal": {
+        "reference": "Section 393(1), Table 6(i)",
+        "basis": "Section 402(47)(f)",
+        "status": "PROVISIONAL_REQUIRES_QUALIFIED_HUMAN_REVIEW",
+        "mapping_verification": "NOT_PRACTITIONER_VALIDATED",
+        "rule_id": "customer_manpower_candidate"
+      },
+      "new_proposal": {
+        "reference": "Section 393(1), Table 6(i)",
+        "basis": "Section 402(47)(f)",
+        "status": "PROVISIONAL_REQUIRES_QUALIFIED_HUMAN_REVIEW",
+        "mapping_verification": "NOT_PRACTITIONER_VALIDATED",
+        "rule_id": "customer_manpower_candidate"
+      },
+      "new_review_state": "SUPPORTED_FACTUAL_EVIDENCE"
+    },
+    {
+      "case_id": "P3_02",
+      "old_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "new_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "old_proposal": null,
+      "new_proposal": null,
+      "new_review_state": "AI_SUGGESTED_REQUIRING_REVIEW"
+    },
+    {
+      "case_id": "P3_03",
+      "old_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "new_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "old_proposal": null,
+      "new_proposal": null,
+      "new_review_state": "AI_SUGGESTED_REQUIRING_REVIEW"
+    },
+    {
+      "case_id": "P3_04",
+      "old_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "new_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "old_proposal": null,
+      "new_proposal": null,
+      "new_review_state": "INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "case_id": "P3_05",
+      "old_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "new_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "old_proposal": null,
+      "new_proposal": null,
+      "new_review_state": "INSUFFICIENT_EVIDENCE"
+    }
+  ],
+  "successful_response_models": [
+    "cohere/north-mini-code:free"
+  ],
+  "runtime": {
+    "direct-llm": {
+      "attempts": 6,
+      "seconds_excluding_pacing": 25.041449
+    },
+    "hybrid": {
+      "attempts": 6,
+      "seconds_excluding_pacing": 45.829888
+    }
+  },
+  "refusals": {
+    "observed": 0,
+    "decoded_responses": 11,
+    "undecodable_response_attempts": 1
+  },
+  "interpretation": "Common completed cases only for paired comparison. Old-validator replay uses the unchanged submitted validate_evidence and the exact saved model extractions. Neither replay nor fixtures are new API calls."
+}
