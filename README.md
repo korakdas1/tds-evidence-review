@@ -12,6 +12,9 @@ Nothing in this repository determines tax treatment, calculates tax, authorises 
 
 **Phase 6C:** document reviews now use resource-isolated Linux parser workers with wall/CPU/memory limits. The previously blocking 43 KB stress case is contained; see [PHASE_6C_REPORT.md](PHASE_6C_REPORT.md) and the unchanged [independent audit](PHASE_6_CODEX_AUDIT.md). Resource isolation is not a complete security sandbox or production-readiness claim. The sequential development plan is [docs/MULTI_PHASE_GOAL.md](docs/MULTI_PHASE_GOAL.md). No live model calls are authorized in this development session.
 
+**Phase 6D:** optional [reviewer-held history checkpoints](docs/EXTERNAL_CHECKPOINTS.md) detect divergence from an independently kept history prefix. The [Chrome/Firefox harness](browser_tests/README.md) reproduces upload, decision, tampering, warning and mobile/keyboard checks. See [PHASE_6D_REPORT.md](PHASE_6D_REPORT.md).
+
+
 ## Quick start
 
 You need Python 3.9 or later for the review app and PDF support (the JSON command-line baseline alone runs on 3.8). Document review and its worker currently require Linux (including OS resource limits); hardened web storage also requires POSIX no-follow operations. The JSON-only command-line path remains unchanged. Use the provided CLI entry points or a guarded `if __name__ == "__main__"` entry point when invoking document reviews from scripts. After installation nothing needs internet access, an API key or a paid service.
@@ -30,7 +33,7 @@ python -m pip install -r requirements-pdf.txt   # pypdf 6.21.4, the only depende
 | Launch the review app | `python review_app.py --open` | Opens http://127.0.0.1:8765/ in your browser (this computer only) |
 | Run the offline demo | `python demo.py` | Three JSON examples, including a replayed historical model mistake |
 | Run the offline PDF demo | `python pdf_demo.py` | A synthetic PDF with page and character offsets; proposal withheld |
-| Run all automated tests | `python -m unittest discover -v` | 187 tests, all passing; local HTTP tests use loopback sockets |
+| Run all automated tests | `python -m unittest discover -v` | 196 tests, all passing; local HTTP tests use loopback sockets |
 
 App options:
 - `--port 8765`

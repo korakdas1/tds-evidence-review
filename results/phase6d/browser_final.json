@@ -1,0 +1,81 @@
+{
+  "schema": "tds-browser-regression-v1",
+  "synthetic": true,
+  "live_model_calls": 0,
+  "browsers": [
+    {
+      "browser": "chrome",
+      "status": "PASS",
+      "checks": [
+        "fresh dashboard has zero cases",
+        "empty form gives actionable validation",
+        "typing clears stale error",
+        "manual upload creates baseline case with withheld proposal",
+        "source button selects exact extracted passage",
+        "roving tabs support arrows Home End",
+        "dialog removes background from focus/accessibility",
+        "dialog focus remains contained 0",
+        "dialog focus remains contained 1",
+        "dialog focus remains contained 2",
+        "dialog focus remains contained 3",
+        "dialog focus remains contained 4",
+        "Escape restores background",
+        "review decision appends history without changing findings",
+        "original PDF viewer has accessible title and local URL",
+        "visible buttons and tabs have accessible names",
+        "damaged PDF prevents quotation decisions",
+        "untrusted view contains no findings/decision buttons",
+        "untrusted export quarantines altered run",
+        "dashboard suppresses untrusted findings",
+        "mobile dashboard has no horizontal overflow",
+        "scanned sample remains document review with no proposal",
+        "mobile workspace has no horizontal overflow",
+        "no uncaught browser exceptions",
+        "no attempted external browser requests"
+      ],
+      "version": "154.0.8037.57",
+      "page_errors": [],
+      "blocked_external_requests": 0,
+      "blocked_external_urls": [],
+      "browser_internal_request_schemes": [
+        "chrome-extension"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "status": "PASS",
+      "checks": [
+        "fresh dashboard has zero cases",
+        "empty form gives actionable validation",
+        "typing clears stale error",
+        "manual upload creates baseline case with withheld proposal",
+        "source button selects exact extracted passage",
+        "roving tabs support arrows Home End",
+        "dialog removes background from focus/accessibility",
+        "dialog focus remains contained 0",
+        "dialog focus remains contained 1",
+        "dialog focus remains contained 2",
+        "dialog focus remains contained 3",
+        "dialog focus remains contained 4",
+        "Escape restores background",
+        "review decision appends history without changing findings",
+        "original PDF viewer has accessible title and local URL",
+        "visible buttons and tabs have accessible names",
+        "damaged PDF prevents quotation decisions",
+        "untrusted view contains no findings/decision buttons",
+        "untrusted export quarantines altered run",
+        "dashboard suppresses untrusted findings",
+        "mobile dashboard has no horizontal overflow",
+        "scanned sample remains document review with no proposal",
+        "mobile workspace has no horizontal overflow",
+        "no uncaught browser exceptions",
+        "no attempted external browser requests"
+      ],
+      "version": "157.0",
+      "page_errors": [],
+      "blocked_external_requests": 0,
+      "blocked_external_urls": [],
+      "browser_internal_request_schemes": []
+    }
+  ]
+}

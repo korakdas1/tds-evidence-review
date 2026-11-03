@@ -7,7 +7,7 @@ Authorized scope: Phases 6C, 6D, 7A, 8A and 9, sequentially, on `feature/full-pr
 | Phase | Required implementation and verification | State / evidence |
 |---|---|---|
 | 6C | Linux worker wall/CPU/memory limits; terminate/reap; bounded input/output; explicit failures; zero partial trust; original fixtures; contained 43 KB stress; responsive HTTP server; all original 175 tests | VERIFIED: 187/187 tests; 19/19 fixture outcomes; stress CPU-limited/reaped at 4.018 s; `PHASE_6C_REPORT.md` |
-| 6D | Optional reviewer-held external history checkpoint or signed export; explain exact trust claim; committed Chrome/Firefox browser harness covering decisions, tampering, mobile, PDF warnings, accessibility basics; repeatable instructions | Pending |
+| 6D | Optional reviewer-held external history checkpoint or signed export; explain exact trust claim; committed Chrome/Firefox browser harness covering decisions, tampering, mobile, PDF warnings, accessibility basics; repeatable instructions | VERIFIED: 196/196 tests; Chrome/Firefox 25/25 checks each; `PHASE_6D_REPORT.md` |
 | 7A | Offline default; explicit live choice + configured model + external-transmission notice + per-run confirmation; allowlist/spend/request/time limits; no paid fallback; existing evidence/review safeguards; distinct offline/simulated/live records; mocked E2E only | Pending |
 | 8A | Reproducible baseline/direct/hybrid comparison; agreement/incorrect confidence/abstention/provenance/unsupported interpretation/latency/token/cost accounting; preserve frozen data; versioned protocol and independent-practitioner input format; distinguish offline/simulated/historical/live | Pending |
 | 9 | Focused usability, security/errors, complete offline demo, fresh clone setup, architecture/operations/portfolio README, private-file audit, regression gates | Pending |
@@ -24,3 +24,6 @@ Before marking the durable goal complete, verify all five reports and their impl
 - 6C design: retain the parser/provenance core, add a resource-isolated Python worker used by document reviews (server, PDF demo and PDF evaluation). Keep low-level parser callable for trusted unit diagnostics; no in-process fallback from the public review path. Resource isolation is not a full security sandbox.
 
 - 6C verified: original 175 + 12 new tests pass; frozen outcomes unchanged; 43,115-byte stress returns CPU_LIMIT, no spans, reaped. Secret/file review passed. Next: commit/push verified 6C, then external checkpoint and browser harness work in 6D.
+
+- 6C committed/pushed as `d64a7d2803f88ca74979d4bc2539bc56c9338875`; remote verified and Issue #1 updated.
+- 6D verified: 9 new checkpoint tests, all 196 tests pass; Chrome 154 and Firefox 157 each pass 25 browser checks. First development failures preserved; no frontend changes. Next: controlled live mode with mocked inference only.

@@ -1,0 +1,99 @@
+test_anchored_tail_deletion_is_detected (tests.test_checkpoints.CheckpointTests.test_anchored_tail_deletion_is_detected) ... ok
+test_appended_events_do_not_claim_external_attestation (tests.test_checkpoints.CheckpointTests.test_appended_events_do_not_claim_external_attestation) ... ERROR
+test_bad_checksum_schema_count_and_duplicate_ids (tests.test_checkpoints.CheckpointTests.test_bad_checksum_schema_count_and_duplicate_ids) ... ok
+test_complete_self_consistent_rewrite_fails_external_checkpoint (tests.test_checkpoints.CheckpointTests.test_complete_self_consistent_rewrite_fails_external_checkpoint) ... /media/korak/workspace/5. HACKATHON/tresata-tds-review/src/pdf_ingestion.py:35: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x76e4b97098a0>
+  tokens = list(re.finditer(r"\S+", page["text"]))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+FAIL
+test_invalid_oversized_and_symlink_receipts (tests.test_checkpoints.CheckpointTests.test_invalid_oversized_and_symlink_receipts) ... ERROR
+test_missing_database_is_not_created_and_damaged_document_fails (tests.test_checkpoints.CheckpointTests.test_missing_database_is_not_created_and_damaged_document_fails) ... ERROR
+test_modified_report_and_context_fail (tests.test_checkpoints.CheckpointTests.test_modified_report_and_context_fail) ... /home/korak/miniconda3/lib/python3.13/json/decoder.py:345: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x76e4b97094e0>
+  obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_read_only_snapshot_does_not_modify_database (tests.test_checkpoints.CheckpointTests.test_read_only_snapshot_does_not_modify_database) ... ERROR
+test_roundtrip_private_exclusive_external_file (tests.test_checkpoints.CheckpointTests.test_roundtrip_private_exclusive_external_file) ... ERROR
+
+======================================================================
+ERROR: test_appended_events_do_not_claim_external_attestation (tests.test_checkpoints.CheckpointTests.test_appended_events_do_not_claim_external_attestation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/tests/test_checkpoints.py", line 44, in test_appended_events_do_not_claim_external_attestation
+    result = self.verify()
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/tests/test_checkpoints.py", line 28, in verify
+    return verify_checkpoint(self.store.data_dir, receipt or self.receipt)
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/webapp/checkpoint.py", line 103, in verify_checkpoint
+    body = _validate(receipt)
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/webapp/checkpoint.py", line 98, in _validate
+    raise CheckpointError('Invalid checkpoint format or checksum') from None
+webapp.checkpoint.CheckpointError: Invalid checkpoint format or checksum
+
+======================================================================
+ERROR: test_invalid_oversized_and_symlink_receipts (tests.test_checkpoints.CheckpointTests.test_invalid_oversized_and_symlink_receipts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/tests/test_checkpoints.py", line 129, in test_invalid_oversized_and_symlink_receipts
+    write_checkpoint(link, self.store.data_dir, self.receipt)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/webapp/checkpoint.py", line 120, in write_checkpoint
+    _validate(receipt)
+    ~~~~~~~~~^^^^^^^^^
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/webapp/checkpoint.py", line 98, in _validate
+    raise CheckpointError('Invalid checkpoint format or checksum') from None
+webapp.checkpoint.CheckpointError: Invalid checkpoint format or checksum
+
+======================================================================
+ERROR: test_missing_database_is_not_created_and_damaged_document_fails (tests.test_checkpoints.CheckpointTests.test_missing_database_is_not_created_and_damaged_document_fails)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/tests/test_checkpoints.py", line 112, in test_missing_database_is_not_created_and_damaged_document_fails
+    sha = self.view['run']['contract_sha256']
+          ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+KeyError: 'contract_sha256'
+
+======================================================================
+ERROR: test_read_only_snapshot_does_not_modify_database (tests.test_checkpoints.CheckpointTests.test_read_only_snapshot_does_not_modify_database)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/tests/test_checkpoints.py", line 100, in test_read_only_snapshot_does_not_modify_database
+    self.verify()
+    ~~~~~~~~~~~^^
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/tests/test_checkpoints.py", line 28, in verify
+    return verify_checkpoint(self.store.data_dir, receipt or self.receipt)
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/webapp/checkpoint.py", line 103, in verify_checkpoint
+    body = _validate(receipt)
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/webapp/checkpoint.py", line 98, in _validate
+    raise CheckpointError('Invalid checkpoint format or checksum') from None
+webapp.checkpoint.CheckpointError: Invalid checkpoint format or checksum
+
+======================================================================
+ERROR: test_roundtrip_private_exclusive_external_file (tests.test_checkpoints.CheckpointTests.test_roundtrip_private_exclusive_external_file)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/tests/test_checkpoints.py", line 32, in test_roundtrip_private_exclusive_external_file
+    write_checkpoint(path, self.store.data_dir, self.receipt)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/webapp/checkpoint.py", line 120, in write_checkpoint
+    _validate(receipt)
+    ~~~~~~~~~^^^^^^^^^
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/webapp/checkpoint.py", line 98, in _validate
+    raise CheckpointError('Invalid checkpoint format or checksum') from None
+webapp.checkpoint.CheckpointError: Invalid checkpoint format or checksum
+
+======================================================================
+FAIL: test_complete_self_consistent_rewrite_fails_external_checkpoint (tests.test_checkpoints.CheckpointTests.test_complete_self_consistent_rewrite_fails_external_checkpoint)
+----------------------------------------------------------------------
+webapp.checkpoint.CheckpointError: Invalid checkpoint format or checksum
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/tests/test_checkpoints.py", line 62, in test_complete_self_consistent_rewrite_fails_external_checkpoint
+    with self.assertRaisesRegex(CheckpointError, 'externally held'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "externally held" does not match "Invalid checkpoint format or checksum"
+
+----------------------------------------------------------------------
+Ran 9 tests in 2.693s
+
+FAILED (failures=1, errors=5)
