@@ -26,3 +26,6 @@ results/*raw*
 .vscode/
 .DS_Store
 *.swp
+
+# Phase 5 local review data: uploaded documents and the review database stay local
+local_data/

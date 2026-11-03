@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>TDS Evidence Review</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/app.css">
+  <script type="module" src="/js/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <a class="brand" href="#/" aria-label="TDS Evidence Review home">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="3" y="3" width="26" height="26" rx="7" class="brand-mark-bg"/>
+        <path d="M9.5 16.5l4.2 4.2L22.8 11" class="brand-mark-tick"/>
+      </svg>
+      <span class="brand-name">TDS Evidence Review</span>
+    </a>
+    <nav class="topnav" aria-label="Primary">
+      <a href="#/" data-nav="reviews">Reviews</a>
+      <a href="#/new" data-nav="new">New review</a>
+    </nav>
+    <div class="topbar-tools">
+      <span class="offline-flag" title="No model or network calls. Data stays in a local folder.">
+        <span class="offline-dot" aria-hidden="true"></span>Offline, this computer only
+      </span>
+      <button class="reviewer-chip" id="reviewer-chip" type="button" aria-label="Set reviewer name"></button>
+      <button class="icon-button" id="theme-toggle" type="button" aria-label="Switch colour theme">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-sun"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-moon"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="main" tabindex="-1"></main>
+  <div id="toasts" class="toasts" role="status" aria-live="polite"></div>
+  <div id="modal-root"></div>
+  <noscript><p class="noscript">This local review app needs JavaScript enabled.</p></noscript>
+</body>
+</html>

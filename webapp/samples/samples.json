@@ -1,0 +1,97 @@
+{
+  "kind": "SYNTHETIC_DEMONSTRATION_SAMPLES",
+  "note": "All documents are synthetic. Hand-authored extractions are NOT model outputs; they replay through the existing hybrid validator without any network call.",
+  "samples": [
+    {
+      "id": "warehouse",
+      "title": "Warehouse manpower support",
+      "summary": "Contract and invoice. The rule checks find supplied workers who are supervised by the customer.",
+      "contract": "webapp/samples/warehouse_agreement.pdf",
+      "contract_sha256": "959d1dac43991fffea456e79615b48f717cab4821197aa947984ea37d37c0f18",
+      "invoice": "webapp/samples/warehouse_invoice.pdf",
+      "invoice_sha256": "d6b51a192a1945120d913d82b0b93f0966066c1fe03fbe1042706dffae6692cf",
+      "method": "baseline",
+      "metadata": {
+        "id": "SYN-WH-0042",
+        "invoice_description": "Monthly warehouse personnel support, October 2026 (synthetic).",
+        "payer_type": "Indian resident private company",
+        "payee_residency": "India resident",
+        "payee_legal_form": "Indian resident private company",
+        "credit_date": "2026-10-10",
+        "payment_date": "2026-10-20"
+      }
+    },
+    {
+      "id": "event-crew",
+      "title": "Event crew with unfamiliar wording",
+      "summary": "A hand-authored extraction reads a coordinator clause as customer supervision. The rules cannot confirm it, so it stays an AI suggestion.",
+      "contract": "webapp/samples/event_staffing_agreement.pdf",
+      "contract_sha256": "15fa27606eaea2da5192fed66abc871333c5a78c92f21e8c66d905aae8b8ab9b",
+      "method": "supplied_extraction",
+      "supplied_extraction_note": "Hand-authored demonstration extraction. Not a model output.",
+      "supplied_extraction": {
+        "personnel_supplied": "yes",
+        "worker_supervisor": "customer",
+        "supporting_quotes": [
+          {"fact": "personnel_supplied", "value": "yes", "quote": "The Vendor supplies ten event workers for the annual conference."},
+          {"fact": "worker_supervisor", "value": "customer", "quote": "The buyer-side coordinator chooses what each worker does next and checks progress throughout the shift."}
+        ],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "metadata": {
+        "id": "SYN-EV-0107",
+        "invoice_description": "Conference crew, three days (synthetic).",
+        "payer_type": "Indian resident private company",
+        "payee_residency": "India resident",
+        "payee_legal_form": "Indian resident private company",
+        "credit_date": "2026-09-05",
+        "payment_date": "2026-09-12"
+      }
+    },
+    {
+      "id": "maintenance",
+      "title": "Plant maintenance with conflicting clauses",
+      "summary": "One clause says the customer supervises technicians; another says the vendor directs them.",
+      "contract": "webapp/samples/maintenance_agreement.pdf",
+      "contract_sha256": "4b5eb3c0c193285645640ccf8ce78cc5c221cf6e02ddd619e2e71ad20620bdcf",
+      "method": "baseline",
+      "metadata": {
+        "id": "SYN-MT-0311",
+        "invoice_description": "Plant maintenance technicians, August 2026 (synthetic).",
+        "payer_type": "Indian resident private company",
+        "payee_residency": "India resident",
+        "payee_legal_form": "Indian resident private company",
+        "credit_date": "2026-08-28",
+        "payment_date": "2026-09-03"
+      }
+    },
+    {
+      "id": "reading-order",
+      "title": "Two-column layout (reading order risk)",
+      "summary": "Phase 4 test fixture. Plain and layout extraction disagree, so the text needs visual checking.",
+      "contract": "tests/fixtures/pdf_v1/reading_order.pdf",
+      "contract_sha256": "fixture-manifest",
+      "method": "baseline",
+      "metadata_file": "tests/fixtures/pdf_v1/transaction.json"
+    },
+    {
+      "id": "cross-page",
+      "title": "Quotation split across pages",
+      "summary": "Phase 4 test fixture. One supporting sentence starts on page 1 and ends on page 2.",
+      "contract": "tests/fixtures/pdf_v1/cross_page.pdf",
+      "contract_sha256": "fixture-manifest",
+      "method": "baseline",
+      "metadata_file": "tests/fixtures/pdf_v1/transaction.json"
+    },
+    {
+      "id": "scanned",
+      "title": "Scanned page without selectable text",
+      "summary": "Phase 4 test fixture. No text can be read without OCR, so nothing is inferred.",
+      "contract": "tests/fixtures/pdf_v1/scanned.pdf",
+      "contract_sha256": "fixture-manifest",
+      "method": "baseline",
+      "metadata_file": "tests/fixtures/pdf_v1/transaction.json"
+    }
+  ]
+}

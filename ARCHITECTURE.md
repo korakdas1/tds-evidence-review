@@ -123,3 +123,24 @@ python evaluate_pdfs.py --output-dir results/local/pdf-evaluation-new
 ```
 
 The frozen `tests/fixtures/pdf_v1/manifest.json` records expectations and hashes for 18 synthetic PDFs and one unsupported text file. The fixtures were authored from the intended failure modes and frozen before extraction evaluation. They are development tests, not independently validated model cases. Evaluation counts canonical evidence items separately from page fragments (one cross-page item has two fragments). The invoice fixture also runs as a contract-input stress case; separate invoice integration is tested and demonstrated. See [PHASE_4_REPORT.md](PHASE_4_REPORT.md) for exact outcomes and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for dependency licensing.
+
+## Phase 5: local review workspace
+
+Phase 5 adds the `webapp/` package, `review_app.py` and `tests/test_webapp.py`. It does not modify `src/` or any earlier test, fixture or result. It is a presentation and record-keeping layer around `review_pdf_contract()`:
+
+```mermaid
+flowchart LR
+    U[Reviewer browser, loopback only] --> S[webapp.server App.handle]
+    S --> V[webapp.service]
+    V --> P[Unchanged review_pdf_contract]
+    P --> R[(Immutable run: report JSON + SHA-256)]
+    V --> E[(Append-only reviewer events, hash chain)]
+    R --> M[View model: verify_location + stored-file hash]
+    E --> M
+    M --> U
+```
+
+There is **no arrow from reviewer events back to the pipeline or rules**. A run is analysed once and stored with its hash. Reviewer events sit beside the run and carry an explicit `effect` of no change to findings, proposals or tax treatment. Correcting transaction details creates a new run from the same stored documents; earlier runs and their decisions remain readable.
+
+Spans are displayed only when the stored file still matches the analysed SHA-256 and `verify_location()` accepts the fragment. Highlights address extracted text, not PDF glyph or pixel positions; the original PDF is shown unannotated in the browser's own viewer. The optional "supplied extraction replay" passes a caller-provided five-field extraction through the existing hybrid validator without any network client. It is recorded as simulated, with zero model network calls. All PDF statutory proposals remain withheld, exactly as in Phase 4. See [PHASE_5_REPORT.md](PHASE_5_REPORT.md).
+

@@ -44,6 +44,21 @@ Output destinations must be new. PDFs are limited to 5 MiB and 20 pages, with fu
 
 Phase 4 validation: **113/113 tests passed** (87 preserved + 26 new); the original 87 also passed with site packages disabled. PDF fixtures: **19/19 expected outcomes**, comprising 9 extracted, 7 requiring document review and 3 rejected; **25/25 evidence items mapped, 26/26 page fragments verified, 10/10 invalid-location probes rejected**. No live LLM calls occurred. Original baseline agreement remains 16/16, 12/12 and 9/12 on the three historical synthetic sets. These are development checks, not independent model or legally validated accuracy.
 
+## Local review workspace (Phase 5, optional)
+
+A local web application for finance reviewers, built around the same offline PDF pipeline. It requires the optional PDF dependency above and no other package, internet access or API key:
+
+```bash
+python review_app.py --open        # serves http://127.0.0.1:8765/ on this computer only
+```
+
+You can upload a contract PDF and an optional invoice, or open a synthetic sample. Transaction details are entered by hand. In the workspace you can then:
+- read each page's extracted text with highlighted quotations beside the original PDF;
+- review validated evidence, AI suggestions, contradictions and missing information separately;
+- record quotation checks, readings, corrections, document checks, notes and case status.
+
+Every decision goes into an append-only, hash-chained local history (`local_data/`, Git-ignored). Decisions never change the automated findings, release a statutory proposal or authorise withholding. Highlights mark extracted-text character offsets, not positions on the printed page. See [PHASE_5_REPORT.md](PHASE_5_REPORT.md) for the design, backend routes, test results (129/129) and limitations.
+
 ## Run locally
 
 Python 3.8+; standard library only. No packages, API keys, frontend, database, or paid service are required for the baseline. Executed here on Python 3.13.12; Python 3.8 grammar compatibility was checked, but a Python 3.8 interpreter was not available for runtime testing.

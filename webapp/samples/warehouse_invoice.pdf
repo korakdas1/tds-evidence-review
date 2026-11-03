@@ -1,0 +1,46 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Length 532 >>
+stream
+BT /F2 16 Tf 72 740 Td (Invoice SYN-0042) Tj ET
+BT /F3 9 Tf 72 718 Td (Synthetic demonstration document for software testing. Not a real agreement or invoice.) Tj ET
+BT /F1 11 Tf 72 688 Td (Issued by Example Staffing Private Limited to Example Buyer Private Limited.) Tj ET
+BT /F1 11 Tf 72 662 Td (Description: Monthly warehouse personnel support for October 2026.) Tj ET
+BT /F1 11 Tf 72 636 Td (Quantity: six workers for 26 working days.) Tj ET
+BT /F1 11 Tf 72 610 Td (Amount before taxes: INR 4,80,000 \(synthetic figure\).) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 6 0 R >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000121 00000 n 
+0000000218 00000 n 
+0000000320 00000 n 
+0000000425 00000 n 
+0000001008 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R >>
+startxref
+1154
+%%EOF
