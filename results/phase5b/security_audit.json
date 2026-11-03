@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "scope": "Every file differing from origin/feature/full-product (Phase 5 commit ef4ed0f plus Phase 5B changes) and every blob in unpushed commits; token patterns and exact comparison with configured .env values (never printed).",
+  "candidate_files_scanned": 50,
+  "unpushed_blobs_scanned": 42,
+  "exact_configured_secret_available_for_comparison": true,
+  "findings": [],
+  "risky_file_names": [],
+  "frontend_remote_urls": [],
+  "env_ignored": true,
+  "env_tracked": false,
+  "env_permissions": "0o600",
+  "local_data_ignored": true,
+  "uploaded_documents_ignored": true,
+  "branch": "feature/full-product",
+  "main_sha": "e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0",
+  "origin_main_sha": "e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0",
+  "pdfs_in_scope": [
+    "webapp/samples/event_staffing_agreement.pdf",
+    "webapp/samples/maintenance_agreement.pdf",
+    "webapp/samples/warehouse_agreement.pdf",
+    "webapp/samples/warehouse_invoice.pdf"
+  ],
+  "manual_scope_review": "PDFs are the four deterministic synthetic samples. Screenshots show only synthetic samples and a fictional reviewer name. Audit databases and uploads lived in the session scratch directory outside the repository. No real financial documents, private conversations or transcripts are in scope.",
+  "limitations": "Bounded pattern and exact-secret scans; not a guarantee.",
+  "credential_variables_compared": 1,
+  "triaged_false_positives": [
+    "README.md matched the non-secret OPENROUTER_MODEL value (a public model identifier already present in the submitted main README). Exact comparison is now limited to credential variables (KEY/TOKEN/SECRET/PASSWORD)."
+  ]
+}

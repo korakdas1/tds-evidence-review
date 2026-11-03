@@ -23,7 +23,17 @@ export function modal({ title, intro, body, actions, wide }) {
     previous?.focus?.();
     resolveFn(value);
   };
-  const onKey = (event) => { if (event.key === "Escape") close(null); };
+  const onKey = (event) => {
+    if (event.key === "Escape") close(null);
+    if (event.key !== "Tab") return;
+    // Keep keyboard focus inside the dialog while it is open.
+    const items = [...dialog.querySelectorAll("button, input, select, textarea, a[href]")].filter((el) => !el.disabled && el.offsetParent !== null);
+    if (!items.length) return;
+    const first = items[0];
+    const last = items[items.length - 1];
+    if (event.shiftKey && (document.activeElement === first || !dialog.contains(document.activeElement))) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && (document.activeElement === last || !dialog.contains(document.activeElement))) { event.preventDefault(); first.focus(); }
+  };
   const titleId = `m-${Math.random().toString(36).slice(2)}`;
   const dialog = h("div", { class: `modal ${wide ? "wide" : ""}`, role: "dialog", "aria-modal": "true", "aria-labelledby": titleId },
     h("div", { class: "modal-head" }, h("h2", { id: titleId }, title), intro ? h("p", {}, intro) : null),

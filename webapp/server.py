@@ -151,10 +151,11 @@ class App:
         return Response(200, target.read_bytes(), content_type, headers)
 
 
-def make_handler(app):
+def make_handler(app, request_timeout=20):
     class Handler(BaseHTTPRequestHandler):
         server_version = "TDSReview/1"
         sys_version = ""
+        timeout = request_timeout  # A client that stalls mid-request cannot hold a thread forever.
 
         def _dispatch(self, method):
             length = self.headers.get("Content-Length")

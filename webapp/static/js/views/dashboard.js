@@ -103,12 +103,14 @@ function caseRow(item) {
       h("div", { class: "case-meta" }, `${item.reference}, ${docs}${item.origin === "SAMPLE" ? " (synthetic sample)" : ""}`),
       h("div", { class: "case-meta" }, `${METHODS[item.method] || item.method}. Updated ${relativeTime(item.last_activity)}`)),
     h("div", {},
-      h("div", { class: "finding-line" }, finding ? finding.title : item.factual_status),
+      h("div", { class: "finding-line" }, item.integrity === "FAILED" ? "Not shown: integrity check failed"
+        : finding ? finding.title : item.factual_status),
       tally),
     h("div", { class: "progress" },
       h("span", {}, `${item.progress.done} of ${item.progress.total} checks`),
       h("div", { class: "progress-track" }, progressFill(pct))),
-    h("div", {}, h("span", { class: `pill ${status.cls}` }, status.label)));
+    h("div", { class: "stack" }, h("span", { class: `pill ${status.cls}` }, status.label),
+      item.integrity === "FAILED" ? h("span", { class: "pill ink-contradiction" }, "Integrity check failed") : null));
 }
 
 export function progressFill(pct) {

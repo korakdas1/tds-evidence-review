@@ -18,9 +18,12 @@ export function metadataFields(values = {}) {
   const field = (name, label, control, hint) => h("div", { class: "field" },
     h("label", { for: `f-${name}` }, label), control, hint ? h("span", { class: "hint" }, hint) : null);
   const input = (name, attrs = {}) => h("input", { class: "input", id: `f-${name}`, name, value: values[name] ?? "", ...attrs });
+  const options = [["India resident", "Resident in India"], ["Non-resident", "Non-resident"], ["", "Not established yet"]];
+  const current = values.payee_residency ?? "India resident";
+  // Keep a previously recorded value that is not one of the standard choices, so a re-run never changes it silently.
+  if (!options.some(([value]) => value === current)) options.push([current, `${current} (as recorded)`]);
   const residency = h("select", { class: "select", id: "f-payee_residency", name: "payee_residency" },
-    [["India resident", "Resident in India"], ["Non-resident", "Non-resident"], ["", "Not established yet"]]
-      .map(([value, label]) => h("option", { value, selected: (values.payee_residency ?? "India resident") === value }, label)));
+    options.map(([value, label]) => h("option", { value, selected: current === value }, label)));
   return h("div", { class: "stack" },
     h("div", { class: "two-col" },
       field("id", "Case reference", input("id", { required: true, maxlength: "120", placeholder: "For example INV-2026-0142", value: values.id ?? `REV-${today.replaceAll("-", "")}` }),
@@ -165,7 +168,7 @@ function sectionHead(number, title, text) {
 
 function fileSlot(role, label, hint, files) {
   const id = `file-${role}`;
-  const input = h("input", { type: "file", accept: "application/pdf,.pdf", id, class: "sr-only" });
+  const input = h("input", { type: "file", accept: "application/pdf,.pdf", id, class: "sr-only", tabindex: "-1" });
   const host = h("div");
   const slot = h("div", { class: "file-slot" }, h("span", { class: "field-label", id: `${id}-label` }, label), host, h("span", { class: "hint small muted" }, hint), input);
   const draw = () => {

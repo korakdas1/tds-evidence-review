@@ -6,6 +6,7 @@ tamper-evident bookkeeping for a single-user local prototype, not a signed attes
 """
 import hashlib
 import json
+import os
 import re
 import sqlite3
 import threading
@@ -90,18 +91,29 @@ class Store:
         self.data_dir = Path(data_dir).resolve()
         self.documents_dir = self.data_dir / "documents"
         self.documents_dir.mkdir(parents=True, exist_ok=True)
+        # Uploaded contracts and the review log are private to the current OS user.
+        for folder in (self.data_dir, self.documents_dir):
+            os.chmod(folder, 0o700)
         self.db_path = self.data_dir / "review.sqlite3"
         self.lock = threading.Lock()
         with closing(self.connect()) as db, db:
             db.executescript(SCHEMA)
+            try:
+                # One successor per chain link: a second process cannot fork a case history.
+                db.execute("CREATE UNIQUE INDEX IF NOT EXISTS events_chain_link ON events(case_id, prev_hash)")
+            except sqlite3.IntegrityError:
+                pass  # An already-forked legacy database is reported by verify_chain instead.
             for table in TABLES:
                 for action in ("UPDATE", "DELETE"):
                     db.execute(
                         "CREATE TRIGGER IF NOT EXISTS {t}_no_{a} BEFORE {a} ON {t} "
                         "BEGIN SELECT RAISE(ABORT, 'append-only review store'); END".format(t=table, a=action.lower()))
+        os.chmod(self.db_path, 0o600)
 
     def connect(self):
         db = sqlite3.connect(str(self.db_path), timeout=10)
+        if self.db_path.exists():
+            os.chmod(self.db_path, 0o600)
         db.row_factory = sqlite3.Row
         db.execute("PRAGMA foreign_keys = ON")
         return db
@@ -115,10 +127,10 @@ class Store:
             if row is not None:
                 return dict(row)
             folder = self.documents_dir / digest
-            folder.mkdir(parents=True, exist_ok=True)
+            folder.mkdir(mode=0o700, parents=True, exist_ok=True)
             path = folder / clean
             if not path.exists():
-                with path.open("xb") as stream:
+                with open(os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600), "wb") as stream:
                     stream.write(data)
             record = dict(sha256=digest, name=clean, size=len(data),
                           stored_path=str(path.relative_to(self.data_dir)), created_at=now())
@@ -158,6 +170,7 @@ class Store:
     def add_run(self, case_id, contract_sha, invoice_sha, metadata, method, supplied_extraction, report):
         report_json = json.dumps(report, ensure_ascii=True, sort_keys=True)
         with self.lock, closing(self.connect()) as db, db:
+            db.execute("BEGIN IMMEDIATE")
             sequence = db.execute("SELECT COALESCE(MAX(sequence), 0) + 1 FROM runs WHERE case_id = ?",
                                   (case_id,)).fetchone()[0]
             run = dict(id=uuid.uuid4().hex, case_id=case_id, sequence=sequence, created_at=now(),
@@ -174,6 +187,7 @@ class Store:
     def append_event(self, case_id, run_id, actor, kind, target, payload):
         payload_json = canonical(payload)
         with self.lock, closing(self.connect()) as db, db:
+            db.execute("BEGIN IMMEDIATE")  # Serialise chain appends across processes too.
             last = db.execute("SELECT hash FROM events WHERE case_id = ? ORDER BY id DESC LIMIT 1",
                               (case_id,)).fetchone()
             prev = last["hash"] if last else GENESIS

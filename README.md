@@ -57,7 +57,7 @@ You can upload a contract PDF and an optional invoice, or open a synthetic sampl
 - review validated evidence, AI suggestions, contradictions and missing information separately;
 - record quotation checks, readings, corrections, document checks, notes and case status.
 
-Every decision goes into an append-only, hash-chained local history (`local_data/`, Git-ignored). Decisions never change the automated findings, release a statutory proposal or authorise withholding. Highlights mark extracted-text character offsets, not positions on the printed page. See [PHASE_5_REPORT.md](PHASE_5_REPORT.md) for the design, backend routes, test results (129/129) and limitations.
+Every decision goes into an append-only, hash-chained local history (`local_data/`, Git-ignored). Decisions never change the automated findings, release a statutory proposal or authorise withholding. Highlights mark extracted-text character offsets, not positions on the printed page. See [PHASE_5_REPORT.md](PHASE_5_REPORT.md) for the design, backend routes and limitations, and [PHASE_5B_AUDIT.md](PHASE_5B_AUDIT.md) for the independent audit, fixes and current results (134/134 tests).
 
 ## Run locally
 

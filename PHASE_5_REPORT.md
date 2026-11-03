@@ -1,5 +1,7 @@
 # Phase 5: local review workspace (user interface)
 
+> **Phase 5B audit note:** several claims below were corrected by the independent self-audit in [PHASE_5B_AUDIT.md](PHASE_5B_AUDIT.md). That audit found and fixed one high, three medium and seven low-severity defects, including undetected forged run reports, a navigation race and the mobile dashboard overflow. Current test count: 134/134. The text below is kept as originally written.
+
 Implemented on `feature/full-product`, based on Phase 4 commit `a5db3a971bc88e3d54e56bde40987966abfb97c1`. Submitted `main` remains `e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0`. No live LLM requests, tax-rule changes, evidence-validation changes or Phase 6 work occurred.
 
 ## What was built

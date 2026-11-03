@@ -261,6 +261,9 @@ class ReviewService:
         run = self.store.run(self.store.runs(case_id)[-1]["id"])
         if body.get("run_id") not in (None, run["id"]):
             raise ServiceError(409, "This analysis has been superseded; reload the latest run")
+        anchor_runs([run], self.store.events(case_id))
+        if run["report_integrity"] != "VERIFIED" or self.store.verify_chain(case_id)["status"] != "INTACT":
+            raise ServiceError(409, "This case failed an integrity check; no further decisions can be recorded")
         view = build_view(self.store, run)
         target = body.get("target")
         label = None
@@ -289,6 +292,8 @@ class ReviewService:
                 raise ServiceError(400, "A correction can only accompany a disagreement")
             if assertion["fact"] not in CORRECTIONS or correction not in CORRECTIONS[assertion["fact"]]:
                 raise ServiceError(400, "Invalid corrected value for this fact")
+            if correction == assertion["value"]:
+                raise ServiceError(400, "A correction must differ from the automated value")
             payload["correction"] = dict(fact=assertion["fact"], reviewer_value=correction,
                                          automated_value=assertion["value"],
                                          applied_to_automated_analysis=False)
@@ -310,6 +315,7 @@ class ReviewService:
             raise ServiceError(404, "Run not found")
         run = self.store.run(selected)
         events = self.store.events(case_id)
+        anchor_runs([run], events)
         view = build_view(self.store, run)
         decisions = latest_decisions(events, run["id"])
         for card in view["evidence"]:
@@ -331,8 +337,8 @@ class ReviewService:
             runs = self.store.runs(case["id"])
             if not runs:
                 continue
-            view = build_view(self.store, self.store.run(runs[-1]["id"]))
             events = self.store.events(case["id"])
+            view = build_view(self.store, anchor_runs([self.store.run(runs[-1]["id"])], events)[0])
             decisions = latest_decisions(events, runs[-1]["id"])
             for card in view["evidence"]:
                 card["quote_decision"] = decisions.get(("QUOTE_CHECK", card["key"]))
@@ -347,6 +353,8 @@ class ReviewService:
                 id=case["id"], reference=case["reference"], title=case["title"], origin=case["origin"],
                 created_at=case["created_at"], last_activity=events[-1]["created_at"] if events else case["created_at"],
                 run_count=len(runs), method=runs[-1]["method"], status=case_status(events),
+                integrity="VERIFIED" if view["run"]["report_integrity"] == "VERIFIED"
+                and self.store.verify_chain(case["id"])["status"] == "INTACT" else "FAILED",
                 report_status=view["report_status"], factual_status=view["finding"]["factual_evidence_status"],
                 documents=[dict(role=d["role"], name=d["name"], status=d["status"]) for d in view["documents"]],
                 evidence_counts=counts, missing_count=len(view["missing_information"]),
@@ -355,10 +363,20 @@ class ReviewService:
 
     def export(self, case_id):
         case = self._case(case_id)
+        events = self.store.events(case_id)
         return dict(schema_version="tds-review-export-v1", case=case,
-                    runs=self.store.runs(case_id, include_report=True), events=self.store.events(case_id),
+                    runs=anchor_runs(self.store.runs(case_id, include_report=True), events), events=events,
                     chain=self.store.verify_chain(case_id),
                     statement="Review record only. No tax determination, withholding authorization or statutory proposal release.")
+
+
+def anchor_runs(runs, events):
+    """A run is trusted only if its own hash matches AND the chained ANALYSIS_RUN event recorded it."""
+    anchors = {e["run_id"]: e["payload"].get("report_sha256") for e in events if e["kind"] == "ANALYSIS_RUN"}
+    for run in runs:
+        if "report_integrity" in run and anchors.get(run["id"]) != run["report_sha256"]:
+            run["report_integrity"] = "NOT_MATCHING_REVIEW_HISTORY"
+    return runs
 
 
 def latest_decisions(events, run_id):

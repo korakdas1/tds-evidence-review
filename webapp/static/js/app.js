@@ -1,4 +1,4 @@
-import { clear } from "./dom.js";
+import { clear, h } from "./dom.js";
 import { askReviewer, renderReviewerChip } from "./ui.js";
 import { renderDashboard } from "./views/dashboard.js";
 import { renderNewReview } from "./views/new-review.js";
@@ -24,11 +24,14 @@ function initTheme() {
 let cleanup = null;
 
 async function route() {
-  const main = document.getElementById("main");
+  const host = document.getElementById("main");
   const hash = location.hash.replace(/^#/, "") || "/";
   const parts = hash.split("?")[0].split("/").filter(Boolean);
   if (cleanup) { cleanup(); cleanup = null; }
-  clear(main);
+  // A fresh container per navigation: a slow view that finishes after the user has moved on
+  // renders into a detached node instead of replacing the newer page.
+  const main = h("div", { class: "route" });
+  clear(host).append(main);
   document.querySelectorAll("[data-nav]").forEach((a) => a.removeAttribute("aria-current"));
   let nav = null;
   if (parts.length === 0) {
@@ -44,7 +47,7 @@ async function route() {
     return;
   }
   if (nav) document.querySelector(`[data-nav="${nav}"]`)?.setAttribute("aria-current", "page");
-  main.focus({ preventScroll: true });
+  if (main.isConnected) host.focus({ preventScroll: true });
 }
 
 initTheme();

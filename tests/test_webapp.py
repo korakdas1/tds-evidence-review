@@ -7,7 +7,11 @@ import hashlib
 import http.client
 import importlib.util
 import json
+import os
 import re
+import socket
+import stat
+import time
 import sqlite3
 import tempfile
 import threading
@@ -163,6 +167,7 @@ class ReviewAppTests(unittest.TestCase):
             dict(kind="INTERPRETATION_REVIEW", target=duplicate["key"], decision="AGREE"),
             dict(kind="INTERPRETATION_REVIEW", target=primary["key"], decision="AGREE", correction="vendor"),
             dict(kind="INTERPRETATION_REVIEW", target=primary["key"], decision="DISAGREE", correction="nobody"),
+            dict(kind="INTERPRETATION_REVIEW", target=primary["key"], decision="DISAGREE", correction=primary["value"]),
             dict(kind="DOCUMENT_CHECK", target="invoice", decision="ISSUES_FOUND"),
             dict(kind="NOTE", decision=None, note="  "),
             dict(kind="NOTE", decision=None, note="ok", reviewer=""),
@@ -190,6 +195,7 @@ class ReviewAppTests(unittest.TestCase):
         self.assertEqual(status, 201)
         self.assertEqual(view["run"]["sequence"], 2)
         self.assertEqual(view["finding"]["date_selection"]["applicable_act"], "Income-tax Act, 1961")
+        self.assertIsNone(view["finding"]["proposed_table_item"])
         self.assertIsNone(view["evidence"][0]["quote_decision"])
         run_event = [e for e in view["events"] if e["kind"] == "ANALYSIS_RUN"][-1]
         self.assertEqual(run_event["payload"]["changed_fields"]["payment_date"],
@@ -215,6 +221,56 @@ class ReviewAppTests(unittest.TestCase):
         db.execute("UPDATE events SET payload_json = replace(payload_json, 'first', 'edited')")
         db.commit()
         self.assertEqual(self.app.store.verify_chain(view["case"]["id"])["status"], "BROKEN")
+
+    def test_forged_report_with_recomputed_row_hash_is_detected_and_locks_review(self):
+        # Phase 5B regression: a run row edited together with its own hash used to show VERIFIED.
+        view = self.sample("maintenance")
+        db = sqlite3.connect(str(Path(self.tmp.name) / "review.sqlite3"))
+        self.addCleanup(db.close)
+        db.execute("DROP TRIGGER runs_no_update")
+        report = json.loads(db.execute("SELECT report_json FROM runs WHERE id = ?", (view["run"]["id"],)).fetchone()[0])
+        report["review"]["factual_evidence_status"] = "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER"
+        forged = json.dumps(report, ensure_ascii=True, sort_keys=True)
+        db.execute("UPDATE runs SET report_json = ?, report_sha256 = ? WHERE id = ?",
+                   (forged, hashlib.sha256(forged.encode()).hexdigest(), view["run"]["id"]))
+        db.commit()
+        status, view, _ = self.call("GET", "/api/cases/" + view["case"]["id"])
+        self.assertEqual(view["run"]["report_integrity"], "NOT_MATCHING_REVIEW_HISTORY")
+        self.assertEqual(self.call("GET", "/api/cases")[1][0]["integrity"], "FAILED")
+        status, export, _ = self.call("GET", "/api/cases/{}/export".format(view["case"]["id"]))
+        self.assertEqual(export["runs"][0]["report_integrity"], "NOT_MATCHING_REVIEW_HISTORY")
+        status, data, _ = self.event(view, kind="NOTE", note="should be refused")
+        self.assertEqual(status, 409)
+
+    def test_broken_history_refuses_new_decisions(self):
+        view = self.sample("warehouse")
+        db = sqlite3.connect(str(Path(self.tmp.name) / "review.sqlite3"))
+        self.addCleanup(db.close)
+        db.execute("DROP TRIGGER events_no_update")
+        db.execute("UPDATE events SET actor = 'someone else' WHERE kind = 'CASE_CREATED'")
+        db.commit()
+        status, data, _ = self.event(view, kind="NOTE", note="x")
+        self.assertEqual(status, 409)
+
+    def test_chain_cannot_fork_even_from_another_process(self):
+        view = self.sample("warehouse")
+        event = self.app.store.events(view["case"]["id"])[-1]
+        db = sqlite3.connect(str(Path(self.tmp.name) / "review.sqlite3"))
+        self.addCleanup(db.close)
+        with self.assertRaises(sqlite3.IntegrityError):
+            db.execute("INSERT INTO events (case_id, run_id, created_at, actor, kind, target, payload_json, prev_hash, hash) "
+                       "VALUES (?, ?, ?, 'x', 'NOTE', NULL, '{}', ?, 'f')",
+                       (view["case"]["id"], event["run_id"], event["created_at"], event["prev_hash"]))
+
+    @unittest.skipIf(os.name != "posix", "POSIX permission bits")
+    def test_local_data_is_private_to_the_user(self):
+        view = self.sample("warehouse")
+        store = self.app.store
+        self.assertEqual(stat.S_IMODE(os.stat(store.data_dir).st_mode), 0o700)
+        self.assertEqual(stat.S_IMODE(os.stat(store.documents_dir).st_mode), 0o700)
+        self.assertEqual(stat.S_IMODE(os.stat(store.db_path).st_mode), 0o600)
+        path = store.document_path(store.document(view["documents"][0]["sha256"]))
+        self.assertEqual(stat.S_IMODE(os.stat(path).st_mode), 0o600)
 
     def test_changed_stored_file_hides_spans_and_original(self):
         view = self.sample("warehouse")
@@ -309,10 +365,39 @@ class BindingTests(unittest.TestCase):
                 response = conn.getresponse()
                 self.assertEqual(response.status, 200)
                 self.assertEqual(json.loads(response.read())["bound_to"], "loopback")
-                conn.request("POST", "/api/cases", body=b"x" * 600000,
-                             headers={"X-TDS-Review": "1", "Content-Type": "application/json"})
+                conn.close()
+                # Phase 5B: declare an oversized body without sending it. The server must refuse
+                # before reading; sending the body raced the early 413 and made this test flaky.
+                with socket.create_connection(("127.0.0.1", app.port), timeout=5) as raw:
+                    raw.sendall("POST /api/cases HTTP/1.1\r\nHost: 127.0.0.1:{}\r\nX-TDS-Review: 1\r\n"
+                                "Content-Type: application/json\r\nContent-Length: 600000\r\n\r\n".format(app.port).encode())
+                    self.assertIn(b" 413 ", raw.recv(4096).split(b"\r\n")[0])
+            finally:
+                server.shutdown()
+                server.server_close()
+
+    def test_stalled_request_times_out_and_cross_origin_preflight_fails(self):
+        # Phase 5B regression: a body shorter than Content-Length used to block a thread forever.
+        with tempfile.TemporaryDirectory() as tmp:
+            app = App(tmp, 0)
+            server = ThreadingHTTPServer(("127.0.0.1", 0), make_handler(app, request_timeout=1))
+            app.port = server.server_address[1]
+            threading.Thread(target=server.serve_forever, daemon=True).start()
+            try:
+                started = time.monotonic()
+                with socket.create_connection(("127.0.0.1", app.port), timeout=10) as raw:
+                    raw.sendall("POST /api/cases HTTP/1.1\r\nHost: 127.0.0.1:{}\r\nX-TDS-Review: 1\r\n"
+                                "Content-Length: 100\r\n\r\n{{}}".format(app.port).encode())
+                    while raw.recv(4096):
+                        pass
+                self.assertLess(time.monotonic() - started, 8)
+                conn = http.client.HTTPConnection("127.0.0.1", app.port, timeout=5)
+                conn.request("OPTIONS", "/api/cases", headers={
+                    "Host": "127.0.0.1:{}".format(app.port), "Origin": "http://attacker.example",
+                    "Access-Control-Request-Method": "POST", "Access-Control-Request-Headers": "x-tds-review"})
                 response = conn.getresponse()
-                self.assertEqual(response.status, 413)
+                self.assertGreaterEqual(response.status, 400)
+                self.assertIsNone(response.getheader("Access-Control-Allow-Origin"))
                 response.read()
                 conn.close()
             finally:

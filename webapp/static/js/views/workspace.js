@@ -50,7 +50,7 @@ export async function renderWorkspace(main, caseId) {
     try {
       state.view = await api.record(caseId, { ...body, reviewer, run_id: state.view.run.id });
       toast(body.kind === "NOTE" ? "Note added" : body.kind === "CASE_STATUS" ? "Status changed" : "Decision recorded");
-      drawAll(true);
+      drawAll(true, false);
       return true;
     } catch (error) {
       toast(error.message, "error");
@@ -60,11 +60,12 @@ export async function renderWorkspace(main, caseId) {
 
   const ctx = { state, record, reload, caseId, selectCard, showSource, drawViewer: () => drawViewer() };
 
-  function drawAll(keepScroll = false) {
+  function drawAll(keepScroll = false, redrawViewer = true) {
     const body = analysis.querySelector(".tab-body");
     const scroll = keepScroll && body ? body.scrollTop : 0;
     clear(head).append(renderHead(ctx));
-    drawViewer();
+    // Decisions do not change the documents, so the viewer (and an open PDF) is left alone.
+    if (redrawViewer) drawViewer();
     drawAnalysis();
     if (keepScroll) analysis.querySelector(".tab-body").scrollTop = scroll;
   }
@@ -120,17 +121,23 @@ function renderHead(ctx) {
         h("div", { class: "crumbs" }, h("a", { href: "#/" }, "Reviews"), h("span", { "aria-hidden": "true" }, "/"), h("span", {}, view.case.reference)),
         h("div", { class: "row" }, h("h1", {}, view.case.title), h("span", { class: `pill ${status.cls}` }, status.label),
           view.case.origin === "SAMPLE" ? h("span", { class: "pill plain" }, "Synthetic sample") : null)),
-      view.is_latest ? h("div", { class: "ws-actions" },
+      canReview(view) ? h("div", { class: "ws-actions" },
         h("button", { class: "btn btn-small", type: "button", onclick: () => addNote(ctx) }, "Add note"),
         h("button", { class: "btn btn-small", type: "button", onclick: () => changeStatus(ctx) }, "Change status"),
         h("a", { class: "btn btn-small", href: api.exportUrl(view.case.id), download: "" }, icon("download"), "Export record")) : null),
     h("div", { class: "summary-strip" },
-      cell("Automated factual finding", finding ? finding.title : view.finding.factual_evidence_status),
+      cell("Automated factual finding", !integrityOk(view) ? "Not shown: integrity check failed"
+        : finding ? finding.title : view.finding.factual_evidence_status, integrityOk(view) ? "" : "withheld"),
       cell("Document reading", report.label),
       cell("Statutory proposal", view.finding.statutory_proposal === "WITHHELD" ? "Withheld for human review" : "Present", "withheld"),
       h("div", { class: "summary-cell" }, h("div", { class: "label" }, "Your review"),
         h("div", { class: "value" }, `${view.progress.done} of ${view.progress.total} checks recorded`),
         h("div", { class: "progress-track" }, progressFill(pct))))));
+  if (!integrityOk(view)) {
+    frag.append(h("div", { class: "guard ink-contradiction", role: "alert" }, icon("alert"),
+      h("span", {}, h("b", {}, "Integrity check failed. "),
+        "The stored analysis or review history no longer matches its recorded fingerprints. Do not rely on this case; decisions are disabled.")));
+  }
   frag.append(h("div", { class: "guard" }, icon("shield"),
     h("span", {}, "Your decisions are kept as an append-only review history. They never change the automated findings, release a statutory proposal or authorise withholding.")));
   if (!view.is_latest) {
@@ -139,6 +146,14 @@ function renderHead(ctx) {
       h("button", { class: "btn btn-small", type: "button", onclick: () => { ctx.state.runId = null; ctx.reload(null); } }, "Show the latest run")));
   }
   return frag;
+}
+
+function integrityOk(view) {
+  return view.run.report_integrity === "VERIFIED" && view.chain.status === "INTACT";
+}
+
+function canReview(view) {
+  return view.is_latest && integrityOk(view);
 }
 
 function cell(label, value, cls = "") {
@@ -197,7 +212,8 @@ function renderViewer(ctx) {
     } else {
       state.frame += 1;
       body.append(
-        h("p", { class: "offset-note" }, icon("info"), `Page ${state.page} of ${pageCount} in your browser's own PDF viewer. Highlights only appear in the extracted text, because the saved positions are text positions, not places on the page.`),
+        h("p", { class: "offset-note" }, icon("info"), h("span", {}, `Page ${state.page} of ${pageCount} in your browser's own PDF viewer. Highlights only appear in the extracted text, because the saved positions are text positions, not places on the page. If the PDF does not appear, `,
+          h("a", { href: `${doc.file_url}#page=${state.page}`, target: "_blank", rel: "noopener noreferrer" }, "open it in a new tab"), ".")),
         h("iframe", { class: "pdf-frame", title: `Original PDF: ${doc.name}, page ${state.page}`, src: `${doc.file_url}?view=${state.frame}#page=${state.page}&view=FitH`, referrerpolicy: "no-referrer" }));
     }
     return [bar, body];
@@ -290,6 +306,11 @@ function evidenceTab(ctx) {
   const f = view.finding;
   const finding = FINDINGS[f.factual_evidence_status] || { title: f.factual_evidence_status, body: "" };
   const out = [];
+  if (!integrityOk(view)) {
+    // Never present an unverifiable stored analysis as a finding.
+    return [notice("contradiction", "alert", "The automated finding is not shown.",
+      " This case failed an integrity check, so the stored analysis cannot be trusted. Re-create the case from the original documents.")];
+  }
   const reliedOn = (fact) => factAnswer(fact, f.validated_facts[fact]);
   const textLevel = (fact) => f.text_level_facts[fact] !== f.validated_facts[fact]
     ? h("div", { class: "small muted" }, `Text reading: ${factAnswer(fact, f.text_level_facts[fact])}, on hold`) : null;
@@ -380,7 +401,7 @@ function evidenceCard(card, ctx) {
   }
   const reasons = [...new Set(card.assertions.flatMap((a) => a.review_reasons))];
   if (reasons.length) el.append(h("ul", { class: "reasons" }, reasons.map((r) => h("li", {}, REASONS[r] || r))));
-  if (view.is_latest) el.append(reviewBox(card, primary, ctx));
+  if (canReview(view)) el.append(reviewBox(card, primary, ctx));
   return el;
 }
 
@@ -463,7 +484,7 @@ function transactionTab(ctx) {
   const date = view.finding.date_selection;
   const out = [];
   out.push(h("div", { class: "section-title" }, h("h3", {}, "Transaction details"), h("span", { class: "spacer" }),
-    view.is_latest ? h("button", { class: "btn btn-small", type: "button", onclick: () => correctDetails(ctx) }, icon("refresh"), "Correct details and run again") : null));
+    canReview(view) ? h("button", { class: "btn btn-small", type: "button", onclick: () => correctDetails(ctx) }, icon("refresh"), "Correct details and run again") : null));
   out.push(h("p", { class: "muted small" }, "Entered manually. Nothing here was read from the PDFs."));
   out.push(h("div", { class: "kv" }, Object.entries(FIELDS).flatMap(([k, label]) => [h("div", { class: "k" }, label), h("div", {}, meta[k] || h("span", { class: "muted" }, "Not provided"))])));
 
@@ -558,7 +579,7 @@ function documentsTab(ctx) {
           h("td", {}, ORDER_CHECK[p.order_check] || p.order_check),
           h("td", {}, h("button", { class: "btn btn-quiet btn-small", type: "button", onclick: () => { ctx.state.role = doc.role; ctx.state.page = p.page_number; ctx.state.mode = "pdf"; ctx.drawViewer(); } }, "View")))))));
     }
-    if (view.is_latest) {
+    if (canReview(view)) {
       card.append(h("div", { class: "review-box" }, question({
         prompt: "Have you checked the original for reading order, hidden or missing text and completeness?",
         help: "Confirming this does not release a statutory proposal. All PDF proposals stay withheld in this prototype.",
@@ -587,7 +608,7 @@ function historyTab(ctx) {
     }, `Run ${r.sequence}${r.id === view.runs.at(-1).id ? " (latest)" : ""}`))));
   }
   out.push(h("div", { class: "section-title" }, h("h3", {}, "Activity"), h("span", { class: "spacer" }),
-    view.is_latest ? h("button", { class: "btn btn-small", type: "button", onclick: () => addNote(ctx) }, "Add note") : null));
+    canReview(view) ? h("button", { class: "btn btn-small", type: "button", onclick: () => addNote(ctx) }, "Add note") : null));
   const sequence = Object.fromEntries(view.runs.map((r) => [r.id, r.sequence]));
   out.push(h("ol", { class: "timeline" }, [...view.events].reverse().map((e) => {
     const p = e.payload;
