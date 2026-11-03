@@ -1,0 +1,118 @@
+{
+  "status": "PASS",
+  "commands": [
+    {
+      "name": "clone",
+      "argv": [
+        "git",
+        "clone",
+        "--no-hardlinks",
+        "--single-branch",
+        "--branch",
+        "feature/full-product",
+        "/media/korak/workspace/5. HACKATHON/tresata-tds-review",
+        "<fresh-clone>"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "venv",
+      "argv": [
+        "/media/korak/workspace/5. HACKATHON/tresata-tds-review/.venv/bin/python",
+        "-m",
+        "venv",
+        "<fresh-clone>/.venv"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "install",
+      "argv": [
+        "<fresh-clone>/.venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--disable-pip-version-check",
+        "--index-url",
+        "https://pypi.org/simple",
+        "-r",
+        "requirements-pdf.txt"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "versions",
+      "argv": [
+        "<fresh-clone>/.venv/bin/python",
+        "-c",
+        "import sys,pypdf; print(sys.version); print(\"pypdf\",pypdf.__version__)"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "tests",
+      "argv": [
+        "<fresh-clone>/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "demo",
+      "argv": [
+        "<fresh-clone>/.venv/bin/python",
+        "demo.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "pdf_demo",
+      "argv": [
+        "<fresh-clone>/.venv/bin/python",
+        "pdf_demo.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "local_demo",
+      "argv": [
+        "<fresh-clone>/.venv/bin/python",
+        "local_demo.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "evaluation",
+      "argv": [
+        "<fresh-clone>/.venv/bin/python",
+        "evaluate_comparison.py",
+        "--output-dir",
+        "results/local/fresh-evaluation"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "unchanged_checkout",
+      "argv": [
+        "git",
+        "diff",
+        "--exit-code"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "live_model_calls": 0,
+  "credential_files_copied": false,
+  "commit_sha": "11ba8fff30665894aefa76d2f26700888b169782",
+  "http": {
+    "health": "PASS_OFFLINE",
+    "sample": "PASS_WITHHELD_PROPOSAL",
+    "export": "PASS_VERIFIED",
+    "model_network_calls": 0,
+    "port_kind": "ephemeral_loopback"
+  },
+  "elapsed_seconds": 40.463
+}

@@ -1,0 +1,100 @@
+{
+  "status": "PASS_LOCAL_ACCEPTANCE_GATES",
+  "implementation_commit": "11ba8fff30665894aefa76d2f26700888b169782",
+  "goal_start": "df101eaa98045a775e34288a3f00613f0448ccb2",
+  "original_historical_files_preserved": 338,
+  "changed_protected_files": [],
+  "report_sha256": {
+    "PHASE_6C_REPORT.md": "07a9e4014b6c993c3205d3fd755e119c9e6269e0d99d4df6e427b2946c49c9b8",
+    "PHASE_6D_REPORT.md": "90ec662584580d21cc3e0aafd52a8769f6cef6d668ec12c2df34804d78a37ff4",
+    "PHASE_7A_REPORT.md": "0089355c1be037981d83cec57be86500c54e33b8ee2f84e0f1ae57536f2b8e11",
+    "PHASE_8A_REPORT.md": "ddb511744b72ad0e95950b37f18e54df95ba44c426bdeb2f03f7b9e4cd2ee66f",
+    "PHASE_9_REPORT.md": "e509f671b11fa16c5d71493c8e503844e548a84dcdf0c1843615540ea80a6e68"
+  },
+  "phase6c": {
+    "tests": 187,
+    "frozen_pdf_outcomes": 19,
+    "stress_reaped": true,
+    "stress_retained_pages": 0
+  },
+  "phase6d": {
+    "tests": 196,
+    "checkpoint_regressions": 9,
+    "browser_checks_per_engine": 25
+  },
+  "phase7a": {
+    "tests": 219,
+    "real_model_requests": 0,
+    "mocked_browser_checks_per_engine": 10
+  },
+  "phase8a": {
+    "tests": 233,
+    "baseline_agreement": [
+      "16/16",
+      "12/12",
+      "9/12"
+    ],
+    "hybrid_fixture_agreement": "8/12",
+    "independent_practitioner_validation": "NOT_ESTABLISHED"
+  },
+  "phase9": {
+    "tests": 234,
+    "fresh_clone_tests": 234,
+    "fresh_clone_commands_passed": 10,
+    "http": {
+      "health": "PASS_OFFLINE",
+      "sample": "PASS_WITHHELD_PROPOSAL",
+      "export": "PASS_VERIFIED",
+      "model_network_calls": 0,
+      "port_kind": "ephemeral_loopback"
+    },
+    "pdf_outcomes": {
+      "numerator": 19,
+      "denominator": 19
+    },
+    "browser": {
+      "offline": [
+        {
+          "browser": "chrome",
+          "version": "154.0.8037.57",
+          "status": "PASS",
+          "checks": 25
+        },
+        {
+          "browser": "firefox",
+          "version": "157.0",
+          "status": "PASS",
+          "checks": 25
+        }
+      ],
+      "mocked_live": [
+        {
+          "browser": "chrome",
+          "version": "154.0.8037.57",
+          "status": "PASS",
+          "checks": 10
+        },
+        {
+          "browser": "firefox",
+          "version": "157.0",
+          "status": "PASS",
+          "checks": 10
+        }
+      ]
+    }
+  },
+  "main_sha": "e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0",
+  "remote_main_verified": "e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0",
+  "repository_visibility_observed": "public_unchanged",
+  "real_model_calls_during_goal": 0,
+  "remaining_external_evidence": [
+    "Independent practitioner validation",
+    "Separately authorized real-provider integration measurements"
+  ],
+  "delivery_record": "Final completion commit/remote SHA and Issue #1 update are verified after committing this evidence; see Issue #1 and final response.",
+  "limitations": [
+    "No production or legally validated accuracy claim",
+    "Resource isolation is not a complete security sandbox",
+    "Security scan is not a complete penetration test"
+  ]
+}

@@ -1,0 +1,45 @@
+Complete local review demo — synthetic, offline, no tax approval
+1. PDF evidence: warehouse_agreement.pdf page 1, characters 371:426 (extracted text).
+   Exact quote: The Customer supervises each worker during every shift.
+   Factual status: EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER
+2. Hand-authored AI-suggestion replay (NOT a model): validated, ai_suggestion
+   Factual status: INSUFFICIENT_TO_ESTABLISH_CONTROL
+3. Scanned document: NEEDS_DOCUMENT_REVIEW; no evidence invented.
+4. Reviewer quote decision: findings unchanged=True; statutory proposal WITHHELD.
+5. External checkpoint: MATCHES_EXTERNAL_CHECKPOINT; later events=1.
+   Independently held prefix only; no authenticated identity, trusted timestamp or legal approval.
+6. Export: VERIFIED. All results require qualified human review.
+   Real model calls=0; simulated extraction invocations=1.
+Temporary synthetic database and uploads have been removed.
+
+Original JSON/historical-evidence walkthrough follows:
+TDS evidence review - offline demo
+Synthetic examples; factual evidence only, not legally validated tax treatment.
+No API calls. All cases require human review.
+
+1. Supported customer-directed manpower | S01_CUSTOMER_CONTROL
+   Source: current deterministic baseline
+   Supervisor: customer
+   Exact quote: "The customer team leader allocates daily tickets, determines working shifts, and directly supervises the assigned engineers while they work."
+   Factual status: EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER
+   Review: Needs Review
+
+2. Missing supervision evidence | S01_CONTROL_REMOVED
+   Source: current deterministic baseline
+   Supervisor: unknown
+   Factual status: INSUFFICIENT_TO_ESTABLISH_CONTROL
+   Missing: Who supervises, controls or directs individual workers?; Reliable evidence of individual-worker supervision/control.
+   Review: Needs Review (abstains)
+
+3. REPLAYED HISTORICAL LLM EVIDENCE | S01_VENDOR_CONTROL
+   Source: results/phase1b/run-20261103-01/hybrid.json (not a new model run)
+   Recorded model: xingchen-agi/xing4.0-29b-a4b:free
+   Rejected assertion: worker_supervisor=customer
+   Verbatim quote: "Customer may communicate desired service results but shall not direct the individual engineers."
+   Recorded checks: verbatim=True; factual support=False
+   Rejection: Quote does not pass conservative factual support check; Unsupported asserted fact: worker_supervisor
+   Validated supervisor: unknown
+   Factual status: INSUFFICIENT_TO_ESTABLISH_CONTROL
+   Review: Needs Review
+
+Exact quotation proves provenance, not correct interpretation or actual working practices.
