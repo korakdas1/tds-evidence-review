@@ -1,0 +1,323 @@
+{
+  "cases": [
+    {
+      "file": "supported.pdf",
+      "expected": "EXTRACTED",
+      "observed": "EXTRACTED",
+      "matches": true,
+      "issues": [],
+      "pages": [
+        {
+          "number": 1,
+          "issues": [],
+          "text": "Vendor supplies workers.\nCustomer supervises each worker.\n",
+          "order_check": "AGREES_NOT_PROOF_OF_VISUAL_ORDER"
+        }
+      ]
+    },
+    {
+      "file": "multipage.pdf",
+      "expected": "EXTRACTED",
+      "observed": "EXTRACTED",
+      "matches": true,
+      "issues": [],
+      "pages": [
+        {
+          "number": 1,
+          "issues": [],
+          "text": "Vendor supplies workers.\n",
+          "order_check": "AGREES_NOT_PROOF_OF_VISUAL_ORDER"
+        },
+        {
+          "number": 2,
+          "issues": [],
+          "text": "Customer supervises each worker.\n",
+          "order_check": "AGREES_NOT_PROOF_OF_VISUAL_ORDER"
+        }
+      ]
+    },
+    {
+      "file": "wrapped.pdf",
+      "expected": "EXTRACTED",
+      "observed": "EXTRACTED",
+      "matches": true,
+      "issues": [],
+      "pages": [
+        {
+          "number": 1,
+          "issues": [],
+          "text": "Vendor    supplies workers.\nCustomer directly\nsupervises each worker.\n",
+          "order_check": "AGREES_NOT_PROOF_OF_VISUAL_ORDER"
+        }
+      ]
+    },
+    {
+      "file": "cross_page.pdf",
+      "expected": "EXTRACTED",
+      "observed": "EXTRACTED",
+      "matches": true,
+      "issues": [],
+      "pages": [
+        {
+          "number": 1,
+          "issues": [],
+          "text": "Vendor supplies workers. Customer directly\n",
+          "order_check": "AGREES_NOT_PROOF_OF_VISUAL_ORDER"
+        },
+        {
+          "number": 2,
+          "issues": [],
+          "text": "supervises each worker.\n",
+          "order_check": "AGREES_NOT_PROOF_OF_VISUAL_ORDER"
+        }
+      ]
+    },
+    {
+      "file": "negation_lines.pdf",
+      "expected": "EXTRACTED",
+      "observed": "EXTRACTED",
+      "matches": true,
+      "issues": [],
+      "pages": [
+        {
+          "number": 1,
+          "issues": [],
+          "text": "Vendor supplies workers.\nCustomer must not\nsupervise workers.\n",
+          "order_check": "AGREES_NOT_PROOF_OF_VISUAL_ORDER"
+        }
+      ]
+    },
+    {
+      "file": "negation_pages.pdf",
+      "expected": "EXTRACTED",
+      "observed": "EXTRACTED",
+      "matches": true,
+      "issues": [],
+      "pages": [
+        {
+          "number": 1,
+          "issues": [],
+          "text": "Vendor supplies workers. Customer must not\n",
+          "order_check": "AGREES_NOT_PROOF_OF_VISUAL_ORDER"
+        },
+        {
+          "number": 2,
+          "issues": [],
+          "text": "supervise workers.\n",
+          "order_check": "AGREES_NOT_PROOF_OF_VISUAL_ORDER"
+        }
+      ]
+    },
+    {
+      "file": "reading_order.pdf",
+      "expected": "NEEDS_DOCUMENT_REVIEW",
+      "observed": "NEEDS_DOCUMENT_REVIEW",
+      "matches": true,
+      "issues": [],
+      "pages": [
+        {
+          "number": 1,
+          "issues": [
+            "EXTRACTION_ORDER_DISAGREEMENT"
+          ],
+          "text": "Vendor supplies workers.\nCustomer does \nsupervise workers.\nnot \n",
+          "order_check": "DISAGREES"
+        }
+      ]
+    },
+    {
+      "file": "missing.pdf",
+      "expected": "EXTRACTED",
+      "observed": "EXTRACTED",
+      "matches": true,
+      "issues": [],
+      "pages": [
+        {
+          "number": 1,
+          "issues": [],
+          "text": "Vendor supplies workers.\nThe parties agree monthly billing dates.\n",
+          "order_check": "AGREES_NOT_PROOF_OF_VISUAL_ORDER"
+        }
+      ]
+    },
+    {
+      "file": "conflicting.pdf",
+      "expected": "EXTRACTED",
+      "observed": "EXTRACTED",
+      "matches": true,
+      "issues": [],
+      "pages": [
+        {
+          "number": 1,
+          "issues": [],
+          "text": "Vendor supplies workers.\nCustomer supervises each worker.\n",
+          "order_check": "AGREES_NOT_PROOF_OF_VISUAL_ORDER"
+        },
+        {
+          "number": 2,
+          "issues": [],
+          "text": "Supplier supervises each worker.\n",
+          "order_check": "AGREES_NOT_PROOF_OF_VISUAL_ORDER"
+        }
+      ]
+    },
+    {
+      "file": "empty.pdf",
+      "expected": "NEEDS_DOCUMENT_REVIEW",
+      "observed": "NEEDS_DOCUMENT_REVIEW",
+      "matches": true,
+      "issues": [],
+      "pages": [
+        {
+          "number": 1,
+          "issues": [
+            "NO_SELECTABLE_TEXT_OCR_OR_MANUAL_REVIEW"
+          ],
+          "text": "",
+          "order_check": "NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "file": "scanned.pdf",
+      "expected": "NEEDS_DOCUMENT_REVIEW",
+      "observed": "NEEDS_DOCUMENT_REVIEW",
+      "matches": true,
+      "issues": [],
+      "pages": [
+        {
+          "number": 1,
+          "issues": [
+            "NO_SELECTABLE_TEXT_OCR_OR_MANUAL_REVIEW",
+            "IMAGE_CONTENT_REQUIRES_VISUAL_REVIEW"
+          ],
+          "text": "",
+          "order_check": "NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "file": "partial.pdf",
+      "expected": "NEEDS_DOCUMENT_REVIEW",
+      "observed": "NEEDS_DOCUMENT_REVIEW",
+      "matches": true,
+      "issues": [],
+      "pages": [
+        {
+          "number": 1,
+          "issues": [],
+          "text": "Vendor supplies workers.\nCustomer supervises each worker.\n",
+          "order_check": "AGREES_NOT_PROOF_OF_VISUAL_ORDER"
+        },
+        {
+          "number": 2,
+          "issues": [
+            "NO_SELECTABLE_TEXT_OCR_OR_MANUAL_REVIEW"
+          ],
+          "text": "",
+          "order_check": "NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "file": "encrypted.pdf",
+      "expected": "REJECTED",
+      "observed": "REJECTED",
+      "matches": true,
+      "issues": [
+        "ENCRYPTED_PDF_NOT_SUPPORTED"
+      ],
+      "pages": []
+    },
+    {
+      "file": "corrupted.pdf",
+      "expected": "REJECTED",
+      "observed": "REJECTED",
+      "matches": true,
+      "issues": [
+        "MALFORMED_OR_UNSUPPORTED_PDF"
+      ],
+      "pages": []
+    },
+    {
+      "file": "unsupported.txt",
+      "expected": "REJECTED",
+      "observed": "REJECTED",
+      "matches": true,
+      "issues": [
+        "UNSUPPORTED_FILE"
+      ],
+      "pages": []
+    },
+    {
+      "file": "invoice.pdf",
+      "expected": "EXTRACTED",
+      "observed": "EXTRACTED",
+      "matches": true,
+      "issues": [],
+      "pages": [
+        {
+          "number": 1,
+          "issues": [],
+          "text": "SYNTHETIC INVOICE\nDescription: monthly personnel support.\nPayment terms: see contract.\n",
+          "order_check": "AGREES_NOT_PROOF_OF_VISUAL_ORDER"
+        }
+      ]
+    },
+    {
+      "file": "rotated.pdf",
+      "expected": "NEEDS_DOCUMENT_REVIEW",
+      "observed": "NEEDS_DOCUMENT_REVIEW",
+      "matches": true,
+      "issues": [],
+      "pages": [
+        {
+          "number": 1,
+          "issues": [
+            "ROTATED_PAGE_REQUIRES_VISUAL_REVIEW"
+          ],
+          "text": "Vendor supplies workers.\nCustomer supervises each worker.\n",
+          "order_check": "AGREES_NOT_PROOF_OF_VISUAL_ORDER"
+        }
+      ]
+    },
+    {
+      "file": "active_content.pdf",
+      "expected": "NEEDS_DOCUMENT_REVIEW",
+      "observed": "NEEDS_DOCUMENT_REVIEW",
+      "matches": true,
+      "issues": [
+        "ACTIVE_CONTENT_NOT_EXECUTED"
+      ],
+      "pages": [
+        {
+          "number": 1,
+          "issues": [],
+          "text": "Vendor supplies workers.\nCustomer supervises each worker.\n",
+          "order_check": "AGREES_NOT_PROOF_OF_VISUAL_ORDER"
+        }
+      ]
+    },
+    {
+      "file": "unreadable.pdf",
+      "expected": "NEEDS_DOCUMENT_REVIEW",
+      "observed": "NEEDS_DOCUMENT_REVIEW",
+      "matches": true,
+      "issues": [],
+      "pages": [
+        {
+          "number": 1,
+          "issues": [
+            "UNREADABLE_TEXT"
+          ],
+          "text": "\u25a0\u25a0\u25a0\n",
+          "order_check": "AGREES_NOT_PROOF_OF_VISUAL_ORDER"
+        }
+      ]
+    }
+  ],
+  "agreement": {
+    "numerator": 19,
+    "denominator": 19
+  }
+}

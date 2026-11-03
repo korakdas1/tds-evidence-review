@@ -1,0 +1,9 @@
+{
+  "id": "PDF_DEMO_SYNTHETIC",
+  "invoice_description": "Monthly personnel support (manually supplied).",
+  "payer_type": "Indian resident private company",
+  "payee_residency": "India resident",
+  "payee_legal_form": "Indian resident private company",
+  "credit_date": "2026-10-10",
+  "payment_date": "2026-10-20"
+}

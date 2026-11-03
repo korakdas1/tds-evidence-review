@@ -1,0 +1,74 @@
+{
+  "rendered_documents": [
+    {
+      "file": "supported.pdf",
+      "render_exit": 0
+    },
+    {
+      "file": "multipage.pdf",
+      "render_exit": 0
+    },
+    {
+      "file": "wrapped.pdf",
+      "render_exit": 0
+    },
+    {
+      "file": "cross_page.pdf",
+      "render_exit": 0
+    },
+    {
+      "file": "negation_lines.pdf",
+      "render_exit": 0
+    },
+    {
+      "file": "negation_pages.pdf",
+      "render_exit": 0
+    },
+    {
+      "file": "reading_order.pdf",
+      "render_exit": 0
+    },
+    {
+      "file": "missing.pdf",
+      "render_exit": 0
+    },
+    {
+      "file": "conflicting.pdf",
+      "render_exit": 0
+    },
+    {
+      "file": "empty.pdf",
+      "render_exit": 0
+    },
+    {
+      "file": "scanned.pdf",
+      "render_exit": 0
+    },
+    {
+      "file": "partial.pdf",
+      "render_exit": 0
+    },
+    {
+      "file": "invoice.pdf",
+      "render_exit": 0
+    },
+    {
+      "file": "rotated.pdf",
+      "render_exit": 0
+    },
+    {
+      "file": "active_content.pdf",
+      "render_exit": 0
+    },
+    {
+      "file": "unreadable.pdf",
+      "render_exit": 0
+    }
+  ],
+  "rendered_pages": 21,
+  "excluded_expected_failures": [
+    "corrupted.pdf",
+    "encrypted.pdf"
+  ],
+  "note": "Synthetic encrypted fixture copies supported.pdf content; corrupted fixture is deliberately invalid. Page PNGs are temporary inspection artifacts."
+}

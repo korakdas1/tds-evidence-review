@@ -88,3 +88,38 @@ Automatic agreement, exact quotation provenance and structured suggestion routin
 ## Remaining boundaries
 
 The supported gate still uses narrow lexical patterns. Novel true facts may abstain; exact but irrelevant quotes may survive as uncertain suggestions when no known veto matches. Same-sentence negation can be overly broad. Context is sentence-based, not a full document or cross-reference model. Unmarked supersession and unknown contradictions can escape detection. Actual working practices are not verified. A fixed model ID does not pin provider infrastructure or weights over time. No new PDF ingestion, UI, reviewer approval storage, tax rules or production infrastructure is part of Phase 3.
+
+## Phase 4: additive PDF input and page provenance
+
+Phase 4 adds `src/pdf_ingestion.py`, `src/document_review.py` and `pdf_demo.py`. The original pipeline, legal rules, prompts and 87 tests are unchanged. The optional parser is imported lazily; JSON use remains dependency-free. The PDF CLI runs only the offline baseline. The adapter accepts an explicit extraction client for integration, but never loads environment credentials implicitly.
+
+The flow is: bounded local file read → per-page extraction → extraction-order checks → whitespace mapping → existing evidence pipeline → PDF review gate. Invoice PDFs are extracted separately and never appended to contract text or used to infer legally relevant fields. Metadata remains manually supplied and subject to existing validation.
+
+### Extraction and normalization
+
+A document ID is `sha256:<file bytes hash>`. The report retains basename, hash, parser version, original page text and text hashes. `compile_text()` collapses whitespace only and records segments from normalized character positions back to original page strings. Synthetic spaces between pages have no fabricated page coordinates. A cross-page quotation has multiple original page fragments and requires visual review. Raw page strings preserve whitespace lost from the normalized analysis view.
+
+Page numbers are one-based; character offsets are zero-based, end-exclusive Unicode string indices. These are not PDF byte, glyph, pixel or bounding-box coordinates. Each fragment contains an exact raw extracted quote, offsets, document identity and surrounding text with its own bounds. Repeated quotations retain every matching occurrence. Canonical `evidence_items` include origin paths into the raw `text_analysis` diagnostics.
+
+`map_span()` recomputes the normalization map and verifies normalized and page text hashes. `verify_location()` checks identity, page, offset types/bounds, exact quote and context. Invalid or unencodable source strings, forged positions or altered mappings return failure; unresolved mapping blocks factual reliance. This verifies internal consistency against the extracted source. It is not a signed attestation: a future viewer must also hash the original PDF before displaying saved coordinates.
+
+### Safety and review boundaries
+
+Default limits are 5 MiB, 20 pages, 100,000 characters per page, 200,000 total characters and 2 MiB decoded content stream per page. Oversized text is flagged, not silently truncated. Parsing/decompression precedes some checks; these are not hard CPU or memory isolation. This local prototype is not a hostile-upload service.
+
+Encrypted and malformed files are rejected. Blank/scanned pages require OCR or manual review; no OCR is attempted. Unreadable characters, page rotation, detected images or active actions, and plain-versus-layout extraction disagreement require document review. Parser diagnostics are sanitized. No document script, external command or network request is executed by ingestion. Comparing two modes of the same parser is not independent proof of reading order; hidden text, nested forms/images and complex layouts can escape detection.
+
+The report's `review` is authoritative; `text_analysis` preserves diagnostic text-only findings. Incomplete/unreliable documents, unresolved mapping and cross-page evidence suppress supported factual conclusions (except a manually established out-of-scope residency). Exact PDF mapping never promotes `AI_SUGGESTED_EVIDENCE_REQUIRING_REVIEW`. Each evidence item retains both its text interpretation and document review status.
+
+**All PDF statutory proposals are withheld**, even for clean selectable text, pending visual review of reading order, visibility and completeness. Phase 4 has no reviewer-confirmation workflow. Supported textual findings can still be shown with this limitation. The original JSON proposal behavior is unchanged. Legal treatment always requires qualified human review.
+
+### Reproduction and measurement
+
+```bash
+python -m pip install -r requirements-pdf.txt
+python -m unittest discover -v
+python pdf_demo.py
+python evaluate_pdfs.py --output-dir results/local/pdf-evaluation-new
+```
+
+The frozen `tests/fixtures/pdf_v1/manifest.json` records expectations and hashes for 18 synthetic PDFs and one unsupported text file. The fixtures were authored from the intended failure modes and frozen before extraction evaluation. They are development tests, not independently validated model cases. Evaluation counts canonical evidence items separately from page fragments (one cross-page item has two fragments). The invoice fixture also runs as a contract-input stress case; separate invoice integration is tested and demonstrated. See [PHASE_4_REPORT.md](PHASE_4_REPORT.md) for exact outcomes and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for dependency licensing.

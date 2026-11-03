@@ -1,0 +1,23 @@
+{
+  "tests/fixtures/pdf_v1/active_content.pdf": "042eabf9c067c3b620fa45d78a2f6e0d337d79e06295a2ee759c18f137d19452",
+  "tests/fixtures/pdf_v1/conflicting.pdf": "9f0997e21ec4519d1ac9a75be522cfeca224914b8bc516b73c6ccdab3d1285ed",
+  "tests/fixtures/pdf_v1/corrupted.pdf": "05232632b8575f354a94cbf302232361a4c433d045432b4bbfea4152780d7afe",
+  "tests/fixtures/pdf_v1/cross_page.pdf": "0ab116eb7e6222439acdf2ebe8938afc4557bfda498915fbd66c241b636244ed",
+  "tests/fixtures/pdf_v1/empty.pdf": "4d933f26bc532fe0c1e17ee07f5597d2c1e2ce1c1ddd3bf8cf46543d998e45c7",
+  "tests/fixtures/pdf_v1/encrypted.pdf": "ae22888962ce91b91afec248da3ea43799affb3895fdf7345f67042d8a45e30e",
+  "tests/fixtures/pdf_v1/invoice.pdf": "e8b9095bb0ce309ed72889aac13e164ab0dd13f2199f7490b7e10807b14519ad",
+  "tests/fixtures/pdf_v1/manifest.json": "9b43dca7273fc9240fbc281b3aac3bb7d6b8a28e3521b84e961ad583ae784342",
+  "tests/fixtures/pdf_v1/missing.pdf": "4fee0c4b0aa8d59a7d4c43e4b8c2695a86a27ff53a89145c403d27a825cee540",
+  "tests/fixtures/pdf_v1/multipage.pdf": "37c6ae9b39f681ed5a28082d1d8122b8388b7f43f9c22cf7b0695657419bc576",
+  "tests/fixtures/pdf_v1/negation_lines.pdf": "06a8a1687dc02f8d9049e6accae5a5bcce22a330bcc198d182284c2dcaa6b0d3",
+  "tests/fixtures/pdf_v1/negation_pages.pdf": "0a6efed2c3c70e17746c2d748d78784c34072665fc72d9006ee7809137816c2c",
+  "tests/fixtures/pdf_v1/partial.pdf": "a3b050bda79479f9fecc88075cee4bd3d93dc439bb27eea458506d2324b58099",
+  "tests/fixtures/pdf_v1/reading_order.pdf": "05d451097cd0c1a9f2d42055feb22958d39e32d1ab85ff6f39e79a2792b9e473",
+  "tests/fixtures/pdf_v1/rotated.pdf": "83b692f466c94997f7059a0bbe487f2bd90efcbda13bb675d1763c64ae4cc899",
+  "tests/fixtures/pdf_v1/scanned.pdf": "15db115bffb86fc7e24340bff32ca7f1c2318a567dab8b3356c4c547e6c817cf",
+  "tests/fixtures/pdf_v1/supported.pdf": "2aaa849e831ff4e0bd221d992ac045fd1be5f2a6bbcfc0882f2c40134eb96677",
+  "tests/fixtures/pdf_v1/transaction.json": "a5e1a3d4184c8f910480b21ff36884943a6c49bdabb58b07864b0c9c021a85d5",
+  "tests/fixtures/pdf_v1/unreadable.pdf": "0cd11cc2b9bb432a5840aa50e2e92acffb982a3aa77bed496a447c663122d04a",
+  "tests/fixtures/pdf_v1/unsupported.txt": "477d6e0f6ca644eec4cbb6081daf457a168559052dd2dd712bf68d43ba73cebd",
+  "tests/fixtures/pdf_v1/wrapped.pdf": "937ba6ac0e7f08081b78b59dc8443715b7f5de1ea1213bf00190ed5c842a607f"
+}

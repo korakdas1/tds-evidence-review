@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "scope": "Candidate tracked/unignored files and all reachable Git blobs; exact configured credential and high-confidence token patterns. Synthetic PDF bytes and decoded text inspected.",
+  "candidate_files_scanned": 229,
+  "reachable_history_blobs_scanned": 135,
+  "exact_configured_secret_available_for_comparison": true,
+  "findings": [],
+  "existing_files_preserved": 130,
+  "existing_documentation_modified": [
+    "ARCHITECTURE.md",
+    "README.md"
+  ],
+  "frozen_fixture_files_verified": 21,
+  "included_pdfs": 18,
+  "valid_pdfs_decoded_for_audit": 17,
+  "env_ignored": true,
+  "env_tracked": false,
+  "env_permissions": "0o600",
+  "venv_ignored": true,
+  "branch": "feature/full-product",
+  "main_sha": "e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0",
+  "intentional_test_content": [
+    "active_content.pdf contains a nonexecuted synthetic alert action; ingestion flags it.",
+    "encrypted.pdf public test password only; rejected by ingestion."
+  ],
+  "manual_scope_review": "All new documents are generated synthetic fixtures; file inventory contains only implementation, tests, documentation and Phase 4 evidence. No real financial documents, confidential assignment documents or private conversations added.",
+  "limitations": "Pattern/exact-secret scans and manual inventory review are not a guarantee against all secrets or malicious future inputs. No repository visibility changes."
+}

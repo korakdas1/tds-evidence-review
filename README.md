@@ -18,6 +18,32 @@ No installation, internet, API key or other credentials are needed. The demo pri
 
 The first two examples run the current deterministic pipeline. The third reads the unchanged Phase 1B artifact, clearly marked as a replay rather than a fresh model result. All three require human review; none establishes legally validated tax treatment. The demo does not write datasets or result files. See [DEMO_WALKTHROUGH.md](DEMO_WALKTHROUGH.md) for the underlying commands and evidence.
 
+## Offline PDF demo (optional dependency)
+
+Phase 4 adds local PDF provenance on `feature/full-product`. The original JSON interface and submitted `main` are unchanged. See [PHASE_4_REPORT.md](PHASE_4_REPORT.md) for actual results and limitations.
+
+Use Python 3.9+ for the optional PDF dependency:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements-pdf.txt
+python pdf_demo.py
+```
+
+After installation, the demo works offline without credentials, API calls, OCR or external commands. It prints the synthetic document name/hash, page and exact extracted quote offsets, factual finding, and mandatory human review. All PDF-derived statutory proposals are withheld pending visual review; exact source mapping does not establish interpretation or legal validity.
+
+For your own public or synthetic document, supply manual transaction metadata using the input fields below, omitting `contract_excerpt`. The optional invoice is extracted separately; dates, residency, payer and invoice description are never inferred from it:
+
+```bash
+python pdf_demo.py --contract contract.pdf --metadata transaction.json --invoice invoice.pdf --output results/local/my-pdf.json
+python evaluate_pdfs.py --output-dir results/local/pdf-evaluation-new
+```
+
+Output destinations must be new. PDFs are limited to 5 MiB and 20 pages, with further extracted-text limits. Scans, malformed/encrypted files, extraction-order disagreements and incomplete pages require review. Cross-page quotations retain separate page fragments and require visual review. Offsets address extracted Unicode text, not PDF glyph or pixel coordinates. See [ARCHITECTURE.md](ARCHITECTURE.md) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+Phase 4 validation: **113/113 tests passed** (87 preserved + 26 new); the original 87 also passed with site packages disabled. PDF fixtures: **19/19 expected outcomes**, comprising 9 extracted, 7 requiring document review and 3 rejected; **25/25 evidence items mapped, 26/26 page fragments verified, 10/10 invalid-location probes rejected**. No live LLM calls occurred. Original baseline agreement remains 16/16, 12/12 and 9/12 on the three historical synthetic sets. These are development checks, not independent model or legally validated accuracy.
+
 ## Run locally
 
 Python 3.8+; standard library only. No packages, API keys, frontend, database, or paid service are required for the baseline. Executed here on Python 3.13.12; Python 3.8 grammar compatibility was checked, but a Python 3.8 interpreter was not available for runtime testing.
@@ -29,7 +55,7 @@ python main.py --input tresata_adversarial_cases.json --mode baseline
 python -m unittest discover -v
 ```
 
-An optional virtual environment can be created with `python -m venv .venv`; there is nothing to install with pip.
+An optional virtual environment can be created with `python -m venv .venv`. The JSON workflow needs no packages. Install `requirements-pdf.txt` to run PDF ingestion and its tests; otherwise the PDF tests explicitly skip.
 
 The baseline writes `results/baseline.json` and `results/baseline.csv`, and prints one line per case. Use `--output path/report.json` for another destination. Arbitrary inputs default to ignored `results/local/`. A batch continues after malformed records. Exit codes: `0` completed or explicitly `NOT_RUN`, `1` per-record input/model errors, `2` file, JSON, integrity or output error. Evidence warnings route for review without crashing the run.
 

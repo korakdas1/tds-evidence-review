@@ -1,0 +1,2 @@
+# Optional PDF ingestion only; requires Python >=3.9. JSON workflow stays dependency-free.
+pypdf==6.21.4

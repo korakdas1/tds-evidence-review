@@ -1,0 +1,2 @@
+# Preserve frozen PDF fixture bytes; these are documents, not line-oriented text.
+*.pdf binary

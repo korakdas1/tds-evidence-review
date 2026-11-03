@@ -1,0 +1,18 @@
+test_unencodable_parser_text_and_tampered_source_fail_safely (tests.test_pdf.PDFTests.test_unencodable_parser_text_and_tampered_source_fail_safely) ... FAIL
+
+======================================================================
+FAIL: test_unencodable_parser_text_and_tampered_source_fail_safely (tests.test_pdf.PDFTests.test_unencodable_parser_text_and_tampered_source_fail_safely)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/korak/workspace/5. HACKATHON/tresata-tds-review/tests/test_pdf.py", line 255, in test_unencodable_parser_text_and_tampered_source_fail_safely
+    self.assertEqual(doc["status"], "NEEDS_DOCUMENT_REVIEW")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'REJECTED' != 'NEEDS_DOCUMENT_REVIEW'
+- REJECTED
++ NEEDS_DOCUMENT_REVIEW
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.048s
+
+FAILED (failures=1)

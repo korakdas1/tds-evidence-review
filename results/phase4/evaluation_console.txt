@@ -1,0 +1,31 @@
+{
+  "suite": "pdf-fixtures-v1",
+  "fixtures_sha256": "9b43dca7273fc9240fbc281b3aac3bb7d6b8a28e3521b84e961ad583ae784342",
+  "interpretation": "Source-informed synthetic extraction/provenance tests, not independent model or legally validated accuracy.",
+  "extraction_status_counts": {
+    "EXTRACTED": 9,
+    "NEEDS_DOCUMENT_REVIEW": 7,
+    "REJECTED": 3
+  },
+  "expected_outcomes": {
+    "numerator": 19,
+    "denominator": 19
+  },
+  "source_fragments_verified": {
+    "numerator": 26,
+    "denominator": 26
+  },
+  "invalid_location_probes_rejected": {
+    "numerator": 10,
+    "denominator": 10
+  },
+  "mapped_evidence_items": {
+    "numerator": 25,
+    "denominator": 25
+  },
+  "statutory_proposals_released": {
+    "numerator": 0,
+    "denominator": 19
+  },
+  "api_calls": 0
+}
