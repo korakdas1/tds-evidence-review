@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tds:practitioner-cases:v1",
+  "title": "Practitioner-labelled factual cases, declarations require independent verification",
+  "type": "object",
+  "required": ["schema", "annotation_process", "cases"],
+  "properties": {
+    "schema": {"const": "tds-practitioner-cases-v1"},
+    "annotation_process": {
+      "type": "object",
+      "required": ["reviewer_reference", "qualification_assertion", "labelled_at", "source_permission", "conflict_resolution", "model_outputs_hidden_during_labelling"],
+      "properties": {
+        "reviewer_reference": {"type": "string", "minLength": 1},
+        "qualification_assertion": {"type": "string", "minLength": 1},
+        "labelled_at": {"type": "string", "minLength": 1},
+        "source_permission": {"type": "string", "minLength": 1},
+        "conflict_resolution": {"type": "string", "minLength": 1},
+        "model_outputs_hidden_during_labelling": {"const": true}
+      }
+    },
+    "cases": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "invoice_description", "contract_excerpt", "payer_type", "payee_residency", "payee_legal_form", "expected_fact_status", "expected_facts", "evidence_anchors", "evidence_annotations", "annotation_rationale"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "invoice_description": {"type": "string", "minLength": 1},
+          "contract_excerpt": {"type": "string", "minLength": 1},
+          "payer_type": {"type": "string", "minLength": 1},
+          "payee_residency": {"type": "string", "minLength": 1},
+          "payee_legal_form": {"type": "string", "minLength": 1},
+          "credit_date": {"type": ["string", "null"]},
+          "payment_date": {"type": ["string", "null"]},
+          "expected_fact_status": {"enum": ["EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER", "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE", "INSUFFICIENT_TO_ESTABLISH_CONTROL", "CONFLICTING_EVIDENCE", "OUT_OF_SCOPE"]},
+          "expected_facts": {
+            "type": "object", "required": ["personnel_supplied", "worker_supervisor"], "additionalProperties": false,
+            "properties": {"personnel_supplied": {"enum": ["yes", "no", "unknown"]}, "worker_supervisor": {"enum": ["customer", "vendor", "unknown", "conflicting"]}}
+          },
+          "evidence_anchors": {"type": "array", "items": {"type": "string", "minLength": 1}},
+          "evidence_annotations": {
+            "type": "array", "items": {
+              "type": "object", "required": ["fact", "value", "quote", "start", "end"],
+              "properties": {"fact": {"enum": ["personnel_supplied", "worker_supervisor"]}, "value": {"type": "string"}, "quote": {"type": "string", "minLength": 1}, "start": {"type": "integer", "minimum": 0}, "end": {"type": "integer", "minimum": 1}}
+            }
+          },
+          "annotation_rationale": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  },
+  "$comment": "The standard-library validator also enforces IDs, exact quote offsets, nonempty asserted-fact evidence and frozen SHA. Passing schema cannot authenticate a reviewer or independence."
+}

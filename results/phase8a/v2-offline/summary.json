@@ -1,0 +1,1154 @@
+{
+  "schema": "tds-comparison-summary-v1",
+  "input_sha256": "082a4e57276cd1eb61c3543f02fc53cf747a64e35932429509a4273b5b0ecf4a",
+  "annotation_origin": "SYNTHETIC_DEVELOPMENT_NOT_INDEPENDENT_HOLDOUT",
+  "actual_live_calls_this_run": 0,
+  "methods": {
+    "baseline": {
+      "execution_kind": "OFFLINE",
+      "planned": 12,
+      "successful": {
+        "numerator": 12,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "agreement_successful": {
+        "numerator": 12,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "completed_and_matched_planned": {
+        "numerator": 12,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "false_positive_directional": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "false_negative_directional": {
+        "numerator": 0,
+        "denominator": 7,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 7
+      },
+      "false_confident_removed": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "abstentions": {
+        "numerator": 4,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.3333333333333333,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "out_of_scope": {
+        "numerator": 1,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.08333333333333333,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "errors": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "api_errors": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "provider/client attempts",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "missing_control_evidence": {
+        "numerator": 3,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.25,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "human_review_required": {
+        "numerator": 12,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "date_act_agreement": {
+        "numerator": 12,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "not_run": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "refusals": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "provenance": {
+        "numerator": 25,
+        "denominator": 25,
+        "unit": "submitted quote entries",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": "Exact substring independently rechecked; not interpretation correctness",
+        "eligible": 25
+      },
+      "quote_errors": {
+        "numerator": 0,
+        "denominator": 25,
+        "unit": "submitted quote entries",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 25
+      },
+      "unsupported_interpretations": {
+        "numerator": 0,
+        "denominator": 25,
+        "unit": "verbatim quote entries",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": "Recorded validator rejection/unverified disposition, not independent semantic ground truth",
+        "eligible": 25
+      },
+      "predicate_agreement": {
+        "personnel_supplied": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Only explicit predicate annotations are scored; status-derived guesses are excluded",
+          "eligible": 0
+        },
+        "worker_supervisor": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Only explicit predicate annotations are scored; status-derived guesses are excluded",
+          "eligible": 0
+        }
+      },
+      "latency_seconds": {
+        "sum": 0.005506,
+        "mean": 0.0004588333333333333,
+        "measured": 12,
+        "executed": 12,
+        "scope": "pipeline row runtime; historical/simulated origin retained"
+      },
+      "token_usage": {
+        "prompt_tokens": {
+          "sum": null,
+          "reported": 0,
+          "attempted": 0
+        },
+        "completion_tokens": {
+          "sum": null,
+          "reported": 0,
+          "attempted": 0
+        },
+        "total_tokens": {
+          "sum": null,
+          "reported": 0,
+          "attempted": 0
+        }
+      },
+      "provider_reported_cost_usd": {
+        "sum": null,
+        "reported": 0,
+        "attempted": 0,
+        "independent_billing_verification": false
+      },
+      "model_ids": [],
+      "false_positive_ids": [],
+      "false_negative_ids": [],
+      "safety_target": "NOT_EVALUATED",
+      "case_results": [
+        {
+          "case_id": "CH01_CUSTOMER_PASSIVE",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH02_VENDOR_PASSIVE",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH03_OUTCOME_ONLY",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH04_UNRELATED_NEGATION",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH05_VENDOR_EXCLUSIVE",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH06_FUTURE_CONDITION",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH07_CROSSOVER",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH08_CONFLICTING_CURRENT",
+          "expected": "CONFLICTING_EVIDENCE",
+          "observed": "CONFLICTING_EVIDENCE",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH09_VENDOR_SERVICE_OUTCOME",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH10_MISSING_SUPERVISOR",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH11_STALE_CLAUSE",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH12_NONRESIDENT",
+          "expected": "OUT_OF_SCOPE",
+          "observed": "OUT_OF_SCOPE",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        }
+      ]
+    },
+    "direct-llm": {
+      "execution_kind": "NOT_RUN",
+      "planned": 12,
+      "successful": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "agreement_successful": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "completed_and_matched_planned": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "false_positive_directional": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "false_negative_directional": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "false_confident_removed": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "abstentions": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "out_of_scope": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "errors": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "api_errors": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "provider/client attempts",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "missing_control_evidence": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": "Direct baseline does not extract predicates",
+        "eligible": 0
+      },
+      "human_review_required": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "date_act_agreement": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "not_run": {
+        "numerator": 12,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "refusals": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "provenance": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": "Direct category baseline does not extract facts or quotations",
+        "eligible": 0
+      },
+      "quote_errors": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": "Direct category baseline does not extract facts or quotations",
+        "eligible": 0
+      },
+      "unsupported_interpretations": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": "Direct category baseline does not extract facts or quotations",
+        "eligible": 0
+      },
+      "predicate_agreement": {
+        "personnel_supplied": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Only explicit predicate annotations are scored; status-derived guesses are excluded",
+          "eligible": 0
+        },
+        "worker_supervisor": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Only explicit predicate annotations are scored; status-derived guesses are excluded",
+          "eligible": 0
+        }
+      },
+      "latency_seconds": {
+        "sum": null,
+        "mean": null,
+        "measured": 0,
+        "executed": 0,
+        "scope": "pipeline row runtime; historical/simulated origin retained"
+      },
+      "token_usage": {
+        "prompt_tokens": {
+          "sum": null,
+          "reported": 0,
+          "attempted": 0
+        },
+        "completion_tokens": {
+          "sum": null,
+          "reported": 0,
+          "attempted": 0
+        },
+        "total_tokens": {
+          "sum": null,
+          "reported": 0,
+          "attempted": 0
+        }
+      },
+      "provider_reported_cost_usd": {
+        "sum": null,
+        "reported": 0,
+        "attempted": 0,
+        "independent_billing_verification": false
+      },
+      "model_ids": [],
+      "false_positive_ids": [],
+      "false_negative_ids": [],
+      "safety_target": "NOT_EVALUATED",
+      "case_results": [
+        {
+          "case_id": "CH01_CUSTOMER_PASSIVE",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH02_VENDOR_PASSIVE",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH03_OUTCOME_ONLY",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH04_UNRELATED_NEGATION",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH05_VENDOR_EXCLUSIVE",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH06_FUTURE_CONDITION",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH07_CROSSOVER",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH08_CONFLICTING_CURRENT",
+          "expected": "CONFLICTING_EVIDENCE",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH09_VENDOR_SERVICE_OUTCOME",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH10_MISSING_SUPERVISOR",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH11_STALE_CLAUSE",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH12_NONRESIDENT",
+          "expected": "OUT_OF_SCOPE",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        }
+      ]
+    },
+    "hybrid": {
+      "execution_kind": "NOT_RUN",
+      "planned": 12,
+      "successful": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "agreement_successful": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "completed_and_matched_planned": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "false_positive_directional": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "false_negative_directional": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "false_confident_removed": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "abstentions": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "out_of_scope": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "errors": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "api_errors": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "provider/client attempts",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "missing_control_evidence": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "human_review_required": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "date_act_agreement": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "not_run": {
+        "numerator": 12,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "refusals": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "provenance": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "submitted quote entries",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": "Exact substring independently rechecked; not interpretation correctness",
+        "eligible": 0
+      },
+      "quote_errors": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "submitted quote entries",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "unsupported_interpretations": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "verbatim quote entries",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": "Recorded validator rejection/unverified disposition, not independent semantic ground truth",
+        "eligible": 0
+      },
+      "predicate_agreement": {
+        "personnel_supplied": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Only explicit predicate annotations are scored; status-derived guesses are excluded",
+          "eligible": 0
+        },
+        "worker_supervisor": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Only explicit predicate annotations are scored; status-derived guesses are excluded",
+          "eligible": 0
+        }
+      },
+      "latency_seconds": {
+        "sum": null,
+        "mean": null,
+        "measured": 0,
+        "executed": 0,
+        "scope": "pipeline row runtime; historical/simulated origin retained"
+      },
+      "token_usage": {
+        "prompt_tokens": {
+          "sum": null,
+          "reported": 0,
+          "attempted": 0
+        },
+        "completion_tokens": {
+          "sum": null,
+          "reported": 0,
+          "attempted": 0
+        },
+        "total_tokens": {
+          "sum": null,
+          "reported": 0,
+          "attempted": 0
+        }
+      },
+      "provider_reported_cost_usd": {
+        "sum": null,
+        "reported": 0,
+        "attempted": 0,
+        "independent_billing_verification": false
+      },
+      "model_ids": [],
+      "false_positive_ids": [],
+      "false_negative_ids": [],
+      "safety_target": "NOT_EVALUATED",
+      "case_results": [
+        {
+          "case_id": "CH01_CUSTOMER_PASSIVE",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH02_VENDOR_PASSIVE",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH03_OUTCOME_ONLY",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH04_UNRELATED_NEGATION",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH05_VENDOR_EXCLUSIVE",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH06_FUTURE_CONDITION",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH07_CROSSOVER",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH08_CONFLICTING_CURRENT",
+          "expected": "CONFLICTING_EVIDENCE",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH09_VENDOR_SERVICE_OUTCOME",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH10_MISSING_SUPERVISOR",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH11_STALE_CLAUSE",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        },
+        {
+          "case_id": "CH12_NONRESIDENT",
+          "expected": "OUT_OF_SCOPE",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "OPENROUTER_NOT_CONFIGURED",
+          "validation_failures": [],
+          "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+        }
+      ]
+    }
+  },
+  "model_ids": {
+    "direct-llm": [],
+    "hybrid": []
+  },
+  "same_single_model_observed": false,
+  "limitations": [
+    "No legally validated tax accuracy.",
+    "No independent practitioner validation is established by a file format.",
+    "Current baseline and historical methods may use different implementations; no causal superiority claim.",
+    "Errors and missing outputs are separate from successful abstentions; directional false negatives may be justified.",
+    "Simulated/historical/live metrics must not be pooled as one experiment."
+  ]
+}

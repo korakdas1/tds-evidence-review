@@ -1,0 +1,21 @@
+{
+  "schema": "tds-evaluation-protocol-v1",
+  "purpose": "Factual evidence development comparison; never legally validated tax accuracy",
+  "methods": ["baseline", "direct-llm", "hybrid"],
+  "execution_kinds": ["OFFLINE", "SIMULATED", "NOT_RUN", "HISTORICAL_RECORDED_LIVE", "RECORDED_LIVE"],
+  "default": "Run deterministic baseline; record both model methods NOT_RUN with zero provider calls",
+  "simulated_direct": "Constant INSUFFICIENT_TO_ESTABLISH_CONTROL response for every case; does not read labels, is not a model, and is only an accounting/demo stub",
+  "simulated_hybrid": "Replay frozen Phase 3 hand-authored extraction fixtures; not model outputs",
+  "freeze": "Validate and hash dataset, labels, exact evidence anchors, protocol, prompts and implementation before any prediction; exclusive output directory; verify hashes afterwards",
+  "independence": "All supplied synthetic sets are visible development data; no independent holdout or practitioner validation is claimed",
+  "agreement": "Status matches among successful labelled cases, plus separate successful matches over all planned labelled cases and completion coverage",
+  "incorrect_confidence": "Successful directional customer/vendor prediction unequal to provisional expected status; unexecuted/error cases excluded and counted separately",
+  "false_negative": "Successful case with directional expected status but a different observed status; overlaps false positives for opposite-direction mistakes; can include justified abstention",
+  "abstention": "Successful insufficient/conflicting factual outcome; OUT_OF_SCOPE counted separately; execution failures are not successful abstentions",
+  "provenance": "Recheck each structured submitted quote as an exact substring of input contract; provenance is not interpretation correctness",
+  "unsupported_interpretation": "Exact quotes rejected/unverified by the recorded factual support checks; this measures validator disposition, not independently annotated semantic truth",
+  "latency": "Pipeline runtime in seconds for executed rows only; historical values remain historical; no latency inferred for missing rows",
+  "usage_and_cost": "Sum only explicitly reported nonnegative usage/cost, with reported/attempted denominators; absence is not zero; simulations labelled and never treated as real spending",
+  "future_live_comparison": "Separate authorization required. Use one explicitly allowlisted fixed free model for both methods, same frozen cases/prompts, one request per case/method, at least 15 second pacing, stop both methods on any provider block, no retry/model switching/paid fallback; preserve every attempt and missing row",
+  "current_runner_live_requests": "None: this CLI cannot enable network inference. It can import hash-pinned recorded reports, preserving their claimed execution origin and model IDs without treating files as authenticated provider attestations."
+}

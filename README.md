@@ -8,7 +8,7 @@ A local application and Python toolkit for checking what a vendor contract says 
 
 Nothing in this repository determines tax treatment, calculates tax, authorises withholding or files returns. Every result requires review by a qualified person. All included documents and evaluation cases are synthetic and not practitioner-validated.
 
-**Branches:** the submitted version is [`e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0`](https://github.com/korakdas1/tds-evidence-review/commit/e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0) on `main`. Post-submission development (Phases 3–7A) is on `feature/full-product`.
+**Branches:** the submitted version is [`e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0`](https://github.com/korakdas1/tds-evidence-review/commit/e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0) on `main`. Post-submission development (Phases 3–8A) is on `feature/full-product`.
 
 **Phase 6C:** document reviews now use resource-isolated Linux parser workers with wall/CPU/memory limits. The previously blocking 43 KB stress case is contained; see [PHASE_6C_REPORT.md](PHASE_6C_REPORT.md) and the unchanged [independent audit](PHASE_6_CODEX_AUDIT.md). Resource isolation is not a complete security sandbox or production-readiness claim. The sequential development plan is [docs/MULTI_PHASE_GOAL.md](docs/MULTI_PHASE_GOAL.md). No live model calls are authorized in this development session.
 
@@ -33,7 +33,7 @@ python -m pip install -r requirements-pdf.txt   # pypdf 6.21.4, the only runtime
 | Launch the review app | `python review_app.py --open` | Opens http://127.0.0.1:8765/ in your browser (this computer only) |
 | Run the offline demo | `python demo.py` | Three JSON examples, including a replayed historical model mistake |
 | Run the offline PDF demo | `python pdf_demo.py` | A synthetic PDF with page and character offsets; proposal withheld |
-| Run all automated tests | `python -m unittest discover -v` | 219 tests, all passing; local HTTP tests use loopback sockets |
+| Run all automated tests | `python -m unittest discover -v` | 233 tests, all passing; local HTTP tests use loopback sockets |
 
 App options:
 - `--port 8765`
@@ -56,6 +56,10 @@ The app refuses to listen on anything except a loopback address.
 - **Normal workflow: offline rule checks.** The contract text is read by the existing conservative, deterministic checks. No AI model is involved, so normal runs produce no AI suggestions.
 - **AI-suggestion demonstration: simulated extraction.** The *Event crew* sample, and the advanced option *Replay a supplied extraction*, pass a hand-written extraction in a model's output format through the same validators. No model is called; the run records 0 model network calls and is labelled simulated.
 - **Optional live extraction:** start with `--enable-live` and explicit free-only configuration, then confirm each external request in the new-review dialog. See [live-mode controls, limits and mocked verification](docs/LIVE_MODE.md). Offline stays the default. This integration has only mocked development measurements; earlier live research remains separately labelled.
+
+## Reproducible factual evaluation
+
+Run `python evaluate_comparison.py --output-dir results/local/comparison-new` for the current baseline with model methods explicitly NOT_RUN. Optional `--simulate` replays hand-authored fixtures; historical import preserves earlier failed/incomplete live experiments. [Protocol, metrics and practitioner-case format](evaluation/README.md) distinguish completed/planned denominators, false confidence, abstentions, quote errors, unverified interpretations, latency and reported token/cost coverage. No live calls are made by this runner. Independent practitioner validation remains unmet; these scores are not legally validated accuracy. See [PHASE_8A_REPORT.md](PHASE_8A_REPORT.md).
 
 ## Evidence states
 

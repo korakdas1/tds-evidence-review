@@ -1,0 +1,4 @@
+baseline [OFFLINE]: completed 12/12; matched 9/12 successful cases
+direct-llm [SIMULATED]: completed 12/12; matched 6/12 successful cases
+hybrid [SIMULATED]: completed 12/12; matched 8/12 successful cases
+No live calls made. Factual development agreement, not legal accuracy.

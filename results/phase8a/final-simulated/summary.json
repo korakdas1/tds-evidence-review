@@ -1,0 +1,1202 @@
+{
+  "schema": "tds-comparison-summary-v1",
+  "input_sha256": "c33232531c3632f40e85833361368a291e2a1558f39c1ee59c68e913897d60d0",
+  "annotation_origin": "SYNTHETIC_DEVELOPMENT_NOT_INDEPENDENT_HOLDOUT",
+  "actual_live_calls_this_run": 0,
+  "methods": {
+    "baseline": {
+      "execution_kind": "OFFLINE",
+      "planned": 12,
+      "successful": {
+        "numerator": 12,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "agreement_successful": {
+        "numerator": 9,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.75,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "completed_and_matched_planned": {
+        "numerator": 9,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.75,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "false_positive_directional": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "false_negative_directional": {
+        "numerator": 2,
+        "denominator": 4,
+        "unit": "cases",
+        "value": 0.5,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 4
+      },
+      "false_confident_removed": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "abstentions": {
+        "numerator": 10,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.8333333333333334,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "out_of_scope": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "errors": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "api_errors": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "provider/client attempts",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "missing_control_evidence": {
+        "numerator": 9,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.75,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "human_review_required": {
+        "numerator": 12,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "date_act_agreement": {
+        "numerator": 12,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "not_run": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "refusals": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "provenance": {
+        "numerator": 19,
+        "denominator": 19,
+        "unit": "submitted quote entries",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": "Exact substring independently rechecked; not interpretation correctness",
+        "eligible": 19
+      },
+      "quote_errors": {
+        "numerator": 0,
+        "denominator": 19,
+        "unit": "submitted quote entries",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 19
+      },
+      "unsupported_interpretations": {
+        "numerator": 0,
+        "denominator": 19,
+        "unit": "verbatim quote entries",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": "Recorded validator rejection/unverified disposition, not independent semantic ground truth",
+        "eligible": 19
+      },
+      "predicate_agreement": {
+        "personnel_supplied": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Only explicit predicate annotations are scored; status-derived guesses are excluded",
+          "eligible": 0
+        },
+        "worker_supervisor": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Only explicit predicate annotations are scored; status-derived guesses are excluded",
+          "eligible": 0
+        }
+      },
+      "latency_seconds": {
+        "sum": 0.0034779999999999998,
+        "mean": 0.0002898333333333333,
+        "measured": 12,
+        "executed": 12,
+        "scope": "pipeline row runtime; historical/simulated origin retained"
+      },
+      "token_usage": {
+        "prompt_tokens": {
+          "sum": null,
+          "reported": 0,
+          "attempted": 0
+        },
+        "completion_tokens": {
+          "sum": null,
+          "reported": 0,
+          "attempted": 0
+        },
+        "total_tokens": {
+          "sum": null,
+          "reported": 0,
+          "attempted": 0
+        }
+      },
+      "provider_reported_cost_usd": {
+        "sum": null,
+        "reported": 0,
+        "attempted": 0,
+        "independent_billing_verification": false
+      },
+      "model_ids": [],
+      "false_positive_ids": [],
+      "false_negative_ids": [
+        "P3_02",
+        "P3_03"
+      ],
+      "safety_target": "NOT_EVALUATED",
+      "case_results": [
+        {
+          "case_id": "P3_01",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_02",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": true,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_03",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": true,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_04",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_05",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_06",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_07",
+          "expected": "CONFLICTING_EVIDENCE",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_08",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_09",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_10",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [
+            "Potential embedded model instruction detected; route for review"
+          ],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_11",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_12",
+          "expected": "CONFLICTING_EVIDENCE",
+          "observed": "CONFLICTING_EVIDENCE",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        }
+      ]
+    },
+    "direct-llm": {
+      "execution_kind": "SIMULATED",
+      "planned": 12,
+      "successful": {
+        "numerator": 12,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "agreement_successful": {
+        "numerator": 6,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.5,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "completed_and_matched_planned": {
+        "numerator": 6,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.5,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "false_positive_directional": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "false_negative_directional": {
+        "numerator": 4,
+        "denominator": 4,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 4
+      },
+      "false_confident_removed": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "abstentions": {
+        "numerator": 12,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "out_of_scope": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "errors": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "api_errors": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "provider/client attempts",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "missing_control_evidence": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": "Direct baseline does not extract predicates",
+        "eligible": 0
+      },
+      "human_review_required": {
+        "numerator": 12,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "date_act_agreement": {
+        "numerator": 12,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "not_run": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "refusals": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "provenance": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": "Direct category baseline does not extract facts or quotations",
+        "eligible": 0
+      },
+      "quote_errors": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": "Direct category baseline does not extract facts or quotations",
+        "eligible": 0
+      },
+      "unsupported_interpretations": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": "Direct category baseline does not extract facts or quotations",
+        "eligible": 0
+      },
+      "predicate_agreement": {
+        "personnel_supplied": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Only explicit predicate annotations are scored; status-derived guesses are excluded",
+          "eligible": 0
+        },
+        "worker_supervisor": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Only explicit predicate annotations are scored; status-derived guesses are excluded",
+          "eligible": 0
+        }
+      },
+      "latency_seconds": {
+        "sum": 0.000216,
+        "mean": 1.8e-05,
+        "measured": 12,
+        "executed": 12,
+        "scope": "pipeline row runtime; historical/simulated origin retained"
+      },
+      "token_usage": {
+        "prompt_tokens": {
+          "sum": null,
+          "reported": 0,
+          "attempted": 12
+        },
+        "completion_tokens": {
+          "sum": null,
+          "reported": 0,
+          "attempted": 12
+        },
+        "total_tokens": {
+          "sum": null,
+          "reported": 0,
+          "attempted": 12
+        }
+      },
+      "provider_reported_cost_usd": {
+        "sum": null,
+        "reported": 0,
+        "attempted": 12,
+        "independent_billing_verification": false
+      },
+      "model_ids": [],
+      "false_positive_ids": [],
+      "false_negative_ids": [
+        "P3_01",
+        "P3_02",
+        "P3_03",
+        "P3_06"
+      ],
+      "safety_target": "NOT_EVALUATED",
+      "case_results": [
+        {
+          "case_id": "P3_01",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": true,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_02",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": true,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_03",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": true,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_04",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_05",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_06",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": true,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_07",
+          "expected": "CONFLICTING_EVIDENCE",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_08",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_09",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_10",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_11",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_12",
+          "expected": "CONFLICTING_EVIDENCE",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        }
+      ]
+    },
+    "hybrid": {
+      "execution_kind": "SIMULATED",
+      "planned": 12,
+      "successful": {
+        "numerator": 12,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "agreement_successful": {
+        "numerator": 8,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.6666666666666666,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "completed_and_matched_planned": {
+        "numerator": 8,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.6666666666666666,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "false_positive_directional": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "false_negative_directional": {
+        "numerator": 3,
+        "denominator": 4,
+        "unit": "cases",
+        "value": 0.75,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 4
+      },
+      "false_confident_removed": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "abstentions": {
+        "numerator": 11,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.9166666666666666,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "out_of_scope": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "errors": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "api_errors": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "provider/client attempts",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "missing_control_evidence": {
+        "numerator": 10,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.8333333333333334,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "human_review_required": {
+        "numerator": 12,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "date_act_agreement": {
+        "numerator": 12,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "not_run": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "refusals": {
+        "numerator": 0,
+        "denominator": 12,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 12
+      },
+      "provenance": {
+        "numerator": 28,
+        "denominator": 29,
+        "unit": "submitted quote entries",
+        "value": 0.9655172413793104,
+        "status": "MEASURED",
+        "reason": "Exact substring independently rechecked; not interpretation correctness",
+        "eligible": 29
+      },
+      "quote_errors": {
+        "numerator": 1,
+        "denominator": 29,
+        "unit": "submitted quote entries",
+        "value": 0.034482758620689655,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 29
+      },
+      "unsupported_interpretations": {
+        "numerator": 11,
+        "denominator": 28,
+        "unit": "verbatim quote entries",
+        "value": 0.39285714285714285,
+        "status": "MEASURED",
+        "reason": "Recorded validator rejection/unverified disposition, not independent semantic ground truth",
+        "eligible": 28
+      },
+      "predicate_agreement": {
+        "personnel_supplied": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Only explicit predicate annotations are scored; status-derived guesses are excluded",
+          "eligible": 0
+        },
+        "worker_supervisor": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Only explicit predicate annotations are scored; status-derived guesses are excluded",
+          "eligible": 0
+        }
+      },
+      "latency_seconds": {
+        "sum": 0.002926,
+        "mean": 0.00024383333333333334,
+        "measured": 12,
+        "executed": 12,
+        "scope": "pipeline row runtime; historical/simulated origin retained"
+      },
+      "token_usage": {
+        "prompt_tokens": {
+          "sum": null,
+          "reported": 0,
+          "attempted": 12
+        },
+        "completion_tokens": {
+          "sum": null,
+          "reported": 0,
+          "attempted": 12
+        },
+        "total_tokens": {
+          "sum": null,
+          "reported": 0,
+          "attempted": 12
+        }
+      },
+      "provider_reported_cost_usd": {
+        "sum": null,
+        "reported": 0,
+        "attempted": 12,
+        "independent_billing_verification": false
+      },
+      "model_ids": [],
+      "false_positive_ids": [],
+      "false_negative_ids": [
+        "P3_02",
+        "P3_03",
+        "P3_06"
+      ],
+      "safety_target": "NOT_EVALUATED",
+      "case_results": [
+        {
+          "case_id": "P3_01",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_02",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": true,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor"
+          ],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_03",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": true,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor"
+          ],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_04",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor",
+            "Review-layer safety veto; no statutory candidate"
+          ],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_05",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor",
+            "Review-layer safety veto; no statutory candidate"
+          ],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_06",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": true,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor",
+            "Review-layer safety veto; no statutory candidate"
+          ],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_07",
+          "expected": "CONFLICTING_EVIDENCE",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Claimed contradiction lacks opposing supported predicates"
+          ],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_08",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor",
+            "Review-layer safety veto; no statutory candidate"
+          ],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_09",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [
+            "Quote not found verbatim in contract",
+            "Unsupported asserted fact: worker_supervisor",
+            "Review-layer safety veto; no statutory candidate"
+          ],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_10",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor",
+            "Potential embedded model instruction detected; route for review",
+            "Review-layer safety veto; no statutory candidate"
+          ],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_11",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        },
+        {
+          "case_id": "P3_12",
+          "expected": "CONFLICTING_EVIDENCE",
+          "observed": "CONFLICTING_EVIDENCE",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Author-assigned factual reading; not independent or legal validation."
+        }
+      ]
+    }
+  },
+  "model_ids": {
+    "direct-llm": [],
+    "hybrid": []
+  },
+  "same_single_model_observed": false,
+  "limitations": [
+    "No legally validated tax accuracy.",
+    "No independent practitioner validation is established by a file format.",
+    "Current baseline and historical methods may use different implementations; no causal superiority claim.",
+    "Errors and missing outputs are separate from successful abstentions; directional false negatives may be justified.",
+    "Simulated/historical/live metrics must not be pooled as one experiment."
+  ]
+}

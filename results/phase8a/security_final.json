@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "findings": [],
+  "candidate_files_scanned": 521,
+  "history_blobs_scanned": 515,
+  "protected_historical_files_unchanged": 411,
+  "credential_values_compared": 1,
+  "main_sha": "e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0",
+  "branch": "feature/full-product",
+  "limitation": "Exact-known-secret and pattern/file checks, not a complete security assessment. Review new files manually too."
+}

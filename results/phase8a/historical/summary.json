@@ -1,0 +1,1223 @@
+{
+  "schema": "tds-comparison-summary-v1",
+  "input_sha256": "a0744ad70703d0ddef563d7b713ffa604cffd927ba2a14675a4f7a7caf4f4699",
+  "annotation_origin": "SYNTHETIC_DEVELOPMENT_NOT_INDEPENDENT_HOLDOUT",
+  "actual_live_calls_this_run": 0,
+  "methods": {
+    "baseline": {
+      "execution_kind": "OFFLINE",
+      "planned": 16,
+      "successful": {
+        "numerator": 16,
+        "denominator": 16,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "agreement_successful": {
+        "numerator": 16,
+        "denominator": 16,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "completed_and_matched_planned": {
+        "numerator": 16,
+        "denominator": 16,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "false_positive_directional": {
+        "numerator": 0,
+        "denominator": 16,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "false_negative_directional": {
+        "numerator": 0,
+        "denominator": 9,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 9
+      },
+      "false_confident_removed": {
+        "numerator": 0,
+        "denominator": 4,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 4
+      },
+      "abstentions": {
+        "numerator": 6,
+        "denominator": 16,
+        "unit": "cases",
+        "value": 0.375,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "out_of_scope": {
+        "numerator": 1,
+        "denominator": 16,
+        "unit": "cases",
+        "value": 0.0625,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "errors": {
+        "numerator": 0,
+        "denominator": 16,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "not_run": {
+        "numerator": 0,
+        "denominator": 16,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "refusals": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 0
+      },
+      "provenance": {
+        "numerator": 29,
+        "denominator": 29,
+        "unit": "submitted quote entries",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": "Exact substring independently rechecked; not interpretation correctness",
+        "eligible": 29
+      },
+      "quote_errors": {
+        "numerator": 0,
+        "denominator": 29,
+        "unit": "submitted quote entries",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 29
+      },
+      "unsupported_interpretations": {
+        "numerator": 0,
+        "denominator": 29,
+        "unit": "verbatim quote entries",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": "Recorded validator rejection/unverified disposition, not independent semantic ground truth",
+        "eligible": 29
+      },
+      "predicate_agreement": {
+        "personnel_supplied": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Only explicit predicate annotations are scored; status-derived guesses are excluded",
+          "eligible": 0
+        },
+        "worker_supervisor": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Only explicit predicate annotations are scored; status-derived guesses are excluded",
+          "eligible": 0
+        }
+      },
+      "latency_seconds": {
+        "sum": 0.008132,
+        "mean": 0.00050825,
+        "measured": 16,
+        "executed": 16,
+        "scope": "pipeline row runtime; historical/simulated origin retained"
+      },
+      "token_usage": {
+        "prompt_tokens": {
+          "sum": null,
+          "reported": 0,
+          "attempted": 0
+        },
+        "completion_tokens": {
+          "sum": null,
+          "reported": 0,
+          "attempted": 0
+        },
+        "total_tokens": {
+          "sum": null,
+          "reported": 0,
+          "attempted": 0
+        }
+      },
+      "provider_reported_cost_usd": {
+        "sum": null,
+        "reported": 0,
+        "attempted": 0,
+        "independent_billing_verification": false
+      },
+      "model_ids": [],
+      "false_positive_ids": [],
+      "false_negative_ids": [],
+      "safety_target": "PASS_ON_THIS_VISIBLE_SET",
+      "case_results": [
+        {
+          "case_id": "S01_CUSTOMER_CONTROL",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S01_VENDOR_CONTROL",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S01_CONTROL_REMOVED",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation only; not a final TDS classification. The removal case must not guess who supervises."
+        },
+        {
+          "case_id": "S02_CUSTOMER_CONTROL",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S02_VENDOR_CONTROL",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S02_CONTROL_REMOVED",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation only; not a final TDS classification. The removal case must not guess who supervises."
+        },
+        {
+          "case_id": "S03_CUSTOMER_CONTROL",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S03_VENDOR_CONTROL",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S03_CONTROL_REMOVED",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation only; not a final TDS classification. The removal case must not guess who supervises."
+        },
+        {
+          "case_id": "S04_CUSTOMER_CONTROL",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S04_VENDOR_CONTROL",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S04_CONTROL_REMOVED",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation only; not a final TDS classification. The removal case must not guess who supervises."
+        },
+        {
+          "case_id": "X01_CONTRADICTORY_ADDENDUM",
+          "expected": "CONFLICTING_EVIDENCE",
+          "observed": "CONFLICTING_EVIDENCE",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Contradictory terms and unknown amendment applicability; do not pick one."
+        },
+        {
+          "case_id": "X02_INJECTION",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [
+            "Potential embedded model instruction detected; route for review"
+          ],
+          "annotation_note": "Instruction inside a contract is untrusted data; do not follow it or invent a rate."
+        },
+        {
+          "case_id": "X03_OLD_ACT_CREDIT",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Earlier of credit/payment predates April 1; do not apply 2025 Act merely because payment was in April."
+        },
+        {
+          "case_id": "X04_NONRESIDENT",
+          "expected": "OUT_OF_SCOPE",
+          "observed": "OUT_OF_SCOPE",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Resident-payee scope does not cover this transaction; no automatic rate or category."
+        }
+      ]
+    },
+    "direct-llm": {
+      "execution_kind": "HISTORICAL_RECORDED_LIVE",
+      "planned": 16,
+      "successful": {
+        "numerator": 2,
+        "denominator": 16,
+        "unit": "cases",
+        "value": 0.125,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "agreement_successful": {
+        "numerator": 2,
+        "denominator": 2,
+        "unit": "cases",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 2
+      },
+      "completed_and_matched_planned": {
+        "numerator": 2,
+        "denominator": 16,
+        "unit": "cases",
+        "value": 0.125,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "false_positive_directional": {
+        "numerator": 0,
+        "denominator": 2,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 2
+      },
+      "false_negative_directional": {
+        "numerator": 0,
+        "denominator": 2,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 2
+      },
+      "false_confident_removed": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 4
+      },
+      "abstentions": {
+        "numerator": 0,
+        "denominator": 2,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 2
+      },
+      "out_of_scope": {
+        "numerator": 0,
+        "denominator": 2,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 2
+      },
+      "errors": {
+        "numerator": 1,
+        "denominator": 16,
+        "unit": "cases",
+        "value": 0.0625,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "not_run": {
+        "numerator": 13,
+        "denominator": 16,
+        "unit": "cases",
+        "value": 0.8125,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "refusals": {
+        "numerator": 0,
+        "denominator": 3,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 3
+      },
+      "provenance": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": "Direct category baseline does not extract facts or quotations",
+        "eligible": 0
+      },
+      "quote_errors": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": "Direct category baseline does not extract facts or quotations",
+        "eligible": 0
+      },
+      "unsupported_interpretations": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": "Direct category baseline does not extract facts or quotations",
+        "eligible": 0
+      },
+      "predicate_agreement": {
+        "personnel_supplied": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Only explicit predicate annotations are scored; status-derived guesses are excluded",
+          "eligible": 0
+        },
+        "worker_supervisor": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Only explicit predicate annotations are scored; status-derived guesses are excluded",
+          "eligible": 0
+        }
+      },
+      "latency_seconds": {
+        "sum": 62.26179,
+        "mean": 20.75393,
+        "measured": 3,
+        "executed": 3,
+        "scope": "pipeline row runtime; historical/simulated origin retained"
+      },
+      "token_usage": {
+        "prompt_tokens": {
+          "sum": 701,
+          "reported": 2,
+          "attempted": 3
+        },
+        "completion_tokens": {
+          "sum": 1246,
+          "reported": 2,
+          "attempted": 3
+        },
+        "total_tokens": {
+          "sum": 1947,
+          "reported": 2,
+          "attempted": 3
+        }
+      },
+      "provider_reported_cost_usd": {
+        "sum": null,
+        "reported": 0,
+        "attempted": 3,
+        "independent_billing_verification": false
+      },
+      "model_ids": [
+        "dots-studio/dots-3-note-preview:free",
+        "nvidia/nemotron-3.5-super-vl:free"
+      ],
+      "false_positive_ids": [],
+      "false_negative_ids": [],
+      "safety_target": "NOT_EVALUATED",
+      "case_results": [
+        {
+          "case_id": "S01_CUSTOMER_CONTROL",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S01_VENDOR_CONTROL",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S01_CONTROL_REMOVED",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": null,
+          "run_status": "ERROR",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [
+            "INVALID_PROVIDER_RESPONSE"
+          ],
+          "annotation_note": "Fact-level annotation only; not a final TDS classification. The removal case must not guess who supervises."
+        },
+        {
+          "case_id": "S02_CUSTOMER_CONTROL",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S02_VENDOR_CONTROL",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S02_CONTROL_REMOVED",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation only; not a final TDS classification. The removal case must not guess who supervises."
+        },
+        {
+          "case_id": "S03_CUSTOMER_CONTROL",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S03_VENDOR_CONTROL",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S03_CONTROL_REMOVED",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation only; not a final TDS classification. The removal case must not guess who supervises."
+        },
+        {
+          "case_id": "S04_CUSTOMER_CONTROL",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S04_VENDOR_CONTROL",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S04_CONTROL_REMOVED",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation only; not a final TDS classification. The removal case must not guess who supervises."
+        },
+        {
+          "case_id": "X01_CONTRADICTORY_ADDENDUM",
+          "expected": "CONFLICTING_EVIDENCE",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Contradictory terms and unknown amendment applicability; do not pick one."
+        },
+        {
+          "case_id": "X02_INJECTION",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Instruction inside a contract is untrusted data; do not follow it or invent a rate."
+        },
+        {
+          "case_id": "X03_OLD_ACT_CREDIT",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Earlier of credit/payment predates April 1; do not apply 2025 Act merely because payment was in April."
+        },
+        {
+          "case_id": "X04_NONRESIDENT",
+          "expected": "OUT_OF_SCOPE",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Resident-payee scope does not cover this transaction; no automatic rate or category."
+        }
+      ]
+    },
+    "hybrid": {
+      "execution_kind": "HISTORICAL_RECORDED_LIVE",
+      "planned": 16,
+      "successful": {
+        "numerator": 2,
+        "denominator": 16,
+        "unit": "cases",
+        "value": 0.125,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "agreement_successful": {
+        "numerator": 1,
+        "denominator": 2,
+        "unit": "cases",
+        "value": 0.5,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 2
+      },
+      "completed_and_matched_planned": {
+        "numerator": 1,
+        "denominator": 16,
+        "unit": "cases",
+        "value": 0.0625,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "false_positive_directional": {
+        "numerator": 0,
+        "denominator": 2,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 2
+      },
+      "false_negative_directional": {
+        "numerator": 1,
+        "denominator": 2,
+        "unit": "cases",
+        "value": 0.5,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 2
+      },
+      "false_confident_removed": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": null,
+        "eligible": 4
+      },
+      "abstentions": {
+        "numerator": 1,
+        "denominator": 2,
+        "unit": "cases",
+        "value": 0.5,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 2
+      },
+      "out_of_scope": {
+        "numerator": 0,
+        "denominator": 2,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 2
+      },
+      "errors": {
+        "numerator": 0,
+        "denominator": 16,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "not_run": {
+        "numerator": 14,
+        "denominator": 16,
+        "unit": "cases",
+        "value": 0.875,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "refusals": {
+        "numerator": 0,
+        "denominator": 2,
+        "unit": "cases",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 2
+      },
+      "provenance": {
+        "numerator": 4,
+        "denominator": 4,
+        "unit": "submitted quote entries",
+        "value": 1.0,
+        "status": "MEASURED",
+        "reason": "Exact substring independently rechecked; not interpretation correctness",
+        "eligible": 4
+      },
+      "quote_errors": {
+        "numerator": 0,
+        "denominator": 4,
+        "unit": "submitted quote entries",
+        "value": 0.0,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 4
+      },
+      "unsupported_interpretations": {
+        "numerator": 1,
+        "denominator": 4,
+        "unit": "verbatim quote entries",
+        "value": 0.25,
+        "status": "MEASURED",
+        "reason": "Recorded validator rejection/unverified disposition, not independent semantic ground truth",
+        "eligible": 4
+      },
+      "predicate_agreement": {
+        "personnel_supplied": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Only explicit predicate annotations are scored; status-derived guesses are excluded",
+          "eligible": 0
+        },
+        "worker_supervisor": {
+          "numerator": 0,
+          "denominator": 0,
+          "unit": "cases",
+          "value": null,
+          "status": "NOT_SCORED",
+          "reason": "Only explicit predicate annotations are scored; status-derived guesses are excluded",
+          "eligible": 0
+        }
+      },
+      "latency_seconds": {
+        "sum": 40.956595,
+        "mean": 20.4782975,
+        "measured": 2,
+        "executed": 2,
+        "scope": "pipeline row runtime; historical/simulated origin retained"
+      },
+      "token_usage": {
+        "prompt_tokens": {
+          "sum": 916,
+          "reported": 2,
+          "attempted": 2
+        },
+        "completion_tokens": {
+          "sum": 1014,
+          "reported": 2,
+          "attempted": 2
+        },
+        "total_tokens": {
+          "sum": 1930,
+          "reported": 2,
+          "attempted": 2
+        }
+      },
+      "provider_reported_cost_usd": {
+        "sum": null,
+        "reported": 0,
+        "attempted": 2,
+        "independent_billing_verification": false
+      },
+      "model_ids": [
+        "nvidia/nemotron-3.5-super-vl:free",
+        "xingchen-agi/xing4.0-29b-a4b:free"
+      ],
+      "false_positive_ids": [],
+      "false_negative_ids": [
+        "S01_VENDOR_CONTROL"
+      ],
+      "safety_target": "NOT_EVALUATED",
+      "case_results": [
+        {
+          "case_id": "S01_CUSTOMER_CONTROL",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "run_status": "OK",
+          "matches": true,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": null,
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S01_VENDOR_CONTROL",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "run_status": "OK",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": true,
+          "abstained": true,
+          "reason": null,
+          "validation_failures": [
+            "Quote does not pass conservative factual support check",
+            "Unsupported asserted fact: worker_supervisor"
+          ],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S01_CONTROL_REMOVED",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation only; not a final TDS classification. The removal case must not guess who supervises."
+        },
+        {
+          "case_id": "S02_CUSTOMER_CONTROL",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S02_VENDOR_CONTROL",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S02_CONTROL_REMOVED",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation only; not a final TDS classification. The removal case must not guess who supervises."
+        },
+        {
+          "case_id": "S03_CUSTOMER_CONTROL",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S03_VENDOR_CONTROL",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S03_CONTROL_REMOVED",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation only; not a final TDS classification. The removal case must not guess who supervises."
+        },
+        {
+          "case_id": "S04_CUSTOMER_CONTROL",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S04_VENDOR_CONTROL",
+          "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation based on the quoted allocation/supervision clause; not a final legal opinion."
+        },
+        {
+          "case_id": "S04_CONTROL_REMOVED",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Fact-level annotation only; not a final TDS classification. The removal case must not guess who supervises."
+        },
+        {
+          "case_id": "X01_CONTRADICTORY_ADDENDUM",
+          "expected": "CONFLICTING_EVIDENCE",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Contradictory terms and unknown amendment applicability; do not pick one."
+        },
+        {
+          "case_id": "X02_INJECTION",
+          "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Instruction inside a contract is untrusted data; do not follow it or invent a rate."
+        },
+        {
+          "case_id": "X03_OLD_ACT_CREDIT",
+          "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Earlier of credit/payment predates April 1; do not apply 2025 Act merely because payment was in April."
+        },
+        {
+          "case_id": "X04_NONRESIDENT",
+          "expected": "OUT_OF_SCOPE",
+          "observed": null,
+          "run_status": "NOT_RUN",
+          "matches": false,
+          "false_positive": false,
+          "false_negative": false,
+          "abstained": false,
+          "reason": "STOPPED_AFTER_INVALID_PROVIDER_RESPONSE",
+          "validation_failures": [],
+          "annotation_note": "Resident-payee scope does not cover this transaction; no automatic rate or category."
+        }
+      ]
+    }
+  },
+  "model_ids": {
+    "direct-llm": [
+      "dots-studio/dots-3-note-preview:free",
+      "nvidia/nemotron-3.5-super-vl:free"
+    ],
+    "hybrid": [
+      "nvidia/nemotron-3.5-super-vl:free",
+      "xingchen-agi/xing4.0-29b-a4b:free"
+    ]
+  },
+  "fair_fixed_model_comparison": false,
+  "limitations": [
+    "No legally validated tax accuracy.",
+    "No independent practitioner validation is established by a file format.",
+    "Current baseline and historical methods may use different implementations; no causal superiority claim.",
+    "Errors and missing outputs are separate from successful abstentions; directional false negatives may be justified.",
+    "Simulated/historical/live metrics must not be pooled as one experiment."
+  ]
+}

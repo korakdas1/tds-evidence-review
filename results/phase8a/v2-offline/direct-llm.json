@@ -1,0 +1,1486 @@
+{
+  "schema": "tds-method-comparison-v1",
+  "method": "direct-llm",
+  "input_sha256": "082a4e57276cd1eb61c3543f02fc53cf747a64e35932429509a4273b5b0ecf4a",
+  "execution_kind": "NOT_RUN",
+  "provenance": {
+    "kind": "NOT_RUN",
+    "limitation": "No live model requested"
+  },
+  "metrics": {
+    "execution_kind": "NOT_RUN",
+    "planned": 12,
+    "successful": {
+      "numerator": 0,
+      "denominator": 12,
+      "unit": "cases",
+      "value": 0.0,
+      "status": "MEASURED",
+      "reason": null,
+      "eligible": 12
+    },
+    "agreement_successful": {
+      "numerator": 0,
+      "denominator": 0,
+      "unit": "cases",
+      "value": null,
+      "status": "NOT_SCORED",
+      "reason": null,
+      "eligible": 0
+    },
+    "completed_and_matched_planned": {
+      "numerator": 0,
+      "denominator": 12,
+      "unit": "cases",
+      "value": 0.0,
+      "status": "MEASURED",
+      "reason": null,
+      "eligible": 12
+    },
+    "false_positive_directional": {
+      "numerator": 0,
+      "denominator": 0,
+      "unit": "cases",
+      "value": null,
+      "status": "NOT_SCORED",
+      "reason": null,
+      "eligible": 0
+    },
+    "false_negative_directional": {
+      "numerator": 0,
+      "denominator": 0,
+      "unit": "cases",
+      "value": null,
+      "status": "NOT_SCORED",
+      "reason": null,
+      "eligible": 0
+    },
+    "false_confident_removed": {
+      "numerator": 0,
+      "denominator": 0,
+      "unit": "cases",
+      "value": null,
+      "status": "NOT_SCORED",
+      "reason": null,
+      "eligible": 0
+    },
+    "abstentions": {
+      "numerator": 0,
+      "denominator": 0,
+      "unit": "cases",
+      "value": null,
+      "status": "NOT_SCORED",
+      "reason": null,
+      "eligible": 0
+    },
+    "out_of_scope": {
+      "numerator": 0,
+      "denominator": 0,
+      "unit": "cases",
+      "value": null,
+      "status": "NOT_SCORED",
+      "reason": null,
+      "eligible": 0
+    },
+    "errors": {
+      "numerator": 0,
+      "denominator": 12,
+      "unit": "cases",
+      "value": 0.0,
+      "status": "MEASURED",
+      "reason": null,
+      "eligible": 12
+    },
+    "api_errors": {
+      "numerator": 0,
+      "denominator": 0,
+      "unit": "provider/client attempts",
+      "value": null,
+      "status": "NOT_SCORED",
+      "reason": null,
+      "eligible": 0
+    },
+    "missing_control_evidence": {
+      "numerator": 0,
+      "denominator": 0,
+      "unit": "cases",
+      "value": null,
+      "status": "NOT_SCORED",
+      "reason": "Direct baseline does not extract predicates",
+      "eligible": 0
+    },
+    "human_review_required": {
+      "numerator": 0,
+      "denominator": 0,
+      "unit": "cases",
+      "value": null,
+      "status": "NOT_SCORED",
+      "reason": null,
+      "eligible": 0
+    },
+    "date_act_agreement": {
+      "numerator": 0,
+      "denominator": 0,
+      "unit": "cases",
+      "value": null,
+      "status": "NOT_SCORED",
+      "reason": null,
+      "eligible": 0
+    },
+    "not_run": {
+      "numerator": 12,
+      "denominator": 12,
+      "unit": "cases",
+      "value": 1.0,
+      "status": "MEASURED",
+      "reason": null,
+      "eligible": 12
+    },
+    "refusals": {
+      "numerator": 0,
+      "denominator": 0,
+      "unit": "cases",
+      "value": null,
+      "status": "NOT_SCORED",
+      "reason": null,
+      "eligible": 0
+    },
+    "provenance": {
+      "numerator": 0,
+      "denominator": 0,
+      "unit": "cases",
+      "value": null,
+      "status": "NOT_SCORED",
+      "reason": "Direct category baseline does not extract facts or quotations",
+      "eligible": 0
+    },
+    "quote_errors": {
+      "numerator": 0,
+      "denominator": 0,
+      "unit": "cases",
+      "value": null,
+      "status": "NOT_SCORED",
+      "reason": "Direct category baseline does not extract facts or quotations",
+      "eligible": 0
+    },
+    "unsupported_interpretations": {
+      "numerator": 0,
+      "denominator": 0,
+      "unit": "cases",
+      "value": null,
+      "status": "NOT_SCORED",
+      "reason": "Direct category baseline does not extract facts or quotations",
+      "eligible": 0
+    },
+    "predicate_agreement": {
+      "personnel_supplied": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": "Only explicit predicate annotations are scored; status-derived guesses are excluded",
+        "eligible": 0
+      },
+      "worker_supervisor": {
+        "numerator": 0,
+        "denominator": 0,
+        "unit": "cases",
+        "value": null,
+        "status": "NOT_SCORED",
+        "reason": "Only explicit predicate annotations are scored; status-derived guesses are excluded",
+        "eligible": 0
+      }
+    },
+    "latency_seconds": {
+      "sum": null,
+      "mean": null,
+      "measured": 0,
+      "executed": 0,
+      "scope": "pipeline row runtime; historical/simulated origin retained"
+    },
+    "token_usage": {
+      "prompt_tokens": {
+        "sum": null,
+        "reported": 0,
+        "attempted": 0
+      },
+      "completion_tokens": {
+        "sum": null,
+        "reported": 0,
+        "attempted": 0
+      },
+      "total_tokens": {
+        "sum": null,
+        "reported": 0,
+        "attempted": 0
+      }
+    },
+    "provider_reported_cost_usd": {
+      "sum": null,
+      "reported": 0,
+      "attempted": 0,
+      "independent_billing_verification": false
+    },
+    "model_ids": [],
+    "false_positive_ids": [],
+    "false_negative_ids": [],
+    "safety_target": "NOT_EVALUATED",
+    "case_results": [
+      {
+        "case_id": "CH01_CUSTOMER_PASSIVE",
+        "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+        "observed": null,
+        "run_status": "NOT_RUN",
+        "matches": false,
+        "false_positive": false,
+        "false_negative": false,
+        "abstained": false,
+        "reason": "OPENROUTER_NOT_CONFIGURED",
+        "validation_failures": [],
+        "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+      },
+      {
+        "case_id": "CH02_VENDOR_PASSIVE",
+        "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+        "observed": null,
+        "run_status": "NOT_RUN",
+        "matches": false,
+        "false_positive": false,
+        "false_negative": false,
+        "abstained": false,
+        "reason": "OPENROUTER_NOT_CONFIGURED",
+        "validation_failures": [],
+        "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+      },
+      {
+        "case_id": "CH03_OUTCOME_ONLY",
+        "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+        "observed": null,
+        "run_status": "NOT_RUN",
+        "matches": false,
+        "false_positive": false,
+        "false_negative": false,
+        "abstained": false,
+        "reason": "OPENROUTER_NOT_CONFIGURED",
+        "validation_failures": [],
+        "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+      },
+      {
+        "case_id": "CH04_UNRELATED_NEGATION",
+        "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+        "observed": null,
+        "run_status": "NOT_RUN",
+        "matches": false,
+        "false_positive": false,
+        "false_negative": false,
+        "abstained": false,
+        "reason": "OPENROUTER_NOT_CONFIGURED",
+        "validation_failures": [],
+        "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+      },
+      {
+        "case_id": "CH05_VENDOR_EXCLUSIVE",
+        "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+        "observed": null,
+        "run_status": "NOT_RUN",
+        "matches": false,
+        "false_positive": false,
+        "false_negative": false,
+        "abstained": false,
+        "reason": "OPENROUTER_NOT_CONFIGURED",
+        "validation_failures": [],
+        "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+      },
+      {
+        "case_id": "CH06_FUTURE_CONDITION",
+        "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+        "observed": null,
+        "run_status": "NOT_RUN",
+        "matches": false,
+        "false_positive": false,
+        "false_negative": false,
+        "abstained": false,
+        "reason": "OPENROUTER_NOT_CONFIGURED",
+        "validation_failures": [],
+        "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+      },
+      {
+        "case_id": "CH07_CROSSOVER",
+        "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+        "observed": null,
+        "run_status": "NOT_RUN",
+        "matches": false,
+        "false_positive": false,
+        "false_negative": false,
+        "abstained": false,
+        "reason": "OPENROUTER_NOT_CONFIGURED",
+        "validation_failures": [],
+        "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+      },
+      {
+        "case_id": "CH08_CONFLICTING_CURRENT",
+        "expected": "CONFLICTING_EVIDENCE",
+        "observed": null,
+        "run_status": "NOT_RUN",
+        "matches": false,
+        "false_positive": false,
+        "false_negative": false,
+        "abstained": false,
+        "reason": "OPENROUTER_NOT_CONFIGURED",
+        "validation_failures": [],
+        "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+      },
+      {
+        "case_id": "CH09_VENDOR_SERVICE_OUTCOME",
+        "expected": "EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE",
+        "observed": null,
+        "run_status": "NOT_RUN",
+        "matches": false,
+        "false_positive": false,
+        "false_negative": false,
+        "abstained": false,
+        "reason": "OPENROUTER_NOT_CONFIGURED",
+        "validation_failures": [],
+        "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+      },
+      {
+        "case_id": "CH10_MISSING_SUPERVISOR",
+        "expected": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+        "observed": null,
+        "run_status": "NOT_RUN",
+        "matches": false,
+        "false_positive": false,
+        "false_negative": false,
+        "abstained": false,
+        "reason": "OPENROUTER_NOT_CONFIGURED",
+        "validation_failures": [],
+        "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+      },
+      {
+        "case_id": "CH11_STALE_CLAUSE",
+        "expected": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+        "observed": null,
+        "run_status": "NOT_RUN",
+        "matches": false,
+        "false_positive": false,
+        "false_negative": false,
+        "abstained": false,
+        "reason": "OPENROUTER_NOT_CONFIGURED",
+        "validation_failures": [],
+        "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+      },
+      {
+        "case_id": "CH12_NONRESIDENT",
+        "expected": "OUT_OF_SCOPE",
+        "observed": null,
+        "run_status": "NOT_RUN",
+        "matches": false,
+        "false_positive": false,
+        "false_negative": false,
+        "abstained": false,
+        "reason": "OPENROUTER_NOT_CONFIGURED",
+        "validation_failures": [],
+        "annotation_note": "Synthetic provisional factual reading of the described control relationship; no tax-law classification is validated."
+      }
+    ]
+  },
+  "results": [
+    {
+      "case_id": "CH01_CUSTOMER_PASSIVE",
+      "input_index": 0,
+      "method": "direct-llm",
+      "run_status": "NOT_RUN",
+      "not_run_or_error_reason": "OPENROUTER_NOT_CONFIGURED",
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": [],
+        "rule_version": "act_selection@1.0.0"
+      },
+      "extracted_facts": null,
+      "validated_facts": {
+        "personnel_supplied": "unknown",
+        "worker_supervisor": "unknown",
+        "supporting_quotes": [],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 0,
+        "total": 0
+      },
+      "missing_information": [
+        "Predicate extraction and validated contract quotes are not produced by direct baseline.",
+        "Successful extraction or classification run."
+      ],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 2e-05,
+      "factual_evidence_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices.",
+        "Extraction/evidence validation failed; no table item may be proposed."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "CH02_VENDOR_PASSIVE",
+      "input_index": 1,
+      "method": "direct-llm",
+      "run_status": "NOT_RUN",
+      "not_run_or_error_reason": "OPENROUTER_NOT_CONFIGURED",
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": [],
+        "rule_version": "act_selection@1.0.0"
+      },
+      "extracted_facts": null,
+      "validated_facts": {
+        "personnel_supplied": "unknown",
+        "worker_supervisor": "unknown",
+        "supporting_quotes": [],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 0,
+        "total": 0
+      },
+      "missing_information": [
+        "Predicate extraction and validated contract quotes are not produced by direct baseline.",
+        "Successful extraction or classification run."
+      ],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 9e-06,
+      "factual_evidence_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices.",
+        "Extraction/evidence validation failed; no table item may be proposed."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "CH03_OUTCOME_ONLY",
+      "input_index": 2,
+      "method": "direct-llm",
+      "run_status": "NOT_RUN",
+      "not_run_or_error_reason": "OPENROUTER_NOT_CONFIGURED",
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": [],
+        "rule_version": "act_selection@1.0.0"
+      },
+      "extracted_facts": null,
+      "validated_facts": {
+        "personnel_supplied": "unknown",
+        "worker_supervisor": "unknown",
+        "supporting_quotes": [],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 0,
+        "total": 0
+      },
+      "missing_information": [
+        "Predicate extraction and validated contract quotes are not produced by direct baseline.",
+        "Successful extraction or classification run."
+      ],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 7e-06,
+      "factual_evidence_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices.",
+        "Extraction/evidence validation failed; no table item may be proposed."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "CH04_UNRELATED_NEGATION",
+      "input_index": 3,
+      "method": "direct-llm",
+      "run_status": "NOT_RUN",
+      "not_run_or_error_reason": "OPENROUTER_NOT_CONFIGURED",
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": [],
+        "rule_version": "act_selection@1.0.0"
+      },
+      "extracted_facts": null,
+      "validated_facts": {
+        "personnel_supplied": "unknown",
+        "worker_supervisor": "unknown",
+        "supporting_quotes": [],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 0,
+        "total": 0
+      },
+      "missing_information": [
+        "Predicate extraction and validated contract quotes are not produced by direct baseline.",
+        "Successful extraction or classification run."
+      ],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 1e-05,
+      "factual_evidence_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices.",
+        "Extraction/evidence validation failed; no table item may be proposed."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "CH05_VENDOR_EXCLUSIVE",
+      "input_index": 4,
+      "method": "direct-llm",
+      "run_status": "NOT_RUN",
+      "not_run_or_error_reason": "OPENROUTER_NOT_CONFIGURED",
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": [],
+        "rule_version": "act_selection@1.0.0"
+      },
+      "extracted_facts": null,
+      "validated_facts": {
+        "personnel_supplied": "unknown",
+        "worker_supervisor": "unknown",
+        "supporting_quotes": [],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 0,
+        "total": 0
+      },
+      "missing_information": [
+        "Predicate extraction and validated contract quotes are not produced by direct baseline.",
+        "Successful extraction or classification run."
+      ],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 6e-06,
+      "factual_evidence_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices.",
+        "Extraction/evidence validation failed; no table item may be proposed."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "CH06_FUTURE_CONDITION",
+      "input_index": 5,
+      "method": "direct-llm",
+      "run_status": "NOT_RUN",
+      "not_run_or_error_reason": "OPENROUTER_NOT_CONFIGURED",
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": [],
+        "rule_version": "act_selection@1.0.0"
+      },
+      "extracted_facts": null,
+      "validated_facts": {
+        "personnel_supplied": "unknown",
+        "worker_supervisor": "unknown",
+        "supporting_quotes": [],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 0,
+        "total": 0
+      },
+      "missing_information": [
+        "Predicate extraction and validated contract quotes are not produced by direct baseline.",
+        "Successful extraction or classification run."
+      ],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 6e-06,
+      "factual_evidence_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices.",
+        "Extraction/evidence validation failed; no table item may be proposed."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "CH07_CROSSOVER",
+      "input_index": 6,
+      "method": "direct-llm",
+      "run_status": "NOT_RUN",
+      "not_run_or_error_reason": "OPENROUTER_NOT_CONFIGURED",
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 1961",
+        "trigger_date": "2026-03-31",
+        "validation_failures": [],
+        "rule_version": "act_selection@1.0.0"
+      },
+      "extracted_facts": null,
+      "validated_facts": {
+        "personnel_supplied": "unknown",
+        "worker_supervisor": "unknown",
+        "supporting_quotes": [],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 0,
+        "total": 0
+      },
+      "missing_information": [
+        "Predicate extraction and validated contract quotes are not produced by direct baseline.",
+        "Successful extraction or classification run."
+      ],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 1.1e-05,
+      "factual_evidence_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices.",
+        "Old Act selected; old-Act treatment mapping is not implemented.",
+        "Extraction/evidence validation failed; no table item may be proposed."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "CH08_CONFLICTING_CURRENT",
+      "input_index": 7,
+      "method": "direct-llm",
+      "run_status": "NOT_RUN",
+      "not_run_or_error_reason": "OPENROUTER_NOT_CONFIGURED",
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": [],
+        "rule_version": "act_selection@1.0.0"
+      },
+      "extracted_facts": null,
+      "validated_facts": {
+        "personnel_supplied": "unknown",
+        "worker_supervisor": "unknown",
+        "supporting_quotes": [],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 0,
+        "total": 0
+      },
+      "missing_information": [
+        "Predicate extraction and validated contract quotes are not produced by direct baseline.",
+        "Successful extraction or classification run."
+      ],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 6e-06,
+      "factual_evidence_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices.",
+        "Extraction/evidence validation failed; no table item may be proposed."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "CH09_VENDOR_SERVICE_OUTCOME",
+      "input_index": 8,
+      "method": "direct-llm",
+      "run_status": "NOT_RUN",
+      "not_run_or_error_reason": "OPENROUTER_NOT_CONFIGURED",
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": [],
+        "rule_version": "act_selection@1.0.0"
+      },
+      "extracted_facts": null,
+      "validated_facts": {
+        "personnel_supplied": "unknown",
+        "worker_supervisor": "unknown",
+        "supporting_quotes": [],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 0,
+        "total": 0
+      },
+      "missing_information": [
+        "Predicate extraction and validated contract quotes are not produced by direct baseline.",
+        "Successful extraction or classification run."
+      ],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 5e-06,
+      "factual_evidence_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices.",
+        "Extraction/evidence validation failed; no table item may be proposed."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "CH10_MISSING_SUPERVISOR",
+      "input_index": 9,
+      "method": "direct-llm",
+      "run_status": "NOT_RUN",
+      "not_run_or_error_reason": "OPENROUTER_NOT_CONFIGURED",
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": [],
+        "rule_version": "act_selection@1.0.0"
+      },
+      "extracted_facts": null,
+      "validated_facts": {
+        "personnel_supplied": "unknown",
+        "worker_supervisor": "unknown",
+        "supporting_quotes": [],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 0,
+        "total": 0
+      },
+      "missing_information": [
+        "Predicate extraction and validated contract quotes are not produced by direct baseline.",
+        "Successful extraction or classification run."
+      ],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 5e-06,
+      "factual_evidence_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices.",
+        "Extraction/evidence validation failed; no table item may be proposed."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "CH11_STALE_CLAUSE",
+      "input_index": 10,
+      "method": "direct-llm",
+      "run_status": "NOT_RUN",
+      "not_run_or_error_reason": "OPENROUTER_NOT_CONFIGURED",
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": [],
+        "rule_version": "act_selection@1.0.0"
+      },
+      "extracted_facts": null,
+      "validated_facts": {
+        "personnel_supplied": "unknown",
+        "worker_supervisor": "unknown",
+        "supporting_quotes": [],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 0,
+        "total": 0
+      },
+      "missing_information": [
+        "Predicate extraction and validated contract quotes are not produced by direct baseline.",
+        "Successful extraction or classification run."
+      ],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 5e-06,
+      "factual_evidence_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices.",
+        "Extraction/evidence validation failed; no table item may be proposed."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        },
+        {
+          "id": "manpower_definition",
+          "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+        },
+        {
+          "id": "customer_manpower_candidate",
+          "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF pages 471 and 509 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+          "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+        },
+        {
+          "id": "professional_technical_reference",
+          "statutory_reference": "Section 393(1), Table 6(iii)",
+          "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+          "source_location": "PDF page 472 (one-based)",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+          "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    },
+    {
+      "case_id": "CH12_NONRESIDENT",
+      "input_index": 11,
+      "method": "direct-llm",
+      "run_status": "NOT_RUN",
+      "not_run_or_error_reason": "OPENROUTER_NOT_CONFIGURED",
+      "date_selection": {
+        "status": "RESOLVED",
+        "applicable_act": "Income-tax Act, 2025",
+        "trigger_date": "2026-10-12",
+        "validation_failures": [],
+        "rule_version": "act_selection@1.0.0"
+      },
+      "extracted_facts": null,
+      "validated_facts": {
+        "personnel_supplied": "unknown",
+        "worker_supervisor": "unknown",
+        "supporting_quotes": [],
+        "missing_facts": [],
+        "contradictory_evidence": []
+      },
+      "supporting_quotes": [],
+      "evidence_review": null,
+      "deterministic_context_findings": [],
+      "quote_provenance": {
+        "valid": 0,
+        "total": 0
+      },
+      "missing_information": [
+        "Predicate extraction and validated contract quotes are not produced by direct baseline.",
+        "Successful extraction or classification run."
+      ],
+      "validation_failures": [],
+      "raw_output": null,
+      "raw_model_status": null,
+      "returned_model": null,
+      "usage": null,
+      "response_metadata": null,
+      "api_calls": 0,
+      "api_error": false,
+      "runtime_seconds": 5e-06,
+      "factual_evidence_status": "OUT_OF_SCOPE",
+      "proposed_table_item": null,
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "human_review_reasons": [
+        "Qualified human review is required for any legal mapping or tax treatment.",
+        "Contract wording may differ from actual working practices.",
+        "Nonresident vendor is outside the resident-payment prototype scope.",
+        "Extraction/evidence validation failed; no table item may be proposed."
+      ],
+      "legal_sources": [
+        {
+          "id": "act_transition",
+          "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+          "effective_from": "2026-04-01",
+          "effective_to": null,
+          "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+          "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+        }
+      ],
+      "rules_version": "1.0.0",
+      "limitations": [
+        "Exact quotations establish provenance, not semantic correctness.",
+        "No final legal determination, withholding authorization, or return filing."
+      ]
+    }
+  ]
+}

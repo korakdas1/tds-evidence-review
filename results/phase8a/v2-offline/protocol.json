@@ -1,0 +1,35 @@
+{
+  "schema": "tds-comparison-run-v1",
+  "created_at": "2026-11-03T10:11:09.834314+00:00",
+  "input_sha256": "082a4e57276cd1eb61c3543f02fc53cf747a64e35932429509a4273b5b0ecf4a",
+  "input_name": "tresata_challenge_v2.json",
+  "cases": 12,
+  "annotation_origin": "SYNTHETIC_DEVELOPMENT_NOT_INDEPENDENT_HOLDOUT",
+  "protocol_sha256": "3d376c8e2013f1181392d2fae645a229e60d781850e5daa832470beaa49992a6",
+  "sources_sha256": {},
+  "implementation_sha256": {
+    "src/__init__.py": "7859dfa501cb78d0c316613c26ba6ab43372fa6b32b543f41b6cce6556dcb688",
+    "src/act_selection_v1.json": "7ebd95f18228179d478d39824def60b31446ccd8518be7bbb24c9d2f86edfd9f",
+    "src/comparison.py": "383719a666fe30353685ad5589751400fff4c4dfa8b7cf1b07bfa5217a4317cc",
+    "src/document_review.py": "ec7562396b663b123f54c190578dfd977e2b927feebfe33b8e3efdd7f159bbdd",
+    "src/evaluation.py": "39815f67ff699742e7bdd4fbbb1e88506ff7367133e228cb753772abb223400e",
+    "src/evidence.py": "d62803f807deabf3b3ce831ff8757b431a6874f1a8b79a0d5151e7c0dd7d1f1c",
+    "src/extraction.py": "2d550c3b1ba09e882557aa8f0cd2b84ff76261fdaa9b9d3e4c753e5038c623b9",
+    "src/live_provider.py": "6faa5c2ddf4c3c0d5efd6926f1146a408e87103ef6fc46fdfd8e3495323e6363",
+    "src/pdf_ingestion.py": "d22371b47c50676db636b88b49b05b697cdb3c8211f849a48b07000b0790d040",
+    "src/pdf_worker.py": "815077b58dbafd3bd88de228739c4f4b18a48086ede8acf59a12c84439ab7b79",
+    "src/pipeline.py": "072c226725a0138340d1bb70f0d1b64896ef8fd92adfb79d53dac8b281cd68e7",
+    "src/review_evidence.py": "ed754a975d53fc1cc9d797e9d0c5bfcab815e3d7671b0b554a4b68dbf15ffbb1",
+    "src/rules.py": "bc79862710d092e2d8f7e66faa510224e4b6364397c6bbf55bd168873de4da4e",
+    "src/rules_v1.json": "250aa028ef08e94ee9d017f97634829604c7af1cf23d463a9aca77dab82f9764",
+    "src/schema.py": "446e32d2892385bbdc30a1739e1f2a97abab77b8325bf1ca08cc96bf29f7ab3b",
+    "evaluate_comparison.py": "e5ec19548314db08be50878c599d3f5e19b7f62897230c43ea7c927de04a6600"
+  },
+  "prompt_sha256": {
+    "direct-llm": "97baaa2b1f1eba2097668d493b7be3264c005fb477b47e900c15748abbd24a39",
+    "hybrid": "6389539116e06d404de1463692b467d2e4a2f381b1f8a52f65453307274e5e4f"
+  },
+  "requested_execution": "OFFLINE_ONLY",
+  "actual_live_calls_this_run": 0,
+  "independent_practitioner_validation": "NOT_ESTABLISHED"
+}

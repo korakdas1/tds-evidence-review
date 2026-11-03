@@ -1,0 +1,17 @@
+test_alignment_uses_ids_and_rejects_duplicates_unknown_missing (tests.test_comparison.EvaluationTests.test_alignment_uses_ids_and_rejects_duplicates_unknown_missing) ... ok
+test_changed_labels_hash_and_nonexact_anchors_are_rejected (tests.test_comparison.EvaluationTests.test_changed_labels_hash_and_nonexact_anchors_are_rejected) ... ok
+test_default_and_simulation_outputs_are_separate_and_exclusive (tests.test_comparison.EvaluationTests.test_default_and_simulation_outputs_are_separate_and_exclusive) ... ok
+test_frozen_known_inputs_all_validate (tests.test_comparison.EvaluationTests.test_frozen_known_inputs_all_validate) ... ok
+test_historical_model_mixing_partial_coverage_and_refusal (tests.test_comparison.EvaluationTests.test_historical_model_mixing_partial_coverage_and_refusal) ... ok
+test_metric_usage_only_counts_reported_valid_measurements (tests.test_comparison.EvaluationTests.test_metric_usage_only_counts_reported_valid_measurements) ... ok
+test_missing_usage_cost_and_predicate_labels_are_not_zero_accuracy (tests.test_comparison.EvaluationTests.test_missing_usage_cost_and_predicate_labels_are_not_zero_accuracy) ... ok
+test_not_run_is_not_a_successful_abstention_or_safety_pass (tests.test_comparison.EvaluationTests.test_not_run_is_not_a_successful_abstention_or_safety_pass) ... ok
+test_opposite_direction_counts_false_positive_and_false_negative (tests.test_comparison.EvaluationTests.test_opposite_direction_counts_false_positive_and_false_negative) ... ok
+test_practitioner_format_never_authenticates_an_identity (tests.test_comparison.EvaluationTests.test_practitioner_format_never_authenticates_an_identity) ... ok
+test_quote_provenance_is_recomputed_not_trusted (tests.test_comparison.EvaluationTests.test_quote_provenance_is_recomputed_not_trusted) ... ok
+test_success_denominator_excludes_errors_and_not_run_but_preserves_coverage (tests.test_comparison.EvaluationTests.test_success_denominator_excludes_errors_and_not_run_but_preserves_coverage) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.076s
+
+OK

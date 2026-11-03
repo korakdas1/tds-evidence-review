@@ -1,0 +1,15 @@
+{
+  "schema": "tds-recorded-comparison-v1",
+  "execution_kind": "HISTORICAL_RECORDED_LIVE",
+  "dataset_sha256": "a0744ad70703d0ddef563d7b713ffa604cffd927ba2a14675a4f7a7caf4f4699",
+  "reports": {
+    "direct-llm": {
+      "path": "../results/phase1b/run-20261103-01/direct-llm.json",
+      "sha256": "98d399b9c764f8872594b7cce6899ada26104fe1627c7f97b9ff7953d682566e"
+    },
+    "hybrid": {
+      "path": "../results/phase1b/run-20261103-01/hybrid.json",
+      "sha256": "017ffc83e4bee28342756fb69dda57af6c3c5fbc1434490ce0774409cb981536"
+    }
+  }
+}

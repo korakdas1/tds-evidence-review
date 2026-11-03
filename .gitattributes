@@ -1,2 +1,4 @@
 # Preserve frozen PDF fixture bytes; these are documents, not line-oriented text.
 *.pdf binary
+# Python's standard CSV writer uses CRLF; preserve recorded bytes and allow that line ending.
+results/phase8a/**/cases.csv whitespace=cr-at-eol

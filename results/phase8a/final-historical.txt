@@ -1,0 +1,4 @@
+baseline [OFFLINE]: completed 16/16; matched 16/16 successful cases
+direct-llm [HISTORICAL_RECORDED_LIVE]: completed 2/16; matched 2/2 successful cases
+hybrid [HISTORICAL_RECORDED_LIVE]: completed 2/16; matched 1/2 successful cases
+No live calls made. Factual development agreement, not legal accuracy.
