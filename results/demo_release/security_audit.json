@@ -1,0 +1,52 @@
+{
+  "audit_at_utc": "2026-11-03T02:57:32.881633+00:00",
+  "status": "PASS",
+  "fallback_commit": "f8c793b6cd0c801e1df211057066de575be49959",
+  "scope": "All release-candidate files and fallback Git blobs; changed files manually reviewed",
+  "candidate_file_count_before_audit_file": 86,
+  "fallback_blob_count": 82,
+  "existing_files_preserved_byte_for_byte_except_readme": 81,
+  "datasets_tax_rules_pipeline_tests_historical_results": "Unchanged against fallback commit",
+  "changed_files_before_audit_file": [
+    "README.md",
+    "demo.py",
+    "results/demo_release/demo_output.txt",
+    "results/demo_release/test_run.txt",
+    "tests/test_demo.py"
+  ],
+  "credential_scans": "No exact configured-key or high-confidence OpenRouter/GitHub/AWS/private-key/credential-URL matches; no secret values logged",
+  "content_review": "Only demo code, focused tests, README and new test/demo output; no private financial records, confidential assignment documents, private conversations or unrelated files found",
+  "env_ignored_and_untracked": true,
+  "env_mode": "0600",
+  "local_caches_and_private_paths_excluded": true,
+  "findings": [],
+  "commands_executed": [
+    "python -m unittest discover -v > results/demo_release/test_run.txt 2>&1",
+    "python demo.py > results/demo_release/demo_output.txt",
+    "git diff --check"
+  ],
+  "tests": {
+    "run": 72,
+    "passed": 72,
+    "failed": 0,
+    "existing": 69,
+    "new": 3
+  },
+  "demo_exit_code": 0,
+  "demo_api_calls": 0,
+  "syntax_check": "New Python files parse with Python 3.8 grammar; runtime checks used Python 3.13.12 only",
+  "staged_blob_audit": {
+    "status": "PASS",
+    "file_count": 87,
+    "changed_file_count": 6,
+    "findings": [],
+    "staged_bytes_match_worktree": true,
+    "whitespace_check": "PASS"
+  },
+  "limitations": "Pattern scans and manual content review cannot guarantee absence of every possible form of sensitive data. Demo is synthetic and the model response is a historical replay, not new model performance.",
+  "github_before_push": {
+    "main_commit": "f8c793b6cd0c801e1df211057066de575be49959",
+    "private": false,
+    "note": "GitHub reported the repository already public before this push. No visibility mutation was requested or performed."
+  }
+}

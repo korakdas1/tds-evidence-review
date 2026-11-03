@@ -4,6 +4,18 @@ A small Python prototype that reviews contractual evidence about who directs sup
 
 It never determines a final tax treatment, calculates tax, authorizes withholding, or files returns. All included evaluation cases are synthetic, AI-authored, and not practitioner validated.
 
+## Quick Demo
+
+From the repository folder, with Python 3.8+:
+
+```bash
+python demo.py
+```
+
+No installation, internet, API key or other credentials are needed. The demo prints three short examples: a supported customer-directed case with its exact quote, a missing-supervision case that abstains, and the **replayed historical** `S01_VENDOR_CONTROL` LLM mistake. In that saved response, an exact quotation contradicted the asserted supervision; validation rejected it and required review.
+
+The first two examples run the current deterministic pipeline. The third reads the unchanged Phase 1B artifact, clearly marked as a replay rather than a fresh model result. All three require human review; none establishes legally validated tax treatment. The demo does not write datasets or result files. See [DEMO_WALKTHROUGH.md](DEMO_WALKTHROUGH.md) for the underlying commands and evidence.
+
 ## Run locally
 
 Python 3.8+; standard library only. No packages, API keys, frontend, database, or paid service are required for the baseline. Executed here on Python 3.13.12; Python 3.8 grammar compatibility was checked, but a Python 3.8 interpreter was not available for runtime testing.
@@ -116,7 +128,7 @@ The separate `tresata_challenge_v2.json` has **12 synthetic cases and 10 exact a
 
 Focused extraction fixes cover direct passive-worker subjects, additional worker vocabulary, an explicitly bound recipient alias, and clearly obsolete draft labels. Future conditions and ambiguous grammar retain conservative abstention. The final challenge score is **12/12 development-set agreement**, with **0/3 false-confident decisions on expected-insufficient cases** and **3/3 appropriate insufficient-evidence abstentions**. The original benchmark remains **16/16**, including **0/4 false-confident evidence-removed decisions**. These are synthetic factual-label metrics, not legally validated tax accuracy.
 
-The current suite passes **69/69 tests**: the unchanged original 51 plus 18 regressions. No live model call, prompt change, tax-rule change or scope expansion occurred. The original submission commit `fbe81240d6cd26107dc544690fe9b8c73e825220` remains the fallback. See [PHASE_2A_REPORT.md](PHASE_2A_REPORT.md) for every first-pass mismatch and limitation, and [DEMO_WALKTHROUGH.md](DEMO_WALKTHROUGH.md) for three executed offline demonstrations.
+Phase 2A validation passed **69/69 tests**: the unchanged original 51 plus 18 regressions. No live model call, prompt change, tax-rule change or scope expansion occurred. The original submission commit `fbe81240d6cd26107dc544690fe9b8c73e825220` remains the fallback. See [PHASE_2A_REPORT.md](PHASE_2A_REPORT.md) for every first-pass mismatch and limitation, and [DEMO_WALKTHROUGH.md](DEMO_WALKTHROUGH.md) for three executed offline demonstrations.
 
 To reproduce without overwriting saved evaluation artifacts:
 
