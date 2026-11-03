@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "scope": "All files differing from origin/feature/full-product (19103a2) plus untracked unignored files: token patterns, exact comparison with credential-type .env values (never printed), private-data file names, dangerous call patterns in webapp/ and src/ code, remote URLs in the frontend.",
+  "candidate_files_scanned": 57,
+  "credential_variables_compared": 1,
+  "findings": [],
+  "risky_file_names": [],
+  "dangerous_call_patterns": [],
+  "frontend_remote_urls": [],
+  "env_ignored": true,
+  "env_tracked": false,
+  "env_permissions": "0o600",
+  "local_data_ignored": true,
+  "uploads_ignored": true,
+  "branch": "feature/full-product",
+  "local_main": "e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0",
+  "origin_main": "e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0",
+  "new_pdfs": [],
+  "manual_scope_review": "No new PDFs. Screenshots show synthetic samples and fictional reviewer names. Browser profiles, scratch databases and uploads stayed in the session scratch folder or a removed snap profile, outside the repository. No live model calls were made.",
+  "limitations": "Bounded pattern scans and manual review; not a penetration test or a guarantee."
+}

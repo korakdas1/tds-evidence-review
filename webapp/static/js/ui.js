@@ -17,7 +17,11 @@ export function modal({ title, intro, body, actions, wide }) {
   const previous = document.activeElement;
   let resolveFn;
   const done = new Promise((resolve) => { resolveFn = resolve; });
+  // The page behind an open dialog is inert: not focusable, clickable or exposed to assistive tech.
+  const background = [document.querySelector(".topbar"), document.getElementById("main")];
+  background.forEach((el) => { if (el) el.inert = true; });
   const close = (value) => {
+    background.forEach((el) => { if (el) el.inert = false; });
     clear(root);
     document.removeEventListener("keydown", onKey);
     previous?.focus?.();

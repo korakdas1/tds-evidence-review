@@ -1,32 +1,65 @@
 """Deterministic date selection and deliberately provisional treatment proposals."""
 import json
 import re
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 
 from .schema import CUSTOMER, VENDOR, CONFLICT, INSUFFICIENT, OUT, residency
 
-BOUNDARY = date(2026, 4, 1)
-OLD_ACT = "Income-tax Act, 1961"
-NEW_ACT = "Income-tax Act, 2025"
 RULES = json.loads(Path(__file__).with_name("rules_v1.json").read_text(encoding="utf-8"))
+DATE_PATTERN = re.compile(r"[0-9]{4}-[0-9]{2}-[0-9]{2}")  # ASCII digits only
 
 
-def select_act(credit_date, payment_date):
+def load_act_selection(config, rules=RULES):
+    """Validate a versioned Act-selection configuration; raise ValueError rather than guess."""
+    try:
+        if config["id"] != "act_selection" or not re.fullmatch(r"\d+\.\d+\.\d+", config["version"]):
+            raise ValueError("Act selection config needs id act_selection and a semantic version")
+        if config["trigger"] != "EARLIER_OF_REQUIRED_DATES" or config["required_dates"] != ["credit_date", "payment_date"]:
+            raise ValueError("Only the earlier-of-credit-and-payment trigger is implemented")
+        periods = config["periods"]
+        if len(periods) < 2 or len({p["act"] for p in periods}) != len(periods):
+            raise ValueError("Act periods must name at least two distinct Acts")
+        if periods[0]["effective_from"] is not None or periods[-1]["effective_to"] is not None:
+            raise ValueError("Act periods must cover all dates without open gaps")
+        bounds = []
+        for earlier, later in zip(periods, periods[1:]):
+            end, start = date.fromisoformat(earlier["effective_to"]), date.fromisoformat(later["effective_from"])
+            if start != end + timedelta(days=1) or (bounds and start <= bounds[-1]):
+                raise ValueError("Act periods must be ordered, contiguous and non-overlapping")
+            bounds.append(start)
+        source = [r for r in rules["rules"] if r["id"] == config["source_rule_id"]]
+        if len(source) != 1 or source[0]["effective_from"] != periods[-1]["effective_from"]:
+            raise ValueError("Act selection boundary must match its cited source rule")
+    except (KeyError, TypeError, AttributeError) as exc:
+        raise ValueError("Malformed Act selection config: " + type(exc).__name__) from None
+    return dict(config, rule_version="{}@{}".format(config["id"], config["version"]),
+                boundaries=bounds)
+
+
+ACT_SELECTION = load_act_selection(json.loads(
+    Path(__file__).with_name("act_selection_v1.json").read_text(encoding="utf-8")))
+OLD_ACT = ACT_SELECTION["periods"][0]["act"]
+NEW_ACT = ACT_SELECTION["periods"][-1]["act"]
+BOUNDARY = ACT_SELECTION["boundaries"][-1]
+
+
+def select_act(credit_date, payment_date, config=ACT_SELECTION):
     errors, dates = [], []
     for name, value in (("credit_date", credit_date), ("payment_date", payment_date)):
         try:
-            if not isinstance(value, str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
+            if not isinstance(value, str) or not DATE_PATTERN.fullmatch(value):
                 raise ValueError()
             dates.append(date.fromisoformat(value))
         except ValueError:
             errors.append(name + " is missing or invalid; use YYYY-MM-DD")
     if errors:
         return {"status": "NEEDS_DATE_REVIEW", "applicable_act": None,
-                "trigger_date": None, "validation_failures": errors}
+                "trigger_date": None, "validation_failures": errors, "rule_version": config["rule_version"]}
     trigger = min(dates)
-    return {"status": "RESOLVED", "applicable_act": OLD_ACT if trigger < BOUNDARY else NEW_ACT,
-            "trigger_date": trigger.isoformat(), "validation_failures": []}
+    index = sum(trigger >= bound for bound in config["boundaries"])
+    return {"status": "RESOLVED", "applicable_act": config["periods"][index]["act"],
+            "trigger_date": trigger.isoformat(), "validation_failures": [], "rule_version": config["rule_version"]}
 
 
 def factual_status(facts):

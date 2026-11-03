@@ -1,0 +1,15 @@
+{
+  "id": "act_selection",
+  "version": "1.0.0",
+  "checked_on": "2026-11-03",
+  "source_rule_id": "act_transition",
+  "trigger": "EARLIER_OF_REQUIRED_DATES",
+  "required_dates": ["credit_date", "payment_date"],
+  "date_format": "YYYY-MM-DD (ASCII digits, real calendar date)",
+  "periods": [
+    {"act": "Income-tax Act, 1961", "effective_from": null, "effective_to": "2026-03-31"},
+    {"act": "Income-tax Act, 2025", "effective_from": "2026-04-01", "effective_to": null}
+  ],
+  "verification_status": "BOUNDARY_TAKEN_FROM_RULES_V1_ACT_TRANSITION_NOT_INDEPENDENTLY_LEGALLY_VALIDATED",
+  "note": "Encodes only the existing prototype rule: the earlier of credit and payment date selects the Act, and both dates are required. It adds no rates, thresholds or classifications. Statutory references and source URLs live in rules_v1.json (act_transition); load-time checks require the two files to agree."
+}

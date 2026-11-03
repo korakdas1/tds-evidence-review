@@ -1,0 +1,332 @@
+{
+  "kind": "DEVELOPMENT_REGRESSION_CASES_NOT_INDEPENDENT_VALIDATION",
+  "rule_version": "act_selection@1.0.0",
+  "fixture_sha256": "0bfceeb195582bd6321a02cf0a4018587601b80a455970ebc345156b4277a2c0",
+  "matched": 23,
+  "total": 23,
+  "cases": [
+    {
+      "id": "boundary_both_before",
+      "expected": [
+        "RESOLVED",
+        "Income-tax Act, 1961",
+        "2026-03-31"
+      ],
+      "observed": [
+        "RESOLVED",
+        "Income-tax Act, 1961",
+        "2026-03-31"
+      ],
+      "rule_version": "act_selection@1.0.0"
+    },
+    {
+      "id": "boundary_both_on",
+      "expected": [
+        "RESOLVED",
+        "Income-tax Act, 2025",
+        "2026-04-01"
+      ],
+      "observed": [
+        "RESOLVED",
+        "Income-tax Act, 2025",
+        "2026-04-01"
+      ],
+      "rule_version": "act_selection@1.0.0"
+    },
+    {
+      "id": "credit_before_payment_on",
+      "expected": [
+        "RESOLVED",
+        "Income-tax Act, 1961",
+        "2026-03-31"
+      ],
+      "observed": [
+        "RESOLVED",
+        "Income-tax Act, 1961",
+        "2026-03-31"
+      ],
+      "rule_version": "act_selection@1.0.0"
+    },
+    {
+      "id": "payment_before_credit_on",
+      "expected": [
+        "RESOLVED",
+        "Income-tax Act, 1961",
+        "2026-03-31"
+      ],
+      "observed": [
+        "RESOLVED",
+        "Income-tax Act, 1961",
+        "2026-03-31"
+      ],
+      "rule_version": "act_selection@1.0.0"
+    },
+    {
+      "id": "both_after",
+      "expected": [
+        "RESOLVED",
+        "Income-tax Act, 2025",
+        "2026-10-10"
+      ],
+      "observed": [
+        "RESOLVED",
+        "Income-tax Act, 2025",
+        "2026-10-10"
+      ],
+      "rule_version": "act_selection@1.0.0"
+    },
+    {
+      "id": "leap_day_valid",
+      "expected": [
+        "RESOLVED",
+        "Income-tax Act, 2025",
+        "2028-02-29"
+      ],
+      "observed": [
+        "RESOLVED",
+        "Income-tax Act, 2025",
+        "2028-02-29"
+      ],
+      "rule_version": "act_selection@1.0.0"
+    },
+    {
+      "id": "far_past_existing_behaviour",
+      "expected": [
+        "RESOLVED",
+        "Income-tax Act, 1961",
+        "1950-01-01"
+      ],
+      "observed": [
+        "RESOLVED",
+        "Income-tax Act, 1961",
+        "1950-01-01"
+      ],
+      "rule_version": "act_selection@1.0.0"
+    },
+    {
+      "id": "invalid_non_leap_day",
+      "expected": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "observed": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "rule_version": "act_selection@1.0.0"
+    },
+    {
+      "id": "invalid_month",
+      "expected": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "observed": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "rule_version": "act_selection@1.0.0"
+    },
+    {
+      "id": "invalid_day_for_month",
+      "expected": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "observed": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "rule_version": "act_selection@1.0.0"
+    },
+    {
+      "id": "missing_credit",
+      "expected": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "observed": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "rule_version": "act_selection@1.0.0"
+    },
+    {
+      "id": "empty_payment",
+      "expected": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "observed": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "rule_version": "act_selection@1.0.0"
+    },
+    {
+      "id": "integer_value",
+      "expected": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "observed": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "rule_version": "act_selection@1.0.0"
+    },
+    {
+      "id": "unpadded",
+      "expected": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "observed": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "rule_version": "act_selection@1.0.0"
+    },
+    {
+      "id": "compact",
+      "expected": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "observed": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "rule_version": "act_selection@1.0.0"
+    },
+    {
+      "id": "slash_separated",
+      "expected": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "observed": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "rule_version": "act_selection@1.0.0"
+    },
+    {
+      "id": "with_time",
+      "expected": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "observed": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "rule_version": "act_selection@1.0.0"
+    },
+    {
+      "id": "iso_week",
+      "expected": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "observed": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "rule_version": "act_selection@1.0.0"
+    },
+    {
+      "id": "leading_space",
+      "expected": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "observed": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "rule_version": "act_selection@1.0.0"
+    },
+    {
+      "id": "trailing_newline",
+      "expected": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "observed": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "rule_version": "act_selection@1.0.0"
+    },
+    {
+      "id": "arabic_indic_digits",
+      "expected": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "observed": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "rule_version": "act_selection@1.0.0"
+    },
+    {
+      "id": "fullwidth_digits",
+      "expected": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "observed": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "rule_version": "act_selection@1.0.0"
+    },
+    {
+      "id": "year_zero",
+      "expected": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "observed": [
+        "NEEDS_DATE_REVIEW",
+        null,
+        null
+      ],
+      "rule_version": "act_selection@1.0.0"
+    }
+  ],
+  "note": "Development regression check of the existing rule after refactoring; not legal or independent validation."
+}

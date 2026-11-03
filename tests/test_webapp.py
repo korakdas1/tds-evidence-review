@@ -235,10 +235,14 @@ class ReviewAppTests(unittest.TestCase):
                    (forged, hashlib.sha256(forged.encode()).hexdigest(), view["run"]["id"]))
         db.commit()
         status, view, _ = self.call("GET", "/api/cases/" + view["case"]["id"])
-        self.assertEqual(view["run"]["report_integrity"], "NOT_MATCHING_REVIEW_HISTORY")
+        # Phase 6: the API itself fails closed (previously only the UI masked the finding).
+        self.assertEqual(view["integrity"]["status"], "FAILED")
+        self.assertEqual(view["integrity"]["failed_checks"], ["history_anchor"])
+        self.assertIsNone(view["finding"])
         self.assertEqual(self.call("GET", "/api/cases")[1][0]["integrity"], "FAILED")
         status, export, _ = self.call("GET", "/api/cases/{}/export".format(view["case"]["id"]))
-        self.assertEqual(export["runs"][0]["report_integrity"], "NOT_MATCHING_REVIEW_HISTORY")
+        self.assertEqual(export["runs"], [])
+        self.assertEqual(export["forensic_untrusted"]["runs"][0]["integrity"]["checks"]["history_anchor"], "MISMATCH")
         status, data, _ = self.event(view, kind="NOTE", note="should be refused")
         self.assertEqual(status, 409)
 

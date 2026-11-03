@@ -11,6 +11,13 @@ MAX_PAGES = 20
 MAX_PAGE_CHARS = 100000
 MAX_TOTAL_CHARS = 200000
 MAX_STREAM_BYTES = 2 * 1024 * 1024
+# Phase 6: cap every decompression while parsing. Without it, pypdf's own 75 MB per-stream
+# default let a 1.4 MB, 20-page file consume about 1.5 GB before MAX_STREAM_BYTES was checked.
+MAX_DECOMPRESSED_BYTES = 8 * 1024 * 1024
+DECOMPRESSION_LIMITS = ("zlib_maximum_output_length", "lzw_maximum_output_length",
+                        "run_length_maximum_output_length", "array_based_stream_maximum_output_length",
+                        "brotli_maximum_output_length", "jbig2_maximum_output_length",
+                        "image_maximum_buffer_size")
 
 
 def sha256(data):
@@ -56,9 +63,24 @@ def quiet_parser():
     handlers, propagate = logger.handlers, logger.propagate
     logger.handlers, logger.propagate = [logging.NullHandler()], False
     try:
-        yield
+        with decompression_limits():
+            yield
     finally:
         logger.handlers, logger.propagate = handlers, propagate
+
+
+@contextmanager
+def decompression_limits():
+    """Context-local (thread-safe) pypdf limits; older pypdf without the API keeps its defaults."""
+    import pypdf
+    apply = getattr(pypdf, "apply_configuration", None)  # temporary and context-local
+    if apply is None:
+        yield
+        return
+    current = pypdf.get_configuration()
+    limits = {name: MAX_DECOMPRESSED_BYTES for name in DECOMPRESSION_LIMITS if hasattr(current, name)}
+    with apply(**limits):
+        yield
 
 
 def read_pdf(path, max_bytes=MAX_BYTES, max_pages=MAX_PAGES):
@@ -152,9 +174,10 @@ def read_pdf(path, max_bytes=MAX_BYTES, max_pages=MAX_PAGES):
                                 item["issues"].append("ROTATED_PAGE_REQUIRES_VISUAL_REVIEW")
                             if page.get("/AA") or any(a.get_object().get("/A") for a in page.get("/Annots", [])):
                                 item["issues"].append("ACTIVE_CONTENT_NOT_EXECUTED")
-                except Exception:
+                except Exception as exc:
                     # Third-party parser errors remain per-page failures, never invented text.
-                    item["issues"].append("PAGE_EXTRACTION_FAILED")
+                    limited = type(exc).__name__ == "LimitReachedError"
+                    item["issues"].append("DECOMPRESSION_LIMIT" if limited else "PAGE_EXTRACTION_FAILED")
                 item["text_sha256"] = sha256(item["text"].encode("utf-8"))
                 item["status"] = "NEEDS_DOCUMENT_REVIEW" if item["issues"] else "EXTRACTED"
                 doc["pages"].append(item)

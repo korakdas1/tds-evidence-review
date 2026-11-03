@@ -1,0 +1,214 @@
+{
+  "kind": "DEVELOPMENT_REGRESSION_CASES_NOT_INDEPENDENT_VALIDATION",
+  "rule": "act_selection@1.0.0",
+  "note": "Synthetic date inputs written to exercise the versioned Act-selection rule. Expected values restate the existing prototype rule; they are not legal validation.",
+  "cases": [
+    {
+      "id": "boundary_both_before",
+      "credit_date": "2026-03-31",
+      "payment_date": "2026-03-31",
+      "expected_status": "RESOLVED",
+      "expected_act": "Income-tax Act, 1961",
+      "expected_trigger_date": "2026-03-31",
+      "purpose": "Last day before the boundary"
+    },
+    {
+      "id": "boundary_both_on",
+      "credit_date": "2026-04-01",
+      "payment_date": "2026-04-01",
+      "expected_status": "RESOLVED",
+      "expected_act": "Income-tax Act, 2025",
+      "expected_trigger_date": "2026-04-01",
+      "purpose": "First day of the 2025 Act period"
+    },
+    {
+      "id": "credit_before_payment_on",
+      "credit_date": "2026-03-31",
+      "payment_date": "2026-04-01",
+      "expected_status": "RESOLVED",
+      "expected_act": "Income-tax Act, 1961",
+      "expected_trigger_date": "2026-03-31",
+      "purpose": "Earlier date decides (credit)"
+    },
+    {
+      "id": "payment_before_credit_on",
+      "credit_date": "2026-04-01",
+      "payment_date": "2026-03-31",
+      "expected_status": "RESOLVED",
+      "expected_act": "Income-tax Act, 1961",
+      "expected_trigger_date": "2026-03-31",
+      "purpose": "Earlier date decides (payment)"
+    },
+    {
+      "id": "both_after",
+      "credit_date": "2026-10-10",
+      "payment_date": "2026-10-20",
+      "expected_status": "RESOLVED",
+      "expected_act": "Income-tax Act, 2025",
+      "expected_trigger_date": "2026-10-10",
+      "purpose": "Typical sample case"
+    },
+    {
+      "id": "leap_day_valid",
+      "credit_date": "2028-02-29",
+      "payment_date": "2028-03-01",
+      "expected_status": "RESOLVED",
+      "expected_act": "Income-tax Act, 2025",
+      "expected_trigger_date": "2028-02-29",
+      "purpose": "Real leap day accepted"
+    },
+    {
+      "id": "far_past_existing_behaviour",
+      "credit_date": "1950-01-01",
+      "payment_date": "1950-01-02",
+      "expected_status": "RESOLVED",
+      "expected_act": "Income-tax Act, 1961",
+      "expected_trigger_date": "1950-01-01",
+      "purpose": "Documents EXISTING behaviour only: every date before the boundary maps to the 1961 Act. The prototype does not model the 1961 Act's own commencement; not a legal claim."
+    },
+    {
+      "id": "invalid_non_leap_day",
+      "credit_date": "2026-02-29",
+      "payment_date": "2026-04-02",
+      "expected_status": "NEEDS_DATE_REVIEW",
+      "expected_act": null,
+      "expected_trigger_date": null,
+      "purpose": "Impossible calendar date"
+    },
+    {
+      "id": "invalid_month",
+      "credit_date": "2026-13-01",
+      "payment_date": "2026-04-02",
+      "expected_status": "NEEDS_DATE_REVIEW",
+      "expected_act": null,
+      "expected_trigger_date": null,
+      "purpose": "Month out of range"
+    },
+    {
+      "id": "invalid_day_for_month",
+      "credit_date": "2026-04-31",
+      "payment_date": "2026-04-02",
+      "expected_status": "NEEDS_DATE_REVIEW",
+      "expected_act": null,
+      "expected_trigger_date": null,
+      "purpose": "Day out of range for April"
+    },
+    {
+      "id": "missing_credit",
+      "credit_date": null,
+      "payment_date": "2026-04-02",
+      "expected_status": "NEEDS_DATE_REVIEW",
+      "expected_act": null,
+      "expected_trigger_date": null,
+      "purpose": "Missing date is never guessed"
+    },
+    {
+      "id": "empty_payment",
+      "credit_date": "2026-04-02",
+      "payment_date": "",
+      "expected_status": "NEEDS_DATE_REVIEW",
+      "expected_act": null,
+      "expected_trigger_date": null,
+      "purpose": "Empty string"
+    },
+    {
+      "id": "integer_value",
+      "credit_date": 20260401,
+      "payment_date": "2026-04-02",
+      "expected_status": "NEEDS_DATE_REVIEW",
+      "expected_act": null,
+      "expected_trigger_date": null,
+      "purpose": "Non-string value"
+    },
+    {
+      "id": "unpadded",
+      "credit_date": "2026-4-1",
+      "payment_date": "2026-04-02",
+      "expected_status": "NEEDS_DATE_REVIEW",
+      "expected_act": null,
+      "expected_trigger_date": null,
+      "purpose": "Non-padded month/day"
+    },
+    {
+      "id": "compact",
+      "credit_date": "20260401",
+      "payment_date": "2026-04-02",
+      "expected_status": "NEEDS_DATE_REVIEW",
+      "expected_act": null,
+      "expected_trigger_date": null,
+      "purpose": "Compact ISO form rejected"
+    },
+    {
+      "id": "slash_separated",
+      "credit_date": "2026/04/01",
+      "payment_date": "2026-04-02",
+      "expected_status": "NEEDS_DATE_REVIEW",
+      "expected_act": null,
+      "expected_trigger_date": null,
+      "purpose": "Wrong separator"
+    },
+    {
+      "id": "with_time",
+      "credit_date": "2026-04-01T00:00:00",
+      "payment_date": "2026-04-02",
+      "expected_status": "NEEDS_DATE_REVIEW",
+      "expected_act": null,
+      "expected_trigger_date": null,
+      "purpose": "Datetime instead of date"
+    },
+    {
+      "id": "iso_week",
+      "credit_date": "2026-W14-3",
+      "payment_date": "2026-04-02",
+      "expected_status": "NEEDS_DATE_REVIEW",
+      "expected_act": null,
+      "expected_trigger_date": null,
+      "purpose": "ISO week date"
+    },
+    {
+      "id": "leading_space",
+      "credit_date": " 2026-04-01",
+      "payment_date": "2026-04-02",
+      "expected_status": "NEEDS_DATE_REVIEW",
+      "expected_act": null,
+      "expected_trigger_date": null,
+      "purpose": "Whitespace is not trimmed silently"
+    },
+    {
+      "id": "trailing_newline",
+      "credit_date": "2026-04-01\n",
+      "payment_date": "2026-04-02",
+      "expected_status": "NEEDS_DATE_REVIEW",
+      "expected_act": null,
+      "expected_trigger_date": null,
+      "purpose": "Trailing newline"
+    },
+    {
+      "id": "arabic_indic_digits",
+      "credit_date": "\u0662\u0660\u0662\u0666-\u0660\u0664-\u0660\u0661",
+      "payment_date": "2026-04-02",
+      "expected_status": "NEEDS_DATE_REVIEW",
+      "expected_act": null,
+      "expected_trigger_date": null,
+      "purpose": "Non-ASCII digits"
+    },
+    {
+      "id": "fullwidth_digits",
+      "credit_date": "\uff12\uff10\uff12\uff16-\uff10\uff14-\uff10\uff11",
+      "payment_date": "2026-04-02",
+      "expected_status": "NEEDS_DATE_REVIEW",
+      "expected_act": null,
+      "expected_trigger_date": null,
+      "purpose": "Full-width digits"
+    },
+    {
+      "id": "year_zero",
+      "credit_date": "0000-01-01",
+      "payment_date": "2026-04-02",
+      "expected_status": "NEEDS_DATE_REVIEW",
+      "expected_act": null,
+      "expected_trigger_date": null,
+      "purpose": "Year outside the calendar"
+    }
+  ]
+}

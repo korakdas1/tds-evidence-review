@@ -62,6 +62,18 @@ CREATE INDEX IF NOT EXISTS events_case ON events(case_id, id);
 """
 
 
+DEFAULT_MAX_STORAGE_BYTES = 512 * 1024 * 1024
+DEFAULT_MAX_DOCUMENTS = 2000
+
+
+class StaleRunError(Exception):
+    """A newer analysis run was committed while a decision was being recorded."""
+
+
+class StorageLimitError(Exception):
+    """The local document store would exceed its configured quota."""
+
+
 def now():
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
@@ -87,7 +99,9 @@ def safe_name(name):
 
 
 class Store:
-    def __init__(self, data_dir):
+    def __init__(self, data_dir, max_storage_bytes=DEFAULT_MAX_STORAGE_BYTES, max_documents=DEFAULT_MAX_DOCUMENTS):
+        self.max_storage_bytes = max_storage_bytes
+        self.max_documents = max_documents
         self.data_dir = Path(data_dir).resolve()
         self.documents_dir = self.data_dir / "documents"
         self.documents_dir.mkdir(parents=True, exist_ok=True)
@@ -125,7 +139,16 @@ class Store:
         with self.lock, closing(self.connect()) as db, db:
             row = db.execute("SELECT * FROM documents WHERE sha256 = ?", (digest,)).fetchone()
             if row is not None:
-                return dict(row)
+                record = dict(row)
+                # Phase 6: identical bytes hash to the same digest, so they are authentic. Restore a stored
+                # copy that went missing or was altered; otherwise "upload it again" could never succeed.
+                self._repair(record, data)
+                return record
+            count, used = db.execute("SELECT COUNT(*), COALESCE(SUM(size), 0) FROM documents").fetchone()
+            if count >= self.max_documents or used + len(data) > self.max_storage_bytes:
+                raise StorageLimitError("Local storage limit reached ({} documents, {:.0f} MiB). Start the app with "
+                                        "a new --data-dir or a higher --max-storage-mb.".format(
+                                            self.max_documents, self.max_storage_bytes / 1048576))
             folder = self.documents_dir / digest
             folder.mkdir(mode=0o700, parents=True, exist_ok=True)
             path = folder / clean
@@ -136,6 +159,19 @@ class Store:
                           stored_path=str(path.relative_to(self.data_dir)), created_at=now())
             db.execute("INSERT INTO documents VALUES (:sha256, :name, :size, :stored_path, :created_at)", record)
             return record
+
+    def _repair(self, record, data):
+        path = self.document_path(record)
+        try:
+            if hashlib.sha256(path.read_bytes()).hexdigest() == record["sha256"]:
+                return
+        except OSError:
+            pass
+        path.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+        temporary = path.with_name(path.name + ".restore")
+        with open(os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600), "wb") as stream:
+            stream.write(data)
+        os.replace(temporary, path)
 
     def document(self, digest):
         with closing(self.connect()) as db:
@@ -184,10 +220,15 @@ class Store:
                        ":report_sha256)", run)
         return run
 
-    def append_event(self, case_id, run_id, actor, kind, target, payload):
+    def append_event(self, case_id, run_id, actor, kind, target, payload, expect_latest_run=None):
         payload_json = canonical(payload)
         with self.lock, closing(self.connect()) as db, db:
             db.execute("BEGIN IMMEDIATE")  # Serialise chain appends across processes too.
+            if expect_latest_run is not None:
+                latest = db.execute("SELECT id FROM runs WHERE case_id = ? ORDER BY sequence DESC LIMIT 1",
+                                    (case_id,)).fetchone()
+                if latest is None or latest["id"] != expect_latest_run:
+                    raise StaleRunError(case_id)
             last = db.execute("SELECT hash FROM events WHERE case_id = ? ORDER BY id DESC LIMIT 1",
                               (case_id,)).fetchone()
             prev = last["hash"] if last else GENESIS
@@ -242,7 +283,7 @@ class Store:
         record["supplied_extraction"] = json.loads(supplied) if supplied else None
         if "report_json" in record:
             raw = record.pop("report_json")
-            record["report_integrity"] = (
+            record["row_hash_check"] = record["report_integrity"] = (
                 "VERIFIED" if hashlib.sha256(raw.encode("utf-8")).hexdigest() == record["report_sha256"]
                 else "HASH_MISMATCH")
             record["report"] = json.loads(raw)

@@ -6,6 +6,7 @@ without sockets. `serve()` wraps it in a ThreadingHTTPServer bound to a loopback
 import argparse
 import ipaddress
 import json
+import sqlite3
 import mimetypes
 import socket
 import sys
@@ -14,8 +15,10 @@ import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
+from src.schema import parse_json
+
 from .service import ReviewService, ServiceError, pdf_parser
-from .store import Store
+from .store import DEFAULT_MAX_STORAGE_BYTES, Store
 
 STATIC = Path(__file__).resolve().parent / "static"
 MAX_JSON = 512 * 1024
@@ -39,7 +42,7 @@ class Response:
 
 
 def json_response(status, value, headers=None):
-    body = json.dumps(value, ensure_ascii=True).encode("utf-8")
+    body = json.dumps(value, ensure_ascii=True, allow_nan=False).encode("utf-8")
     return Response(status, body, "application/json", {"Cache-Control": "no-store", **(headers or {})})
 
 
@@ -48,9 +51,9 @@ def error(status, message):
 
 
 class App:
-    def __init__(self, data_dir, port=8765):
-        self.store = Store(data_dir)
-        self.service = ReviewService(self.store)
+    def __init__(self, data_dir, port=8765, max_storage_bytes=DEFAULT_MAX_STORAGE_BYTES, analysis_slots=1):
+        self.store = Store(data_dir, max_storage_bytes=max_storage_bytes)
+        self.service = ReviewService(self.store, analysis_slots=analysis_slots)
         self.port = port
 
     def allowed_host(self, host):
@@ -76,6 +79,10 @@ class App:
             return self.static(path)
         except ServiceError as exc:
             return error(exc.status, exc.message)
+        except sqlite3.OperationalError as exc:
+            if "locked" in str(exc) or "busy" in str(exc):
+                return error(503, "The review database is busy. Try again in a moment.")
+            raise
 
     def api(self, method, parts, query, headers, body):
         service = self.service
@@ -117,7 +124,8 @@ class App:
     @staticmethod
     def json_body(body):
         try:
-            return json.loads(body.decode("utf-8"))
+            # Same strict parser as the pipeline: duplicate keys and NaN/Infinity are rejected.
+            return parse_json(body.decode("utf-8"))
         except (UnicodeDecodeError, ValueError, RecursionError):
             raise ServiceError(400, "Request body must be JSON") from None
 
@@ -171,8 +179,10 @@ def make_handler(app, request_timeout=20):
                 body = self.rfile.read(size)
             try:
                 response = app.handle(method, self.path, dict(self.headers.items()), body)
-            except Exception:  # Never leak tracebacks or document strings to the client.
-                response = error(500, "Unexpected server error; the review store was not changed by this request")
+            except Exception as exc:  # Never leak tracebacks or document strings to the client.
+                # Log only the exception type locally; messages can contain document text.
+                sys.stderr.write("  ERROR {} during {} {}\n".format(type(exc).__name__, method, self.path.split("?")[0]))
+                response = error(500, "Unexpected server error. The request was not completed; check the server window.")
             self._send(response)
 
         def _send(self, response):
@@ -209,10 +219,11 @@ def loopback(host):
         return False
 
 
-def serve(host="127.0.0.1", port=8765, data_dir="local_data", open_browser=False):
+def serve(host="127.0.0.1", port=8765, data_dir="local_data", open_browser=False,
+          max_storage_bytes=DEFAULT_MAX_STORAGE_BYTES):
     if not loopback(host):
         raise SystemExit("Refusing to bind to a non-loopback address. This prototype serves this computer only.")
-    app = App(data_dir, port)
+    app = App(data_dir, port, max_storage_bytes=max_storage_bytes)
     server = ThreadingHTTPServer((host, port), make_handler(app))
     url = "http://127.0.0.1:{}/".format(server.server_address[1])
     print("TDS Evidence Review is running at " + url)
@@ -234,8 +245,12 @@ def main(argv=None):
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--data-dir", default="local_data", help="Local folder for uploads and the review database")
     parser.add_argument("--open", action="store_true", help="Open the app in the default browser")
+    parser.add_argument("--max-storage-mb", type=int, default=DEFAULT_MAX_STORAGE_BYTES // 1048576,
+                        help="Upper limit for stored uploads in MiB (default 512)")
     args = parser.parse_args(argv)
-    serve(args.host, args.port, args.data_dir, args.open)
+    if args.max_storage_mb <= 0:
+        parser.error("--max-storage-mb must be positive")
+    serve(args.host, args.port, args.data_dir, args.open, args.max_storage_mb * 1048576)
 
 
 if __name__ == "__main__":

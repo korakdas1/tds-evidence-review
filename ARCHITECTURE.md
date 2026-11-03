@@ -133,7 +133,7 @@ flowchart LR
     U[Reviewer browser, loopback only] --> S[webapp.server App.handle]
     S --> V[webapp.service]
     V --> P[Unchanged review_pdf_contract]
-    P --> R[(Immutable run: report JSON + SHA-256)]
+    P --> R[(Append-only run: report JSON + SHA-256)]
     V --> E[(Append-only reviewer events, hash chain)]
     R --> M[View model: verify_location + stored-file hash]
     E --> M
@@ -144,3 +144,13 @@ There is **no arrow from reviewer events back to the pipeline or rules**. A run 
 
 Spans are displayed only when the stored file still matches the analysed SHA-256 and `verify_location()` accepts the fragment. Highlights address extracted text, not PDF glyph or pixel positions; the original PDF is shown unannotated in the browser's own viewer. The optional "supplied extraction replay" passes a caller-provided five-field extraction through the existing hybrid validator without any network client. It is recorded as simulated, with zero model network calls. All PDF statutory proposals remain withheld, exactly as in Phase 4. See [PHASE_5_REPORT.md](PHASE_5_REPORT.md).
 
+
+## Phase 6: integrity fail-closed, rule versioning and resource limits
+
+- **Fail-closed integrity.** `ReviewService.assess()` checks four things for every read: the run row hash, the hash recorded by its chained `ANALYSIS_RUN` event, the chain links, and the case row against `CASE_CREATED`. Stored PDFs are checked separately.
+  - **Any check fails:** case view, case list and export withhold findings, evidence and page text, and return diagnostics. Exports place such runs under `forensic_untrusted`.
+  - **Only a stored PDF fails:** the trusted analysis remains visible, but PDF-dependent decisions are refused.
+
+  The history is unsigned local SQLite: tamper-evident, not tamper-proof.
+- **Versioned Act selection.** `src/act_selection_v1.json` replaces the hard-coded boundary. `load_act_selection()` validates it at import and requires agreement with the cited `act_transition` rule. Results carry `rule_version`, and the file is part of implementation hashes. Legal behaviour is unchanged: historical baselines are identical apart from the added field.
+- **Resource limits.** PDF parsing runs under temporary, context-local pypdf decompression limits (8 MiB per stream). Analyses are limited to one at a time, uploads are subject to a storage quota, and request bodies use strict JSON (no duplicate keys or NaN). A decision is re-checked against the latest run inside its write transaction.

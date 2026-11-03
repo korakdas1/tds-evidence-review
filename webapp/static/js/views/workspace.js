@@ -29,14 +29,14 @@ export async function renderWorkspace(main, caseId) {
       h("h3", {}, "This review could not be opened"), h("p", {}, error.message), h("a", { class: "btn", href: "#/" }, "Back to reviews"))));
     return null;
   }
-  const firstPage = state.view.evidence.flatMap((c) => c.occurrences.flatMap((o) => o.fragments)).find((f) => f.verified);
+  const firstPage = (state.view.evidence || []).flatMap((c) => c.occurrences.flatMap((o) => o.fragments)).find((f) => f.verified);
   if (firstPage) state.page = firstPage.page_number;
 
   const root = h("div", { class: "ws" });
   const head = h("div");
   const viewer = h("section", { class: "pane pane-doc", "aria-label": "Document viewer" });
   const analysis = h("section", { class: "pane pane-analysis", "aria-label": "Evidence analysis" });
-  root.append(head, h("div", { class: "split" }, viewer, analysis));
+  const split = h("div", { class: "split" }, viewer, analysis);
   clear(main).append(root);
 
   const reload = async (runId = state.runId) => {
@@ -61,6 +61,15 @@ export async function renderWorkspace(main, caseId) {
   const ctx = { state, record, reload, caseId, selectCard, showSource, drawViewer: () => drawViewer() };
 
   function drawAll(keepScroll = false, redrawViewer = true) {
+    if (state.view.untrusted) {
+      // The server withheld the stored analysis; show diagnostics and history only.
+      clear(root).append(...renderUntrusted(ctx));
+      return;
+    }
+    if (!split.isConnected) {
+      clear(root).append(head, split);
+      redrawViewer = true;
+    }
     const body = analysis.querySelector(".tab-body");
     const scroll = keepScroll && body ? body.scrollTop : 0;
     clear(head).append(renderHead(ctx));
@@ -75,7 +84,11 @@ export async function renderWorkspace(main, caseId) {
   }
 
   function drawAnalysis() {
-    clear(analysis).append(...renderAnalysis(ctx, (tab) => { state.tab = tab; drawAnalysis(); }));
+    clear(analysis).append(...renderAnalysis(ctx, (tab, focus) => {
+      state.tab = tab;
+      drawAnalysis();
+      if (focus) analysis.querySelector(`#tab-${tab}`)?.focus();
+    }));
   }
 
   function selectCard(key, scroll = true) {
@@ -133,6 +146,11 @@ function renderHead(ctx) {
       h("div", { class: "summary-cell" }, h("div", { class: "label" }, "Your review"),
         h("div", { class: "value" }, `${view.progress.done} of ${view.progress.total} checks recorded`),
         h("div", { class: "progress-track" }, progressFill(pct))))));
+  if (!documentsAvailable(view)) {
+    frag.append(h("div", { class: "guard ink-missing", role: "status" }, icon("alert"),
+      h("span", {}, h("b", {}, "A stored PDF no longer matches its fingerprint. "),
+        "The analysis itself is intact, but highlights, the original PDF, quotation checks and document checks are unavailable.")));
+  }
   if (!integrityOk(view)) {
     frag.append(h("div", { class: "guard ink-contradiction", role: "alert" }, icon("alert"),
       h("span", {}, h("b", {}, "Integrity check failed. "),
@@ -149,11 +167,62 @@ function renderHead(ctx) {
 }
 
 function integrityOk(view) {
-  return view.run.report_integrity === "VERIFIED" && view.chain.status === "INTACT";
+  return !view.untrusted && view.integrity?.status !== "FAILED";
+}
+
+function documentsAvailable(view) {
+  return view.integrity?.status !== "DOCUMENTS_UNAVAILABLE";
+}
+
+const CHECK_LABELS = {
+  report_row_hash: "Stored analysis matches its own fingerprint",
+  history_anchor: "Stored analysis matches the fingerprint recorded in the review history",
+  history_chain: "Review history entries are linked without gaps or edits",
+  case_record: "Case title and reference match the history",
+};
+
+function renderUntrusted(ctx) {
+  const { view } = ctx.state;
+  const checks = Object.entries(view.integrity.checks);
+  const passed = (key, value) => ({ report_row_hash: "VERIFIED", history_anchor: "MATCHES", history_chain: "INTACT", case_record: "MATCHES" })[key] === value;
+  const head = h("header", { class: "ws-head" },
+    h("div", { class: "crumbs" }, h("a", { href: "#/" }, "Reviews"), h("span", { "aria-hidden": "true" }, "/"), h("span", {}, view.case.reference)),
+    h("div", { class: "row" }, h("h1", {}, view.case.title), h("span", { class: "pill ink-contradiction" }, "Integrity check failed"),
+      h("span", { class: "spacer" }),
+      h("a", { class: "btn btn-small", href: api.exportUrl(view.case.id), download: "" }, icon("download"), "Export forensic record")));
+  const banner = h("div", { class: "guard ink-contradiction", role: "alert" }, icon("alert"),
+    h("span", {}, h("b", {}, "This case cannot be trusted. "),
+      "The server withheld the stored finding, evidence and page text because they no longer match their recorded fingerprints. Only diagnostics are shown. Re-create the case from the original documents."));
+  const body = h("div", { class: "page" },
+    h("section", { class: "panel side-card", "aria-label": "Integrity diagnostics" },
+      h("h2", {}, "Integrity diagnostics"),
+      h("p", { class: "muted small" }, view.integrity.limitation),
+      h("table", { class: "page-table" },
+        h("thead", {}, h("tr", {}, h("th", {}, "Check"), h("th", {}, "Result"))),
+        h("tbody", {}, checks.map(([key, value]) => h("tr", {},
+          h("td", {}, CHECK_LABELS[key] || key),
+          h("td", {}, h("span", { class: `pill ${passed(key, value) ? "ink-validated" : "ink-contradiction"}` }, value)))),
+        view.documents.map((d) => h("tr", {}, h("td", {}, `Stored ${d.role} file${d.name ? ` (${d.name})` : ""}`),
+          h("td", {}, h("span", { class: `pill ${d.integrity === "VERIFIED" ? "ink-validated" : "ink-contradiction"}` }, d.integrity)))))),
+      h("div", { class: "hash" }, `Stored report fingerprint ${view.forensic.stored_report_sha256}`),
+      h("div", { class: "hash" }, `Fingerprint recorded in history ${view.forensic.anchored_report_sha256.join(", ") || "none"}`)),
+    h("section", { class: "panel side-card", "aria-label": "Recorded history" },
+      h("h2", {}, view.events_verified ? "Recorded history" : "Recorded history (unverified)"),
+      ...historyTab(ctx)));
+  return [head, banner, body];
 }
 
 function canReview(view) {
   return view.is_latest && integrityOk(view);
+}
+
+// Keyboard support for tab lists: arrow keys, Home and End move between tabs (WAI-ARIA tabs pattern).
+function tabKeys(event, keys, current, select) {
+  const index = keys.indexOf(current);
+  const next = { ArrowRight: index + 1, ArrowLeft: index - 1, Home: 0, End: keys.length - 1 }[event.key];
+  if (next === undefined) return;
+  event.preventDefault();
+  select(keys[(next + keys.length) % keys.length]);
 }
 
 function cell(label, value, cls = "") {
@@ -173,8 +242,8 @@ function renderViewer(ctx) {
 
   const bar = h("div", { class: "viewer-bar" });
   if (docs.length > 1) {
-    bar.append(h("div", { class: "seg", role: "tablist", "aria-label": "Document" }, docs.map((d) =>
-      h("button", { type: "button", role: "tab", "aria-selected": String(d.role === doc.role), onclick: () => { state.role = d.role; state.page = 1; redraw(); } },
+    bar.append(h("div", { class: "seg", role: "group", "aria-label": "Document" }, docs.map((d) =>
+      h("button", { type: "button", "aria-pressed": String(d.role === doc.role), onclick: () => { state.role = d.role; state.page = 1; redraw(); } },
         d.role === "contract" ? "Contract" : "Invoice"))));
   }
   bar.append(h("div", { class: "seg", role: "group", "aria-label": "View" },
@@ -290,10 +359,13 @@ function renderAnalysis(ctx, setTab) {
     ["documents", "Documents", docFlags ? "!" : null],
     ["history", "History", view.events.length],
   ];
-  const bar = h("div", { class: "tabs", role: "tablist", "aria-label": "Analysis sections" }, tabs.map(([key, label, count]) =>
-    h("button", { class: "tab", type: "button", role: "tab", "aria-selected": String(tab === key), id: `tab-${key}`, onclick: () => setTab(key) },
-      label, count !== null && count !== 0 ? h("span", { class: "count" }, count) : null)));
-  const body = h("div", { class: "tab-body", role: "tabpanel", "aria-labelledby": `tab-${tab}` });
+  const keys = tabs.map(([key]) => key);
+  const bar = h("div", { class: "tabs", role: "tablist", "aria-label": "Analysis sections",
+    onkeydown: (event) => tabKeys(event, keys, tab, (key) => setTab(key, true)) }, tabs.map(([key, label, count]) =>
+    h("button", { class: "tab", type: "button", role: "tab", "aria-selected": String(tab === key), id: `tab-${key}`,
+      "aria-controls": "analysis-panel", tabindex: tab === key ? "0" : "-1", onclick: () => setTab(key) },
+      label, count !== null && count !== 0 ? h("span", { class: "count", "aria-label": `(${count})` }, count) : null)));
+  const body = h("div", { class: "tab-body", role: "tabpanel", id: "analysis-panel", tabindex: "0", "aria-labelledby": `tab-${tab}` });
   if (tab === "evidence") body.append(...evidenceTab(ctx));
   if (tab === "transaction") body.append(...transactionTab(ctx));
   if (tab === "documents") body.append(...documentsTab(ctx));
@@ -407,7 +479,9 @@ function evidenceCard(card, ctx) {
 
 function reviewBox(card, assertions, ctx) {
   const box = h("div", { class: "review-box" });
-  box.append(question({
+  if (!documentsAvailable(ctx.state.view)) {
+    box.append(h("p", { class: "small muted" }, "Quotation checks are unavailable because the stored PDF failed its integrity check."));
+  } else box.append(question({
     prompt: "Does this text appear in the original PDF exactly as quoted?",
     help: "Compare it with the Original PDF view. This checks the words only.",
     kind: "QUOTE_CHECK", target: card.key, current: card.quote_decision, ctx,
@@ -456,7 +530,7 @@ function question({ prompt, help, kind, target, current, fact, automated, ctx })
         if (!ok) save.disabled = false;
       });
       clear(compose).append(h("div", { class: "compose" }, ...parts, note,
-        h("div", { class: "row" }, h("span", { class: "disclaimer" }, "Saved with your name and the time. It cannot be edited later, only superseded."), h("span", { class: "spacer" }),
+        h("div", { class: "row" }, h("span", { class: "disclaimer" }, "Saved with your name and the time. The app keeps it; to change your mind, record a new decision."), h("span", { class: "spacer" }),
           current ? h("button", { class: "btn btn-quiet btn-small", type: "button", onclick: () => draw(false) }, "Cancel") : null, save)));
     };
     wrap.append(chips, compose);
@@ -579,7 +653,7 @@ function documentsTab(ctx) {
           h("td", {}, ORDER_CHECK[p.order_check] || p.order_check),
           h("td", {}, h("button", { class: "btn btn-quiet btn-small", type: "button", onclick: () => { ctx.state.role = doc.role; ctx.state.page = p.page_number; ctx.state.mode = "pdf"; ctx.drawViewer(); } }, "View")))))));
     }
-    if (canReview(view)) {
+    if (canReview(view) && documentsAvailable(view)) {
       card.append(h("div", { class: "review-box" }, question({
         prompt: "Have you checked the original for reading order, hidden or missing text and completeness?",
         help: "Confirming this does not release a statutory proposal. All PDF proposals stay withheld in this prototype.",
@@ -598,7 +672,7 @@ function historyTab(ctx) {
   const out = [];
   const intact = view.chain.status === "INTACT";
   out.push(h("div", { class: `chain ${intact ? "" : "broken"}` }, icon(intact ? "chain" : "alert"),
-    intact ? `History intact: ${view.chain.events} entries, each linked to the one before by a fingerprint. Entries cannot be edited or deleted.`
+    intact ? `History intact: ${view.chain.events} entries, each linked to the one before by a fingerprint. The app never edits or deletes entries. This local history is not signed, so it is tamper-evident, not tamper-proof.`
       : `History check failed at entry ${view.chain.broken_at}. The local database may have been altered.`));
   if (view.runs.length > 1) {
     out.push(h("div", { class: "section-title" }, h("h3", {}, "Analysis runs")));

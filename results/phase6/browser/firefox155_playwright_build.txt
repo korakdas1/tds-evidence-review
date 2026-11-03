@@ -1,0 +1,17 @@
+session: firefox 155.0
+TIMEOUT fresh row
+PASS dashboard renders case rows
+PASS form validation messages — Add a contract PDF. | Enter the invoice description. | Enter the credit date. | Enter the payment date.
+PASS real typing clears field error — Typed in Firefox invalid=null summary=false
+PASS Shift+Tab reaches only visible drop zones — LABEL.dropzone , LABEL.dropzone
+PASS workspace opens
+PASS source chip highlights exact span — The Customer supervises each worker during every shift.
+PASS ArrowRight moves between analysis tabs — tab-transaction:true
+PASS decision recorded with a new stamp — stamps before 0
+PASS stamp shows reviewer and note — Matches the PDFFirefox Reviewer, Nov 3, 2026, 01:04 PMRecord a new decisionChecked in Firefox
+PASS Tab stays inside dialog — true,true,true,true
+PASS background inert while dialog open
+PASS Escape closes dialog
+PASS original PDF iframe present
+PASS mobile dashboard has no horizontal overflow — scrollWidth/clientWidth 378/378
+console: no errors or warnings

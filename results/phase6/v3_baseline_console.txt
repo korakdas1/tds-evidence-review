@@ -1,0 +1,16 @@
+baseline: COMPLETED | 12 cases | 0 API calls
+P3_01 | OK | Income-tax Act, 2025 | EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER | human review required
+P3_02 | OK | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+P3_03 | OK | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+P3_04 | OK | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+P3_05 | OK | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+P3_06 | OK | Income-tax Act, 2025 | EVIDENCE_INDICATES_VENDOR_DIRECTED_SERVICE | human review required
+P3_07 | OK | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+P3_08 | OK | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+P3_09 | OK | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+P3_10 | OK | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+P3_11 | OK | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+P3_12 | OK | Income-tax Act, 2025 | CONFLICTING_EVIDENCE | human review required
+Synthetic status agreement: 9/12 (eligible: 12)
+Safety target: NOT_EVALUATED
+Reports: results/phase6/v3_baseline.json and results/phase6/v3_baseline.csv

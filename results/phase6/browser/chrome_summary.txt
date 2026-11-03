@@ -1,0 +1,19 @@
+Headless Google Chrome via DevTools protocol (scratch driver, no project dependencies). Phase 6 build, fresh data folder.
+
+Accessibility-tree audit (interactive nodes without an accessible name):
+  dashboard 22 nodes: none | new review form 27: none | workspace evidence 35: none
+  workspace documents 28: none | status dialog: none | untrusted case 7: none
+  note dialog with inert background: 4 nodes exposed (background removed from tree); main.inert true, false after Escape
+Keyboard: ArrowRight Evidence->Transaction (selected, panel relabelled); End->History; ArrowRight wraps to Evidence;
+  Home->Evidence; roving tabindex 0,-1,-1,-1. Enter on a highlight selects its evidence card.
+Fail-closed UI: forged run (recomputed row hash) -> forged finding not shown anywhere, diagnostics table
+  (row hash VERIFIED, history anchor MISMATCH, chain INTACT, case record MATCHES, contract VERIFIED), 0 review controls,
+  forensic export: integrity INTEGRITY_FAILED, 0 trusted runs, 1 quarantined, UNTRUSTED warning, content checksum present.
+Stored PDF altered -> amber banner, analysis visible, 0 quotation-check questions, "Quotation checks are unavailable" note.
+Dashboard: tampered case shows "Not shown: integrity check failed" and no document names.
+Phase 5B workflow regression (all pass): navigation race shows the form; validation messages; populated form 0 red borders;
+  source chip highlights exact span; PDF iframe unchanged after a decision; correction excludes automated value;
+  re-run records "Payment date: 2026-10-02 -> 2026-10-20" with chain intact; escalation keeps proposal withheld.
+Real mouse click on a dashboard row (after #/new -> Reviews) opens the case.
+Console: no errors except deliberate probes (415 non-PDF upload; 409 for a deliberately damaged stored sample, which led to the
+  re-upload repair fix).

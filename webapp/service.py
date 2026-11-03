@@ -1,18 +1,21 @@
 """Review workflow around the unchanged Phase 4 PDF adapter.
 
 Nothing here alters evidence validation, legal rules or proposal behaviour. Reviewer
-events are stored beside each immutable analysis run; they never feed back into it.
+events are stored beside each append-only analysis run; they never feed back into it.
 """
 import hashlib
 import importlib.util
 import json
 import re
+import threading
 from pathlib import Path
 
 from src.document_review import review_pdf_contract
 from src.evidence import extraction_errors
 from src.pdf_ingestion import MAX_BYTES, verify_location
 from src.schema import parse_json
+
+from .store import StaleRunError, StorageLimitError, canonical
 
 ROOT = Path(__file__).resolve().parent.parent
 SAMPLES_FILE = Path(__file__).resolve().parent / "samples" / "samples.json"
@@ -115,9 +118,15 @@ def clean_method(method, supplied):
     return supplied
 
 
+UNTRUSTED = "Integrity check failed. Stored analysis content is withheld; only diagnostics are returned."
+
+
 class ReviewService:
-    def __init__(self, store):
+    def __init__(self, store, analysis_slots=1, analysis_wait_seconds=20):
         self.store = store
+        # PDF parsing is CPU and memory heavy; bound how many run at once.
+        self.analysis_slots = threading.BoundedSemaphore(analysis_slots)
+        self.analysis_wait_seconds = analysis_wait_seconds
 
     # Analysis --------------------------------------------------------------------
     def _analyse(self, contract_sha, invoice_sha, metadata, method, supplied):
@@ -130,8 +139,13 @@ class ReviewService:
                 raise ServiceError(409, "Stored {} file is {}; upload it again".format(role, state.lower()))
             paths[role] = path
         client = ReplayClient(supplied) if method == "supplied_extraction" else None
-        report = review_pdf_contract(metadata, paths["contract"], paths.get("invoice"),
-                                     mode="hybrid" if client else "baseline", client=client)
+        if not self.analysis_slots.acquire(timeout=self.analysis_wait_seconds):
+            raise ServiceError(503, "Another analysis is still running. Try again in a moment.")
+        try:
+            report = review_pdf_contract(metadata, paths["contract"], paths.get("invoice"),
+                                         mode="hybrid" if client else "baseline", client=client)
+        finally:
+            self.analysis_slots.release()
         return report, (client.calls if client else 0)
 
     def _run(self, case, contract_sha, invoice_sha, metadata, method, supplied, actor, reason, changed=None):
@@ -164,7 +178,10 @@ class ReviewService:
             raise ServiceError(400, "The file is empty")
         if not name.lower().endswith(".pdf") or not data.startswith(b"%PDF-"):
             raise ServiceError(415, "Only PDF files can be reviewed")
-        record = self.store.save_document(name, data)
+        try:
+            record = self.store.save_document(name, data)
+        except StorageLimitError as exc:
+            raise ServiceError(507, str(exc)) from None
         return dict(sha256=record["sha256"], name=record["name"], size=record["size"])
 
     def create_case(self, body, origin="UPLOAD"):
@@ -239,7 +256,10 @@ class ReviewService:
             data = (ROOT / sample[role]).read_bytes()
             if hashlib.sha256(data).hexdigest() != sample[role + "_sha256"]:
                 raise ServiceError(409, "Sample file does not match its frozen hash")
-            hashes[role] = self.store.save_document(Path(sample[role]).name, data)["sha256"]
+            try:
+                hashes[role] = self.store.save_document(Path(sample[role]).name, data)["sha256"]
+            except StorageLimitError as exc:
+                raise ServiceError(507, str(exc)) from None
         body = dict(title=sample["title"], metadata=sample["metadata"],
                     contract_sha256=hashes["contract"], invoice_sha256=hashes.get("invoice"),
                     method=sample["method"], supplied_extraction=sample.get("supplied_extraction"))
@@ -261,9 +281,11 @@ class ReviewService:
         run = self.store.run(self.store.runs(case_id)[-1]["id"])
         if body.get("run_id") not in (None, run["id"]):
             raise ServiceError(409, "This analysis has been superseded; reload the latest run")
-        anchor_runs([run], self.store.events(case_id))
-        if run["report_integrity"] != "VERIFIED" or self.store.verify_chain(case_id)["status"] != "INTACT":
+        integrity = self.assess(self.store.case(case_id), run, self.store.events(case_id))
+        if integrity["status"] == "FAILED":
             raise ServiceError(409, "This case failed an integrity check; no further decisions can be recorded")
+        if integrity["status"] == "DOCUMENTS_UNAVAILABLE" and kind in ("QUOTE_CHECK", "DOCUMENT_CHECK"):
+            raise ServiceError(409, "The stored PDF failed its integrity check, so it cannot be compared; upload it again in a new case")
         view = build_view(self.store, run)
         target = body.get("target")
         label = None
@@ -297,7 +319,11 @@ class ReviewService:
             payload["correction"] = dict(fact=assertion["fact"], reviewer_value=correction,
                                          automated_value=assertion["value"],
                                          applied_to_automated_analysis=False)
-        self.store.append_event(case_id, run["id"], actor, kind, target, payload)
+        try:
+            # Re-checked inside the write transaction: a concurrent re-run cannot be missed.
+            self.store.append_event(case_id, run["id"], actor, kind, target, payload, expect_latest_run=run["id"])
+        except StaleRunError:
+            raise ServiceError(409, "This analysis has been superseded; reload the latest run") from None
         return self.case_view(case_id)
 
     # Views --------------------------------------------------------------------------
@@ -307,6 +333,35 @@ class ReviewService:
             raise ServiceError(404, "Case not found")
         return case
 
+    def assess(self, case, run, events, chain=None):
+        """Integrity of one stored run. FAILED content must never be presented as a finding."""
+        chain = chain or self.store.verify_chain(case["id"])
+        anchored = [e["payload"].get("report_sha256") for e in events
+                    if e["kind"] == "ANALYSIS_RUN" and e["run_id"] == run["id"]]
+        created = next((e["payload"] for e in events if e["kind"] == "CASE_CREATED"), None)
+        checks = dict(
+            report_row_hash=run.get("row_hash_check", "NOT_CHECKED"),
+            history_anchor="MISSING" if not anchored else ("MATCHES" if anchored == [run["report_sha256"]] else "MISMATCH"),
+            history_chain=chain["status"],
+            case_record="MISSING" if created is None else (
+                "MATCHES" if (created.get("title"), created.get("reference"), created.get("origin"))
+                == (case["title"], case["reference"], case["origin"]) else "MISMATCH"))
+        documents = {}
+        for role, sha in (("contract", run["contract_sha256"]), ("invoice", run["invoice_sha256"])):
+            if sha is not None:
+                documents[role] = self.store.verify_document(sha)[0]
+        expected = dict(report_row_hash="VERIFIED", history_anchor="MATCHES", history_chain="INTACT", case_record="MATCHES")
+        failed = sorted(k for k, v in checks.items() if v != expected[k])
+        if failed:
+            status = "FAILED"
+        elif any(v != "VERIFIED" for v in documents.values()):
+            status = "DOCUMENTS_UNAVAILABLE"
+        else:
+            status = "VERIFIED"
+        return dict(status=status, checks=checks, documents=documents, failed_checks=failed,
+                    chain=chain, limitation="Local, unsigned SQLite history: tamper-evident for edits that do not "
+                    "recompute every hash; not tamper-proof.")
+
     def case_view(self, case_id, run_id=None):
         case = self._case(case_id)
         runs = self.store.runs(case_id)
@@ -315,6 +370,11 @@ class ReviewService:
             raise ServiceError(404, "Run not found")
         run = self.store.run(selected)
         events = self.store.events(case_id)
+        chain = self.store.verify_chain(case_id)
+        integrity = self.assess(case, run, events, chain)
+        run_list = [dict(id=r["id"], sequence=r["sequence"], created_at=r["created_at"], method=r["method"]) for r in runs]
+        if integrity["status"] == "FAILED":
+            return untrusted_view(self.store, case, run, events, integrity, run_list, selected == runs[-1]["id"])
         anchor_runs([run], events)
         view = build_view(self.store, run)
         decisions = latest_decisions(events, run["id"])
@@ -324,11 +384,8 @@ class ReviewService:
                 assertion["decision"] = decisions.get(("INTERPRETATION_REVIEW", assertion["key"]))
         for document in view["documents"]:
             document["decision"] = decisions.get(("DOCUMENT_CHECK", document["role"]))
-        view.update(case=case, case_status=case_status(events), events=events,
-                    chain=self.store.verify_chain(case_id), is_latest=selected == runs[-1]["id"],
-                    runs=[dict(id=r["id"], sequence=r["sequence"], created_at=r["created_at"], method=r["method"])
-                          for r in runs],
-                    progress=progress(view))
+        view.update(case=case, case_status=case_status(events), events=events, integrity=integrity,
+                    chain=chain, is_latest=selected == runs[-1]["id"], runs=run_list, progress=progress(view))
         return view
 
     def list_cases(self):
@@ -338,8 +395,22 @@ class ReviewService:
             if not runs:
                 continue
             events = self.store.events(case["id"])
-            view = build_view(self.store, anchor_runs([self.store.run(runs[-1]["id"])], events)[0])
-            decisions = latest_decisions(events, runs[-1]["id"])
+            run = self.store.run(runs[-1]["id"])
+            integrity = self.assess(case, run, events)
+            item = dict(
+                id=case["id"], reference=case["reference"], title=case["title"], origin=case["origin"],
+                created_at=case["created_at"], last_activity=events[-1]["created_at"] if events else case["created_at"],
+                run_count=len(runs), method=runs[-1]["method"], status=case_status(events),
+                integrity="FAILED" if integrity["status"] == "FAILED" else "VERIFIED",
+                integrity_status=integrity["status"], failed_checks=integrity["failed_checks"])
+            if integrity["status"] == "FAILED":
+                # Fail closed: no finding, evidence or document details from an untrusted run.
+                item.update(report_status=None, factual_status=None, documents=[], evidence_counts={},
+                            missing_count=0, progress=dict(done=0, total=0))
+                items.append(item)
+                continue
+            view = build_view(self.store, anchor_runs([run], events)[0])
+            decisions = latest_decisions(events, run["id"])
             for card in view["evidence"]:
                 card["quote_decision"] = decisions.get(("QUOTE_CHECK", card["key"]))
                 for assertion in card["assertions"]:
@@ -349,25 +420,56 @@ class ReviewService:
             counts = {}
             for card in view["evidence"]:
                 counts[card["category"]] = counts.get(card["category"], 0) + 1
-            items.append(dict(
-                id=case["id"], reference=case["reference"], title=case["title"], origin=case["origin"],
-                created_at=case["created_at"], last_activity=events[-1]["created_at"] if events else case["created_at"],
-                run_count=len(runs), method=runs[-1]["method"], status=case_status(events),
-                integrity="VERIFIED" if view["run"]["report_integrity"] == "VERIFIED"
-                and self.store.verify_chain(case["id"])["status"] == "INTACT" else "FAILED",
-                report_status=view["report_status"], factual_status=view["finding"]["factual_evidence_status"],
-                documents=[dict(role=d["role"], name=d["name"], status=d["status"]) for d in view["documents"]],
-                evidence_counts=counts, missing_count=len(view["missing_information"]),
-                progress=progress(view)))
+            item.update(report_status=view["report_status"], factual_status=view["finding"]["factual_evidence_status"],
+                        documents=[dict(role=d["role"], name=d["name"], status=d["status"]) for d in view["documents"]],
+                        evidence_counts=counts, missing_count=len(view["missing_information"]),
+                        progress=progress(view))
+            items.append(item)
         return items
 
     def export(self, case_id):
         case = self._case(case_id)
         events = self.store.events(case_id)
-        return dict(schema_version="tds-review-export-v1", case=case,
-                    runs=anchor_runs(self.store.runs(case_id, include_report=True), events), events=events,
-                    chain=self.store.verify_chain(case_id),
-                    statement="Review record only. No tax determination, withholding authorization or statutory proposal release.")
+        chain = self.store.verify_chain(case_id)
+        trusted, quarantined = [], []
+        for run in self.store.runs(case_id, include_report=True):
+            integrity = self.assess(case, run, events, chain)
+            run["integrity"] = {k: integrity[k] for k in ("status", "checks", "documents", "failed_checks")}
+            (quarantined if integrity["status"] == "FAILED" else trusted).append(run)
+        export = dict(schema_version="tds-review-export-v2", case=case, chain=chain, events=events,
+                      integrity_status="INTEGRITY_FAILED" if quarantined else "VERIFIED", runs=trusted,
+                      statement="Review record only. No tax determination, withholding authorization or statutory proposal release.",
+                      checksum_note="content_sha256 covers this file's other content (canonical JSON). It detects "
+                                    "accidental change in transit; it is not a signature.")
+        if quarantined:
+            export["forensic_untrusted"] = dict(
+                warning="UNTRUSTED: these stored runs failed integrity checks. Do not rely on any finding below.",
+                runs=quarantined)
+        export["content_sha256"] = hashlib.sha256(canonical(export).encode("utf-8")).hexdigest()
+        return export
+
+
+def untrusted_view(store, case, run, events, integrity, run_list, is_latest):
+    """Diagnostics only: identifiers, hash checks and the recorded (unverified) history."""
+    documents = []
+    for role, state in integrity["documents"].items():
+        sha = run["contract_sha256"] if role == "contract" else run["invoice_sha256"]
+        record = store.document(sha) or {}
+        documents.append(dict(role=role, name=record.get("name"), sha256=sha, integrity=state,
+                              file_url=None, pages=[], issues=[], status=None))
+    return dict(case=case, untrusted=True, notice=UNTRUSTED, integrity=integrity,
+                forensic=dict(run_id=run["id"], run_sequence=run["sequence"],
+                              stored_report_sha256=run["report_sha256"],
+                              anchored_report_sha256=[e["payload"].get("report_sha256") for e in events
+                                                      if e["kind"] == "ANALYSIS_RUN" and e["run_id"] == run["id"]],
+                              chain=integrity["chain"]),
+                run=dict(id=run["id"], sequence=run["sequence"], created_at=run["created_at"], method=run["method"],
+                         report_integrity="FAILED", metadata=None, supplied_extraction=None,
+                         report_sha256=run["report_sha256"]),
+                finding=None, evidence=[], missing_information=[], documents=documents,
+                report_status=None, manual_field_sources={}, limitations=[],
+                case_status=case_status(events), events=events, events_verified=integrity["chain"]["status"] == "INTACT",
+                chain=integrity["chain"], is_latest=is_latest, runs=run_list, progress=dict(done=0, total=0))
 
 
 def anchor_runs(runs, events):

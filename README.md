@@ -1,12 +1,106 @@
-# Evidence-Backed TDS Classification Review
+# Evidence-Backed TDS Review (local prototype)
 
-A small Python prototype that reviews contractual evidence about who directs supplied workers. An invoice alone often omits this information. The tool returns a **factual-evidence status**, exact contract quotations, a date-based Act selection, and—only where supported—a **provisional** contract-work table reference for a qualified human reviewer.
+A local application and Python toolkit for checking what a vendor contract says about **who supplies workers and who supervises them**. That is the fact an invoice usually leaves out. For each contract it gives:
+- a factual-evidence status;
+- the exact quotations it relied on, with page and character references;
+- the Income-tax Act selected by date;
+- a separate human-review record.
 
-It never determines a final tax treatment, calculates tax, authorizes withholding, or files returns. All included evaluation cases are synthetic, AI-authored, and not practitioner validated.
+Nothing in this repository determines tax treatment, calculates tax, authorises withholding or files returns. Every result requires review by a qualified person. All included documents and evaluation cases are synthetic and not practitioner-validated.
 
-**Post-submission development:** `feature/full-product` adds Phase 3 evidence review states; the submitted version remains at [`e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0`](https://github.com/korakdas1/tds-evidence-review/commit/e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0) on `main`. See [ARCHITECTURE.md](ARCHITECTURE.md) for provenance versus interpretation, the strict boundary around provisional proposals, and reproducible evaluation commands; [PHASE_3_REPORT.md](PHASE_3_REPORT.md) records actual findings.
+**Branches:** the submitted version is [`e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0`](https://github.com/korakdas1/tds-evidence-review/commit/e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0) on `main`. Post-submission development (Phases 3–6) is on `feature/full-product`.
 
-## Quick Demo
+## Quick start
+
+You need Python 3.9 or later for the review app and PDF support (the JSON command-line baseline alone runs on 3.8). After installation nothing needs internet access, an API key or a paid service.
+
+```bash
+git clone https://github.com/korakdas1/tds-evidence-review.git
+cd tds-evidence-review
+git checkout feature/full-product
+python -m venv .venv
+source .venv/bin/activate              # Windows: .venv\Scripts\activate
+python -m pip install -r requirements-pdf.txt   # pypdf 6.21.4, the only dependency
+```
+
+| To... | Run | Expect |
+|---|---|---|
+| Launch the review app | `python review_app.py --open` | Opens http://127.0.0.1:8765/ in your browser (this computer only) |
+| Run the offline demo | `python demo.py` | Three JSON examples, including a replayed historical model mistake |
+| Run the offline PDF demo | `python pdf_demo.py` | A synthetic PDF with page and character offsets; proposal withheld |
+| Run all automated tests | `python -m unittest discover -v` | 155 tests, all passing, no network use |
+
+App options:
+- `--port 8765`
+- `--data-dir local_data`: uploads and the review database; Git-ignored and private to your user account.
+- `--max-storage-mb 512`: upload quota.
+
+The app refuses to listen on anything except a loopback address.
+
+### A five-minute synthetic walkthrough
+
+1. Launch the app and open **Warehouse manpower support** under *Synthetic samples*.
+2. Click a page reference on an evidence card. The exact sentence is highlighted in the extracted text. Switch to **Original PDF** to compare.
+3. Answer the two review questions on a card. Your decision is stamped with your name and time.
+4. Open **Event crew with unfamiliar wording** to see an *AI suggestion* kept apart from validated facts.
+5. Open **Plant maintenance with conflicting clauses** to see contradictions.
+6. Use **Correct details and run again** (Transaction tab) and **History** to see how re-runs and decisions are recorded.
+
+## How analysis works today
+
+- **Normal workflow: offline rule checks.** The contract text is read by the existing conservative, deterministic checks. No AI model is involved, so normal runs produce no AI suggestions.
+- **AI-suggestion demonstration: simulated extraction.** The *Event crew* sample, and the advanced option *Replay a supplied extraction*, pass a hand-written extraction in a model's output format through the same validators. No model is called; the run records 0 model network calls and is labelled simulated.
+- **Live model experiments** exist only as separate, opt-in research scripts (see *Optional OpenRouter experiments* below). They are not connected to the app and need explicit credentials and authorisation.
+
+## Evidence states
+
+| Shown as | Meaning | Can it support an automated finding? |
+|---|---|---|
+| Validated by rule checks (green) | An exact quotation passed the conservative pattern checks | Yes, for the factual status only. It never proves actual working practice. |
+| AI suggestion, review only (violet) | An exact quotation an extraction proposed but the rules could not confirm | No. A lead for a person to judge. |
+| Contradiction (red) | Clauses point to different supervisors | No. The finding becomes *conflicting* until a person resolves it. |
+| Missing information (amber) | Facts the checks could not establish | No. |
+| Rejected by a safety check (grey) | Blocked, for example negated, conditional or inoperative text, or an embedded instruction | No. Kept visible for audit. |
+| On hold (amber note) | The document needs a visual check: scan, layout disagreement, cross-page quotation | No, until the document problem is resolved. |
+
+**Mandatory human review.** Every case is marked as requiring review. Reviewer decisions are recorded separately and never change the automated findings. Confirming a quotation only confirms the words. The app has no "approve" option, and every statutory proposal from a PDF is withheld.
+
+## What the application cannot do
+
+- Decide the tax treatment, rate or amount; authorise withholding; or file anything.
+- Read scanned pages (no OCR), password-protected PDFs, or files over 5 MiB or 20 pages.
+- Guarantee reading order or completeness. Extracted text is not proof of what the printed page shows, so a reviewer must compare with the original.
+- Place highlights on the printed page. Highlights mark character positions in the extracted text.
+- Understand wording outside its narrow patterns. Unfamiliar but true facts may be reported as missing.
+- Verify what happens in practice, as opposed to what the contract says.
+- Provide multi-user accounts. Reviewer names are self-declared on one computer.
+- Provide tamper-proof records. The history is hash-chained and checked, but it is unsigned local SQLite; see below.
+- Infer any fact from an invoice. Invoices are shown for inspection only.
+
+## Data, integrity and privacy
+
+- **Where data lives.** Uploads and the database are stored only in `--data-dir`, with folders 0700 and files 0600. Uploads are capped by `--max-storage-mb`, and identical uploads are stored once.
+- **Integrity checks.** Every analysis run is stored with its SHA-256 and anchored in a hash-chained review history. Each time a case is opened, the server re-checks:
+  - the run's hash;
+  - the history anchor;
+  - the chain links;
+  - the case record;
+  - the stored PDFs.
+- **Fail-closed behaviour.** If an analysis check fails, the API withholds the finding, evidence and page text and returns diagnostics only. Exports put such runs in a clearly marked `forensic_untrusted` section.
+- **Unavailable PDFs.** If only a stored PDF is damaged, the analysis stays visible but PDF-based checks are disabled. Re-uploading the identical file restores it.
+- **Limits of tamper evidence.** Someone with file access who recomputes every hash can still forge a consistent database, and deleting the newest history entries cannot be detected without an external copy. Treat this as tamper-evident, not tamper-proof.
+
+## Rule versioning
+
+Act selection lives in [`src/act_selection_v1.json`](src/act_selection_v1.json), version `act_selection@1.0.0`:
+- **Rule:** the earlier of the credit and payment dates selects the Act; both dates are required; before 1 April 2026 is the 1961 Act, from then on the 2025 Act.
+- **Load-time checks:** the file is validated when loaded (contiguous periods, a supported trigger, agreement with the cited `act_transition` source in [`src/rules_v1.json`](src/rules_v1.json)). An invalid file stops the program instead of guessing.
+- **Traceability:** every date result carries `rule_version`, and both rule files are included in run implementation hashes.
+- **Scope:** the configuration holds only Act periods. It contains no rates, thresholds or classifications, and it is not independently legally validated.
+
+## Command-line demos
+
+### Quick Demo
 
 From the repository folder, with Python 3.8+:
 
@@ -18,7 +112,7 @@ No installation, internet, API key or other credentials are needed. The demo pri
 
 The first two examples run the current deterministic pipeline. The third reads the unchanged Phase 1B artifact, clearly marked as a replay rather than a fresh model result. All three require human review; none establishes legally validated tax treatment. The demo does not write datasets or result files. See [DEMO_WALKTHROUGH.md](DEMO_WALKTHROUGH.md) for the underlying commands and evidence.
 
-## Offline PDF demo (optional dependency)
+### Offline PDF demo (optional dependency)
 
 Phase 4 adds local PDF provenance on `feature/full-product`. The original JSON interface and submitted `main` are unchanged. See [PHASE_4_REPORT.md](PHASE_4_REPORT.md) for actual results and limitations.
 
@@ -44,22 +138,17 @@ Output destinations must be new. PDFs are limited to 5 MiB and 20 pages, with fu
 
 Phase 4 validation: **113/113 tests passed** (87 preserved + 26 new); the original 87 also passed with site packages disabled. PDF fixtures: **19/19 expected outcomes**, comprising 9 extracted, 7 requiring document review and 3 rejected; **25/25 evidence items mapped, 26/26 page fragments verified, 10/10 invalid-location probes rejected**. No live LLM calls occurred. Original baseline agreement remains 16/16, 12/12 and 9/12 on the three historical synthetic sets. These are development checks, not independent model or legally validated accuracy.
 
-## Local review workspace (Phase 5, optional)
+## Project history and reports
 
-A local web application for finance reviewers, built around the same offline PDF pipeline. It requires the optional PDF dependency above and no other package, internet access or API key:
+[ARCHITECTURE.md](ARCHITECTURE.md) explains provenance versus interpretation and the proposal boundary. Phase reports record actual results, including failures:
+- [PHASE_2A_REPORT.md](PHASE_2A_REPORT.md)
+- [PHASE_3_REPORT.md](PHASE_3_REPORT.md)
+- [PHASE_4_REPORT.md](PHASE_4_REPORT.md): PDF ingestion
+- [PHASE_5_REPORT.md](PHASE_5_REPORT.md): review app
+- [PHASE_5B_AUDIT.md](PHASE_5B_AUDIT.md): independent self-audit
+- [PHASE_6_REPORT.md](PHASE_6_REPORT.md): hardening and rule versioning
 
-```bash
-python review_app.py --open        # serves http://127.0.0.1:8765/ on this computer only
-```
-
-You can upload a contract PDF and an optional invoice, or open a synthetic sample. Transaction details are entered by hand. In the workspace you can then:
-- read each page's extracted text with highlighted quotations beside the original PDF;
-- review validated evidence, AI suggestions, contradictions and missing information separately;
-- record quotation checks, readings, corrections, document checks, notes and case status.
-
-Every decision goes into an append-only, hash-chained local history (`local_data/`, Git-ignored). Decisions never change the automated findings, release a statutory proposal or authorise withholding. Highlights mark extracted-text character offsets, not positions on the printed page. See [PHASE_5_REPORT.md](PHASE_5_REPORT.md) for the design, backend routes and limitations, and [PHASE_5B_AUDIT.md](PHASE_5B_AUDIT.md) for the independent audit, fixes and current results (134/134 tests).
-
-## Run locally
+## JSON command-line interface (standard library only)
 
 Python 3.8+; standard library only. No packages, API keys, frontend, database, or paid service are required for the baseline. Executed here on Python 3.13.12; Python 3.8 grammar compatibility was checked, but a Python 3.8 interpreter was not available for runtime testing.
 

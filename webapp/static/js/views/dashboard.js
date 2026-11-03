@@ -100,7 +100,7 @@ function caseRow(item) {
   return h("a", { class: "case-row", href: `#/cases/${encodeURIComponent(item.id)}` },
     h("div", { class: "case-id" },
       h("div", { class: "case-title" }, item.title),
-      h("div", { class: "case-meta" }, `${item.reference}, ${docs}${item.origin === "SAMPLE" ? " (synthetic sample)" : ""}`),
+      h("div", { class: "case-meta" }, [item.reference, docs].filter(Boolean).join(", ") + (item.origin === "SAMPLE" ? " (synthetic sample)" : "")),
       h("div", { class: "case-meta" }, `${METHODS[item.method] || item.method}. Updated ${relativeTime(item.last_activity)}`)),
     h("div", {},
       h("div", { class: "finding-line" }, item.integrity === "FAILED" ? "Not shown: integrity check failed"

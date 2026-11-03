@@ -117,7 +117,7 @@ def run_batch(cases, mode, digest, client=None):
     root = Path(__file__).resolve().parent.parent
     result["implementation_sha256"] = {
         str(path.relative_to(root)): hashlib.sha256(path.read_bytes()).hexdigest()
-        for path in sorted(list((root / "src").glob("*.py")) + [root / "main.py", root / "src/rules_v1.json"])
+        for path in sorted(list((root / "src").glob("*.py")) + [root / "main.py", root / "src/rules_v1.json", root / "src/act_selection_v1.json"])
     }
     result["evaluation"] = evaluate(cases, reports, mode)
     return result
