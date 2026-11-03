@@ -1,0 +1,6 @@
+test_complete_workflow_is_offline_separates_suggestions_and_never_approves (tests.test_local_demo.CompleteDemoTests.test_complete_workflow_is_offline_separates_suggestions_and_never_approves) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.535s
+
+OK

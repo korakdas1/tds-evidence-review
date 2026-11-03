@@ -34,6 +34,16 @@ export const DOC_STATUS = {
 };
 
 export const ISSUES = {
+  PDF_WORKER_WALL_TIMEOUT: "The isolated PDF reader exceeded its time limit. No partial text is trusted. Use a simpler text PDF or review it manually.",
+  PDF_WORKER_CPU_LIMIT: "The isolated PDF reader reached its CPU limit. No partial text is trusted. Use a simpler PDF or review it manually.",
+  PDF_WORKER_MEMORY_LIMIT: "The isolated PDF reader reached its memory limit. No partial text is trusted. Review the original manually.",
+  PDF_WORKER_OUTPUT_LIMIT: "Extracted output exceeded the safe limit. Nothing was silently truncated; review the original manually.",
+  PDF_WORKER_RESOURCE_TERMINATED: "The PDF worker was terminated by a resource limit. No partial result is trusted.",
+  PDF_WORKER_PARSER_FAILURE: "The isolated PDF reader failed on this document. No partial result is trusted; review the original manually.",
+  PDF_WORKER_CRASH: "The isolated PDF reader stopped unexpectedly. No partial result is trusted.",
+  PDF_WORKER_INVALID_RESULT: "The PDF worker's output failed validation. Its text and source locations were discarded.",
+  PDF_WORKER_START_FAILURE: "The isolated PDF reader could not start. Check local process/resource permissions; no analysis was accepted.",
+  PDF_WORKER_UNSUPPORTED_PLATFORM: "Isolated PDF review currently requires Linux. The JSON baseline still works without PDF support.",
   FILE_SIZE_LIMIT: "The file is larger than the 5 MiB limit.",
   UNSUPPORTED_FILE: "This is not a PDF file.",
   ENCRYPTED_PDF_NOT_SUPPORTED: "The PDF is password-protected. Remove the protection and upload it again.",

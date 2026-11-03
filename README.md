@@ -8,7 +8,7 @@ A local application and Python toolkit for checking what a vendor contract says 
 
 Nothing in this repository determines tax treatment, calculates tax, authorises withholding or files returns. Every result requires review by a qualified person. All included documents and evaluation cases are synthetic and not practitioner-validated.
 
-**Branches:** the submitted version is [`e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0`](https://github.com/korakdas1/tds-evidence-review/commit/e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0) on `main`. Post-submission development (Phases 3–8A) is on `feature/full-product`.
+**Branches:** the submitted version is [`e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0`](https://github.com/korakdas1/tds-evidence-review/commit/e075a9087b8f4dbebee3fe74f2cb427c5bc3a3c0) on `main`. Post-submission development (Phases 3–9) is on `feature/full-product`.
 
 **Phase 6C:** document reviews now use resource-isolated Linux parser workers with wall/CPU/memory limits. The previously blocking 43 KB stress case is contained; see [PHASE_6C_REPORT.md](PHASE_6C_REPORT.md) and the unchanged [independent audit](PHASE_6_CODEX_AUDIT.md). Resource isolation is not a complete security sandbox or production-readiness claim. The sequential development plan is [docs/MULTI_PHASE_GOAL.md](docs/MULTI_PHASE_GOAL.md). No live model calls are authorized in this development session.
 
@@ -31,16 +31,17 @@ python -m pip install -r requirements-pdf.txt   # pypdf 6.21.4, the only runtime
 | To... | Run | Expect |
 |---|---|---|
 | Launch the review app | `python review_app.py --open` | Opens http://127.0.0.1:8765/ in your browser (this computer only) |
+| Run the complete local workflow | `python local_demo.py` | Disposable PDF review, reviewer history, checkpoint and preserved historical example; no network |
 | Run the offline demo | `python demo.py` | Three JSON examples, including a replayed historical model mistake |
 | Run the offline PDF demo | `python pdf_demo.py` | A synthetic PDF with page and character offsets; proposal withheld |
-| Run all automated tests | `python -m unittest discover -v` | 233 tests, all passing; local HTTP tests use loopback sockets |
+| Run all automated tests | `python -m unittest discover -v` | 234 tests, all passing; local HTTP tests use loopback sockets |
 
 App options:
 - `--port 8765`
 - `--data-dir local_data`: uploads and the review database; Git-ignored and private to your user account.
 - `--max-storage-mb 512`: upload quota.
 
-The app refuses to listen on anything except a loopback address.
+The app refuses to listen on anything except a loopback address. The [operating guide](docs/OPERATING_GUIDE.md) covers setup, private storage, backups, failure handling and reproducible checks. The [Phase 9 report](PHASE_9_REPORT.md) records the fresh-clone verification and final limitations.
 
 ### A five-minute synthetic walkthrough
 
@@ -275,7 +276,7 @@ The separately frozen 12-case v3 challenge scores **9/12** with the unchanged ba
 
 The fixed-model live attempt used `cohere/north-mini-code:free` and stopped on request 12 with `INVALID_PROVIDER_RESPONSE`: **11 usable responses, one failed attempt, 12 unexecuted requests, zero retries**. All 11 usable responses returned that same model ID. Direct LLM agreed on **4/6** usable cases; hybrid agreed on **3/5** (or 3/6 when the failed attempt is included). On the common five completed cases, all three methods agreed on **3/5**, with **2/5** incorrect confident decisions for direct LLM and **0/5** for baseline and hybrid. The improved hybrid exposes two unfamiliar clauses for review while still abstaining. This is an incomplete comparison, not validated tax accuracy or a demonstrated automatic-recall improvement.
 
-The full suite passes **87/87 tests**, preserving the original 72. Original baseline benchmarks remain **16/16** and **12/12**. All earlier results remain unchanged. See [PHASE_3_REPORT.md](PHASE_3_REPORT.md) for denominators, failure cases, same-response before/after analysis and limitations.
+The Phase 3 suite then passed **87/87 tests**, preserving the original 72. Original baseline benchmarks remain **16/16** and **12/12**. All earlier results remain unchanged. See [PHASE_3_REPORT.md](PHASE_3_REPORT.md) for denominators, failure cases, same-response before/after analysis and limitations.
 
 ### Phase 2A: offline reliability work
 
@@ -350,6 +351,6 @@ A local browser review interface is included on the development branch; producti
 
 The release checks reran the unchanged offline suite: **51/51 tests passed**. The benchmark, manifest, source, tests and historical evaluation artifacts were preserved byte-for-byte. No live API experiment was run during release preparation. The release [test log](results/release/test_run.txt), [security audit](results/release/security_audit.json) and [file inventory](results/release/files.txt) accompany this snapshot.
 
-The audit excludes `.env`, credential files, local caches and ignored local reports from the commit. Synthetic model outputs remain included as evaluation evidence; they are not private conversation logs. Historical `prior_*.md` files and older result files describe their original stages; use this README and PHASE_6_CODEX_AUDIT.md for current behavior; RUN_REPORT.md records earlier development stages.
+The audit excludes `.env`, credential files, local caches and ignored local reports from the commit. Synthetic model outputs remain included as evaluation evidence; they are not private conversation logs. Historical `prior_*.md` files and older result files describe their original stages; use this README, PHASE_9_REPORT.md and the operating guide for current behavior; PHASE_6_CODEX_AUDIT.md and RUN_REPORT.md preserve their earlier findings/stages.
 
-The submission is ready for review as a limited prototype with **incomplete live evaluation**. It does not demonstrate legally validated TDS accuracy or a completed live AI benchmark. No open-source license has been selected. Do not include the local `.env` file in any manually created submission archive.
+The submitted snapshot and current development branch are suitable for review as limited prototypes with **incomplete live evaluation**. The completed local checks do not make either production-ready. It does not demonstrate legally validated TDS accuracy or a completed live AI benchmark. No open-source license has been selected. Do not include the local `.env` file in any manually created submission archive.

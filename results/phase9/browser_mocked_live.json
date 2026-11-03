@@ -1,0 +1,45 @@
+{
+  "execution_kind": "SIMULATED",
+  "browsers": [
+    {
+      "browser": "chrome",
+      "version": "154.0.8037.57",
+      "checks": [
+        "offline remains default with live configured",
+        "configured model is displayed before opting in",
+        "selecting live mode alone sends nothing",
+        "per-run external transmission and simulation notice displayed",
+        "cancel makes zero requests and creates no case",
+        "one explicit confirmation invokes one mock",
+        "saved run is simulated with zero network calls",
+        "all PDF proposals remain withheld",
+        "workspace shows actual execution provenance",
+        "no external browser requests or uncaught errors"
+      ],
+      "status": "PASS",
+      "execution_kind": "SIMULATED",
+      "mock_invocations": 1,
+      "live_network_calls": 0
+    },
+    {
+      "browser": "firefox",
+      "version": "157.0",
+      "checks": [
+        "offline remains default with live configured",
+        "configured model is displayed before opting in",
+        "selecting live mode alone sends nothing",
+        "per-run external transmission and simulation notice displayed",
+        "cancel makes zero requests and creates no case",
+        "one explicit confirmation invokes one mock",
+        "saved run is simulated with zero network calls",
+        "all PDF proposals remain withheld",
+        "workspace shows actual execution provenance",
+        "no external browser requests or uncaught errors"
+      ],
+      "status": "PASS",
+      "execution_kind": "SIMULATED",
+      "mock_invocations": 1,
+      "live_network_calls": 0
+    }
+  ]
+}

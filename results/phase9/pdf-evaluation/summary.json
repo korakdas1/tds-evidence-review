@@ -1,0 +1,413 @@
+{
+  "suite": "pdf-fixtures-v1",
+  "fixtures_sha256": "9b43dca7273fc9240fbc281b3aac3bb7d6b8a28e3521b84e961ad583ae784342",
+  "implementation_sha256": {
+    "src/pdf_ingestion.py": "d22371b47c50676db636b88b49b05b697cdb3c8211f849a48b07000b0790d040",
+    "src/pdf_worker.py": "815077b58dbafd3bd88de228739c4f4b18a48086ede8acf59a12c84439ab7b79",
+    "src/document_review.py": "ec7562396b663b123f54c190578dfd977e2b927feebfe33b8e3efdd7f159bbdd",
+    "evaluate_pdfs.py": "efc6fea304e894e935e43a9ef580145a3fdc72198db61a1a3e6e66995ce067a0"
+  },
+  "interpretation": "Source-informed synthetic extraction/provenance tests, not independent model or legally validated accuracy.",
+  "cases": [
+    {
+      "file": "supported.pdf",
+      "expected_extraction_status": "EXTRACTED",
+      "observed_extraction_status": "EXTRACTED",
+      "status_matches": true,
+      "document_issues": [],
+      "page_issues": [],
+      "text_only_factual_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "final_factual_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "document_gate": "TEXT_REVIEW_COMPLETE",
+      "source_items": 2,
+      "mapped_items": 2,
+      "source_fragments_valid": 2,
+      "source_fragments_total": 2,
+      "statutory_proposal": null,
+      "api_calls": 0
+    },
+    {
+      "file": "multipage.pdf",
+      "expected_extraction_status": "EXTRACTED",
+      "observed_extraction_status": "EXTRACTED",
+      "status_matches": true,
+      "document_issues": [],
+      "page_issues": [],
+      "text_only_factual_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "final_factual_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "document_gate": "TEXT_REVIEW_COMPLETE",
+      "source_items": 2,
+      "mapped_items": 2,
+      "source_fragments_valid": 2,
+      "source_fragments_total": 2,
+      "statutory_proposal": null,
+      "api_calls": 0
+    },
+    {
+      "file": "wrapped.pdf",
+      "expected_extraction_status": "EXTRACTED",
+      "observed_extraction_status": "EXTRACTED",
+      "status_matches": true,
+      "document_issues": [],
+      "page_issues": [],
+      "text_only_factual_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "final_factual_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "document_gate": "TEXT_REVIEW_COMPLETE",
+      "source_items": 2,
+      "mapped_items": 2,
+      "source_fragments_valid": 2,
+      "source_fragments_total": 2,
+      "statutory_proposal": null,
+      "api_calls": 0
+    },
+    {
+      "file": "cross_page.pdf",
+      "expected_extraction_status": "EXTRACTED",
+      "observed_extraction_status": "EXTRACTED",
+      "status_matches": true,
+      "document_issues": [],
+      "page_issues": [],
+      "text_only_factual_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "final_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "document_gate": "NEEDS_DOCUMENT_REVIEW",
+      "source_items": 2,
+      "mapped_items": 2,
+      "source_fragments_valid": 3,
+      "source_fragments_total": 3,
+      "statutory_proposal": null,
+      "api_calls": 0
+    },
+    {
+      "file": "negation_lines.pdf",
+      "expected_extraction_status": "EXTRACTED",
+      "observed_extraction_status": "EXTRACTED",
+      "status_matches": true,
+      "document_issues": [],
+      "page_issues": [],
+      "text_only_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "final_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "document_gate": "TEXT_REVIEW_COMPLETE",
+      "source_items": 1,
+      "mapped_items": 1,
+      "source_fragments_valid": 1,
+      "source_fragments_total": 1,
+      "statutory_proposal": null,
+      "api_calls": 0
+    },
+    {
+      "file": "negation_pages.pdf",
+      "expected_extraction_status": "EXTRACTED",
+      "observed_extraction_status": "EXTRACTED",
+      "status_matches": true,
+      "document_issues": [],
+      "page_issues": [],
+      "text_only_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "final_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "document_gate": "TEXT_REVIEW_COMPLETE",
+      "source_items": 1,
+      "mapped_items": 1,
+      "source_fragments_valid": 1,
+      "source_fragments_total": 1,
+      "statutory_proposal": null,
+      "api_calls": 0
+    },
+    {
+      "file": "reading_order.pdf",
+      "expected_extraction_status": "NEEDS_DOCUMENT_REVIEW",
+      "observed_extraction_status": "NEEDS_DOCUMENT_REVIEW",
+      "status_matches": true,
+      "document_issues": [],
+      "page_issues": [
+        {
+          "page": 1,
+          "issues": [
+            "EXTRACTION_ORDER_DISAGREEMENT"
+          ]
+        }
+      ],
+      "text_only_factual_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "final_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "document_gate": "NEEDS_DOCUMENT_REVIEW",
+      "source_items": 2,
+      "mapped_items": 2,
+      "source_fragments_valid": 2,
+      "source_fragments_total": 2,
+      "statutory_proposal": null,
+      "api_calls": 0
+    },
+    {
+      "file": "missing.pdf",
+      "expected_extraction_status": "EXTRACTED",
+      "observed_extraction_status": "EXTRACTED",
+      "status_matches": true,
+      "document_issues": [],
+      "page_issues": [],
+      "text_only_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "final_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "document_gate": "TEXT_REVIEW_COMPLETE",
+      "source_items": 1,
+      "mapped_items": 1,
+      "source_fragments_valid": 1,
+      "source_fragments_total": 1,
+      "statutory_proposal": null,
+      "api_calls": 0
+    },
+    {
+      "file": "conflicting.pdf",
+      "expected_extraction_status": "EXTRACTED",
+      "observed_extraction_status": "EXTRACTED",
+      "status_matches": true,
+      "document_issues": [],
+      "page_issues": [],
+      "text_only_factual_status": "CONFLICTING_EVIDENCE",
+      "final_factual_status": "CONFLICTING_EVIDENCE",
+      "document_gate": "TEXT_REVIEW_COMPLETE",
+      "source_items": 6,
+      "mapped_items": 6,
+      "source_fragments_valid": 6,
+      "source_fragments_total": 6,
+      "statutory_proposal": null,
+      "api_calls": 0
+    },
+    {
+      "file": "empty.pdf",
+      "expected_extraction_status": "NEEDS_DOCUMENT_REVIEW",
+      "observed_extraction_status": "NEEDS_DOCUMENT_REVIEW",
+      "status_matches": true,
+      "document_issues": [],
+      "page_issues": [
+        {
+          "page": 1,
+          "issues": [
+            "NO_SELECTABLE_TEXT_OCR_OR_MANUAL_REVIEW"
+          ]
+        }
+      ],
+      "text_only_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "final_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "document_gate": "NEEDS_DOCUMENT_REVIEW",
+      "source_items": 0,
+      "mapped_items": 0,
+      "source_fragments_valid": 0,
+      "source_fragments_total": 0,
+      "statutory_proposal": null,
+      "api_calls": 0
+    },
+    {
+      "file": "scanned.pdf",
+      "expected_extraction_status": "NEEDS_DOCUMENT_REVIEW",
+      "observed_extraction_status": "NEEDS_DOCUMENT_REVIEW",
+      "status_matches": true,
+      "document_issues": [],
+      "page_issues": [
+        {
+          "page": 1,
+          "issues": [
+            "NO_SELECTABLE_TEXT_OCR_OR_MANUAL_REVIEW",
+            "IMAGE_CONTENT_REQUIRES_VISUAL_REVIEW"
+          ]
+        }
+      ],
+      "text_only_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "final_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "document_gate": "NEEDS_DOCUMENT_REVIEW",
+      "source_items": 0,
+      "mapped_items": 0,
+      "source_fragments_valid": 0,
+      "source_fragments_total": 0,
+      "statutory_proposal": null,
+      "api_calls": 0
+    },
+    {
+      "file": "partial.pdf",
+      "expected_extraction_status": "NEEDS_DOCUMENT_REVIEW",
+      "observed_extraction_status": "NEEDS_DOCUMENT_REVIEW",
+      "status_matches": true,
+      "document_issues": [],
+      "page_issues": [
+        {
+          "page": 2,
+          "issues": [
+            "NO_SELECTABLE_TEXT_OCR_OR_MANUAL_REVIEW"
+          ]
+        }
+      ],
+      "text_only_factual_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "final_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "document_gate": "NEEDS_DOCUMENT_REVIEW",
+      "source_items": 2,
+      "mapped_items": 2,
+      "source_fragments_valid": 2,
+      "source_fragments_total": 2,
+      "statutory_proposal": null,
+      "api_calls": 0
+    },
+    {
+      "file": "encrypted.pdf",
+      "expected_extraction_status": "REJECTED",
+      "observed_extraction_status": "REJECTED",
+      "status_matches": true,
+      "document_issues": [
+        "ENCRYPTED_PDF_NOT_SUPPORTED"
+      ],
+      "page_issues": [],
+      "text_only_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "final_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "document_gate": "NEEDS_DOCUMENT_REVIEW",
+      "source_items": 0,
+      "mapped_items": 0,
+      "source_fragments_valid": 0,
+      "source_fragments_total": 0,
+      "statutory_proposal": null,
+      "api_calls": 0
+    },
+    {
+      "file": "corrupted.pdf",
+      "expected_extraction_status": "REJECTED",
+      "observed_extraction_status": "REJECTED",
+      "status_matches": true,
+      "document_issues": [
+        "MALFORMED_OR_UNSUPPORTED_PDF"
+      ],
+      "page_issues": [],
+      "text_only_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "final_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "document_gate": "NEEDS_DOCUMENT_REVIEW",
+      "source_items": 0,
+      "mapped_items": 0,
+      "source_fragments_valid": 0,
+      "source_fragments_total": 0,
+      "statutory_proposal": null,
+      "api_calls": 0
+    },
+    {
+      "file": "unsupported.txt",
+      "expected_extraction_status": "REJECTED",
+      "observed_extraction_status": "REJECTED",
+      "status_matches": true,
+      "document_issues": [
+        "UNSUPPORTED_FILE"
+      ],
+      "page_issues": [],
+      "text_only_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "final_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "document_gate": "NEEDS_DOCUMENT_REVIEW",
+      "source_items": 0,
+      "mapped_items": 0,
+      "source_fragments_valid": 0,
+      "source_fragments_total": 0,
+      "statutory_proposal": null,
+      "api_calls": 0
+    },
+    {
+      "file": "invoice.pdf",
+      "expected_extraction_status": "EXTRACTED",
+      "observed_extraction_status": "EXTRACTED",
+      "status_matches": true,
+      "document_issues": [],
+      "page_issues": [],
+      "text_only_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "final_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "document_gate": "TEXT_REVIEW_COMPLETE",
+      "source_items": 0,
+      "mapped_items": 0,
+      "source_fragments_valid": 0,
+      "source_fragments_total": 0,
+      "statutory_proposal": null,
+      "api_calls": 0
+    },
+    {
+      "file": "rotated.pdf",
+      "expected_extraction_status": "NEEDS_DOCUMENT_REVIEW",
+      "observed_extraction_status": "NEEDS_DOCUMENT_REVIEW",
+      "status_matches": true,
+      "document_issues": [],
+      "page_issues": [
+        {
+          "page": 1,
+          "issues": [
+            "ROTATED_PAGE_REQUIRES_VISUAL_REVIEW"
+          ]
+        }
+      ],
+      "text_only_factual_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "final_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "document_gate": "NEEDS_DOCUMENT_REVIEW",
+      "source_items": 2,
+      "mapped_items": 2,
+      "source_fragments_valid": 2,
+      "source_fragments_total": 2,
+      "statutory_proposal": null,
+      "api_calls": 0
+    },
+    {
+      "file": "active_content.pdf",
+      "expected_extraction_status": "NEEDS_DOCUMENT_REVIEW",
+      "observed_extraction_status": "NEEDS_DOCUMENT_REVIEW",
+      "status_matches": true,
+      "document_issues": [
+        "ACTIVE_CONTENT_NOT_EXECUTED"
+      ],
+      "page_issues": [],
+      "text_only_factual_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+      "final_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "document_gate": "NEEDS_DOCUMENT_REVIEW",
+      "source_items": 2,
+      "mapped_items": 2,
+      "source_fragments_valid": 2,
+      "source_fragments_total": 2,
+      "statutory_proposal": null,
+      "api_calls": 0
+    },
+    {
+      "file": "unreadable.pdf",
+      "expected_extraction_status": "NEEDS_DOCUMENT_REVIEW",
+      "observed_extraction_status": "NEEDS_DOCUMENT_REVIEW",
+      "status_matches": true,
+      "document_issues": [],
+      "page_issues": [
+        {
+          "page": 1,
+          "issues": [
+            "UNREADABLE_TEXT"
+          ]
+        }
+      ],
+      "text_only_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "final_factual_status": "INSUFFICIENT_TO_ESTABLISH_CONTROL",
+      "document_gate": "NEEDS_DOCUMENT_REVIEW",
+      "source_items": 0,
+      "mapped_items": 0,
+      "source_fragments_valid": 0,
+      "source_fragments_total": 0,
+      "statutory_proposal": null,
+      "api_calls": 0
+    }
+  ],
+  "extraction_status_counts": {
+    "EXTRACTED": 9,
+    "NEEDS_DOCUMENT_REVIEW": 7,
+    "REJECTED": 3
+  },
+  "expected_outcomes": {
+    "numerator": 19,
+    "denominator": 19
+  },
+  "source_fragments_verified": {
+    "numerator": 26,
+    "denominator": 26
+  },
+  "invalid_location_probes_rejected": {
+    "numerator": 10,
+    "denominator": 10
+  },
+  "mapped_evidence_items": {
+    "numerator": 25,
+    "denominator": 25
+  },
+  "statutory_proposals_released": {
+    "numerator": 0,
+    "denominator": 19
+  },
+  "api_calls": 0
+}

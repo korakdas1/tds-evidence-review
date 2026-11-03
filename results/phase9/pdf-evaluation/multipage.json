@@ -1,0 +1,493 @@
+{
+  "schema_version": "pdf-review-v1",
+  "status": "TEXT_REVIEW_COMPLETE",
+  "documents": {
+    "contract": {
+      "schema_version": "pdf-text-v1",
+      "name": "multipage.pdf",
+      "document_id": "sha256:37c6ae9b39f681ed5a28082d1d8122b8388b7f43f9c22cf7b0695657419bc576",
+      "file_sha256": "37c6ae9b39f681ed5a28082d1d8122b8388b7f43f9c22cf7b0695657419bc576",
+      "status": "EXTRACTED",
+      "issues": [],
+      "pages": [
+        {
+          "page_number": 1,
+          "text": "Vendor supplies workers.\n",
+          "text_sha256": "21ae80fc94b493a0b031ae1c73cb6ab86cda0ccd7f5bbe7899c252697597b394",
+          "issues": [],
+          "status": "EXTRACTED",
+          "order_check": "AGREES_NOT_PROOF_OF_VISUAL_ORDER",
+          "alternate_layout_text": "Vendor supplies workers."
+        },
+        {
+          "page_number": 2,
+          "text": "Customer supervises each worker.\n",
+          "text_sha256": "a59f6c3e694ce845f6f5691280d1ab54e654214844a48d5ff48cbf82e576160a",
+          "issues": [],
+          "status": "EXTRACTED",
+          "order_check": "AGREES_NOT_PROOF_OF_VISUAL_ORDER",
+          "alternate_layout_text": "Customer supervises each worker."
+        }
+      ],
+      "text": "Vendor supplies workers. Customer supervises each worker.",
+      "segments": [
+        {
+          "page_number": 1,
+          "text_start": 0,
+          "text_end": 6,
+          "page_start": 0,
+          "page_end": 6,
+          "kind": "COPY"
+        },
+        {
+          "page_number": 1,
+          "text_start": 6,
+          "text_end": 7,
+          "page_start": 6,
+          "page_end": 7,
+          "kind": "WHITESPACE"
+        },
+        {
+          "page_number": 1,
+          "text_start": 7,
+          "text_end": 15,
+          "page_start": 7,
+          "page_end": 15,
+          "kind": "COPY"
+        },
+        {
+          "page_number": 1,
+          "text_start": 15,
+          "text_end": 16,
+          "page_start": 15,
+          "page_end": 16,
+          "kind": "WHITESPACE"
+        },
+        {
+          "page_number": 1,
+          "text_start": 16,
+          "text_end": 24,
+          "page_start": 16,
+          "page_end": 24,
+          "kind": "COPY"
+        },
+        {
+          "page_number": 2,
+          "text_start": 25,
+          "text_end": 33,
+          "page_start": 0,
+          "page_end": 8,
+          "kind": "COPY"
+        },
+        {
+          "page_number": 2,
+          "text_start": 33,
+          "text_end": 34,
+          "page_start": 8,
+          "page_end": 9,
+          "kind": "WHITESPACE"
+        },
+        {
+          "page_number": 2,
+          "text_start": 34,
+          "text_end": 44,
+          "page_start": 9,
+          "page_end": 19,
+          "kind": "COPY"
+        },
+        {
+          "page_number": 2,
+          "text_start": 44,
+          "text_end": 45,
+          "page_start": 19,
+          "page_end": 20,
+          "kind": "WHITESPACE"
+        },
+        {
+          "page_number": 2,
+          "text_start": 45,
+          "text_end": 49,
+          "page_start": 20,
+          "page_end": 24,
+          "kind": "COPY"
+        },
+        {
+          "page_number": 2,
+          "text_start": 49,
+          "text_end": 50,
+          "page_start": 24,
+          "page_end": 25,
+          "kind": "WHITESPACE"
+        },
+        {
+          "page_number": 2,
+          "text_start": 50,
+          "text_end": 57,
+          "page_start": 25,
+          "page_end": 32,
+          "kind": "COPY"
+        }
+      ],
+      "human_review_required": true,
+      "extractor": "pypdf 6.21.4",
+      "normalization": "Whitespace runs collapse to one space; page separators are synthetic spaces. Raw page text is retained.",
+      "limits": {
+        "file_bytes": 5242880,
+        "pages": 20,
+        "page_chars": 100000,
+        "total_chars": 200000,
+        "decoded_page_stream_bytes": 2097152
+      },
+      "text_sha256": "4fc34f5410135e79274ffbed15339fddaac7ced44accd2059a03f89c3fc6fdec",
+      "worker": {
+        "isolation": "LINUX_SPAWN_RESOURCE_LIMITS_NOT_SECURITY_SANDBOX",
+        "limits": {
+          "wall_seconds": 8.0,
+          "cpu_seconds": 4,
+          "memory_bytes": 268435456,
+          "output_bytes": 16777216
+        },
+        "pid": 6,
+        "exit_code": 0,
+        "reaped": true,
+        "elapsed_seconds": 0.125369,
+        "status": "COMPLETED"
+      }
+    }
+  },
+  "review": {
+    "case_id": "PDF_DEMO_SYNTHETIC",
+    "run_status": "OK",
+    "date_selection": {
+      "status": "RESOLVED",
+      "applicable_act": "Income-tax Act, 2025",
+      "trigger_date": "2026-10-10",
+      "validation_failures": [],
+      "rule_version": "act_selection@1.0.0"
+    },
+    "factual_evidence_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+    "validated_facts": {
+      "personnel_supplied": "yes",
+      "worker_supervisor": "customer",
+      "supporting_quotes": [
+        {
+          "fact": "personnel_supplied",
+          "value": "yes",
+          "quote": "Vendor supplies workers."
+        },
+        {
+          "fact": "worker_supervisor",
+          "value": "customer",
+          "quote": "Customer supervises each worker."
+        }
+      ],
+      "missing_facts": [],
+      "contradictory_evidence": []
+    },
+    "human_review_reasons": [
+      "Qualified human review is required for any legal mapping or tax treatment.",
+      "Contract wording may differ from actual working practices.",
+      "Inspect PDF reading order, visibility and completeness before any legal proposal."
+    ],
+    "validation_failures": [],
+    "legal_sources": [
+      {
+        "id": "act_transition",
+        "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+        "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+        "effective_from": "2026-04-01",
+        "effective_to": null,
+        "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+        "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+      },
+      {
+        "id": "manpower_definition",
+        "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+        "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+        "effective_from": "2026-04-01",
+        "effective_to": null,
+        "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+        "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+      },
+      {
+        "id": "customer_manpower_candidate",
+        "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+        "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+        "source_location": "PDF pages 471 and 509 (one-based)",
+        "effective_from": "2026-04-01",
+        "effective_to": null,
+        "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+        "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+      },
+      {
+        "id": "professional_technical_reference",
+        "statutory_reference": "Section 393(1), Table 6(iii)",
+        "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+        "source_location": "PDF page 472 (one-based)",
+        "effective_from": "2026-04-01",
+        "effective_to": null,
+        "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+        "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+      }
+    ],
+    "review_status": "NEEDS_REVIEW",
+    "human_review_required": true,
+    "proposed_table_item": null,
+    "document_issues": []
+  },
+  "text_analysis": {
+    "case_id": "PDF_DEMO_SYNTHETIC",
+    "input_index": 0,
+    "method": "baseline",
+    "run_status": "OK",
+    "not_run_or_error_reason": null,
+    "date_selection": {
+      "status": "RESOLVED",
+      "applicable_act": "Income-tax Act, 2025",
+      "trigger_date": "2026-10-10",
+      "validation_failures": [],
+      "rule_version": "act_selection@1.0.0"
+    },
+    "extracted_facts": {
+      "personnel_supplied": "yes",
+      "worker_supervisor": "customer",
+      "supporting_quotes": [
+        {
+          "fact": "personnel_supplied",
+          "value": "yes",
+          "quote": "Vendor supplies workers."
+        },
+        {
+          "fact": "worker_supervisor",
+          "value": "customer",
+          "quote": "Customer supervises each worker."
+        }
+      ],
+      "missing_facts": [],
+      "contradictory_evidence": []
+    },
+    "validated_facts": {
+      "personnel_supplied": "yes",
+      "worker_supervisor": "customer",
+      "supporting_quotes": [
+        {
+          "fact": "personnel_supplied",
+          "value": "yes",
+          "quote": "Vendor supplies workers."
+        },
+        {
+          "fact": "worker_supervisor",
+          "value": "customer",
+          "quote": "Customer supervises each worker."
+        }
+      ],
+      "missing_facts": [],
+      "contradictory_evidence": []
+    },
+    "supporting_quotes": [
+      {
+        "fact": "personnel_supplied",
+        "value": "yes",
+        "quote": "Vendor supplies workers.",
+        "positions": [
+          {
+            "start": 0,
+            "end": 24
+          }
+        ],
+        "verbatim": true,
+        "semantic_guard_passed": true
+      },
+      {
+        "fact": "worker_supervisor",
+        "value": "customer",
+        "quote": "Customer supervises each worker.",
+        "positions": [
+          {
+            "start": 25,
+            "end": 57
+          }
+        ],
+        "verbatim": true,
+        "semantic_guard_passed": true
+      }
+    ],
+    "evidence_review": null,
+    "deterministic_context_findings": [],
+    "quote_provenance": {
+      "valid": 2,
+      "total": 2
+    },
+    "missing_information": [],
+    "validation_failures": [],
+    "raw_output": null,
+    "raw_model_status": null,
+    "returned_model": null,
+    "usage": null,
+    "response_metadata": null,
+    "api_calls": 0,
+    "api_error": false,
+    "runtime_seconds": 0.000385,
+    "factual_evidence_status": "EVIDENCE_SUPPORTS_CUSTOMER_DIRECTED_MANPOWER",
+    "proposed_table_item": null,
+    "human_review_required": true,
+    "review_status": "NEEDS_REVIEW",
+    "human_review_reasons": [
+      "Qualified human review is required for any legal mapping or tax treatment.",
+      "Contract wording may differ from actual working practices.",
+      "Inspect PDF reading order, visibility and completeness before any legal proposal."
+    ],
+    "legal_sources": [
+      {
+        "id": "act_transition",
+        "statutory_reference": "Income-tax Act, 2025, Section 1(3); ITD TDS Compliance FAQ 1, 2, 5, 6",
+        "source_url": "https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/tds-compliance",
+        "effective_from": "2026-04-01",
+        "effective_to": null,
+        "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+        "rule": "Earlier of credit and payment before 2026-04-01 selects the 1961 Act; on or after selects the 2025 Act. Both dates required by prototype."
+      },
+      {
+        "id": "manpower_definition",
+        "statutory_reference": "Finance Act, 2026, Section 90(b), Gazette page 58; Income-tax Act, 2025, Section 402(47)(f)",
+        "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1",
+        "effective_from": "2026-04-01",
+        "effective_to": null,
+        "verification_status": "OFFICIAL_SOURCE_TEXT_CHECKED",
+        "rule": "The work definition includes manpower supplied to work under the recipient's supervision, control or direction."
+      },
+      {
+        "id": "customer_manpower_candidate",
+        "statutory_reference": "Section 393(1), Table 6(i), read with Section 402(47)(f)",
+        "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+        "source_location": "PDF pages 471 and 509 (one-based)",
+        "effective_from": "2026-04-01",
+        "effective_to": null,
+        "verification_status": "REFERENCE_TEXT_CHECKED_MAPPING_NOT_PRACTITIONER_VALIDATED",
+        "rule": "Recipient-directed manpower may support a provisional contract-work candidate; eligibility and legal treatment require review. Prototype proposal limited to declared Indian resident private company payers."
+      },
+      {
+        "id": "professional_technical_reference",
+        "statutory_reference": "Section 393(1), Table 6(iii)",
+        "source_url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf",
+        "source_location": "PDF page 472 (one-based)",
+        "effective_from": "2026-04-01",
+        "effective_to": null,
+        "verification_status": "REFERENCE_TEXT_CHECKED_NO_AUTOMATIC_MAPPING",
+        "rule": "Reference only. Vendor control does not by itself establish professional or technical services. No rate or threshold implemented."
+      }
+    ],
+    "rules_version": "1.0.0",
+    "limitations": [
+      "Exact quotations establish provenance, not semantic correctness.",
+      "No final legal determination, withholding authorization, or return filing."
+    ]
+  },
+  "evidence_items": [
+    {
+      "fact": "personnel_supplied",
+      "value": "yes",
+      "quote": "Vendor supplies workers.",
+      "origins": [
+        "text_analysis.extracted_facts.supporting_quotes/0",
+        "text_analysis.validated_facts.supporting_quotes/0",
+        "text_analysis.supporting_quotes/0"
+      ],
+      "text_interpretation_status": "SUPPORTED_FACTUAL_EVIDENCE",
+      "source_mapping": {
+        "status": "MAPPED_TO_EXTRACTED_TEXT",
+        "occurrences": [
+          {
+            "status": "MAPPED_TO_EXTRACTED_TEXT",
+            "text_start": 0,
+            "text_end": 24,
+            "normalized_quote": "Vendor supplies workers.",
+            "fragments": [
+              {
+                "document_id": "sha256:37c6ae9b39f681ed5a28082d1d8122b8388b7f43f9c22cf7b0695657419bc576",
+                "file_sha256": "37c6ae9b39f681ed5a28082d1d8122b8388b7f43f9c22cf7b0695657419bc576",
+                "document_name": "multipage.pdf",
+                "page_number": 1,
+                "start": 0,
+                "end": 24,
+                "quote": "Vendor supplies workers.",
+                "context": {
+                  "start": 0,
+                  "end": 25,
+                  "text": "Vendor supplies workers.\n"
+                }
+              }
+            ],
+            "cross_page": false,
+            "requires_human_review": true
+          }
+        ],
+        "requires_human_review": true
+      },
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "may_support_statutory_proposal": false,
+      "interpretation_status": "SUPPORTED_FACTUAL_EVIDENCE"
+    },
+    {
+      "fact": "worker_supervisor",
+      "value": "customer",
+      "quote": "Customer supervises each worker.",
+      "origins": [
+        "text_analysis.extracted_facts.supporting_quotes/1",
+        "text_analysis.validated_facts.supporting_quotes/1",
+        "text_analysis.supporting_quotes/1"
+      ],
+      "text_interpretation_status": "SUPPORTED_FACTUAL_EVIDENCE",
+      "source_mapping": {
+        "status": "MAPPED_TO_EXTRACTED_TEXT",
+        "occurrences": [
+          {
+            "status": "MAPPED_TO_EXTRACTED_TEXT",
+            "text_start": 25,
+            "text_end": 57,
+            "normalized_quote": "Customer supervises each worker.",
+            "fragments": [
+              {
+                "document_id": "sha256:37c6ae9b39f681ed5a28082d1d8122b8388b7f43f9c22cf7b0695657419bc576",
+                "file_sha256": "37c6ae9b39f681ed5a28082d1d8122b8388b7f43f9c22cf7b0695657419bc576",
+                "document_name": "multipage.pdf",
+                "page_number": 2,
+                "start": 0,
+                "end": 32,
+                "quote": "Customer supervises each worker.",
+                "context": {
+                  "start": 0,
+                  "end": 33,
+                  "text": "Customer supervises each worker.\n"
+                }
+              }
+            ],
+            "cross_page": false,
+            "requires_human_review": true
+          }
+        ],
+        "requires_human_review": true
+      },
+      "human_review_required": true,
+      "review_status": "NEEDS_REVIEW",
+      "may_support_statutory_proposal": false,
+      "interpretation_status": "SUPPORTED_FACTUAL_EVIDENCE"
+    }
+  ],
+  "manual_field_sources": {
+    "id": "MANUALLY_PROVIDED_NOT_INFERRED_FROM_PDF",
+    "invoice_description": "MANUALLY_PROVIDED_NOT_INFERRED_FROM_PDF",
+    "payer_type": "MANUALLY_PROVIDED_NOT_INFERRED_FROM_PDF",
+    "payee_residency": "MANUALLY_PROVIDED_NOT_INFERRED_FROM_PDF",
+    "payee_legal_form": "MANUALLY_PROVIDED_NOT_INFERRED_FROM_PDF",
+    "credit_date": "MANUALLY_PROVIDED_NOT_INFERRED_FROM_PDF",
+    "payment_date": "MANUALLY_PROVIDED_NOT_INFERRED_FROM_PDF"
+  },
+  "api_calls": 0,
+  "limitations": [
+    "Page character offsets address extracted Unicode text, not PDF bytes or glyph coordinates.",
+    "Exact mapping is not semantic verification or proof of visual reading order.",
+    "No OCR, automatic legal determination, or statutory proposal release in this PDF path."
+  ]
+}
