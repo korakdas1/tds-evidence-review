@@ -1,0 +1,9 @@
+{
+  "filename": "tresata_adversarial_cases.json",
+  "sha256": "a0744ad70703d0ddef563d7b713ffa604cffd927ba2a14675a4f7a7caf4f4699",
+  "case_count": 16,
+  "frozen_on": "2026-11-03",
+  "source": "User-provided existing dataset, preserved byte-for-byte before implementation and evaluation",
+  "labels": "AI-authored synthetic provisional factual annotations, not practitioner-validated ground truth",
+  "adjustments": "None. Existing flat payer/payee fields supported through an input adapter."
+}

@@ -1,0 +1,9 @@
+{
+  "protected_files_unchanged": true,
+  "changed_files": [],
+  "live_request_attempts": 5,
+  "automatic_retries": 0,
+  "global_stop_reason": "INVALID_PROVIDER_RESPONSE",
+  "finished_at_utc": "2026-11-03T01:15:38.087451+00:00",
+  "wall_seconds_including_pacing": 103.264478
+}

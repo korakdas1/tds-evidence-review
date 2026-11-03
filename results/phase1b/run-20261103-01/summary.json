@@ -1,0 +1,92 @@
+{
+  "evaluation_complete": false,
+  "planned_requests": 32,
+  "attempted_requests": 5,
+  "usable_responses": 4,
+  "request_failures": 1,
+  "not_attempted_requests": 27,
+  "automatic_retries": 0,
+  "stop_reason": "INVALID_PROVIDER_RESPONSE",
+  "http_429_this_run": 0,
+  "provider_refusals_observed": 0,
+  "refusal_observation_denominator": 4,
+  "failed_responses_with_unknown_refusal_status": 1,
+  "truncations_observed": 0,
+  "models_used": {
+    "dots-studio/dots-3-note-preview:free": 1,
+    "nvidia/nemotron-3.5-super-vl:free": 2,
+    "xingchen-agi/xing4.0-29b-a4b:free": 1
+  },
+  "observed_pacing_gaps_seconds": [
+    15.000219,
+    15.000195,
+    15.000202,
+    15.000172
+  ],
+  "minimum_observed_gap_seconds": 15.000172,
+  "same_underlying_model_for_paired_valid_responses": 0,
+  "paired_cases_with_both_valid_responses": 2,
+  "methods": {
+    "direct-llm": {
+      "planned_cases": 16,
+      "attempted_cases": 3,
+      "valid_schema_outputs": 2,
+      "request_failures": 1,
+      "not_run_cases": 13,
+      "status_agreement": {
+        "numerator": 2,
+        "denominator": 3,
+        "unit": "cases",
+        "value": 0.6666666666666666,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "correct_completed_cases_out_of_16_planned": 2,
+      "validation_failure_cases": 0,
+      "validation_failure_messages": 0,
+      "model_reported_missing_fact_cases": null,
+      "validator_missing_fact_cases": null,
+      "quotes_submitted": 0,
+      "quotes_not_verbatim": 0,
+      "quotes_rejected_by_semantic_guard": 0,
+      "usable_control_removed_outputs": 0,
+      "four_case_safety_target": "NOT_EVALUATED",
+      "models": {
+        "dots-studio/dots-3-note-preview:free": 1,
+        "nvidia/nemotron-3.5-super-vl:free": 1
+      }
+    },
+    "hybrid": {
+      "planned_cases": 16,
+      "attempted_cases": 2,
+      "valid_schema_outputs": 2,
+      "request_failures": 0,
+      "not_run_cases": 14,
+      "status_agreement": {
+        "numerator": 1,
+        "denominator": 2,
+        "unit": "cases",
+        "value": 0.5,
+        "status": "MEASURED",
+        "reason": null,
+        "eligible": 16
+      },
+      "correct_completed_cases_out_of_16_planned": 1,
+      "validation_failure_cases": 1,
+      "validation_failure_messages": 2,
+      "model_reported_missing_fact_cases": 0,
+      "validator_missing_fact_cases": 1,
+      "quotes_submitted": 4,
+      "quotes_not_verbatim": 0,
+      "quotes_rejected_by_semantic_guard": 1,
+      "usable_control_removed_outputs": 0,
+      "four_case_safety_target": "NOT_EVALUATED",
+      "models": {
+        "nvidia/nemotron-3.5-super-vl:free": 1,
+        "xingchen-agi/xing4.0-29b-a4b:free": 1
+      }
+    }
+  },
+  "protocol_protected_files_unchanged": true
+}

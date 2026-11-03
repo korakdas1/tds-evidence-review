@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+.venv/
+venv/
+# Credentials, local configuration, and private inputs/outputs
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.aws/
+.codex/
+.agents/
+private/
+results/local/
+results/*raw*
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store
+*.swp

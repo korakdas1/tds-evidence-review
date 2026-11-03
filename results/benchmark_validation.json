@@ -1,0 +1,17 @@
+{
+  "status": "VALID",
+  "sha256": "a0744ad70703d0ddef563d7b713ffa604cffd927ba2a14675a4f7a7caf4f4699",
+  "case_count": 16,
+  "anchor_count": 12,
+  "variants": {
+    "CUSTOMER_CONTROL": 4,
+    "VENDOR_CONTROL": 4,
+    "CONTROL_REMOVED": 4,
+    "CONFLICT": 1,
+    "INJECTION": 1,
+    "CROSSOVER": 1,
+    "OUT_OF_SCOPE": 1
+  },
+  "failures": [],
+  "labels": "Synthetic provisional factual annotations; not practitioner validated"
+}

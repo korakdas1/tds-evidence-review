@@ -1,0 +1,21 @@
+direct-llm: NOT_RUN | 16 cases | 0 API calls
+Run notes: OPENROUTER_NOT_CONFIGURED
+S01_CUSTOMER_CONTROL | NOT_RUN | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+S01_VENDOR_CONTROL | NOT_RUN | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+S01_CONTROL_REMOVED | NOT_RUN | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+S02_CUSTOMER_CONTROL | NOT_RUN | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+S02_VENDOR_CONTROL | NOT_RUN | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+S02_CONTROL_REMOVED | NOT_RUN | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+S03_CUSTOMER_CONTROL | NOT_RUN | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+S03_VENDOR_CONTROL | NOT_RUN | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+S03_CONTROL_REMOVED | NOT_RUN | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+S04_CUSTOMER_CONTROL | NOT_RUN | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+S04_VENDOR_CONTROL | NOT_RUN | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+S04_CONTROL_REMOVED | NOT_RUN | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+X01_CONTRADICTORY_ADDENDUM | NOT_RUN | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+X02_INJECTION | NOT_RUN | Income-tax Act, 2025 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+X03_OLD_ACT_CREDIT | NOT_RUN | Income-tax Act, 1961 | INSUFFICIENT_TO_ESTABLISH_CONTROL | human review required
+X04_NONRESIDENT | NOT_RUN | Income-tax Act, 2025 | OUT_OF_SCOPE | human review required
+Synthetic status agreement: 0/0 (eligible: 16)
+Safety target: NOT_EVALUATED
+Reports: results/direct-llm.json and results/direct-llm.csv
