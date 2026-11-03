@@ -226,9 +226,10 @@ def serve(host="127.0.0.1", port=8765, data_dir="local_data", open_browser=False
     app = App(data_dir, port, max_storage_bytes=max_storage_bytes)
     server = ThreadingHTTPServer((host, port), make_handler(app))
     url = "http://127.0.0.1:{}/".format(server.server_address[1])
-    print("TDS Evidence Review is running at " + url)
-    print("Data folder: " + str(app.store.data_dir) + "  (kept out of Git)")
-    print("Offline: no model or network calls. Press Ctrl+C to stop.")
+    # flush=True so the banner also appears when output is redirected to a log file.
+    print("TDS Evidence Review is running at " + url, flush=True)
+    print("Data folder: " + str(app.store.data_dir) + "  (kept out of Git)", flush=True)
+    print("Offline: no model or network calls. Press Ctrl+C to stop.", flush=True)
     if open_browser:
         webbrowser.open(url)
     try:

@@ -160,6 +160,6 @@ test_frontend_is_offline_and_never_injects_html (tests.test_webapp.StaticAndSamp
 test_sample_pdfs_are_deterministic_and_match_manifest (tests.test_webapp.StaticAndSampleTests.test_sample_pdfs_are_deterministic_and_match_manifest) ... ok
 
 ----------------------------------------------------------------------
-Ran 155 tests in 8.036s
+Ran 155 tests in 7.961s
 
 OK
